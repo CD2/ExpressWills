@@ -13,10 +13,13 @@
   = render "layouts/select_list", :f => f, select_list: :recipient_no, q_no: "08030", options: ["1", "2", "3", "4"]
   [THIS NEEDS TO HIDE WHEN ! SELECTED ]
   = render "layouts/radio_buttons", :f => f, radio_button: :joint_or_common, q_no: "08040", option: {tenants_in_common: "Tenants in common", joint_tennants: "Joint tenants"}, selected: 1
+  %p.advice Joint tenants hold equal, undivided rights in the property and on the death of one that individual's share automatically passes in equal proportions to the other joint tenants. Tenants in common can control and dispose of their interests individually. If you need further detail or wish to make provision for the recipients in something other than equal shares please contact Notary Express.
   = render "layouts/radio_buttons", :f => f, radio_button: :responsible_for_charges, q_no: "08050", option: {true: "Yes", false: "No"}, selected: 0
+  %p.advice Answering "no" means your estate will pay the charges, increasing the value of the gift
   = render "layouts/radio_buttons", :f => f, radio_button: :as_cash_if_sold, q_no: "08060", option: {true: "Yes", false: "No"}, selected: 0
   = render "layouts/radio_buttons", :f => f, radio_button: :held_in_trust, q_no: "08070", option: {true: "Yes", false: "No"}, selected: 0
   %div{"data-condition" => ":checked", "data-false" => "hide", "data-require" => "#property_held_in_trust_true", "data-true" => "show"}
     = render "layouts/select_list", :f => f, select_list: :life_beneficiary_no, q_no: "08080", options: ["1", "2", "3", "4"]
+    %p.advice This allows named individuals other than the ultimate recipients of the property to live there for the duration of their lives and during this time excludes the ultimate recipients from dealing with the property
   .button-region
     = f.submit 'Save', class: "button radius"

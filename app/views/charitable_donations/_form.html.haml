@@ -18,6 +18,7 @@
   
   = render "layouts/text_field", :f => f, text_field: :amount, q_no: "07040", origin: @charitable_donation
   = render "layouts/text_area", :f => f, text_area: :instruction, q_no: "07050"
+  %p.advice You may specify a non-binding purpose for the gift but it is generally advised to leave this box blank so that the charity can put your gift towards any use and ensure it does not take effect if the charity is unable to comply with your request.
   = render "layouts/check_box", :f => f, check_box: :allow_alternate, q_no: "07070"
   = f.submit 'Add Another', class: "button radius"
   = f.submit 'Proceed', class: "button radius"

@@ -12,6 +12,7 @@
     .pikaday
       = render "layouts/text_field", :f => f, text_field: :dob, q_no: "01160", origin: @partner_detail
     = render "layouts/select_list", :f => f, select_list: :domicile_country, q_no: "01170", options: TestatorDetail::COUNTRIES
+    %p.advice This is their country of permanent residence or homeland
     = f.submit 'Save', class: "button radius"
   - else
     = f.fields_for :general_detail do |builder|

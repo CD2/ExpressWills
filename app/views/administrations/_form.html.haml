@@ -6,6 +6,7 @@
   = render "layouts/radio_buttons", :f => f, radio_button: :accept_admin, q_no: "04010", option: {true: "Yes", false: "No"}, selected: 0
   %div{"data-condition" => ":checked", "data-false" => "show", "data-require" => "#administration_accept_admin_true", "data-true" => "hide"}
     = render "layouts/check_box", :f => f, check_box: :expanded_powers, q_no: "04020"
+    %p.advice Click here to view the express powers
     = render "layouts/check_box", :f => f, check_box: :borrow_powers, q_no: "04030"
     = render "layouts/check_box", :f => f, check_box: :appoint_admin_powers, q_no: "04040"
     = render "layouts/check_box", :f => f, check_box: :buy_sell_powers, q_no: "04050"

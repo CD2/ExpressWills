@@ -2,8 +2,7 @@ source 'https://rubygems.org'
 
 #core
 gem 'rails', '4.1.1'
-gem 'pg'
-
+gem 'sqlite3'
 #assets
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
@@ -20,11 +19,12 @@ gem 'will_paginate'
 gem "faker"
 
 #server
-gem 'unicorn'
-
+#gem 'unicorn'
+gem 'tzinfo-data'
 #testing
 group :development, :test do
   gem "rspec-rails", '~> 2.14.0.rc1'
+  
 end
 
 group :test do
@@ -32,4 +32,3 @@ group :test do
   gem 'capybara', '2.1.0'
   gem 'factory_girl_rails'
 end
-

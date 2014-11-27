@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20141127095624) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "administrations", force: true do |t|
     t.integer  "will_id"
     t.boolean  "accept_admin"
@@ -28,7 +25,7 @@ ActiveRecord::Schema.define(version: 20141127095624) do
     t.datetime "updated_at"
   end
 
-  add_index "administrations", ["will_id"], name: "index_administrations_on_will_id", using: :btree
+  add_index "administrations", ["will_id"], name: "index_administrations_on_will_id"
 
   create_table "cash_gifts", force: true do |t|
     t.integer  "will_id"
@@ -52,7 +49,7 @@ ActiveRecord::Schema.define(version: 20141127095624) do
     t.integer  "count"
   end
 
-  add_index "cash_gifts", ["will_id"], name: "index_cash_gifts_on_will_id", using: :btree
+  add_index "cash_gifts", ["will_id"], name: "index_cash_gifts_on_will_id"
 
   create_table "charitable_donations", force: true do |t|
     t.integer  "will_id"
@@ -73,7 +70,7 @@ ActiveRecord::Schema.define(version: 20141127095624) do
     t.datetime "updated_at"
   end
 
-  add_index "charitable_donations", ["will_id"], name: "index_charitable_donations_on_will_id", using: :btree
+  add_index "charitable_donations", ["will_id"], name: "index_charitable_donations_on_will_id"
 
   create_table "charity_details", force: true do |t|
     t.integer  "will_id"
@@ -90,7 +87,7 @@ ActiveRecord::Schema.define(version: 20141127095624) do
     t.integer  "charity_residuary_id"
   end
 
-  add_index "charity_details", ["will_id"], name: "index_charity_details_on_will_id", using: :btree
+  add_index "charity_details", ["will_id"], name: "index_charity_details_on_will_id"
 
   create_table "executors", force: true do |t|
     t.integer  "will_id"
@@ -107,7 +104,7 @@ ActiveRecord::Schema.define(version: 20141127095624) do
     t.datetime "updated_at"
   end
 
-  add_index "executors", ["will_id"], name: "index_executors_on_will_id", using: :btree
+  add_index "executors", ["will_id"], name: "index_executors_on_will_id"
 
   create_table "funerals", force: true do |t|
     t.integer  "will_id"
@@ -119,7 +116,7 @@ ActiveRecord::Schema.define(version: 20141127095624) do
     t.datetime "updated_at"
   end
 
-  add_index "funerals", ["will_id"], name: "index_funerals_on_will_id", using: :btree
+  add_index "funerals", ["will_id"], name: "index_funerals_on_will_id"
 
   create_table "general_details", force: true do |t|
     t.integer  "will_id"
@@ -165,9 +162,9 @@ ActiveRecord::Schema.define(version: 20141127095624) do
     t.integer  "charity_residuary_id"
   end
 
-  add_index "general_details", ["partner_detail_id"], name: "index_general_details_on_partner_detail_id", using: :btree
-  add_index "general_details", ["testator_detail_id"], name: "index_general_details_on_testator_detail_id", using: :btree
-  add_index "general_details", ["will_id"], name: "index_general_details_on_will_id", using: :btree
+  add_index "general_details", ["partner_detail_id"], name: "index_general_details_on_partner_detail_id"
+  add_index "general_details", ["testator_detail_id"], name: "index_general_details_on_testator_detail_id"
+  add_index "general_details", ["will_id"], name: "index_general_details_on_will_id"
 
   create_table "guardians", force: true do |t|
     t.integer  "will_id"
@@ -184,7 +181,7 @@ ActiveRecord::Schema.define(version: 20141127095624) do
     t.datetime "updated_at"
   end
 
-  add_index "guardians", ["will_id"], name: "index_guardians_on_will_id", using: :btree
+  add_index "guardians", ["will_id"], name: "index_guardians_on_will_id"
 
   create_table "partner_details", force: true do |t|
     t.integer  "will_id"
@@ -196,7 +193,7 @@ ActiveRecord::Schema.define(version: 20141127095624) do
     t.datetime "updated_at"
   end
 
-  add_index "partner_details", ["will_id"], name: "index_partner_details_on_will_id", using: :btree
+  add_index "partner_details", ["will_id"], name: "index_partner_details_on_will_id"
 
   create_table "personal_gifts", force: true do |t|
     t.string   "relationship"
@@ -216,7 +213,7 @@ ActiveRecord::Schema.define(version: 20141127095624) do
     t.datetime "updated_at"
   end
 
-  add_index "personal_gifts", ["will_id"], name: "index_personal_gifts_on_will_id", using: :btree
+  add_index "personal_gifts", ["will_id"], name: "index_personal_gifts_on_will_id"
 
   create_table "properties", force: true do |t|
     t.integer  "will_id"
@@ -238,7 +235,7 @@ ActiveRecord::Schema.define(version: 20141127095624) do
     t.datetime "updated_at"
   end
 
-  add_index "properties", ["will_id"], name: "index_properties_on_will_id", using: :btree
+  add_index "properties", ["will_id"], name: "index_properties_on_will_id"
 
   create_table "questions", force: true do |t|
     t.string   "number"
@@ -255,7 +252,7 @@ ActiveRecord::Schema.define(version: 20141127095624) do
     t.datetime "updated_at"
   end
 
-  add_index "requests", ["will_id"], name: "index_requests_on_will_id", using: :btree
+  add_index "requests", ["will_id"], name: "index_requests_on_will_id"
 
   create_table "residuaries", force: true do |t|
     t.integer  "will_id"
@@ -264,7 +261,7 @@ ActiveRecord::Schema.define(version: 20141127095624) do
     t.datetime "updated_at"
   end
 
-  add_index "residuaries", ["will_id"], name: "index_residuaries_on_will_id", using: :btree
+  add_index "residuaries", ["will_id"], name: "index_residuaries_on_will_id"
 
   create_table "residuary_details", force: true do |t|
     t.integer  "will_id"
@@ -277,7 +274,7 @@ ActiveRecord::Schema.define(version: 20141127095624) do
     t.datetime "updated_at"
   end
 
-  add_index "residuary_details", ["will_id"], name: "index_residuary_details_on_will_id", using: :btree
+  add_index "residuary_details", ["will_id"], name: "index_residuary_details_on_will_id"
 
   create_table "testator_details", force: true do |t|
     t.integer  "will_id"
@@ -297,7 +294,7 @@ ActiveRecord::Schema.define(version: 20141127095624) do
     t.datetime "updated_at"
   end
 
-  add_index "testator_details", ["will_id"], name: "index_testator_details_on_will_id", using: :btree
+  add_index "testator_details", ["will_id"], name: "index_testator_details_on_will_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

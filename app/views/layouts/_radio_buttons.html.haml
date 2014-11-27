@@ -2,6 +2,8 @@
   .small-12.column
     %dl
       %dt= question q_no
+    -if defined? advice_text    
+      %p.advice-text= advice_text
 - option.each_with_index do |(k,v),i|
   - if selected == i
     = f.radio_button radio_button, k, checked: 'checked'

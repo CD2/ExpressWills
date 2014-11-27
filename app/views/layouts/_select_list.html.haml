@@ -2,6 +2,8 @@
   .small-12.column
     %dl
       %dt= question q_no
+    -if defined? advice_text    
+      %p.advice-text= advice_text
 .row.collapse
   .large-2.columns
     %span.prefix

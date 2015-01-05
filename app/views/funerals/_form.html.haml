@@ -6,7 +6,7 @@
   = render "layouts/text_area", :f => f, text_area: :wishes, q_no: "02020"
   = render "layouts/radio_buttons", :f => f, radio_button: :donate_organs, q_no: "02030", option: {no_preference: "No preference" , i_would_not_like_to_donate_my_organs: "I would not like to donate my organs", yes_all_my_organs: "Yes, all of my organs",  yes_specific_organs: "Yes, specific organs"}, selected: 0
   %div{"data-condition" => ":checked", "data-false" => "hide", "data-require" => "#funeral_donate_organs_yes_specific_organs", "data-true" => "show"}
-    = render "layouts/text_area", :f => f, text_area: :specific_organs, q_no: "02040"
+    = render "layouts/text_area", :f => f, text_area: :specific_organs, q_no: "02040", label_text: "Specific Organs"
   .button-region
     = f.submit 'Save and Continue', class: "button radius right"
 

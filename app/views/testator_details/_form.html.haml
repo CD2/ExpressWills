@@ -6,11 +6,11 @@
   = f.fields_for :general_detail do |builder|
     = render "general_details/general_details_form", :builder => builder, :nested_origin => @testator_detail.general_detail
 
-  = render "layouts/text_field", :f => f, text_field: :phone_no, q_no: "01020", origin: @testator_detail, label_text: "Phone Number"
-  = render "layouts/select_list", :f => f, select_list: :gender, q_no: "01030", options: ["Male", "Female"], origin: @testator_detail
+  = render "layouts/text_field", :f => f, text_field: :phone_no, origin: @testator_detail, label_text: "Phone Number"
+  = render "layouts/select_list", :f => f, select_list: :gender, options: ["Male", "Female"], origin: @testator_detail
   .pikaday
-    = render "layouts/text_field", :f => f, text_field: :dob, q_no: "01040", origin: @testator_detail
-  = render "layouts/select_list", :f => f, select_list: :domicile_country, advice_text: "This is your country of permanent residence or homeland",  q_no: "01050", options: TestatorDetail::COUNTRIES, origin: @testator_detail
+    = render "layouts/text_field", :f => f, text_field: :dob, origin: @testator_detail, label_text: "Date of Birth"
+  = render "layouts/select_list", :f => f, select_list: :domicile_country, advice_text: "This is your country of permanent residence or homeland",  q_no: "01050", options: TestatorDetail::COUNTRIES, origin: @testator_detail, label_text: "Domicile Country"
   .radio-container
     = render "layouts/radio_buttons", :f => f, radio_button: :children, advice_text: "Please select 'yes, including my partner's children' if your partner has one or more children and you want to include these when making provisions in your will for your children.", q_no: "01060",  option: {yes_my_own: "Yes, my own", yes_including_my_partners: "Yes, including my partner's", no: "No"}, selected: -1
   %div{"data-condition" => ":checked", "data-false" => "hide", "data-require" => "#testator_detail_children_yes_including_my_partners, #testator_detail_children_yes_my_own", "data-true" => "show"}

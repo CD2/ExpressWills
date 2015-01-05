@@ -2,7 +2,7 @@
 %h4.subheader It is advised you consider secondary beneficiaries in case your primary beneficiaries are not able to receive your residuary estate for any reason.
 %hr
 = form_for [@will, @residuary_detail] do |f|
-  = render "layouts/select_list", :f => f, select_list: :residuary_type, q_no: "10080", options: ["Charity" , "Individual" , "My children", "My grandchildren" , "I do not wish to specify a beneficiary"] 
+  = render "layouts/select_list", :f => f, select_list: :residuary_type, q_no: "10080", options: ["Charity" , "Individual" , "My children", "My grandchildren" , "I do not wish to specify a beneficiary"], label_text: "Residuary Type" 
   = f.hidden_field :count, value: @will.residuary_details.count+1
   = f.hidden_field :secondary, value: true
   = f.submit 'Save', class: "button radius"

@@ -20,10 +20,10 @@
   - @res.each { |x| @start -= x.share.gsub('%','').to_i if x.share.present? } 
   = render "layouts/select_list", :f => f, select_list: :share, q_no: "10020", options: @option + (1..@start).to_a.map {|i| "#{i.to_s}%"}
 
-  = render "layouts/select_list", :f => f, select_list: :certain_age, q_no: "10030", options: ["no"] + (16..40).to_a.map {|i| i.to_s}
+  = render "layouts/select_list", :f => f, select_list: :certain_age, q_no: "10030", options: ["no"] + (16..40).to_a.map {|i| i.to_s}, label_text: "Certain Age"
   = render "layouts/radio_buttons", :f => f, radio_button: :if_dead, q_no: "10040", option: {put_back_into_your_estate: "Put back into your estate", allocated_to_their_children: "Allocated to their child(ren)"}, selected: 0
   %div{"data-condition" => ":checked", "data-false" => "show", "data-require" => "#residuary_detail_if_dead_put_back_into_your_estate", "data-true" => "hide"}
-    = render "layouts/select_list", :f => f, select_list: :if_dead_certain_age, q_no: "10050", options: ["no"] + (16..40).to_a.map {|i| i.to_s}
+    = render "layouts/select_list", :f => f, select_list: :if_dead_certain_age, q_no: "10050", options: ["no"] + (16..40).to_a.map {|i| i.to_s}, label_text: "Certain Age"
   = f.hidden_field :count, value: @will.residuary_details.count
   = f.hidden_field :complete, value: true
   .button-region

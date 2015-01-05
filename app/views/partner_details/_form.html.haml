@@ -5,11 +5,11 @@
   - if @will.testator_detail.mirror_will == "yes"
     = f.fields_for :general_detail do |builder|
       = render "general_details/general_details_form", :builder => builder, :nested_origin => @partner_detail.general_detail
-    = render "layouts/text_field", :f => f, text_field: :phone_no, q_no: "01140", origin: @partner_detail
-    = render "layouts/select_list", :f => f, select_list: :gender, q_no: "01150", options: ["Male", "Female"], origin: @partner_detail
+    = render "layouts/text_field", :f => f, text_field: :phone_no, origin: @partner_detail, label_text: "Phone Number"
+    = render "layouts/select_list", :f => f, select_list: :gender, options: ["Male", "Female"], origin: @partner_detail
     .pikaday
-      = render "layouts/text_field", :f => f, text_field: :dob, q_no: "01160", origin: @partner_detail
-    = render "layouts/select_list", :f => f, select_list: :domicile_country, q_no: "01170", options: TestatorDetail::COUNTRIES
+      = render "layouts/text_field", :f => f, text_field: :dob, origin: @partner_detail, label_text: "Date of Birth"
+    = render "layouts/select_list", :f => f, select_list: :domicile_country, q_no: "01170", options: TestatorDetail::COUNTRIES, label_text: "Domicile Country"
     %p.advice This is their country of permanent residence or homeland
     .button-region
       = f.submit 'Save and Continue', class: "button radius right"

@@ -2,7 +2,7 @@
 %hr
 = form_for [@will, @property] do |f|
 
-  = render "layouts/text_field", :f => f, text_field: :land_reg_number, q_no: "00110", origin: @property
+  = render "layouts/text_field", :f => f, text_field: :land_reg_number, q_no: "00110", origin: @property, label_text: "Land Registry Number"
   = render "layouts/text_field", :f => f, text_field: :address_one, origin: @property
   = render "layouts/text_field", :f => f, text_field: :address_two, origin: @property
   = render "layouts/text_field", :f => f, text_field: :city, origin: @property

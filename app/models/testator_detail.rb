@@ -18,7 +18,9 @@ class TestatorDetail < ActiveRecord::Base
     end
   end
 
-  COUNTRIES = ["Afghanistan",
+  COUNTRIES = [
+"United Kingdom",
+    "Afghanistan",
 "Albania",
 "Algeria",
 "American Samoa",
@@ -239,7 +241,6 @@ class TestatorDetail < ActiveRecord::Base
 "Uganda",
 "Ukraine",
 "United Arab Emirates",
-"United Kingdom",
 "United States",
 "Uruguay",
 "Uzbekistan",

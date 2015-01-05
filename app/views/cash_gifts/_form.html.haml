@@ -12,10 +12,10 @@
     = render "layouts/text_field", :f => f, text_field: :postcode, origin: @cash_gift
     = render "layouts/text_field", :f => f, text_field: :country, origin: @cash_gift
   = render "layouts/text_field", :f => f, text_field: :amount, q_no: "06030", origin: @cash_gift
-  = render "layouts/select_list", :f => f, select_list: :certain_age, q_no: "06040", options: ["no"] + (16..40).to_a.map {|i| i.to_s}
+  = render "layouts/select_list", :f => f, select_list: :certain_age, q_no: "06040", options: ["no"] + (16..40).to_a.map {|i| i.to_s}, label_text: "Certain Age"
   = render "layouts/radio_buttons", :f => f, radio_button: :if_dead, q_no: "06050", option: {put_back_into_your_estate: "Put back into your estate", allocated_to_their_children: "Allocated to their child(ren)"}, selected: 0
   %div{"data-condition" => ":checked", "data-false" => "hide", "data-require" => "#cash_gift_if_dead_allocated_to_their_children", "data-true" => "show"}
-    = render "layouts/select_list", :f => f, select_list: :certain_age_if_dead, q_no: "06060", options: ["no"] + (16..40).to_a.map {|i| i.to_s}
+    = render "layouts/select_list", :f => f, select_list: :certain_age_if_dead, q_no: "06060", options: ["no"] + (16..40).to_a.map {|i| i.to_s}, label_text: "Certain Age"
 
   = f.hidden_field :count, value: @will.cash_gifts.count+1
   .button-region

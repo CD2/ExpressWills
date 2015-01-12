@@ -2,8 +2,7 @@ source 'https://rubygems.org'
 
 #core
 gem 'rails', '4.1.1'
-gem 'pg'
-
+gem 'sqlite3', '1.3.10'
 #assets
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'

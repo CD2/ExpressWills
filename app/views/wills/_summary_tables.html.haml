@@ -426,7 +426,7 @@
         %h5 Charity Option
   %tr
     %th permission
-    %td= @charity_permission.permission
+    %td= @charity_permission.permission if @charity_permission
 
 - if @properties.any?
   - @properties.each_with_index do |property|

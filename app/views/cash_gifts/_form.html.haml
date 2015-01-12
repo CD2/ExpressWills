@@ -1,9 +1,6 @@
-
-%h2.section-sub-heading You can make specific gifts of money.
-%hr
 = form_for [@will, @cash_gift] do |f|
 
-  = render "layouts/radio_buttons", :f => f, radio_button: :shared_to, q_no: "06020", option: {no:"No" , all_of_my_children:"All of my children" , all_of_my_grandchildren:"All of my grandchildren"}, selected: 2
+  = render "layouts/radio_buttons", :f => f, radio_button: :shared_to, q_no: "06020", option: {no:"No" , all_of_my_children:"All of my children" , all_of_my_grandchildren:"All of my grandchildren"}, selected: 0
   %div{"data-condition" => ":checked", "data-false" => "hide" , "data-require" => "#cash_gift_shared_to_no", "data-true" => "show"}
     = render "layouts/text_field", :f => f, text_field: :first_name, origin: @cash_gift
     = render "layouts/text_field", :f => f, text_field: :middle_name, origin: @cash_gift
@@ -15,13 +12,20 @@
     = render "layouts/text_field", :f => f, text_field: :postcode, origin: @cash_gift
     = render "layouts/text_field", :f => f, text_field: :country, origin: @cash_gift
   = render "layouts/text_field", :f => f, text_field: :amount, q_no: "06030", origin: @cash_gift
-  = render "layouts/select_list", :f => f, select_list: :certain_age, q_no: "06040", options: ["no"] + (16..40).to_a.map {|i| i.to_s}
+  = render "layouts/select_list", :f => f, select_list: :certain_age, q_no: "06040", options: ["no"] + (16..40).to_a.map {|i| i.to_s}, label_text: "Certain Age"
   = render "layouts/radio_buttons", :f => f, radio_button: :if_dead, q_no: "06050", option: {put_back_into_your_estate: "Put back into your estate", allocated_to_their_children: "Allocated to their child(ren)"}, selected: 0
   %div{"data-condition" => ":checked", "data-false" => "hide", "data-require" => "#cash_gift_if_dead_allocated_to_their_children", "data-true" => "show"}
-    = render "layouts/select_list", :f => f, select_list: :certain_age_if_dead, q_no: "06060", options: ["no"] + (16..40).to_a.map {|i| i.to_s}
+    = render "layouts/select_list", :f => f, select_list: :certain_age_if_dead, q_no: "06060", options: ["no"] + (16..40).to_a.map {|i| i.to_s}, label_text: "Certain Age"
 
   = f.hidden_field :count, value: @will.cash_gifts.count+1
   .button-region
-    = f.submit 'Add Another', class: "button radius"
-    = f.submit 'Proceed', class: "button radius"
+    = link_to("Save and Continue", "javascript:void(0)", class: "button radius modal-continue-button")
     = link_to 'Proceed Without Saving', option_will_charitable_donations_path(@will), class: "button radius cancel-forward right"
+
+
+  .modal-continue
+    Do you wish to add another?
+    .button-region
+      = f.submit 'Add Another', class: "button radius"
+      = f.submit 'Proceed', class: "button radius"
+      = link_to 'Cancel', "javascript:void(0)", class: "button radius cancel-forward modal-cancel"

@@ -1,12 +1,16 @@
-.row
-  .small-12.column
-    %dl
-      %dt= question q_no
-    -if defined? advice_text    
-      %p.advice-text= advice_text
+- if defined? q_no
+  .row
+    .small-12.column
+      %dl
+        %dt= question q_no
+      -if defined? advice_text    
+        %p.advice-text= advice_text
 .row.collapse
   .large-2.columns
     %span.prefix
-      = f.label select_list
+      -if defined? label_text
+        = f.label select_list, label_text
+      -else
+        = f.label select_list
   .large-10.columns
     = f.select select_list, options

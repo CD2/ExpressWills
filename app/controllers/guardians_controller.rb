@@ -1,5 +1,8 @@
 class GuardiansController < ApplicationController
   before_action :set_guardian, only: [:show, :edit, :update, :destroy]
+  after_action only: :create do
+    update_will_progress 6
+  end
 
   def new
     @will = Will.find(params[:will_id])

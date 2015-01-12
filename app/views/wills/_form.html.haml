@@ -5,5 +5,8 @@
   .field
     = f.label :title
     = f.text_field :title
-  .actions
-    = f.submit 'Save', class: "button radius"
+  .field
+    By Submiting this form, you hereby agree to the 
+    = link_to 'terms and conditions', terms_and_conditions_path, target: '_blank'
+  .actions.button-region
+    = f.submit 'Submit', class: "button radius"

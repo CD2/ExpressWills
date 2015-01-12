@@ -1,9 +1,7 @@
-%h1 Property
-%p.section-text You can donate buildings or land that you own as a tenant in common. If you are not sure by what method you own property you can contact Notary Express to make enquiries on your behalf.
-%hr
+= render 'header'
 %dl
   %dt
     = question "08010"
-  %p.advice If you do not make a specific gift of anyland you own it will pass to any beneficiaries you choose to recieve the remainder of your estate if you own the full interest of the property or hold it as a teneant in common.
-= link_to("No", option_will_personal_gifts_path(@will))
-= link_to("Yes", new_will_property_path)
+  %p.advice If you do not make a specific gift of any building or land you own it will pass to any beneficiaries you choose to receive the remainder of your estate if you own the full interest of the property or hold it as a tenant in common
+= link_to("No", option_will_personal_gifts_path(@will), class: "button radius")
+= link_to("Yes", new_will_property_path, class: "button radius")

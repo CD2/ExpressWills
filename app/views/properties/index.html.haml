@@ -1,18 +1,17 @@
 - provide(:title, "Property")
 
-%h1 Property
-%p.section-text You can donate buildings or land that you own as a tenant in common. If you are not sure by what method you own property you can contact Notary Express to make enquiries on your behalf.
-%hr
+= render 'header'
 
 
 %table
   %thead
     %tr
-      %th Property
+      %th 
+        %h5 Property
   %tbody
     - @properties.where(complete: true).each_with_index do |property, i|
       %tr
         %td= link_to(property.postcode, edit_will_property_path(@will, property))
 
-= link_to("Add Property", new_will_property_path)
-= link_to("Proceed", option_will_personal_gifts_path(@will))
+= link_to("Add Property", new_will_property_path, class: "button radius")
+= link_to("Proceed", option_will_personal_gifts_path(@will), class: "button radius")

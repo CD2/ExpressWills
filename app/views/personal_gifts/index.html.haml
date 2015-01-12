@@ -1,20 +1,19 @@
 - provide(:title, "Personal Gifts")
-
-%h1 Personal Gifts
-%p.section-text You can make specific gifts of personal items.
-%hr
+= render 'header'
 
 
 %table
   %thead
     %tr
-      %th Personal Gift
-      %th Description
+      %th 
+        %h5 Personal Gift
+      %th 
+        %h5 Description
   %tbody
     - @personal_gifts.each_with_index do |personal_gift, i|
       %tr
         %td= link_to("Personal Gift #{i+1}", edit_will_personal_gift_path(@will, personal_gift))
         %td= personal_gift.description
 
-= link_to("Add Personal Gift", new_will_personal_gift_path)
-= link_to("Proceed", new_will_residuary_detail_path)
+= link_to("Add Personal Gift", new_will_personal_gift_path, class: "button radius")
+= link_to("Proceed", option_will_residuary_details_path, class: "button radius")

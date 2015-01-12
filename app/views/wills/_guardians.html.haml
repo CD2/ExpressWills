@@ -1,0 +1,23 @@
+%b= "#{@count+= 1}. APPOINTMENT OF GUARDIANS"
+%p
+  = "#{@count}.#{@sub = 1}"
+  = @second_guardian ? "I appoint, as the guardians of any of my children who are under 18"  : "I appoint, as the guardian of any of my children who are under 18"
+  = "including any children born to me after the date of this will" if @guardian.appoint_future_guardians
+  - @guardians.each_with_index do |g, i|
+    - if g
+      = i==0 ? "if there is no other person with parental responsibility for them at my death," : ""
+      = @guardians.count == i+1 ? "#{g.full_name} of #{g.full_address}." : "#{g.full_name} of #{g.full_address}, and"
+
+- if @guardian.appoint_future_guardians
+  - if @first_replacement_guardian
+    %p
+      = "#{@count}.#{@sub+=1}" 
+      If the aforementioned 
+      = @second_guardian ? "guardians die" : "guardian dies"
+      - @guardians_rep.each_with_index do |g, i|
+        - if g
+          = i==0? "before me, or this appointment does not take effect for any other reason, then I appoint " : "and"
+          = g.full_name + " of " + g.full_address
+      instead.
+  
+  %p= "#{@count}.#{@sub+=1} Where more than one guardian or replacement guardian accepts the appointment, my children shall for the avoidance of doubt be resident with the earliest appointed guardian mentioned under this will." if @second_guardian || @first_replacement_guardian

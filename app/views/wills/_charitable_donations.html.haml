@@ -1,0 +1,21 @@
+%p
+  %b= "#{@count+=1}. GIFTS TO CHARITY"
+      
+%p= "#{@count}.#{@sub = 1} I give:"
+- @charitable_donations.each_with_index do |c, i|
+  %p
+    - if c.popular_charity
+      = "£#{c.amount} to #{c.popular_charity_name}." 
+    - else
+      - if c.registered_charity_number.gsub(/\s+/, "") != "" && c.full_address.gsub(/\s+/, "") != ""
+        = "£#{c.amount} to #{c.name}, registered charity number #{c.registered_charity_number} of #{c.full_address}. "
+      - elsif c.registered_charity_number.gsub(/\s+/, "") != ""
+        = "£#{c.amount} to #{c.name}, registered charity number #{c.registered_charity_number}. "
+      - elsif c.full_address.gsub(/\s+/, "") != ""
+        = "£#{c.amount} to #{c.name}, of #{c.full_address}. "
+      - else
+        = "£#{c.amount} to #{c.name}. "
+    = "I make a non-binding request that the charity use this gift towards #{c.instruction}" if c.instruction && !c.instruction.gsub(/\s+/, "") == ""
+- if @will.charity_permission && @will.charity_permission.permission
+  %p= "#{@count}.2 If, at my death, any of the aforementioned charities no longer exists or is being wound up, the Trustees must pay the amount specified as being payable to the original charity to another charity that they consider most nearly fulfils the object that I intend to benefit."
+%p= "#{@count}.3 The receipt of the treasurer or other proper officer of such charity at the time of payment will be a complete discharge to the Trustees."

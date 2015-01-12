@@ -1,6 +1,6 @@
-%p.section-text The residuary is the remainder of your estate after all debts, expenses, taxes and specific gifts have been dealt with. It is often the main gift in your estate so you are advised to provide replacement beneficiaries in case your main beneficiaries are deceased or unable to receive the gift for any reason.
+
 = form_for [@will, @residuary] do |f|
 
 
-  = render "layouts/select_list", :f => f, select_list: :amount_allowed_to_distribute, advice_text: "This power enables your executors to use their discretion to distribute some or all of the gift to the beneficiary before that individual reaches the specified age.",  q_no: "10070", options: ["None"] + (1..100).to_a.map {|i| "#{i.to_s}%"}
+  = render "layouts/select_list", :f => f, select_list: :amount_allowed_to_distribute, advice_text: "This power enables your executors to use their discretion to distribute some or all of the gift to the beneficiary before that individual reaches the specified age.",  q_no: "10070", options: ["None"] + (1..100).to_a.map {|i| "#{i.to_s}%"}, label_text: "Percentage Allowed"
   = f.submit 'Save', class: "button radius"

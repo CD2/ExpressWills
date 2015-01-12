@@ -1,5 +1,8 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
+  after_action only: :create do
+    update_will_progress 14
+  end
 
   def new
     @will = Will.find(params[:will_id])
@@ -30,7 +33,8 @@ class RequestsController < ApplicationController
   def update
     @will = Will.find(params[:will_id])
     if @request.update(request_params)
-      redirect_to @request, notice: 'Request was successfully updated.'
+      @will.update_attributes(complete:true)
+      redirect_to @will
     else
       render :edit
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204112434) do
+ActiveRecord::Schema.define(version: 20141219112439) do
 
   create_table "administrations", force: true do |t|
     t.integer  "will_id"
@@ -328,6 +328,8 @@ ActiveRecord::Schema.define(version: 20141204112434) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "complete",   default: false
+    t.boolean  "term"
+    t.integer  "progress",   default: 0
   end
 
 end

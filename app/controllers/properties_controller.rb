@@ -1,5 +1,9 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: [:show, :edit, :update, :destroy]
+  before_action :skip_option, only: [:option]
+  after_action only: :option do
+    update_will_progress 10
+  end
 
   def new
     @will = Will.find(params[:will_id])
@@ -67,7 +71,17 @@ class PropertiesController < ApplicationController
     @b8 = @property.forth_replacement_benificiary_general_details || @property.build_forth_replacement_benificiary_general_details if @property.life_beneficiary_no > 3
   end
 
+  def option
+  end
+
   private
+  
+    def skip_option
+      @will = Will.find(params[:will_id])
+      @properties = @will.properties
+      redirect_to will_properties_path(@will) if @properties.any?
+    end
+    
     def set_property
       @property = Property.find(params[:id])
     end

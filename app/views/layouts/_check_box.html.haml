@@ -1,7 +1,10 @@
 .row.collapse
   .large-1.column
     %span.prefix
-      = f.check_box check_box
+      -if defined? checked 
+        = f.check_box check_box, checked: true
+      -else
+        = f.check_box check_box
   .large-11.columns
     .check-box-question
       = f.label check_box, "#{question q_no}"

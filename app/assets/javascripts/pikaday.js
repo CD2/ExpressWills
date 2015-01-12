@@ -1009,22 +1009,27 @@ var m_names = ['January','February','March','April','May','June','July','August'
 }));
 maxDate = new Date()
 maxDate.setYear(maxDate.getYear()-18)
-
+x = new Date();
+y = x.getFullYear()-50 + " " + (x.getMonth()+1) + " " + x.getDate()
 new Pikaday(
 {
   field: document.getElementById('testator_detail_dob'),
   firstDay: 1,
   minDate: new Date('1900-01-01'),
    maxDate: maxDate,
-  yearRange: [1900,2000]
+  yearRange: [1900,2000],
+  defaultDate: new Date(y)
 });
+
+
 new Pikaday(
 {
   field: document.getElementById('partner_detail_dob'),
   firstDay: 1,
   minDate: new Date('1900-01-01'),
   maxDate: maxDate,
-  yearRange: [1900,2000]
+  yearRange: [1900,2000],
+  defaultDate: y
 });
 
 

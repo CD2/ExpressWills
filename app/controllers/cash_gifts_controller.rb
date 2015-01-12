@@ -1,5 +1,9 @@
 class CashGiftsController < ApplicationController
   before_action :set_cash_gift, only: [:show, :edit, :update, :destroy]
+  before_action :skip_option, only: [:option]
+  after_action only: :option do
+    update_will_progress 7
+  end
 
   def new
     @will = Will.find(params[:will_id])
@@ -52,7 +56,17 @@ class CashGiftsController < ApplicationController
     end
   end
 
+  def option
+  end
+
   private
+  
+    def skip_option
+      @will = Will.find(params[:will_id])
+      @cash_gifts = @will.cash_gifts
+      redirect_to will_cash_gifts_path(@will) if @cash_gifts.any?
+    end
+
     def set_cash_gift
       @cash_gift = CashGift.find(params[:id])
     end

@@ -1,13 +1,5 @@
 - @count = 0
 
-%p
-  %b Title:
-  = @will.title
-%p
-  %b User:
-  = @will.user_id
-
-
 #page-one
   .page
     .intro
@@ -16,223 +8,29 @@
         %br
         of
         %br
-        = @will.user.name
+        = @testator_details.full_name
 
 #page-two
   .page
     %b LAST WILL AND TESTAMENT
     %p= "THIS WILL is made by me, #{@testator_details.full_name} of #{@testator_details.full_address}, on this day of 2013."
     %p= "I, #{@testator_details.full_name} of #{@testator_details.full_address}, hereby revoke any previous wills and codicils and make this my last will, disposing of all my worldwide assets."
-    - if @testator.mirror_will == "Yes"
+    - if @testator.mirror_will == "yes"
       %b MIRROR WILL
       %p Although this will is in similar terms to the will of my partner, there is no agreement between us not to revoke or change our wills. I am free to revoke or change my will at any time.
-    %b= "#{@count+= 1}. DEFINITIONS"
-    %p The definitions in this clause apply in this will:
-    %p 
-      %b Estate: 
-      all the assets that I can dispose of by will.
-    %p 
-      %b Trustees: 
-      my executors, my administrators and the trustees of any trusts under this will whether original, additional or substituted. 
-    %p 
-      %b Professional Trustee: 
-      a person who is acting as one of the Trustees in the course of a business or profession.
-    - if @testator.children == "Yes, my own" || @testator.children ==  "Yes, including my partner's" || @will.guardian && @will.guardian.appoint_future_guardians
-      %p 
-        Express and implied references in this will to an individual's 
-        %b children 
-        = "do not include the individual's stepchildren" if @testator.children ==  "Yes, my own"
-        = "do not include the individual's stepchildren" if @testator.children ==  "No" && @guardians.appoint_future_guardians
-        = "include the individual's stepchildren, even if the individual has not adopted them." if @testator.children ==  "Yes, including my partner's"
-    %p 
-      References in this will to 
-      %b inheritance tax 
-      include estate duty and capital transfer tax. They also include any other tax payable on inheritances or on death introduced after the date of this will and tax and duties payable to authorities outside the United Kingdom.
-    %p 
-      References in this will to 
-      %b this will 
-      include any codicil to this will. However, any reference to the date of this will is a reference to the date of this particular document.
-    %b= "#{@count+= 1}. FUNERAL WISHES"
-    %p
-      = @funeral.preference
-      = " whether I am cremated or buried." if @funeral.preference == "I have no preference"
-    %p= "My funeral wishes are that I would like to... #{@funeral.wishes}." unless @funeral.wishes == " " || @funeral.wishes == ""
-    - unless @funeral.donate_organs == "No preference"
-      %p
-        = "I would like to donate all of my organs." if @funeral.donate_organs == "Yes, all of my organs"
-        = "I would like to donate my #{@funeral.specific_organs}" if @funeral.donate_organs == "Yes, specific organs"
-        = "I do not consent to the donation of any of my organs." if @funeral.donate_organs == "I would not like to donate my organs"
-    %b= "#{@count+= 1}. DOMICILE"
-    %p= "I am domiciled in #{@testator.domicile_country}."
-    - if @testator.planning_marrige
-      %b= "#{@count+= 1}. EXPECTED MARRIAGE OR CIVIL PARTNERSHIP"
-      %p 
-        = "I am expecting to marry or form a civil partnership with #{@partner_details.full_name}" 
-        = "My marriage to that person does not revoke this will." if @testator.effective_post_marrige
-        = @testator.effective_post_death_sans_marrige ? "This will is effective even if I die before marrying that person." : "This will is not effective until I marry that person."
-        
-    %b= "#{@count+= 1}. APPOINTMENT OF EXECUTORS AND TRUSTEES"
-    - if @executor.notary_express
-      %p
-        I appoint the employee(s) (to include directors) of Notary Express Limited (registered company number 8347115) of 2H, 149 Bayham Street, London, NW1 0AT, a Professional Trustee, including any company or firm that has succeeded to, or is carrying on the practice of, this company at my death, 
-        = "and #{@second_executor.full_name} of #{@second_executor.full_address}" if @second_executor
-        = "and #{@third_executor.full_name} of #{@third_executor.full_address}" if @third_executor
-        = "and #{@forth_executor.full_name} of #{@forth_executor.full_address}" if @forth_executor
-        as the 
-        = @second_executor ? "executors and trustees" : "executor and trustee"
-        of this will, and I express the wish that no more than one such employee shall prove my will or act in its trusts.
-    - elsif !@executor.notary_express && @executor.first
-      %p 
-        = "I appoint #{@first_executor.full_name} of #{@first_executor.full_address}" if @first_executor
-        = "and #{@second_executor.full_name} of #{@second_executor.full_address}" if @second_executor
-        = "and #{@third_executor.full_name} of #{@third_executor.full_address}" if @third_executor
-        = "and #{@forth_executor.full_name} of #{@forth_executor.full_address}" if @forth_executor
-        to be the 
-        = @second_executor ? "executors and trustees" : "executor and trustee"
-        of this will.
-    - else
-      %p I do not appoint any executors of this will.
-
-    - if @first_executor_rep
-      %p 
-        - @exec_reps.each_with_index do |e, i|
-          = i==0 ? "If any die before me, refuses to act or is unable to act, or the appointment does not take effect for any other reason, I appoint " : "and" 
-          = "#{e.full_name} of #{e.full_address}" if e
-        = @second_executor_rep ? "in the order named to fill the resulting vacancies." : "to fill the resulting vacancy."
-
-    %b= "#{@count+= 1}. SURVIVORSHIP"
-    %p Every person who would otherwise benefit under my will who fails to survive me by 30 days will be treated for all purposes as having predeceased me.
-
+    = render(:partial => "definitions")
+    = render(:partial => "funeral_wishes")
+    = render(:partial => "domicile")
+    = render(:partial => "expected_marriage") if @testator.planning_marrige
+    = render(:partial => "executors")
+    = render(:partial => "survivorship")
     - if @guardian
-      - if @guardian.appoint_future_guardians || @guardian.appoint_current_guardians
-        %b= "#{@count+= 1}. APPOINTMENT OF GUARDIANS"
-        %p
-          = "#{@count}.1"
-          = @second_guardian ? "I appoint, as the guardians"  : "I appoint, as the guardian"
-          = @guardian.appoint_future_guardians ? "of any of my children who are under 18 (including any children born to me after the date of this will)" : "of any of my children who are under 18"
-          - @guardians.each_with_index do |g, i|
-            - if g
-              = i==0 ? "if there is no other person with parental responsibility for them at my death," : "and"
-              = g.full_name + " of " + g.full_address
-              = "."
-
-        - if @guardian.appoint_future_guardians || @guardian.appoint_current_guardians && @first_guardian
-          %p
-            = "#{@count}.2" 
-            If the aforementioned 
-            = @second_guardian ? "guardians die" : "guardian dies"
-            - @guardians_rep.each_with_index do |g, i|
-              - if g
-                = i==0? "before me, or this appointment does not take effect for any other reason, then I appoint " : "and"
-                = g.full_name + " of " + g.full_address
-            instead.
-          - if @second_guardian || @first_replacement_guardian
-            %p= "#{@count}.3 Where more than one guardian or replacement guardian accepts the appointment, my children shall for the avoidance of doubt be resident with the earliest appointed guardian mentioned under this will."
-
-      %b= "#{@count+=1}. SPECIFIC GIFTS"
-
-      - if @personal_gifts.count > 0
-        %p
-          = @testator.tax_responsibility ? "#{@count}.1 I give " : "#{@count}.1 I give [free of all taxes]:"
-          - @personal_gifts.each_with_index do |gift, i|
-            = "#{gift.description} to [BENEFICIARY NAME] of [BENEFICIARY ADDRESS];"
-            = "and" if @personal_gifts.count > 1 && i == @personal_gifts.count - 2
-            %br
-        %p THIS NEEDS TO BE FIXED 8.2 If at my death I have sold or made a contract to sell any items identified in the immediately preceding sub-clause, then the gift of it takes effect as a gift of the sale proceeds, less %p any costs of sale, if reasonably discernible otherwise the value of the gift shall be its estimated market value, less any costs of sale, as determined by the Trustees in their absolute %p discretion.
-
-    - if @properties.count > 0
-      %b= "#{@count+=1}. PROPERTY"
-      - @properties.each_with_index do |property, i|
-        %p
-          = "#{@count}.1 I give all my interest in the property known as #{property.full_address}, #{property.land_reg_number},"
-          = "or any other property that is my sole or main residence at my death" if property.sole_residence && i == 0
-          - property.beneficiaries.each_with_index do |b, j|
-            = "#{b.full_name} of #{b.full_address}"
-            = property.beneficiaries.count-1 == j ? "who are living at my death (Life Beneficiary) for the life of " : "and"
-          = property.life_beneficiary_no == 1 ? "that individual" : "those individuals" 
-          = "subject to this life interest for." if property.held_in_trust
-        %p
-          %u Beneficiaries
-          - property.beneficiaries.each_with_index do |b, j|
-            %p
-              = "those of" unless property.recipient_no == 1
-              = "#{b.full_name} of #{b.full_address}"
-              = property.beneficiaries.count-1 == j ? "" : "and"
-              = "who are living at my death. If more than one survive me, I give the property to them as " unless property.recipient_no == 1
-              = property.joint_or_common == "Joint tenants" ? "joint tenants." : "tenants in common in equal shares, but if any of the beneficiaries named in this sub-clause is not living at my death and leaves children who are then living, the Trustees must hold the interest in the property that they would have held for the beneficiary who has died on trust for the children absolutely, as tenants in common in equal shares."
-          %p 
-            Any mortgage debt or other sums secured on this property (to the extent that they are not paid from the proceeds of a life assurance policy given as additional security for payment), and any related interest or expenses, shall be paid by 
-            = property.responsible_for_charges ? "the donee#{'s' unless property.recipient_no == 1} of the property." : "the Trustees from my Estate."
-          - if property.responsible_for_charges
-            %p 9.2 While any Life Beneficiary has a life interest in any property described in this clause:
-            %p (a) The Trustees must allow the Life Beneficiary to occupy the property rent free if so long as that individual:
-            %p (i) pays all outgoings on the property; and
-            %p (ii) keeps the property in good repair and condition.
-            %p (b) The Trustees must not sell the property without the Life Beneficiary's written consent.
-            %p (c) If the Life Beneficiary asks them to do so, the Trustees must sell the property and use some or all of the sale proceeds to buy another property (or an interest in another property) anywhere in the world as a residence for the Life Beneficiary, so long as the Trustees are satisfied that the replacement property is a suitable property for them to own. 
-            %p If the Trustees sell the property:
-            %p (i) they may use part of the proceeds of sale to improve or repair a replacement property; and
-            %p (ii) they must pay to the Life Beneficiary the income from any proceeds of sale that at any time have not been used to buy, improve or repair a replacement property.
-            %p= "If the Trustees buy a replacement property this clause #{@count} applies to the replacement property as if it were the property."
-          - if property.as_cash_if_sold
-            %p 9.3 If at my death I have made a contract to sell any property identified in this clause, but that contract has not been completed, then the gift of it takes effect as a gift of the sale proceeds, less any costs of sale.
-    %b= "#{@count+=1}. FINANCIAL LEGACIES"
-    %p= "#{@count}.1 I give #{'free of all taxes' if @testator.tax_responsibility}:"
-    - @cash_gifts.each_with_index do |c, i|
-      %p
-        - if c.shared_to == "no"
-          = "£#{c.amount} to #{c.full_name} of #{c.full_address}"
-          = c.certain_age == "no" ? "absolutely." : "to be paid only when the aforementioned individual reaches the age of #{c.certain_age}."
-          - if c.if_dead == "Allocated to their child(ren)"
-            Should the aforementioned individual predecease me this gift shall instead fall to their child(ren) in equal shares 
-            = "to be paid only when they reach the age of #{c.certain_age_if_dead}."
-        - else
-          %p
-            = "I give £#{c.amount} to each of my "
-            = c.shared_to == "All of my children" ? "children" : "grandchildren" 
-            living at my death 
-            - if c.certain_age == "no"
-              absolutely.
-            - else
-              to be held on trust for each
-              = c.shared_to == "All of my children" ? "child until that child" : "grandchild until that grandchild" 
-              = "reaches the age of #{c.certain_age}."
-            Should any 
-            = c.shared_to == "All of my children" ? "child" : "grandchild"  
-            predecease me this gift shall instead fall to their child(ren) in equal shares. 
-            = "to be paid only when they reach the age of #{c.certain_age_if_dead}." unless c.certain_age_if_dead == "no"
-
-    - if @charitable_donations.count > 0
-      %b= "#{@count+=1}. GIFTS TO CHARITY"
-      
-      %p 11.1 I give:
-      - @charitable_donations.each_with_index do |c, i|
-        %p= "#{c.amount} to #{c.name}, registered charity number #{c.registered_charity_number} of #{c.full_address}. I make a non-binding request that the charity use this gift towards #{c.instruction}"
-      %p=# "11.2 If, at my death, any of the aforementioned charities no longer exists or is being wound up, the Trustees must pay the amount specified as being payable to the original charity to %p another charity that they consider most nearly fulfils the object that I intend to benefit." if @will.allow_alt_charity
-      %p 11.3 The receipt of the treasurer or other proper officer of such charity at the time of payment will be a complete discharge to the Trustees.
-
-      %b= "#{@count+=1}. RESIDUARY"
-    %p 12.1 The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall %p be distributed as follows:
-    %p (a) ***% to [BENEFICIARY NAME] of [BENEFICIARY ADDRESS] [absolutely/to be paid only when the aforementioned individual reaches the age of [16-40]]. [Should the aforementioned individual predecease me this gift shall instead fall to their child(ren) in equal shares [to be paid only when they reach the age of 16-40];]
-    %p (b) ***% to [BENEFICIARY NAME] of [BENEFICIARY ADDRESS] [absolutely/to be paid only when the aforementioned individual reaches the age of [16-40]]. [Should the aforementioned individual predecease me this gift shall instead fall to their child(ren) in equal shares [to be paid only when they reach the age of 16-40];]
-    %p (c) ***% to [NAME OF FIRST CHARITY], registered charity number or HMRC number [REGISTERED NUMBER OF FIRST CHARITY] of [ADDRESS OF FIRST CHARITY]. [I make a non-binding request that the charity use this gift towards ***]; and
-    %p (d) ***% to my [grand]children in equal shares [including any future children I have after the date of creation of this will] [absolutely/to be paid only when the aforementioned individual reaches the age of [16-40]]. [Should any of my children predecease me this gift shall instead fall to their child(ren) in equal shares [to be paid only when they reach the age of 16-40];]
-    %p the remainder to be shared:
-    %p (e) [in such percentages as the Trustees elect in their absolute discretion OR in equal shares absolutely] to [BENEFICIARY NAME] of [BENEFICIARY ADDRESS]; [Should the aforementioned %p individual predecease me this gift shall instead fall to their child(ren) in equal shares [to be paid only when they reach the age of 16-40];] and
-    %p (f) [in such percentages as the Trustees elect in their absolute discretion OR in equal shares absolutely] to [BENEFICIARY NAME] of [BENEFICIARY ADDRESS]. [Should the aforementioned %p individual predecease me this gift shall instead fall to their child(ren) in equal shares [to be paid only when they reach the age of 16-40].]
-    %p 12.2 If any above mentioned residuary gift fails, then the Trustees will hold it and pay it to:
-    %p (a) ***% to [BENEFICIARY NAME] of [BENEFICIARY ADDRESS] [absolutely/to be paid only when the aforementioned individual reaches the age of [16-40]]. [Should the aforementioned individual predecease me this gift shall instead fall to their child(ren) in equal shares [to be paid only when they reach the age of 16-40];]
-    %p (b) ***% to [BENEFICIARY NAME] of [BENEFICIARY ADDRESS] [absolutely/to be paid only when the aforementioned individual reaches the age of [16-40]]. [Should the aforementioned individual predecease me this gift shall instead fall to their child(ren) in equal shares [to be paid only when they reach the age of 16-40];]
-    %p (c) ***% to [NAME OF FIRST CHARITY], registered charity number or HMRC number [REGISTERED NUMBER OF FIRST CHARITY] of [ADDRESS OF FIRST CHARITY]. [I make a non-binding request that the charity use this gift towards ***]; and
-    %p (d) ***% to my [grand]children in equal shares [including any future children I have after the date of creation of this will] [absolutely/to be paid only when the aforementioned individual %p reaches the age of [16-40]]. [Should any of my children predecease me this gift shall instead fall to their child(ren) in equal shares [to be paid only when they reach the age of 16-40];]
-    %p the remainder to be shared:
-    %p (e) [in such percentages as the Trustees elect in their absolute discretion OR in equal shares absolutely] to [BENEFICIARY NAME] of [BENEFICIARY ADDRESS]; [Should the aforementioned %p individual predecease me this gift shall instead fall to their child(ren) in equal shares [to be paid only when they reach the age of 16-40];] and
-    %p (f) [in such percentages as the Trustees elect in their absolute discretion OR in equal shares absolutely] to [BENEFICIARY NAME] of [BENEFICIARY ADDRESS]. [Should the aforementioned %p individual predecease me this gift shall instead fall to their child(ren) in equal shares [to be paid only when they reach the age of 16-40].]
-    %p 12.3 While a beneficiary of the trust is under the age specified for inheritance, the Trustees may pay up to ***% of the capital of the beneficiary's share of the Trust Fund to the %p beneficiary or use it for his or her benefit. OR Section 32 of the Trustee Act 1925 does not apply to the trusts in this clause.
-    
-    - unless @testator.tax_responsibility 
-      %b= "#{@count+=1}. TAXES"
-      %p My Trustees must pay all inheritance tax, capital gains tax and other taxes and charges payable as a result of my death on any specific gifts in this will from my Estate, unless otherwise %p stated elsewhere in this will. If my Trustees pay inheritance tax on a specific gift of an asset outside the United Kingdom, the payment of inheritance tax is itself free of inheritance tax.
+      = render(:partial => "guardians") if @guardian.appoint_future_guardians || @guardian.appoint_current_guardians
+    = render(:partial => "specific_gifts") if @personal_gifts.any?
+    = render(:partial => "properties") if @properties.any?
+    = render(:partial => "financial_legacy") if @cash_gifts.any?
+    = render(:partial => "charitable_donations") if @charitable_donations
+    = render(:partial => "residuaries") if @residuaries.any?
     
     %b= "#{@count+=1}. SECTION 33 OF THE WILLS ACT 1837"
     %p Section 33 of the Wills Act 1837 does not apply to any gift in this will.
@@ -244,7 +42,7 @@
     - if @admin || @executor.notary_express
       %b= "#{@count+=1}. ADDITIONAL POWERS FOR TRUSTEES"
       - @sub = 0
-      - if @admin.expanded_powers || @executor.notary_express
+      - if  @executor.notary_express || @admin.expanded_powers
         %p= "#{@count}.#{@sub+=1} Any Professional Trustee is entitled to charge, and be paid, reasonable remuneration for any services that the Professional Trustee or his or her firm provides. "
         %p= "#{@count}.#{@sub+=1} The Trustees may make any kind of investment that they could make if they were absolutely entitled to the trust fund. The Trustees are under no obligation to diversify the trust fund."
         %p= "#{@count}.#{@sub+=1} The Trustees may carry on any trade anywhere in the world, either alone or with others."
@@ -253,7 +51,7 @@
         %p= "#{@count}.#{@sub+=1} The Trustees may give any indemnities that they consider appropriate to any person (including a retiring trustee)."
         %p= "#{@count}.#{@sub+=1} Where the Trustees may apply income for the benefit of a minor, they may do so by paying the income to the minor's parent or guardian on behalf of the minor, or to the minor if that minor has attained the age of 16. The Trustees are under no duty to inquire into the use of the income unless they have knowledge of circumstances which call for inquiry."
         %p= "#{@count}.#{@sub+=1} Where income or capital is payable to a beneficiary who does not have the mental capacity to appoint an attorney with an enduring general power, the Trustees may (subject to any court direction or legislative requirement) apply that income or capital for the benefit of that beneficiary."
-      - if @admin.borrow_powers || @executor.notary_express
+      - if @executor.notary_express || @admin.borrow_powers
         %p= "#{@count}.#{@sub+=1} The Trustees may develop or improve trust property in any way."
         %p= "#{@count}.#{@sub+=1} The Trustees may borrow cash or other assets for any purpose (including to acquire assets)."
         %p= "#{@count}.#{@sub+=1} The Trustees may mortgage, charge, pledge or give any right of recourse against some or all of the Estate or the trust fund to secure any liability that they incur when acting as the Trustees."
@@ -263,12 +61,13 @@
         %p (c) buy, improve or repair residential or commercial real property anywhere in the world for any beneficiary to occupy as a residence or place of business;
         %p (d) buy or repair personal property for any beneficiary to enjoy or use; and
         %p (e) allow any beneficiary to occupy, enjoy or use any trust fund assets on any terms that they consider appropriate.
-      - if @admin.appoint_admin_powers || @executor.notary_express
+        %p provided the beneficiary is beneficially entitled to the trust fund assets or has a qualifying interest in possession in those assets for the purposes of inheritance tax.
+      - if @executor.notary_express || @admin.appoint_admin_powers
         %p= "#{@count}.#{@sub+=1} The Trustees may, individually or jointly, authorise any person (including any one of themselves) to carry out any of their functions on any terms that they consider appropriate (including terms relating to the delegate's remuneration). "
         %p= "#{@count}.#{@sub+=1} The Trustees may appoint and pay a nominee to hold any trust fund assets on any terms that they consider appropriate. They may do whatever is necessary to ensure that the appointed nominee acquires legal title to the assets."
         %p= "#{@count}.#{@sub+=1} The Trustees may appoint and pay a custodian for any trust fund assets and related documents and records on any terms that they consider appropriate. However, the Trustees do not have to appoint a custodian for any bearer securities forming part of the Trust Fund."
         %p= "#{@count}.#{@sub+=1} The power of appointing Trustees is exercisable by the Trustees."
-      - if @admin.buy_sell_powers || @executor.notary_express
+      - if @executor.notary_express || @admin.buy_sell_powers
         %p= "#{@count}.#{@sub+=1} The following may buy trust fund assets, sell assets to the Trustees or enter into other transactions with the Trustees, but only if at least one of the Trustees has no interest in the transaction (other than as one of the Trustees), and that Trustee consents to the transaction in writing:"
         %p (a) any of the Trustees other than a Professional Trustee:
         %p (i) in a personal capacity; or
@@ -276,7 +75,7 @@
         %p (iii) as a partner in a partnership; 
         %p (b) the spouse, civil partner or child of any of the Trustees; and
         %p (c) any company of which any of the Trustees is a director.
-      - if @admin.liability_powers || @executor.notary_express
+      - if @executor.notary_express || @admin.liability_powers
         %p= "#{@count}.#{@sub+=1} None of the Trustees, other than a Professional Trustee, is liable for any breach of trust unless it results from the Trustee in question:"
         %p (a) acting in a way that he or she knows to be contrary to the interests of the beneficiaries of this will; or 
         %p (b) being recklessly indifferent about whether an action is contrary to the beneficiaries' interests.
@@ -286,7 +85,7 @@
         %p (b) that produce no, or virtually no, income."
         %p= "#{@count}.#{@sub+=1} The Trustees are under no duty to hold a balance between conflicting interests of any beneficiaries."
         %p= "#{@count}.#{@sub+=1} Section 11 of the Trusts of Land and Appointment of Trustees Act 1996 does not apply to the Trustees."
-      - if @admin.expanded_powers || @executor.notary_express
+      - if @executor.notary_express || @admin.expanded_powers
         %p= "#{@count}.#{@sub+=1} The Trustees may do anything which is incidental or conducive to the exercise of their functions."
 
     - if @request.requests
@@ -295,5 +94,3 @@
       %p= @request.specific
 
     %b= "#{@count+=1}. SIGNATURES"
-
-

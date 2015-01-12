@@ -1,0 +1,5 @@
+%b= "#{@count+= 1}. EXPECTED MARRIAGE OR CIVIL PARTNERSHIP"
+%p 
+  = "I am expecting to marry or form a civil partnership with #{@partner_details.full_name}" 
+  = "My marriage to that person does not revoke this will." if @testator.effective_post_marrige
+  = @testator.effective_post_death_sans_marrige ? "This will is effective even if I die before marrying that person." : "This will is not effective until I marry that person."

@@ -1,11 +1,16 @@
 - provide(:title, "Sign in")
+.narrow-logo
+  = image_tag("logo.png")
 %h1 Sign in
+%p
+  To create and manage an Express Will you must sign in. New user? 
+  = link_to "Sign up now!", signup_path
+%hr
+
 
 = form_for(:session, url: sessions_path) do |f|
   = f.label :email
   = f.text_field :email
   = f.label :password
   = f.password_field :password
-  = f.submit "Sign in", class: "btn btn-large btn-primary"
-%p
-  New user? #{link_to "Sign up now!", signup_path}
+  = f.submit "Sign in", class: "button radius"

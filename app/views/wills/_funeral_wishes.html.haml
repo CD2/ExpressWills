@@ -1,0 +1,11 @@
+%b= "#{@count+= 1}. FUNERAL WISHES"
+%p
+  = @funeral.preference
+  = " whether I am cremated or buried." if @funeral.preference == "I have no preference"
+- unless @funeral.wishes == nil || @funeral.wishes.gsub(/\s+/, "") == ""
+  %p= "My funeral wishes are that I would like to... #{@funeral.wishes}."
+- unless @funeral.donate_organs == "no_preference"
+  %p
+    = "I would like to donate all of my organs." if @funeral.donate_organs == "yes_all_my_organs"
+    = "I would like to donate my #{@funeral.specific_organs}" if @funeral.donate_organs == "yes_specific_organs"
+    = "I do not consent to the donation of any of my organs." if @funeral.donate_organs == "i_would_not_like_to_donate_my_organs"

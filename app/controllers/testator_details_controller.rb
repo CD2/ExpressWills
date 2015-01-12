@@ -1,5 +1,8 @@
 class TestatorDetailsController < ApplicationController
   before_action :set_testator_detail, only: [:show, :edit, :update, :destroy]
+  after_action only: :create do
+    update_will_progress 1
+  end
 
   def new
     @will = Will.find(params[:will_id])

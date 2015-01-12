@@ -1,17 +1,15 @@
-%h1 Guardian
-%p.section-text You can appoint guardians to look after any children under 18 that you are solely responsible for at the time of your death. If there is more than one guardian and the guardians live separately, the first guardian you name shall have residence of the children.
-%hr
+= render 'header'
 
 -if @will.testator_detail.children != "no" && @will.testator_detail.children_age
   = form_for [@will, @guardian] do |f|
     = render "layouts/radio_buttons", :f => f, radio_button: :appoint_current_guardians, q_no: "05020", option: {true: "Yes", false: "No"}, selected: 0
     %div{"data-condition" => ":checked", "data-false" => "show", "data-require" => "#guardian_appoint_current_guardians_true", "data-true" => "hide"}
-      = f.submit 'Save', class: "button radius", :onclick => "return confirm('It is advisable to appoint a guardian otherwise should you die leaving no other responsible parent the law will determine who becomes responsible for your children')"
+      = f.submit 'Save and Contine', class: "button radius right", :onclick => "return confirm('It is advisable to appoint a guardian otherwise should you die leaving no other responsible parent the law will determine who becomes responsible for your children')"
     %div{"data-condition" => ":checked", "data-true" => "show", "data-require" => "#guardian_appoint_current_guardians_true", "data-false" => "hide"}
       .button-region
-        = f.submit 'Save', class: "button radius"
+        = f.submit 'Save and Contine', class: "button radius right"
 -else
   = form_for [@will, @guardian] do |f|
     = render "layouts/radio_buttons", :f => f, radio_button: :appoint_future_guardians, q_no: "05010", option: {true: "Yes", false: "No"}, selected: 1
     .button-region
-      = f.submit 'Save', class: "button radius"
+      = f.submit 'Save and Contine', class: "button radius right"

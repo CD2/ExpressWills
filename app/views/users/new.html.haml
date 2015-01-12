@@ -1,6 +1,12 @@
 - provide(:title, "Create Account")
+.narrow-logo
+  = image_tag("logo.png")
 %h1 Create Account
+%p 
+  To create and manage an Express Will you must sign in. Already got an account?
+  = link_to("Sign In", signin_url)
+%hr
+
 
 = render 'form'
 
-= link_to 'Back', users_path

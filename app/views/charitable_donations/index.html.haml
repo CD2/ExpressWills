@@ -1,20 +1,17 @@
 - provide(:title, "Charitable Donations")
-
-%h1 Charitable Donations
-%h2.section-sub-heading You can make cash gifts to charities.
-%hr
-
-
+= render 'header'
 %table
   %thead
     %tr
-      %th Donation
-      %th Amount
+      %th 
+        %h5 Donation
+      %th 
+        %h5 Amount
   %tbody
     - @charitable_donations.each_with_index do |charitable_donation, i|
       %tr
         %td= link_to("Donation #{i}", edit_will_charitable_donation_path(@will, charitable_donation))
         %td= charitable_donation.amount
 
-= link_to("Add Donation", new_will_charitable_donation_path)
-= link_to("Proceed", new_will_charity_permission_path)
+= link_to("Add Donation", new_will_charitable_donation_path, class: "button radius")
+= link_to("Proceed", new_will_charity_permission_path, class: "button radius")

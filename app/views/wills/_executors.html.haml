@@ -1,0 +1,22 @@
+%b= "#{@count+= 1}. APPOINTMENT OF EXECUTORS AND TRUSTEES"
+
+- if @executor.notary_express || @executor.first
+  %p
+    = "I appoint the employee(s) (to include directors) of Notary Express Limited (registered company number 8347115) of 2H, 149 Bayham Street, London, NW1 0AT, a Professional Trustee, including any company or firm that has succeeded to, or is carrying on the practice of, this company at my death, " if @executor.notary_express
+    = "I appoint #{@first_executor.full_name} of #{@first_executor.full_address}" if @first_executor
+    = "and #{@second_executor.full_name} of #{@second_executor.full_address}" if @second_executor
+    = "and #{@third_executor.full_name} of #{@third_executor.full_address}" if @third_executor
+    = "and #{@forth_executor.full_name} of #{@forth_executor.full_address}" if @forth_executor
+    to be the
+    = @second_executor ? "executors and trustees" : "executor and trustee"
+    = @executor.notary_express ? "of this will, and I express the wish that no more than one such employee shall prove my will or act in its trusts." : "of this will."
+
+- else
+  %p I do not appoint any executors of this will.
+
+- if @first_executor_rep
+  %p 
+    - @exec_reps.each_with_index do |e, i|
+      = i==0 ? "If any die before me, refuses to act or is unable to act, or the appointment does not take effect for any other reason, I appoint " : "and" 
+      = "#{e.full_name} of #{e.full_address}" if e
+    = @second_executor_rep ? "in the order named to fill the resulting vacancies." : "to fill the resulting vacancy."

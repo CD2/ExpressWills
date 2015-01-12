@@ -6,7 +6,10 @@
 .row.collapse
   .large-2.columns
     %span.prefix
-      = f.label text_field
+      -if defined? label_text
+        = f.label text_field, label_text
+      -else
+        = f.label text_field
   .large-10.columns
     - if origin.errors[text_field] && origin.errors[text_field].join(",") != ""
       = f.text_field text_field, class: "error"

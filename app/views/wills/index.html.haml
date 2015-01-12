@@ -1,5 +1,5 @@
-%h1 Listing wills
-
+%h1 Your Wills
+= link_to("New Will", new_will_path, class:"button")
 %table
   %tr
     %th Title
@@ -15,7 +15,3 @@
       %td= link_to 'Show', will
       %td= link_to 'Edit', edit_will_path(will)
       %td= link_to 'Destroy', will, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Will', new_will_path

@@ -1,5 +1,21 @@
 - if @will.complete
-  = render 'summary_tables'
+  %h1 Will Summary
+  - @correct_total = false
+  - @total_percent = 0
+  - @residuaries.where(secondary: false).each do |x|
+    - if x.share == "Equal shares" || x.share == "Trustees to decide"
+      - @correct_total = true 
+    - else
+      - @total_percent += x.share.gsub('%','').to_i
+
+  - if @correct_total == true || @total_percent == 100
+    %h4.subheader Please review your information carefully before proceeding
+    = link_to("View Will", will_final_will_path(@will), class: "button radius")
+    = render 'summary_tables'
+
+  - else
+    %p To proceed, your residuary share must total 100%, or have at least one residuary with a share of "Equal Shares", or "Trustees to Decide"
+    = link_to("Edit residuaries", will_residuary_details_path(@will), class: "button radius")
 - else
   %h1 Will Summary
   %p Will not yet complete

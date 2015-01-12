@@ -1,5 +1,8 @@
 class ExecutorsController < ApplicationController
   before_action :set_executor, only: [:show, :edit, :update, :destroy]
+  after_action only: :create do
+    update_will_progress 4
+  end
 
   def new
     @will = Will.find(params[:will_id])
@@ -25,6 +28,7 @@ class ExecutorsController < ApplicationController
           redirect_to will_executor_first_executor_path(@will, @executor)
         else
           redirect_to will_executor_second_executor_path(@will, @executor)
+             @executor.update_attributes(first: false)
         end
       elsif !@executor.first && !@executor.notary_express
         @executor.update_attributes(second: false)
@@ -42,7 +46,14 @@ class ExecutorsController < ApplicationController
   def update
     @will = Will.find(params[:will_id])
     if @executor.update(executor_params)
-      if params[:commit] == "Update"
+      if @executor.first 
+        unless @executor.notary_express
+          redirect_to will_executor_first_executor_path(@will, @executor)
+        else
+          redirect_to will_executor_second_executor_path(@will, @executor)
+             @executor.update_attributes(first: false)
+        end
+      elsif params[:commit] == "Update" 
         if @executor.first
           unless @executor.notary_express
             redirect_to will_executor_first_executor_path(@will, @executor)

@@ -1,5 +1,8 @@
 class AdministrationsController < ApplicationController
   before_action :set_administration, only: [:show, :edit, :update, :destroy]
+  after_action only: :create do
+    update_will_progress 5
+  end
 
   def new
     @will = Will.find(params[:will_id])

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: [:destroy, :index]
+  before_action :redirect_to_home, only: [:show, :index, :edit]
 
   def index
     @users = User.paginate(page: params[:page])
@@ -19,8 +20,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      flash[:success] = "Account Created"
+      redirect_to root_url
     else
       render 'new'
     end
@@ -46,6 +47,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+    def redirect_to_home
+      redirect_to root_url
+    end
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)

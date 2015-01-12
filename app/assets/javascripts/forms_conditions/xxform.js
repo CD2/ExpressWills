@@ -93,8 +93,17 @@ $('[data-init]').each(function(){
 });
 
 //CLASS ADD
-if ($(".field_with_errors").elements) {
+if ($(".field_with_errors").elements.length) {
 	$(".radio-container").addClass("errors_container")
 }
 
+//MODAL
+$(".modal-continue-button").on("click", function(){
+	$(".modal-continue").addClass("open-modal")
+	$(".cover-back").addClass("cover")
+});
+$(".modal-cancel").on("click", function(){
+	$(".modal-continue").removeClass("open-modal")
+	$(".cover-back").removeClass("cover")
+});
 

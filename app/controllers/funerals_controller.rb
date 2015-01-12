@@ -1,5 +1,8 @@
 class FuneralsController < ApplicationController
   before_action :set_funeral, only: [:show, :edit, :update, :destroy]
+  after_action only: :create do
+    update_will_progress 3
+  end
 
   def new
     @will = Will.find(params[:will_id])

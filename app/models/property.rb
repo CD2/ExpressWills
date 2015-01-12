@@ -28,7 +28,7 @@ class Property < ActiveRecord::Base
   validates :country, presence: true, length: { maximum: 100 }
 
   def full_address
-    self.address_one {+ ", " + self.address_two if address_two} + ", " + self.city + ", " + self.county + ", " + self.postcode + ", " + self.country
+    self.address_one.titleize {+ ", " + self.address_two.titleize if address_two} + ", " + self.city.titleize + ", " + self.county.titleize + ", " + self.postcode.upcase + ", " + self.country.titleize
   end
 
   def beneficiaries

@@ -7,7 +7,7 @@
           %li= msg
 
     = render "layouts/text_field", :f => builder, text_field: :name, q_no: "00180", origin: nested_origin
-    = render "layouts/text_field", :f => builder, text_field: :registered_charity_number, q_no: "00190", origin: nested_origin
+    = render "layouts/text_field", :f => builder, text_field: :registered_charity_number, q_no: "00190", origin: nested_origin, label_text: "Registered Charity Number"
     = render "layouts/text_field", :f => builder, text_field: :address_one, q_no: "00050", origin: nested_origin
     = render "layouts/text_field", :f => builder, text_field: :address_two, q_no: "00060", origin: nested_origin
     = render "layouts/text_field", :f => builder, text_field: :city, q_no: "00070", origin: nested_origin

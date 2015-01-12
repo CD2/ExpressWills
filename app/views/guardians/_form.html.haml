@@ -1,6 +1,3 @@
-%p.section-text You are advised to pick replacement guardians in case one or more of your first choice guardian(s) are no longer alive or unwilling to act.
-%hr
-
 = form_for [@will, @guardian] do |f|
 
   = render "layouts/check_box", :f => f, check_box: :appoint_future_guardians, q_no: "05010"

@@ -1,6 +1,4 @@
-%p.section-text You can donate buildings or land that you own as a tenant in common. If you are not sure by what method you own property you can contact Notary Express to make enquiries on your behalf.
-%hr
-
+= render 'header'
 = form_for [@will, @property] do |f|
   %h3 First Beneficiary
   = f.fields_for :benificiary_general_details do |builder|
@@ -19,24 +17,30 @@
       = render "general_details/general_details_form", :builder => builder, :nested_origin => @property.forth_benificiary_general_details
   - if @property.held_in_trust  
     - if @property.life_beneficiary_no > 0
-      %h3 Replacement
+      %h3 First Life Beneficiary
       = f.fields_for :replacement_benificiary_general_details do |builder|
         = render "general_details/general_details_form", :builder => builder, :nested_origin => @property.replacement_benificiary_general_details
     - if @property.life_beneficiary_no > 1
-      %h3 2nd Replacement
+      %h3 Second Life Beneficiary
       = f.fields_for :second_replacement_benificiary_general_details do |builder|
         = render "general_details/general_details_form", :builder => builder, :nested_origin => @property.replacement_benificiary_general_details
     - if @property.life_beneficiary_no > 2
-      %h3 3rd Replacement
+      %h3 Third Life Beneficiary
       = f.fields_for :third_replacement_benificiary_general_details do |builder|
         = render "general_details/general_details_form", :builder => builder, :nested_origin => @property.replacement_benificiary_general_details
     - if @property.life_beneficiary_no > 3
-      %h3 4th Replacement
+      %h3 Forth Life Beneficiary
       = f.fields_for :forth_replacement_benificiary_general_details do |builder|
         = render "general_details/general_details_form", :builder => builder, :nested_origin => @property.replacement_benificiary_general_details
-    = f.hidden_field :complete, value: true
+  = f.hidden_field :complete, value: true
 
   = f.hidden_field :count, value: @will.properties.count
-  = f.submit 'Add Another', class: "button radius"
-  = f.submit 'Proceed', class: "button radius"
+  = link_to("Save and Continue", "javascript:void(0)", class: "button radius modal-continue-button")
   = link_to 'Proceed Without Saving', option_will_personal_gifts_path(@will), class: "button radius cancel-forward right"
+
+  .modal-continue
+    Do you wish to add another?
+    .button-region
+      = f.submit 'Add Another', class: "button radius"
+      = f.submit 'Proceed', class: "button radius"
+      = link_to 'Cancel', "javascript:void(0)", class: "button radius cancel-forward modal-cancel"

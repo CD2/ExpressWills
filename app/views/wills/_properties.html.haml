@@ -1,0 +1,45 @@
+- @sub = 0
+- @lifes = false
+%p
+  %b= "#{@count+=1}. PROPERTY"
+- @properties.each_with_index do |property, i|
+  %p
+    = "#{@count}.#{@sub+=1} I give all my interest in the property known as #{property.full_address}, #{property.land_reg_number},"
+    = "or any other property that is my sole or main residence at my death" if property.sole_residence && i == 0
+    to
+    - property.beneficiaries.each_with_index do |b, j|
+      = "#{b.full_name} of #{b.full_address}"
+      = property.beneficiaries.count-1 == j ? "who are living at my death (Life Beneficiary) for the life of " : "and"
+    = property.life_beneficiary_no == 1 ? "that individual" : "those individuals" 
+    = "subject to this life interest for." if property.held_in_trust
+  %p
+    %u Beneficiaries
+    
+    %p
+      = "Those of" unless property.recipient_no == 1
+      - property.beneficiaries.each_with_index do |b, j|
+        = "#{b.full_name} of #{b.full_address}"
+        = property.beneficiaries.count-1 == j ? "" : "and"
+      - unless property.recipient_no == 1
+        who are living at my death. If more than one survive me, I give the property to them as 
+        = property.joint_or_common == "Joint tenants" ? "joint tenants." : "tenants in common in equal shares, but if any of the beneficiaries named in this sub-clause is not living at my death and leaves children who are then living, the Trustees must hold the interest in the property that they would have held for the beneficiary who has died on trust for the children absolutely, as tenants in common in equal shares."
+      - else
+        who are living at my death.
+    %p 
+      Any mortgage debt or other sums secured on this property (to the extent that they are not paid from the proceeds of a life assurance policy given as additional security for payment), and any related interest or expenses, shall be paid by 
+      = property.responsible_for_charges ? "the donee#{'s' unless property.recipient_no == 1} of the property." : "the Trustees from my Estate."
+    - if property.as_cash_if_sold
+      %p="#{@count}.#{@sub+=1} If at my death I have made a contract to sell the property identified in the preceeding subclause, but that contract has not been completed, then the gift of it takes effect as a gift of the sale proceeds, less any costs of sale."
+    - if property.responsible_for_charges
+      - @lifes = true
+- if @lifes
+  %p="#{@count}.#{@sub+=1} While any Life Beneficiary has a life interest in any property described in this clause:"
+  %p (a) The Trustees must allow the Life Beneficiary to occupy the property rent free if so long as that individual:
+  %p (i) pays all outgoings on the property; and
+  %p (ii) keeps the property in good repair and condition.
+  %p (b) The Trustees must not sell the property without the Life Beneficiary's written consent.
+  %p (c) If the Life Beneficiary asks them to do so, the Trustees must sell the property and use some or all of the sale proceeds to buy another property (or an interest in another property) anywhere in the world as a residence for the Life Beneficiary, so long as the Trustees are satisfied that the replacement property is a suitable property for them to own. 
+  %p If the Trustees sell the property:
+  %p (i) they may use part of the proceeds of sale to improve or repair a replacement property; and
+  %p (ii) they must pay to the Life Beneficiary the income from any proceeds of sale that at any time have not been used to buy, improve or repair a replacement property.
+  %p= "If the Trustees buy a replacement property this clause #{@count} applies to the replacement property as if it were the property."

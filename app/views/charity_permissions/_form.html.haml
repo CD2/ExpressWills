@@ -1,6 +1,6 @@
 
 = form_for [@will, @charity_permission] do |f|
   
-  = render "layouts/check_box", :f => f, check_box: :permission, q_no: "07070"
+  = render "layouts/check_box", :f => f, check_box: :permission, q_no: "07070", checked: true
   .button-region
     = f.submit 'Proceed', class: "button radius"

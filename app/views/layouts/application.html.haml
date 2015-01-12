@@ -12,18 +12,20 @@
     = csrf_meta_tag
 
   %body{class: "#{yield(:bodyclass)}"}
-
+    .cover-back
     
     - if request.path == "/"
-      .row
+      %nav.top-bar{role:"navigation"}
+        = render "layouts/top_bar"
+      #content.row
         .large-12.columns
           - flash.each do |key, value|
             %div{:class => "alert-box #{key}"}= value
           = yield
     - else 
-      %nav.top-bar{role:"navigation"}
+      %nav.row{role:"navigation"}
         = render "layouts/top_bar"
-      .row
+      #content.row
         - if signed_in?
           .large-3.columns
             = render 'layouts/sidebar'
@@ -33,12 +35,15 @@
             = yield
         - else
           .large-3.columns
-            hello
+            `
           .large-6.columns
             - flash.each do |key, value|
               %div{:class => "alert-box #{key}"}= value
             = yield
           .large-3.columns
-            his
+            -
+      %footer.row
+        #footer
+          © 2015 Notary Express Ltd. All Rights Reserved.
 
     = javascript_include_tag "application"

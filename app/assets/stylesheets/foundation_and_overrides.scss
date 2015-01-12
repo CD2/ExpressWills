@@ -1317,10 +1317,9 @@ a.cancel-forward {
 a.cancel-forward:hover {
     background-color: #2E86CF;
 }
-.errors_container label {
-    color: #f04124;
-    float: left;
-    margin-right: 1rem;
+
+.errors_container .field_with_errors label {
+  float: left;
 }
 
 .errors_container .field_with_errors {
@@ -1399,25 +1398,19 @@ http://nicolasgallagher.com/micro-clearfix-hack/
     overflow: hidden;
     margin: 0;
     padding: 5px 3px;
-    font-size: 14px;
+    font-size: 0px;
     line-height: 20px;
     font-weight: bold;
     background-color: #fff;
+
 }
 .pika-title select {
-    cursor: pointer;
-    position: absolute;
-    z-index: 9998;
-    margin: 0;
-    left: 0;
-    top: 5px;
-    filter: alpha(opacity=0);
-    opacity: 0;
+    width: 100px;
 }
 
 .pika-prev,
 .pika-next {
-    display: block;
+    display: none;
     cursor: pointer;
     position: relative;
     outline: none;
@@ -1537,39 +1530,54 @@ http://nicolasgallagher.com/micro-clearfix-hack/
     box-shadow: none !important;
     border-radius: 3px !important;
 }
-body.home {
+body {
   background-image: url(banner.jpg);
   background-size: 100%;
-  background-repeat: no-repeat;
-  #intro {
-    text-align: center;
-    color: #fff;
-    h1, h2 {
-      color: inherit;
-    }
-    h1 {
-      font-size: 2rem;
-      padding-top: 12rem;
-    }
-    h2 {
-      font-size: 1.5rem;
-      padding-bottom: 3rem;
-    }
-    a {
-      border: 0.25rem solid;
-      padding: 1rem 5rem;
-      color: inherit;
-      letter-spacing: 1px;
-      border-radius: 2rem;
-      text-transform: uppercase;
-      font-weight: 400;
-    }
+}
+.home #content {
+  margin-top: 2rem;
+  border-top: 1rem solid $primary-color;
+}
+#intro {
+  text-align: center;
+  color: #1b1b1b;
+  padding-bottom: 6rem;
+  .narrow-logo {
+    width: 30rem;
+    margin: 0 auto;
+    padding-top: 6rem;
+  }
+  h1, h2 {
+    color: inherit;
+  }
+  h1 {
+    font-size: 2rem;
+    padding-top: 6rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+    padding-bottom: 3rem;
+  }
+  a {
+    border: 0.25rem solid;
+    padding: 1rem 5rem;
+    color: inherit;
+    letter-spacing: 1px;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    font-weight: 400;
   }
 }
+
 /* styling for abbr */
 .pika-table abbr {
     border-bottom: none;
     cursor: help;
+}
+#content {
+  padding: 2rem 0.5rem 3rem;
+  background: rgba(255,255,255,0.75);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.34);
 }
 p.advice-text {
   margin: -0.75rem 0 1rem;
@@ -1580,9 +1588,6 @@ p.advice-text {
   position: relative;
 }
 
-.top-bar {
-  margin-bottom: 2rem;
-}
 table { width: 100%; }
 th {
 width: 16rem;
@@ -1592,4 +1597,85 @@ thead, td.summary {
   background: #575757!important;
   tr th h5 {color: #fff;}
   h6 { color: #fff; }
+}
+.logo-side {
+margin: 1rem 0 2rem;
+padding-bottom: 2rem;
+border-bottom: 1px solid #ccc;
+}
+.narrow-logo {
+  margin: 1rem 0 2rem;
+}
+.new-will-form {
+box-sizing: border-box;
+padding: 1rem 3rem;
+}
+.spare-side {
+  box-sizing: border-box;
+  padding-right: 2rem;
+  font-size: 0.8rem;
+  border-right: 1px solid #ccc;
+}
+
+.errors_container .field_with_errors + label {
+  color: #f04124;
+    float: left;
+    margin-right: 1rem;
+}
+.modal-continue.open-modal {
+    display: block;
+    position: fixed;
+    width: 430px;
+    height: 150px;
+    top: 50%;
+    margin-top: -150px;
+    left: 50%;
+    margin-left: -215px;
+    background: #F4F4F4;
+    border-radius: 0.25rem;
+    padding: 2rem;
+    z-index: 101;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.modal-cancel {
+  margin-left: 1rem;
+}
+
+.modal-continue {
+    display: none;
+}
+.cover-back {
+  display: none;
+}
+.cover-back.cover {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: block;
+  top:0;
+  left: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: 100
+}
+div#footer {
+  background: #1b1b1b;
+height: 10rem;
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.56);
+color: #fff;
+text-align: center;
+line-height: 10rem;
+}
+nav li {
+    list-style: none;
+}
+
+nav {
+    background: #1b1b1b;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.56);
+}
+
+nav a {
+    background: #1b1b1b!important;
 }

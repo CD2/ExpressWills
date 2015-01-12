@@ -1,84 +1,98 @@
-%ul.side-nav
-  - if current_will?
-    %li= will_link(current_will.testator_detail, "Personal Details", "testator_details")
-    -if current_will.partner_detail
-      - if current_will.testator_detail.mirror_will == "yes" || current_will.testator_detail.planning_marrige
-        %li= will_link(current_will.partner_detail, "Partner Details", "partner_details")
-    %li= will_link(current_will.funeral, "Funeral Details", "funerals")
-    %li
-      = will_link(current_will.executor, "Executors", "executors")
-      - if current_will.executor
-        %ul.sub-list
-          = will_sub_link(current_will.executor, current_will.first_executor, "first_executor", "First Executor")
-          = will_sub_link(current_will.executor, current_will.second_executor, "second_executor", "Second Executor")
-          = will_sub_link(current_will.executor, current_will.third_executor, "third_executor", "Third Executor")
-          = will_sub_link(current_will.executor, current_will.forth_executor, "forth_executor", "Forth Executor")
-          = will_sub_link(current_will.executor, current_will.first_replacement_executor, "first_replacement_executor", "First Replacement Executor")
-          = will_sub_link(current_will.executor, current_will.second_replacement_executor, "second_replacement_executor", "Second Replacement Executor")
-          = will_sub_link(current_will.executor, current_will.third_replacement_executor, "third_replacement_executor", "Third Replacement Executor")
-          = will_sub_link(current_will.executor, current_will.forth_replacement_executor, "forth_replacement_executor", "Forth Replacement Executor")
-    - unless current_will.executor && current_will.executor.notary_express
-      %li= will_link(current_will.administration, "Administration", "administrations")
-    %li
-      = will_link(current_will.guardian, "Guardians", "guardians")
-      - if current_will.guardian 
-        - if current_will.guardian.appoint_future_guardians || current_will.guardian.appoint_current_guardians
+- if current_will?
+  .spare-side
+    .logo-side
+      = image_tag("logo.png")
+      
+    %ul.side-nav
+      %li= will_link(current_will.testator_detail, "Personal Details", "testator_details")
+      -if current_will.partner_detail
+        - if current_will.testator_detail.mirror_will == "yes" || current_will.testator_detail.planning_marrige
+          %li= will_link(current_will.partner_detail, "Partner Details", "partner_details")
+      %li= will_link(current_will.funeral, "Funeral Details", "funerals")
+      %li
+        = will_link(current_will.executor, "Executors", "executors")
+        - if current_will.executor
           %ul.sub-list
-            = will_sub_link(current_will.guardian, current_will.first_guardian, "first_guardian", "First Guardian")
-            = will_sub_link(current_will.guardian, current_will.second_guardian, "second_guardian", "Second Guardian")
-            = will_sub_link(current_will.guardian, current_will.third_guardian, "third_guardian", "Third Guardian")
-            = will_sub_link(current_will.guardian, current_will.forth_guardian, "forth_guardian", "Forth Guardian")
-            = will_sub_link(current_will.guardian, current_will.first_replacement_guardian, "first_replacement_guardian", "First Replacement Guardian")
-            = will_sub_link(current_will.guardian, current_will.second_replacement_guardian, "second_replacement_guardian", "Second Replacement Guardian")
-            = will_sub_link(current_will.guardian, current_will.third_replacement_guardian, "third_replacement_guardian", "Third Replacement Guardian")
-            = will_sub_link(current_will.guardian, current_will.forth_replacement_guardian, "forth_replacement_guardian", "Forth Replacement Guardian")
-      %li 
-        - if current_will.cash_gifts.any?
-          = link_to("Cash Gifts", will_cash_gifts_path(current_will))
-          %ul.sub-list
-            - current_will.cash_gifts.each_with_index do |cash_gift, i|
-              %li= will_link(cash_gift, "Cash Gift #{i+1}", "nothing")
-        - else
-          %span Cash Gifts
-      %li 
-        - if current_will.charitable_donations.any?
-          = link_to("Charitable Donations", will_charitable_donations_path(current_will))
-          %ul.sub-list
-            - current_will.charitable_donations.each_with_index do |charitable_donations, i|
-              - if charitable_donations.popular_charity
-                %li= will_link(charitable_donations, charitable_donations.popular_charity_name, "nothing")
-              - else 
-                %li= will_link(charitable_donations, charitable_donations.name, "nothing")
-        -else
-          %span Charitable Donations
-      %li= will_link(current_will.charity_permission, "Charity Options", "charity_permissions")
-      %li 
-        - if current_will.properties.where(complete: true).any?
-          = link_to("Property", will_properties_path(current_will))
-          %ul.sub-list
-            - current_will.properties.where(complete: true).each_with_index do |property, i|
-              %li= will_link(property, property.postcode, "nothing")
-        - else
-          %span Property
-      %li 
-        - if current_will.personal_gifts.any?
-          = link_to("Personal Gifts", will_personal_gifts_path(current_will))
-          %ul.sub-list
-            - current_will.personal_gifts.each_with_index do |personal_gifts, i|
-              %li= will_link(personal_gifts, "Gift #{i+1}", "nothing")
-        - else
-          %span Personal Gifts
-      %li 
-        - if current_will.residuary_details.any?
-          = link_to("Residuary", will_residuary_details_path(current_will))
-          %ul.sub-list
-            - current_will.residuary_details.where(complete:true).each_with_index do |residuaries, i|
-              - if residuaries.secondary
-                %li= will_link(residuaries, "#{residuaries.residuary_type} (secondary)", "nothing")
-              -else
-                %li= will_link(residuaries, "#{residuaries.residuary_type}", "nothing")
-        - else
-          %span Residuary
-      %li= will_link(current_will.residuary, "Residuary Distributable", "residuaries")
-      %li= will_link(current_will.request, "Requests", "requests")
-      %li= link_to("Summary", will_path(current_will))
+            = will_sub_link(current_will.executor, current_will.first_executor, "first_executor", current_will.first_executor.full_name) if current_will.first_executor
+            = will_sub_link(current_will.executor, current_will.second_executor, "second_executor", current_will.second_executor.full_name) if current_will.second_executor
+            = will_sub_link(current_will.executor, current_will.third_executor, "third_executor", current_will.third_executor.full_name) if current_will.third_executor
+            = will_sub_link(current_will.executor, current_will.forth_executor, "forth_executor", current_will.forth_executor.full_name) if current_will.forth_executor
+            = will_sub_link(current_will.executor, current_will.first_replacement_executor, "first_replacement_executor", current_will.first_replacement_executor.full_name) if current_will.first_replacement_executor
+            = will_sub_link(current_will.executor, current_will.second_replacement_executor, "second_replacement_executor", current_will.second_replacement_executor.full_name) if current_will.second_replacement_executor
+            = will_sub_link(current_will.executor, current_will.third_replacement_executor, "third_replacement_executor", current_will.third_replacement_executor.full_name) if current_will.third_replacement_executor
+            = will_sub_link(current_will.executor, current_will.forth_replacement_executor, "forth_replacement_executor", current_will.forth_replacement_executor.full_name) if current_will.forth_replacement_executor
+      - if current_will.administration || current_will.progress < 5
+        %li= will_link(current_will.administration, "Administration", "administrations")
+      %li
+        = will_link(current_will.guardian, "Guardians", "guardians")
+        - if current_will.guardian 
+          - if current_will.guardian.appoint_future_guardians || current_will.guardian.appoint_current_guardians
+            %ul.sub-list
+              = will_sub_link(current_will.guardian, current_will.first_guardian, "first_guardian", current_will.first_guardian.full_name) if current_will.first_guardian
+              = will_sub_link(current_will.guardian, current_will.second_guardian, "second_guardian", current_will.second_guardian.full_name) if current_will.second_guardian
+              = will_sub_link(current_will.guardian, current_will.third_guardian, "third_guardian", current_will.third_guardian.full_name) if current_will.third_guardian
+              = will_sub_link(current_will.guardian, current_will.forth_guardian, "forth_guardian", current_will.forth_guardian.full_name) if current_will.forth_guardian
+              = will_sub_link(current_will.guardian, current_will.first_replacement_guardian, "first_replacement_guardian", current_will.first_replacement_guardian.full_name) if current_will.first_replacement_guardian
+              = will_sub_link(current_will.guardian, current_will.second_replacement_guardian, "second_replacement_guardian", current_will.second_replacement_guardian.full_name) if current_will.second_replacement_guardian
+              = will_sub_link(current_will.guardian, current_will.third_replacement_guardian, "third_replacement_guardian", current_will.third_replacement_guardian.full_name) if current_will.third_replacement_guardian
+              = will_sub_link(current_will.guardian, current_will.forth_replacement_guardian, "forth_replacement_guardian", current_will.forth_replacement_guardian.full_name) if current_will.forth_replacement_guardian
+        %li 
+          - if current_will.progress >= 7
+            = link_to("Cash Gifts", will_cash_gifts_path(current_will))
+            %ul.sub-list
+              - current_will.cash_gifts.each_with_index do |cash_gift, i|
+                %li= will_link(cash_gift, "Cash Gift #{i+1}", "nothing")
+          - else
+            %span Cash Gifts
+        %li 
+          - if current_will.progress >= 8
+            = link_to("Charitable Donations", will_charitable_donations_path(current_will))
+            %ul.sub-list
+              - current_will.charitable_donations.each_with_index do |charitable_donations, i|
+                - if charitable_donations.popular_charity
+                  %li= will_link(charitable_donations, charitable_donations.popular_charity_name, "nothing")
+                - else 
+                  %li= will_link(charitable_donations, charitable_donations.name, "nothing")
+          -else
+            %span Charitable Donations
+        %li= will_link(current_will.charity_permission, "Charity Options", "charity_permissions")
+        %li 
+          - if current_will.properties.where(complete: true).any?
+            = link_to("Property", will_properties_path(current_will))
+            %ul.sub-list
+              - current_will.properties.where(complete: true).each_with_index do |property, i|
+                %li= will_link(property, property.postcode, "nothing")
+          - elsif
+            - if current_will.progress >= 10
+              = link_to("Property", will_properties_path(current_will))
+          - else
+            %span Property
+        %li 
+          - if current_will.progress >= 11
+            = link_to("Personal Gifts", will_personal_gifts_path(current_will))
+            %ul.sub-list
+              - current_will.personal_gifts.each_with_index do |personal_gifts, i|
+                %li= will_link(personal_gifts, "Gift #{i+1}", "nothing")
+          - else
+            %span Personal Gifts
+        %li 
+          - if current_will.progress >= 12
+            = link_to("Residuary", will_residuary_details_path(current_will))
+            %ul.sub-list
+              - current_will.residuary_details.where(complete:true).each_with_index do |residuaries, i|
+                - if residuaries.secondary
+                  %li= will_link(residuaries, "#{residuaries.residuary_type} (secondary)", "nothing")
+                -else
+                  %li= will_link(residuaries, "#{residuaries.residuary_type}", "nothing")
+          - else
+            %span Residuary
+        %li= will_link(current_will.residuary, "Residuary Distributable", "residuaries")
+        %li= will_link(current_will.request, "Requests", "requests")
+        %li= link_to("Summary", will_path(current_will))
+- else
+  .spare-side
+    .logo-side
+      = image_tag("logo.png")
+    %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum eleifend eleifend. Aliquam tempor, quam a vulputate volutpat, odio enim tincidunt lacus, ac posuere dui tellus ac massa. Fusce quis dui eget sem sodales ullamcorper. 
+    %p Phasellus pellentesque laoreet erat ut mollis. In ut consectetur lorem. Proin blandit lobortis magna, ac dapibus elit pharetra et. 
+

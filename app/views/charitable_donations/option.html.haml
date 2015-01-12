@@ -1,9 +1,7 @@
-%h1 Charitable Donations
-%h2.section-sub-heading You can make cash gifts to charities.
-%hr
+= render 'header'
 %dl
   %dt
     = question "07010"
 
-= link_to("No", option_will_properties_path(@will))
-= link_to("Yes", new_will_charitable_donation_path)
+= link_to("No", option_will_properties_path(@will), class: "button radius")
+= link_to("Yes", new_will_charitable_donation_path, class: "button radius")

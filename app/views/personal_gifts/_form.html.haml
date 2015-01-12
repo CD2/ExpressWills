@@ -1,7 +1,6 @@
 %p.section-text You can make specific gifts of personal items.
 = form_for [@will, @personal_gift] do |f|
   = render 'layouts/error_messages', object: f.object
-  = render "layouts/text_field", :f => f, text_field: :relationship, q_no: "00010", origin: @personal_gift
   = render "layouts/text_field", :f => f, text_field: :first_name, origin: @personal_gift
   = render "layouts/text_field", :f => f, text_field: :middle_name, origin: @personal_gift
   = render "layouts/text_field", :f => f, text_field: :surname, origin: @personal_gift
@@ -15,6 +14,13 @@
   = render "layouts/radio_buttons", :f => f, radio_button: :as_cash_if_sold, q_no: "09030", option: {true: "Yes", false: "No"}, selected: 0
   = f.hidden_field :count, value: @will.personal_gifts.count+1
   .button-region
-    = f.submit 'Add Another', class: "button radius"
-    = f.submit 'Proceed', class: "button radius"
+    = link_to("Save and Continue", "javascript:void(0)", class: "button radius modal-continue-button")
     = link_to 'Proceed Without Saving', new_will_residuary_detail_path, class: "button radius cancel-forward right"
+
+
+  .modal-continue
+    Do you wish to add another?
+    .button-region
+      = f.submit 'Add Another', class: "button radius"
+      = f.submit 'Proceed', class: "button radius"
+      = link_to 'Cancel', "javascript:void(0)", class: "button radius cancel-forward modal-cancel"

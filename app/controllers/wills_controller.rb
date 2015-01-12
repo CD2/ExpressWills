@@ -1,6 +1,6 @@
 class WillsController < ApplicationController
   before_action :set_will, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in_user
+  #before_action :signed_in_user
 
   def index
     @wills = current_user.wills
@@ -46,7 +46,6 @@ class WillsController < ApplicationController
     @cash_gifts = @will.cash_gifts
 
     @charitable_donations = @will.charitable_donations
-    @charity_permission = @will.charity_permission
 
     @admin = @will.administration
 
@@ -99,6 +98,11 @@ class WillsController < ApplicationController
     @admin = @will.administration
 
     @request = @will.request
+    @residuary = @will.residuary
+    @residuaries = @will.residuary_details.where(complete:true)
+    @primary_residuaries = @residuaries.where(secondary: false)
+    @secondary_residuaries = @residuaries.where(secondary: true)
+
   end
 
   def new
@@ -137,7 +141,7 @@ class WillsController < ApplicationController
     end
 
     def will_params
-      params.require(:will).permit(:title)
+      params.require(:will).permit(:title, :term)
     end
 
     def signed_in_user

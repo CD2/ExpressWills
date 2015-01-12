@@ -1,18 +1,48 @@
 - provide(:title, "Residuaries")
 
-%h1 Residuaries
-%h4.subheader The residuary is the remainder of your estate after all debts, expenses, taxes and specific gifts have been dealt with. It is often the main gift in your estate so you are advised to provide replacement beneficiaries in case your main beneficiaries are deceased or unable to receive the gift for any reason.
-%hr
+= render 'header'
 
+- @correct_total = false
+- @total_percent = 0
+- @residuary_details.where(secondary: false).each do |x|
+  - if x.share == "Equal shares" || x.share == "Trustees to decide"
+    - @correct_total = true 
+  - else
+    - @total_percent += x.share.gsub('%','').to_i
+
+- unless @correct_total == true || @total_percent == 100
+  %p To proceed, your residuary share must total 100%, or have at least one residuary with a share of "Equal Shares", or "Trustees to Decide"
 
 %table
   %thead
     %tr
-      %th Residuary
+      %th 
+        %h5 Residuary
+      %th 
+        %h5 Share
   %tbody
-    - @residuary_details.each_with_index do |residuary_detail, i|
+    - @residuary_details.where(secondary: false).each_with_index do |residuary_detail, i|
       %tr
         %td= link_to(residuary_detail.residuary_type, edit_will_residuary_detail_path(@will, residuary_detail))
+        %td= residuary_detail.share
 
-= link_to("Add Residuary", new_will_residuary_detail_path)
-= link_to("Proceed", new_will_residuary_path)
+%table
+  %thead
+    %tr
+      %th 
+        %h5 Residuary
+      %th 
+        %h5 Share
+  %tbody
+    - @residuary_details.where(secondary: true).each_with_index do |residuary_detail, i|
+      %tr
+        %td= link_to(residuary_detail.residuary_type, edit_will_residuary_detail_path(@will, residuary_detail))
+        %td= residuary_detail.share
+
+= link_to("Add Beneficiary", new_will_residuary_detail_path, class: "button radius")
+= link_to("Add Secondary Beneficiary", secondary_will_residuary_details_path(@will), class: "button radius")
+- if @correct_total == true || @total_percent == 100
+  - if @will.residuary
+    = link_to("Proceed", new_will_request_path, class: "button radius")
+  - else
+    = link_to("Proceed", new_will_residuary_path, class: "button radius")

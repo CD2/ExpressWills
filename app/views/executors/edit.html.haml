@@ -1,17 +1,15 @@
-%h1 Executors
-%p.section-text You should specify who you wish to administer your estate and carry out your wishes in your will. It s advisable to have more than one executor but less than four. You can have professional executors and Notary Express can act in this capacity.
-%hr
-
+= render 'header'
 = form_for [@will, @executor] do |f|
 
   = render "layouts/radio_buttons", :f => f, radio_button: :notary_express, q_no: "03010", option: {true: "Yes", false: "No"}, selected: 0
   %div{"data-condition" => ":checked", "data-require" => "#executor_notary_express_false", "data-false" => "hide"}
-    = render "layouts/radio_buttons", :f => f, radio_button: :first, q_no: "03020", option: {true: "Yes", false: "No"}, selected: -1
+    .radio-container
+      = render "layouts/radio_buttons", :f => f, radio_button: :first, q_no: "03020", option: {true: "Yes", false: "No"}, selected: -1
   %div{"data-condition" => ":checked", "data-false" => "show", "data-require" => "#executor_notary_express_false", "data-true" => "hide"}
     = render "layouts/radio_buttons", :f => f, radio_button: :second, q_no: "03030", option: {true: "Yes", false: "No"}, selected: -1
 
-
-  %div{"data-condition" => ":checked", "data-false" => "hide", "data-require" => "#executor_first_false", "data-true" => "show"}
-    = f.submit 'Save', class: "button radius", :onclick => "return confirm('It is strongly advisable to appoint an executor. Are you sure you wish to proceed without appointing an executor')"
-  %div{"data-condition" => ":checked", "data-false" => "show", "data-require" => "#executor_first_false", "data-true" => "hide"}
-    = f.submit 'Update', class: "button radius"
+  .button-region
+    %div{"data-condition" => ":checked", "data-false" => "hide", "data-require" => "#executor_first_false", "data-true" => "show"}
+      = f.submit 'Saave', class: "button radius", :onclick => "return confirm('It is strongly advisable to appoint an executor. Are you sure you wish to proceed without appointing an executor')"
+    %div{"data-condition" => ":checked", "data-false" => "show", "data-require" => "#executor_first_false", "data-true" => "hide"}
+      = f.submit 'Save', class: "button radius"

@@ -1,5 +1,8 @@
 class CharityPermissionsController < ApplicationController
   before_action :set_charity_permission, only: [:show, :edit, :update, :destroy]
+  after_action only: :create do
+    update_will_progress 9
+  end
 
   def new
     @will = Will.find(params[:will_id])

@@ -1,5 +1,8 @@
 class ResiduariesController < ApplicationController
   before_action :set_residuary, only: [:show, :edit, :update, :destroy]
+  after_action only: :create do
+    update_will_progress 13
+  end
 
   def new
     @will = Will.find(params[:will_id])

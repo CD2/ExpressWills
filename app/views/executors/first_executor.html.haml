@@ -11,6 +11,6 @@
     = f.check_box :second
 
   %div{"data-condition" => ":checked", "data-require" => "#executor_second", "data-true" => "hide"}
-    = f.submit 'Save', class: "button radius", :onclick => "return confirm('It is strongly advisable to appoint an executor. Are you sure you wish to proceed without appointing an executor')"
+    = f.submit 'Proceed', class: "button radius", :onclick => "return confirm('It is strongly advisable to appoint an executor. Are you sure you wish to proceed without appointing an executor')"
   %div{"data-condition" => ":checked", "data-require" => "#executor_second", "data-false" => "hide"}
-    = f.submit 'Save', class: "button radius"
+    = f.submit 'Proceed', class: "button radius"

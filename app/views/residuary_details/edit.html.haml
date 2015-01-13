@@ -13,7 +13,7 @@
     = f.hidden_field :count, value: @will.residuary_details.count
     = f.hidden_field :complete, value: true
     = f.submit 'Add Another', class: "button radius"
-    = f.submit 'Submit', class: "button radius"
+    = f.submit 'Proceed', class: "button radius"
 - else
   = form_for [@will, @residuary_detail] do |f|
 
@@ -32,5 +32,5 @@
     = f.hidden_field :count, value: @will.residuary_details.count
     = f.hidden_field :complete, value: true
     = f.submit 'Add Another', class: "button radius"
-    = f.submit 'Submit', class: "button radius"
+    = f.submit 'Proceed', class: "button radius"
 

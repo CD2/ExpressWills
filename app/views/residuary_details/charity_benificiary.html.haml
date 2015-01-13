@@ -12,13 +12,13 @@
 
   = f.hidden_field :complete, value: true
   .button-region
-    = link_to("Save and Continue", "javascript:void(0)", class: "button radius modal-continue-button")
+    = link_to("Proceed", "javascript:void(0)", class: "button radius modal-continue-button")
   .modal-continue
     Do you wish to add another?
     .button-region
       = f.submit 'Add Another', class: "button radius"
       - if @residuary_detail.secondary 
-        = f.submit 'Submit', class: "button radius" 
+        = f.submit 'Proceed', class: "button radius" 
       - else
         = f.submit 'Proceed', class: "button radius"
       = link_to 'Cancel', "javascript:void(0)", class: "button radius cancel-forward modal-cancel"

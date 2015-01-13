@@ -35,7 +35,7 @@
   = f.hidden_field :complete, value: true
 
   = f.hidden_field :count, value: @will.properties.count
-  = link_to("Save and Continue", "javascript:void(0)", class: "button radius modal-continue-button")
+  = link_to("Proceed", "javascript:void(0)", class: "button radius modal-continue-button")
   = link_to 'Proceed Without Saving', option_will_personal_gifts_path(@will), class: "button radius cancel-forward right"
 
   .modal-continue

@@ -8,7 +8,7 @@
     - else
       - @total_percent += x.share.gsub('%','').to_i
 
-  - if @correct_total == true || @total_percent == 100
+  - if @correct_total == true || @total_percent == 100 || @residuaries.count == 0
     %h4.subheader Please review your information carefully before proceeding
     = link_to("View Will", will_final_will_path(@will), class: "button radius")
     = render 'summary_tables'

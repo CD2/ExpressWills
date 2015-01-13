@@ -19,7 +19,7 @@
   = render "layouts/text_area", :f => f, text_area: :instruction, advice_text: "You may specify a non-binding purpose for the gift but it is generally advised to leave this box blank so that the charity can put your gift towards any use and ensure it does not take effect if the charity is unable to comply with your request.", q_no: "07050"
   
   = f.hidden_field :count, value: @will.charitable_donations.count+1
-  = link_to("Save and Continue", "javascript:void(0)", class: "button radius modal-continue-button")
+  = link_to("Proceed", "javascript:void(0)", class: "button radius modal-continue-button")
   = link_to 'Proceed Without Saving', new_will_charity_permission_path, class: "button radius cancel-forward right"
 
   .modal-continue

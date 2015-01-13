@@ -20,5 +20,5 @@
     = render "layouts/select_list", :f => f, select_list: :life_beneficiary_no, advice_text: "This allows named individuals other than the ultimate recipients of the property to live there for the duration of their lives and during this time excludes the ultimate recipients from dealing with the property", q_no: "08080", options: ["1", "2", "3", "4"]
   = f.hidden_field :count, value: @will.properties.count+1
   .button-region
-    = f.submit 'Save', class: "button radius"
+    = f.submit 'Proceed', class: "button radius"
     

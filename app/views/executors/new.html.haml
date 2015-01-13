@@ -13,6 +13,6 @@
 
   .button-region
     %div{"data-condition" => ":checked", "data-false" => "hide", "data-require" => "#executor_first_false", "data-true" => "show"}
-      = f.submit 'Save and Continue', class: "button radius right", :onclick => "return confirm('It is strongly advisable to appoint an executor. Are you sure you wish to proceed without appointing an executor')"
+      = f.submit 'Proceed', class: "button radius right", :onclick => "return confirm('It is strongly advisable to appoint an executor. Are you sure you wish to proceed without appointing an executor')"
     %div{"data-condition" => ":checked", "data-false" => "show", "data-require" => "#executor_first_false", "data-true" => "hide"}
-      = f.submit 'Save and Continue', class: "button radius right"
+      = f.submit 'Proceed', class: "button radius right"

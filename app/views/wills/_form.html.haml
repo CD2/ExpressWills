@@ -3,10 +3,10 @@
 
 
   .field
-    = f.label :title
+    = f.label :please_give_this_will_a_title
     = f.text_field :title
   .field
     By Submiting this form, you hereby agree to the 
     = link_to 'terms and conditions', terms_and_conditions_path, target: '_blank'
   .actions.button-region
-    = f.submit 'Submit', class: "button radius"
+    = f.submit 'Proceed', class: "button radius"

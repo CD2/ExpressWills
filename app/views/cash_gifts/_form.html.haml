@@ -19,7 +19,7 @@
 
   = f.hidden_field :count, value: @will.cash_gifts.count+1
   .button-region
-    = link_to("Save and Continue", "javascript:void(0)", class: "button radius modal-continue-button")
+    = link_to("Proceed", "javascript:void(0)", class: "button radius modal-continue-button")
     = link_to 'Proceed Without Saving', option_will_charitable_donations_path(@will), class: "button radius cancel-forward right"
 
 

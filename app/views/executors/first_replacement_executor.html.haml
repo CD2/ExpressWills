@@ -6,7 +6,7 @@
   .field
     = render "layouts/radio_buttons", :f => f, radio_button: :replacement_first, q_no: "03060", option: {true: "Yes", false: "No"}, selected: 1
   %div{"data-condition" => ":checked", "data-require" => "#executor_replacement_first_true", "data-true" => "hide"}
-    = f.submit 'Save', class: "button radius", :onclick => "return confirm('It is advisable to appoint a replacement executor. Are you sure you wish to proceed without appointing a replacement?')"
+    = f.submit 'Proceed', class: "button radius", :onclick => "return confirm('It is advisable to appoint a replacement executor. Are you sure you wish to proceed without appointing a replacement?')"
 
 %div{"data-condition" => ":checked", "data-require" => "#executor_replacement_first_true", "data-false" => "hide"}
   = form_for [@will, @executor] do |f|
@@ -17,6 +17,6 @@
       = f.check_box :replacement_second
 
     %div{"data-condition" => ":checked", "data-require" => "#executor_replacement_first_true", "data-true" => "show"}
-      = f.submit 'Save', class: "button radius"
+      = f.submit 'Proceed', class: "button radius"
     %div{"data-condition" => ":checked", "data-require" => "#executor_replacement_first_true", "data-false" => "show"}
-      = f.submit 'Save', class: "button radius", :onclick => "return confirm('wish to proceed with only one appointed replacement?')"
+      = f.submit 'Proceed', class: "button radius", :onclick => "return confirm('wish to proceed with only one appointed replacement?')"

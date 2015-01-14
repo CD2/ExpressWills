@@ -5,4 +5,7 @@
     = image_tag("logo.png")
   %h1 Protect your future
   %h2 Create your Will quickly and easily
-  %p= link_to("Create New Will", new_will_path)
+  - if signed_in?
+    %p= link_to("Create Will", new_will_path)
+  -else
+    %p= link_to("Sign in and Create Will", new_will_path)

@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   before_create :create_remember_token
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false, message: "That email address is already in use. Have you already registered with us? If so, log in to create will" }
   validates :password, length: { minimum: 6 }
   has_secure_password
 

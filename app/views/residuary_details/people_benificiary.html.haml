@@ -7,14 +7,9 @@
       = render "general_details/general_details_form", :builder => builder, :nested_origin => @residuary_detail.individual_residuary_general_detail
 
   
-  - if @will.residuary_details.any?
-    - @will.residuary_details.each do |x|
-      - if x.share == "Equal shares"
-        - @option ||= ["Equal shares"]
-      - elsif x.share == "Trustees to decide"
-        - @option ||= ["Trustees to decide"]
 
-  - @option ||= ["Equal shares", "Trustees to decide"]
+
+  - @option = ["Equal shares", "Trustees to decide"]
   - @start = 100
   - @residuary_detail.secondary ? @res = @will.residuary_details.where(secondary: true) : @res = @will.residuary_details.where(secondary: false)
   - @res.each { |x| @start -= x.share.gsub('%','').to_i if x.share.present? } 

@@ -123,8 +123,9 @@ class WillsController < ApplicationController
 
   def create
     @user = current_user
-    @will = @user.wills.build(title: params[:will][:title])
+    @will = Will.create(will_params)
     if @will.save
+      @will.update_attributes(user_id: current_user.id)
       redirect_to new_will_testator_detail_path(@will), notice: 'Will was successfully created.'
     else
       render :new
@@ -150,7 +151,7 @@ class WillsController < ApplicationController
     end
 
     def will_params
-      params.require(:will).permit(:title, :term)
+      params.require(:will).permit(:title, :tc)
     end
 
     def signed_in_user

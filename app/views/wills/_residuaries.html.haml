@@ -4,7 +4,7 @@
   %p
     = @count.to_s + ".1"
 
-    - if @secondary_percents.count == @primary_residuaries.count
+    - if @percents.count == @primary_residuaries.count
 
       The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed as follows:
 
@@ -48,12 +48,12 @@
         = benificiary_details benificiary, benificiary.share, "equal_shares", letter
 
 
-    - elsif @secondary_percents.count + @equal_shares.count == @primary_residuaries.count
+    - elsif @percents.count + @equal_shares.count == @primary_residuaries.count
 
       The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed as follows:
 
       - letter = "`"
-      - @secondary_percents.each do |benificiary|
+      - @spercents.each do |benificiary|
         - letter.next!
         = benificiary_details benificiary, benificiary.share, "percentage", letter
 
@@ -64,12 +64,12 @@
         - letter.next!
         = benificiary_details benificiary, benificiary.share, "equal_shares", letter
 
-    - elsif @secondary_percents.count + @trustees.count == @primary_residuaries.count
+    - elsif @percents.count + @trustees.count == @primary_residuaries.count
 
       The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed as follows:
 
       - letter = "`"
-      - @secondary_percents.each do |benificiary|
+      - @percents.each do |benificiary|
         - letter.next!
         = benificiary_details benificiary, benificiary.share, "percentage", letter
 
@@ -85,7 +85,7 @@
       The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed as follows:
 
       - letter = "`"
-      - @secondary_percents.each do |benificiary|
+      - @percents.each do |benificiary|
         - letter.next!
         = benificiary_details benificiary, benificiary.share, "percentage", letter
 

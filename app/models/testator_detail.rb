@@ -7,11 +7,20 @@ class TestatorDetail < ActiveRecord::Base
   validates :dob, presence: true
   validates :children, presence: true
   PHONE_REG = /\A\+?[\d ]+\z/
-  validates :phone_no, format: { with: PHONE_REG }, length: {minimum: 11}
+  validates :phone_no, length: {minimum: 11, message: "must not be blank and must be at least 11 digits" }
+  validates :phone_no, format: { with: PHONE_REG }, if: :phone_blank
   validates_inclusion_of :children_age, :in => [true, false], if: :children_yes
 
   def children_yes
     if self.children == "no"
+      false
+    else
+      true
+    end
+  end
+
+  def phone_blank
+    if self.phone_no == ""
       false
     else
       true

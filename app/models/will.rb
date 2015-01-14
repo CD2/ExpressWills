@@ -36,5 +36,6 @@ class Will < ActiveRecord::Base
   has_one :forth_replacement_guardian, through: :guardian, source: :forth_replacement_guardian_general_detail
 
   validates :title, presence: true
+  validates_inclusion_of :tc, :in => ["1"]
   
 end

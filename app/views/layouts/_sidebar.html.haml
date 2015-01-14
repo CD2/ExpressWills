@@ -55,7 +55,7 @@
                   %li= will_link(charitable_donations, charitable_donations.name, "nothing")
           -else
             %span Charitable Donations
-        %li= will_link(current_will.charity_permission, "Charity Options", "charity_permissions")
+        %li= will_link(current_will.charity_permission, "Charity Options", "charity_permissions") if current_will.charity_permission
         %li 
           - if current_will.properties.where(complete: true).any?
             = link_to("Property", will_properties_path(current_will))

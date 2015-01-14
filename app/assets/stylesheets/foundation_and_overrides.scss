@@ -1679,3 +1679,20 @@ nav {
 nav a {
     background: #1b1b1b!important;
 }
+
+.alert-box.success {
+  background-color: $primary-color;
+}
+.field_with_errors input#will_tc {
+float: left;
+margin-right: 0.5rem;
+}
+.alert-box li {
+    list-style: none;
+    font-size: 0.875rem;
+}
+
+.alert-box ul {
+    padding: 0;
+    margin: 0;
+}

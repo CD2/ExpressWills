@@ -1,2 +1,15 @@
 = render 'header'
-= render 'form'
+= form_for [@will, @administration] do |f|
+
+  = render "layouts/radio_buttons", :f => f, radio_button: :accept_admin, q_no: "04010", option: {true: "Yes", false: "No"}, selected: 0
+  %br
+  Please click here to view the express powers
+  %div{"data-condition" => ":checked", "data-false" => "show", "data-require" => "#administration_accept_admin_true", "data-true" => "hide"}
+    = render "layouts/check_box", :f => f, check_box: :expanded_powers,advice_text: "Click here to view the express powers", q_no: "04020"
+    = render "layouts/check_box", :f => f, check_box: :borrow_powers, q_no: "04030"
+    = render "layouts/check_box", :f => f, check_box: :appoint_admin_powers, q_no: "04040"
+    = render "layouts/check_box", :f => f, check_box: :buy_sell_powers, q_no: "04050"
+    = render "layouts/check_box", :f => f, check_box: :liability_powers, q_no: "04060"
+  .button-region
+    = f.submit 'Proceed', class: "button radius right"
+

@@ -1,5 +1,12 @@
 = form_for @user do |f|
-  = render 'layouts/error_messages', object: f.object
+  - if @user.errors.any?
+    #error_explanation
+      .alert-box.error
+        The form contains #{pluralize(@user.errors.count, "error")}.
+      .alert-box
+        %ul
+          - @user.errors.full_messages.each do |msg|
+            %li= msg
 
   .field
     = f.label :name

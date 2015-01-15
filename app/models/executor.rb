@@ -13,7 +13,7 @@ class Executor < ActiveRecord::Base
   accepts_nested_attributes_for :second_executor_general_detail
   accepts_nested_attributes_for :third_executor_general_detail
   accepts_nested_attributes_for :forth_executor_general_detail
-  accepts_nested_attributes_for :first_replacement_executor_general_detail
+  accepts_nested_attributes_for :first_replacement_executor_general_detail, reject_if: :no_replacement
   accepts_nested_attributes_for :second_replacement_executor_general_detail
   accepts_nested_attributes_for :third_replacement_executor_general_detail
   accepts_nested_attributes_for :forth_replacement_executor_general_detail
@@ -28,5 +28,11 @@ class Executor < ActiveRecord::Base
       true
     end
   end
-
+  def no_replacement
+    if self.replacement_first
+      false
+    else
+      true
+    end
+  end
 end

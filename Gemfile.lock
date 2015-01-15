@@ -29,6 +29,7 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.9)
+    bcrypt (3.1.9-x64-mingw32)
     builder (3.2.2)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -56,6 +57,7 @@ GEM
     faker (1.4.3)
       i18n (~> 0.5)
     ffi (1.9.6)
+    ffi (1.9.6-x64-mingw32)
     foundation-rails (5.3.0.1)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
@@ -72,7 +74,6 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    kgio (2.9.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -82,7 +83,10 @@ GEM
     multi_json (1.10.1)
     nokogiri (1.6.4)
       mini_portile (~> 0.6.0)
+    nokogiri (1.6.4-x64-mingw32)
+      mini_portile (~> 0.6.0)
     pg (0.17.1)
+    pg (0.17.1-x64-mingw32)
     polyglot (0.3.5)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -107,7 +111,6 @@ GEM
       activesupport (= 4.1.1)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    raindrops (0.13.0)
     rake (10.3.2)
     rspec-core (2.14.8)
     rspec-expectations (2.14.5)
@@ -151,13 +154,11 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2014.10)
+      tzinfo (>= 1.0.0)
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unicorn (4.8.3)
-      kgio (~> 2.6)
-      rack
-      raindrops (~> 0.7)
     websocket (1.2.1)
     will_paginate (3.0.7)
     xpath (2.0.0)
@@ -165,6 +166,7 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
@@ -182,6 +184,6 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   selenium-webdriver
   spring
+  tzinfo-data
   uglifier (>= 1.3.0)
-  unicorn
   will_paginate

@@ -1,4 +1,4 @@
-= render 'header'
+= render 'header_rep'
 %h4 Second Replacement Executor
 
 = form_for [@will, @executor] do |f|
@@ -8,5 +8,5 @@
   .field
     = question "03080"
     = f.check_box :replacement_third
-
+  = f.hidden_field :exec, value: "second_rep"
   = f.submit 'Proceed', class: "button radius"

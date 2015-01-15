@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114103640) do
+ActiveRecord::Schema.define(version: 20150115110025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 20150114103640) do
     t.boolean  "replacement_forth"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "exec"
   end
 
   add_index "executors", ["will_id"], name: "index_executors_on_will_id", using: :btree
@@ -192,6 +193,7 @@ ActiveRecord::Schema.define(version: 20150114103640) do
     t.boolean  "replacement_forth_guardian"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "exec"
   end
 
   add_index "guardians", ["will_id"], name: "index_guardians_on_will_id", using: :btree

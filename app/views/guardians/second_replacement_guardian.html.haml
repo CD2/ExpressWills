@@ -3,7 +3,7 @@
 
 
 = form_for [@will, @guardian] do |f|
-
+  = f.hidden_field :exec, value: "second_rep"
   = f.fields_for :second_replacement_guardian_general_detail do |builder|
     = render "general_details/general_details_form", :builder => builder, :nested_origin => @guardian.second_replacement_guardian_general_detail
   .field

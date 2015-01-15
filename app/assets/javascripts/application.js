@@ -14,3 +14,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(window).ready({
+  $('.proceed-js').attr("value","Procceds")
+});
+

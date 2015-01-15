@@ -4,19 +4,20 @@
 = form_for [@will, @executor] do |f|
 
   .field
-    = render "layouts/radio_buttons", :f => f, radio_button: :replacement_first, q_no: "03060", option: {true: "Yes", false: "No"}, selected: 1
+    = render "layouts/radio_buttons", :f => f, radio_button: :replacement_first, q_no: "03060", option: {true: "Yes", false: "No"}, selected: -1
   %div{"data-condition" => ":checked", "data-require" => "#executor_replacement_first_true", "data-true" => "hide"}
+    = f.hidden_field :exec, value: "first_rep"
     = f.submit 'Proceed', class: "button radius", :onclick => "return confirm('It is advisable to appoint a replacement executor. Are you sure you wish to proceed without appointing a replacement?')"
 
-%div{"data-condition" => ":checked", "data-require" => "#executor_replacement_first_true", "data-false" => "hide"}
-  = form_for [@will, @executor] do |f|
-    = f.fields_for :first_replacement_executor_general_detail do |builder|
-      = render "general_details/general_details_form", :builder => builder, :nested_origin => @executor.first_replacement_executor_general_detail
-    .field
-      = question "03070"
-      = f.check_box :replacement_second
-
-    %div{"data-condition" => ":checked", "data-require" => "#executor_replacement_first_true", "data-true" => "show"}
-      = f.submit 'Proceed', class: "button radius"
-    %div{"data-condition" => ":checked", "data-require" => "#executor_replacement_first_true", "data-false" => "show"}
-      = f.submit 'Proceed', class: "button radius", :onclick => "return confirm('wish to proceed with only one appointed replacement?')"
+  %div{"data-condition" => ":checked", "data-require" => "#executor_replacement_first_true", "data-false" => "hide"}
+    = form_for [@will, @executor] do |f|
+      = f.fields_for :first_replacement_executor_general_detail do |builder|
+        = render "general_details/general_details_form", :builder => builder, :nested_origin => @executor.first_replacement_executor_general_detail
+      .field
+        = question "03070"
+        = f.check_box :replacement_second
+        = f.hidden_field :exec, value: "first_rep"
+      %div{"data-condition" => ":checked", "data-require" => "#executor_replacement_second", "data-true" => "show", "data-false" => "hide"}
+        = f.submit 'Proceed', class: "button radius"
+      %div{"data-condition" => ":checked", "data-require" => "#executor_replacement_second", "data-false" => "show", "data-true" => "hide"}
+        = f.submit 'Proceed', class: "button radius", :onclick => "return confirm('wish to proceed with only one appointed replacement?')"

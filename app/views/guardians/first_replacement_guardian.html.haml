@@ -3,7 +3,7 @@
 
 
 = form_for [@will, @guardian] do |f|
-
+  = f.hidden_field :exec, value: "first_rep"
   .field
     = render "layouts/radio_buttons", :f => f, radio_button: :replacement_guardian, q_no: "05060", option: {true: "Yes", false: "No"}, selected: -1
   %div{"data-condition" => ":checked", "data-require" => "#guardian_replacement_guardian_true", "data-true" => "hide"}

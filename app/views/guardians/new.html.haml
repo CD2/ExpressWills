@@ -2,6 +2,7 @@
 
 -if @will.testator_detail.children != "no" && @will.testator_detail.children_age
   = form_for [@will, @guardian] do |f|
+    = f.hidden_field :exec, value: "new"
     = render "layouts/radio_buttons", :f => f, radio_button: :appoint_current_guardians, q_no: "05020", option: {true: "Yes", false: "No"}, selected: 0
     %div{"data-condition" => ":checked", "data-false" => "show", "data-require" => "#guardian_appoint_current_guardians_true", "data-true" => "hide"}
       = f.submit 'Proceed', class: "button radius right", :onclick => "return confirm('It is advisable to appoint a guardian otherwise should you die leaving no other responsible parent the law will determine who becomes responsible for your children')"
@@ -10,6 +11,7 @@
         = f.submit 'Save and Contine', class: "button radius right"
 -else
   = form_for [@will, @guardian] do |f|
+    = f.hidden_field :exec, value: "new"
     = render "layouts/radio_buttons", :f => f, radio_button: :appoint_future_guardians, q_no: "05010", option: {true: "Yes", false: "No"}, selected: 1
     .button-region
       = f.submit 'Proceed', class: "button radius right"

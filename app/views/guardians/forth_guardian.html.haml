@@ -2,6 +2,7 @@
 %h4 Forth Guardian
 
 = form_for [@will, @guardian] do |f|
+  = f.hidden_field :exec, value: "forth"
   = f.fields_for :forth_guardian_general_detail do |builder|
     = render "general_details/general_details_form", :builder => builder, :nested_origin => @guardian.forth_guardian_general_detail
 

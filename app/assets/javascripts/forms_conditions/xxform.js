@@ -1,3 +1,4 @@
+
 //DATA-LABEL
 $('[data-label]').each(function(){
 	var value = $(this).attr('data-label');
@@ -77,6 +78,7 @@ $('[data-tooltip]').each(function(i){
 		$('.tooltip[data-tooltip-div="' + $(this).attr('data-tooltip-id') + '"]').text(getTooltipString(this));
 	});
 });
+
 
 
 //DATA-VALIDATION

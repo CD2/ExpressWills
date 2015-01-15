@@ -2,7 +2,7 @@
 %h4 First Guardian
 
 = form_for [@will, @guardian] do |f|
-
+  = f.hidden_field :exec, value: "first"
   = f.fields_for :first_guardian_general_detail do |builder|
     = render "general_details/general_details_form", :builder => builder, :nested_origin => @guardian.first_guardian_general_detail
 

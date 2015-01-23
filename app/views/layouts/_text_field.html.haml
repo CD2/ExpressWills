@@ -13,6 +13,9 @@
   .large-10.columns
     - if origin.errors[text_field] && origin.errors[text_field].join(",") != ""
       = f.text_field text_field, class: "error"
-      %small.error= "#{text_field.to_s.titleize} #{origin.errors[text_field].join(",")}"
+      -if defined? label_text
+        %small.error= "#{label_text} #{origin.errors[text_field].join(",")}"
+      - else
+        %small.error= "#{(text_field.slice(0,1).capitalize + text_field.slice(1..-1)).gsub('_',' ')} #{origin.errors[text_field].join(",")}"
     - else
       = f.text_field text_field

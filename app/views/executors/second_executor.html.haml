@@ -4,8 +4,9 @@
 = form_for [@will, @executor] do |f|
   = f.fields_for :second_executor_general_detail do |builder|
     = render "general_details/general_details_form", :builder => builder, :nested_origin => @executor.second_executor_general_detail
-  .field
-    = question "03040"
-    = f.check_box :third
-  = f.hidden_field :exec, value: "second"
-  = f.submit 'Proceed', class: "button radius"
+  .field.add-more-option
+    .left
+      = question "03040"
+      = f.check_box :third
+    = f.hidden_field :exec, value: "second"
+    = f.submit 'Proceed', class: "button radius right"

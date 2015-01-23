@@ -1,4 +1,4 @@
-= render 'header'
+= render 'rep_header'
 %h4 First Replacement Guardian
 
 = form_for [@will, @guardian] do |f|
@@ -13,9 +13,10 @@
 
     = f.fields_for :first_replacement_guardian_general_detail do |builder|
       = render "general_details/general_details_form", :builder => builder, :nested_origin => @guardian.first_replacement_guardian_general_detail
-    .field
-      = question "05070"
-      = f.check_box :replacement_second_guardian
-    = f.hidden_field :replacement_guardian, value: true
-    = f.hidden_field :exec, value: "first_rep"
-    = f.submit 'Proceed', class: "button radius"
+    .field.add-more-option
+      .left
+        = question "05070"
+        = f.check_box :replacement_second_guardian
+      = f.hidden_field :replacement_guardian, value: true
+      = f.hidden_field :exec, value: "first_rep"
+      = f.submit 'Proceed', class: "button radius right"

@@ -6,8 +6,9 @@
   = f.fields_for :first_guardian_general_detail do |builder|
     = render "general_details/general_details_form", :builder => builder, :nested_origin => @guardian.first_guardian_general_detail
 
-  .field
-    = question "05030"
-    = f.check_box :second_guardian
+  .field.add-more-option
+    .left
+      = question "05030"
+      = f.check_box :second_guardian
 
-  = f.submit 'Proceed', class: "button radius"
+    = f.submit 'Proceed', class: "button radius right"

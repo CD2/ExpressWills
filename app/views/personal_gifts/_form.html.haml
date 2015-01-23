@@ -1,4 +1,5 @@
-%p.section-text You can make specific gifts of personal items.
+%h5
+  %b Recipient details
 = form_for [@will, @personal_gift] do |f|
   = render 'layouts/error_messages', object: f.object
   = render "layouts/text_field", :f => f, text_field: :first_name, origin: @personal_gift
@@ -14,8 +15,8 @@
   = render "layouts/radio_buttons", :f => f, radio_button: :as_cash_if_sold, q_no: "09030", option: {true: "Yes", false: "No"}, selected: 0
   = f.hidden_field :count, value: @will.personal_gifts.count+1
   .button-region
-    = link_to("Proceed", "javascript:void(0)", class: "button radius modal-continue-button")
-    = link_to 'Proceed Without Saving', new_will_residuary_detail_path, class: "button radius cancel-forward right"
+    = link_to("Proceed", "javascript:void(0)", class: "button radius modal-continue-button right")
+    = link_to 'Discard', new_will_residuary_detail_path, class: "button radius cancel-forward"
 
 
   .modal-continue

@@ -47,6 +47,15 @@ class ResiduaryDetailsController < ApplicationController
     end
   end
 
+
+  def destroy
+    @residuary_detail = ResiduaryDetail.find(params[:id])
+    @will = Will.find(params[:will_id])
+    @residuary_detail.destroy
+    redirect_to will_residuary_details_path(@will)
+    flash[:notice] = "Deleted"
+  end
+
   def update
     @will = Will.find(params[:will_id])
     if @residuary_detail.update(residuary_detail_params)

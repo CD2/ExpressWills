@@ -27,7 +27,7 @@ class ExecutorsController < ApplicationController
     if @executor.save
       process_exec_update
     else
-      render process_exec_fail
+      process_exec_fail
     end
   end
 

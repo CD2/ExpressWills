@@ -13,4 +13,7 @@
       -else
         = f.label select_list
   .large-10.columns
-    = f.select select_list, options
+    - if defined? selected
+      = f.select select_list, options, selected: selected
+    - else
+      = f.select select_list, options

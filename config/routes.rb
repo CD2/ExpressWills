@@ -31,14 +31,14 @@ Rails.application.routes.draw do
         get :forth_replacement_guardian
 
     end
-    resources :cash_gifts, only: [:new, :edit, :create, :update, :index] do
+    resources :cash_gifts, only: [:new, :edit, :create, :update, :index, :destroy] do
       collection { get :option }
     end
-    resources :charitable_donations, only: [:new, :edit, :create, :update, :index] do
+    resources :charitable_donations, only: [:new, :edit, :create, :update, :index, :destroy] do
       collection { get :option }
     end
     resources :charity_permissions, only: [:new, :edit, :create, :update]
-    resources :properties, only: [:new, :edit, :create, :update, :index] do
+    resources :properties, only: [:new, :edit, :create, :update, :index, :destroy] do
       collection { get :option }
       get :benificiaries
     end
@@ -46,7 +46,7 @@ Rails.application.routes.draw do
       collection { get :option }
     end
     resources :residuaries, only: [:new, :edit, :create, :update]
-    resources :residuary_details, only: [:new, :edit, :create, :update, :index] do
+    resources :residuary_details, only: [:new, :edit, :create, :update, :index, :destroy] do
         get :charity_benificiary
         get :people_benificiary 
         collection do 

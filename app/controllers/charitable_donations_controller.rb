@@ -42,7 +42,12 @@ class CharitableDonationsController < ApplicationController
   def update
     @will = Will.find(params[:will_id])
     if @charitable_donation.update(charitable_donation_params)
-      redirect_to new_will_charity_permission_path
+      if params[:commit] == "Add Another"
+        redirect_to new_will_charitable_donation_path
+      elsif params[:commit] == "Proceed"
+        @will = Will.find(params[:will_id])
+        redirect_to new_will_charity_permission_path
+      end
     else
       render :edit
     end
@@ -53,6 +58,14 @@ class CharitableDonationsController < ApplicationController
   end
 
   def option
+  end
+
+  def destroy
+    @charitable_donation = CharitableDonation.find(params[:id])
+     @will = Will.find(params[:will_id])
+    @charitable_donation.destroy
+    redirect_to will_charitable_donations_path(@will)
+    flash[:notice] = "Deleted"
   end
 
   private

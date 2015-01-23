@@ -1,15 +1,31 @@
 = render 'header'
-= form_for [@will, @administration] do |f|
+= form_for [@will, @charitable_donation] do |f|
 
-  = render "layouts/radio_buttons", :f => f, radio_button: :accept_admin, q_no: "04010", option: {true: "Yes", false: "No"}, selected: -1
-  %br
-  Please click here to view the express powers
-  %div{"data-condition" => ":checked", "data-false" => "show", "data-require" => "#administration_accept_admin_true", "data-true" => "hide"}
-    = render "layouts/check_box", :f => f, check_box: :expanded_powers,advice_text: "Click here to view the express powers", q_no: "04020"
-    = render "layouts/check_box", :f => f, check_box: :borrow_powers, q_no: "04030"
-    = render "layouts/check_box", :f => f, check_box: :appoint_admin_powers, q_no: "04040"
-    = render "layouts/check_box", :f => f, check_box: :buy_sell_powers, q_no: "04050"
-    = render "layouts/check_box", :f => f, check_box: :liability_powers, q_no: "04060"
-  .button-region
-    = f.submit 'Proceed', class: "button radius right"
+  = render "layouts/radio_buttons", :f => f, radio_button: :popular_charity, q_no: "07020", option: {true: "Yes", false: "No"}, selected: 0
+  %div{"data-condition" => ":checked", "data-false" => "hide", "data-require" => "#charitable_donation_popular_charity_true", "data-true" => "show"}
+    = render "layouts/select_list", :f => f, select_list: :popular_charity_name, q_no: "07030", options: ["Arts Council England" , "British Heart Foundation" , "Cancer Research UK" , "Families Need Fathers" , "Macmillan" , "Royal Society for the Blind" , "Royal Society for the Prevention of Cruelty to Animals" , "The Salvation Army" , "Variety Club" , "Zoological Society of London"], label_text: "Charity Name"
 
+  %div{"data-condition" => ":checked", "data-false" => "show", "data-require" => "#charitable_donation_popular_charity_true", "data-true" => "hide"}
+    = render "layouts/text_field", :f => f, text_field: :name, origin: @charitable_donation
+    = render "layouts/text_field", :f => f, text_field: :registered_charity_number, origin: @charitable_donation, label_text: "Registration number"
+    = render "layouts/text_field", :f => f, text_field: :address_one, origin: @charitable_donation
+    = render "layouts/text_field", :f => f, text_field: :address_two, origin: @charitable_donation
+    = render "layouts/text_field", :f => f, text_field: :city, origin: @charitable_donation
+    = render "layouts/text_field", :f => f, text_field: :county, origin: @charitable_donation
+    = render "layouts/text_field", :f => f, text_field: :postcode, origin: @charitable_donation
+    = render "layouts/text_field", :f => f, text_field: :country, origin: @charitable_donation
+  
+  = render "layouts/text_field", :f => f, text_field: :amount, q_no: "07040", origin: @charitable_donation
+
+  = render "layouts/text_area", :f => f, text_area: :instruction, advice_text: "You may specify a non-binding purpose for the gift but it is generally advised to leave this box blank so that the charity can put your gift towards any use and ensure it does not take effect if the charity is unable to comply with your request.", q_no: "07050"
+  
+  = f.text_field :count, value: @will.charitable_donations.count+1
+  = link_to("Proceed", "javascript:void(0)", class: "button radius modal-continue-button right")
+  = link_to 'Discard', new_will_charity_permission_path, class: "button radius cancel-forward"
+
+  .modal-continue
+    Do you wish to add another?
+    .button-region
+      = f.submit 'Add Another', class: "button radius"
+      = f.submit 'Proceed', class: "button radius"
+      = link_to 'Cancel', "javascript:void(0)", class: "button radius cancel-forward modal-cancel"

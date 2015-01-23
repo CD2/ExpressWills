@@ -2,19 +2,21 @@
 
 = render 'header'
 
-
-%table
-  %thead
-    %tr
-      %th 
-        %h5 Cash Gift
-      %th 
-        %h5 Amount
-  %tbody
-    - @cash_gifts.each_with_index do |cash_gift, i|
+- if @cash_gifts.any?
+  %table
+    %thead
       %tr
-        %td= link_to("Gift #{i}", edit_will_cash_gift_path(@will, cash_gift))
-        %td= cash_gift.amount
+        %th 
+          %h5 Cash Gift
+        %th 
+          %h5 Amount
+        %th
+    %tbody
+      - @cash_gifts.each_with_index do |cash_gift, i|
+        %tr
+          %td= link_to("Gift #{i}", edit_will_cash_gift_path(@will, cash_gift))
+          %td= cash_gift.amount
+          %td= link_to 'Delete', [@will, cash_gift], :method => :delete
 
 = link_to("Add Cash Gift", new_will_cash_gift_path, class: "button radius")
 = link_to("Proceed", option_will_charitable_donations_path(@will), class: "button radius")

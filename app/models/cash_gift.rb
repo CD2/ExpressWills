@@ -1,5 +1,5 @@
 class CashGift < ActiveRecord::Base
-  validates :amount, presence: true, :format => { :with => /\A\d+(?:\.\d\d)?\z/ }, :numericality => {:greater_than => 0 }
+  validates :amount, presence: true, :format => { :with => /\A\d+(?:\.\d\d)?\z/ }, :numericality => {:greater_than => 0, message: " must be a number"}
   belongs_to :will
 
   validates :first_name, presence: true, length: { maximum: 100 }, if: :no_children
@@ -9,7 +9,6 @@ class CashGift < ActiveRecord::Base
   validates :address_one, presence: true, length: { maximum: 100 }, if: :no_children
   validates :address_two, length: { maximum: 100 }, allow_blank: true, if: :no_children
   validates :city, presence: true, length: { maximum: 100 }, if: :no_children
-  validates :county, presence: true, length: { maximum: 100 }, if: :no_children
   validates :country, presence: true, length: { maximum: 100 }, if: :no_children
 
   def no_children

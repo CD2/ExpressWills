@@ -1,4 +1,4 @@
-= render 'header'
+= render 'rep_header'
 %h4 Third Replacement Guardian
 
 
@@ -6,8 +6,9 @@
   = f.hidden_field :exec, value: "third_rep"
   = f.fields_for :third_replacement_guardian_general_detail do |builder|
     = render "general_details/general_details_form", :builder => builder, :nested_origin => @guardian.third_replacement_guardian_general_detail
-  .field
-    = question "05090"
-    = f.check_box :replacement_forth_guardian
+  .field.add-more-option
+    .left
+      = question "05090"
+      = f.check_box :replacement_forth_guardian
 
-  = f.submit 'Proceed', class: "button radius"
+    = f.submit 'Proceed', class: "button radius right"

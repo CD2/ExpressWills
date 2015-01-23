@@ -59,6 +59,14 @@ class CashGiftsController < ApplicationController
   def option
   end
 
+  def destroy
+    @cash_gift = CashGift.find(params[:id])
+    @will = Will.find(params[:will_id])
+    @cash_gift.destroy
+    redirect_to will_cash_gifts_path(@will)
+    flash[:notice] = "Deleted"
+  end
+
   private
   
     def skip_option

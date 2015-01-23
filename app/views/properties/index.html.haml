@@ -8,10 +8,12 @@
     %tr
       %th 
         %h5 Property
+      %th
   %tbody
     - @properties.where(complete: true).each_with_index do |property, i|
       %tr
         %td= link_to(property.postcode, edit_will_property_path(@will, property))
+        %td= link_to 'Delete', [@will, property], :method => :delete
 
 = link_to("Add Property", new_will_property_path, class: "button radius")
 = link_to("Proceed", option_will_personal_gifts_path(@will), class: "button radius")

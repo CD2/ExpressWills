@@ -37,7 +37,9 @@ class PropertiesController < ApplicationController
   def update
     @will = Will.find(params[:will_id])
     if @property.update(property_params)
-      if params[:commit] == "Add Another"
+      if params[:commit] == "Proceed to benificiaries"
+        redirect_to will_property_benificiaries_path(@will, @property)
+      elsif params[:commit] == "Add Another"
         redirect_to new_will_property_path
       elsif params[:commit] == "Proceed"
         @will = Will.find(params[:will_id])
@@ -58,6 +60,15 @@ class PropertiesController < ApplicationController
     @will = Will.find(params[:will_id])
   end
 
+
+  def destroy
+    @property = Property.find(params[:id])
+    @will = Will.find(params[:will_id])
+    @property.destroy
+    redirect_to will_properties_path(@will)
+    flash[:notice] = "Deleted"
+  end
+
   def benificiaries
     @will = Will.find(params[:will_id])
     @property = Property.find(params[:property_id])
@@ -71,8 +82,7 @@ class PropertiesController < ApplicationController
     @b8 = @property.forth_replacement_benificiary_general_details || @property.build_forth_replacement_benificiary_general_details if @property.life_beneficiary_no > 3
   end
 
-  def option
-  end
+
 
   private
   

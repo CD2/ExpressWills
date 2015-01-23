@@ -6,11 +6,12 @@
   = f.fields_for :first_executor_general_detail do |builder|
     = render "general_details/general_details_form", :builder => builder, :nested_origin => @executor.first_executor_general_detail
 
-  .field
-    = question "03030"
-    = f.check_box :second
-  = f.hidden_field :exec, value: "first"
-  %div{"data-condition" => ":checked", "data-require" => "#executor_second", "data-true" => "hide"}
-    = f.submit 'Proceed', class: "button radius", name: "proceed", :onclick => "return confirm('It is strongly advisable to appoint an executor. Are you sure you wish to proceed without appointing an executor')"
-  %div{"data-condition" => ":checked", "data-require" => "#executor_second", "data-false" => "hide"}
-    = f.submit 'Proceed', class: "button radius"
+  .field.add-more-option
+    .left
+      = question "03030"
+      = f.check_box :second
+    = f.hidden_field :exec, value: "first"
+    %div{"data-condition" => ":checked", "data-require" => "#executor_second", "data-true" => "hide"}
+      = f.submit 'Proceed', class: "button radius right", name: "proceed", :onclick => "return confirm('It is strongly advisable that you appoint at least two executors.')"
+    %div{"data-condition" => ":checked", "data-require" => "#executor_second", "data-false" => "hide"}
+      = f.submit 'Proceed', class: "button radius right"

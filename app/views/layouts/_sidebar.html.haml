@@ -17,6 +17,10 @@
             = will_sub_link(current_will.executor, current_will.second_executor, "second_executor", current_will.second_executor.full_name) if current_will.second_executor && current_will.executor.second
             = will_sub_link(current_will.executor, current_will.third_executor, "third_executor", current_will.third_executor.full_name) if current_will.third_executor && current_will.executor.third
             = will_sub_link(current_will.executor, current_will.forth_executor, "forth_executor", current_will.forth_executor.full_name) if current_will.forth_executor && current_will.executor.forth
+      %lis
+        - if current_will.first_replacement_executor
+          = will_sub_link(current_will.executor, current_will.first_replacement_executor, "first_replacement_executor", "Replacement Executors") 
+          %ul.sub-list   
             = will_sub_link(current_will.executor, current_will.first_replacement_executor, "first_replacement_executor", current_will.first_replacement_executor.full_name) if current_will.first_replacement_executor && current_will.executor.replacement_first
             = will_sub_link(current_will.executor, current_will.second_replacement_executor, "second_replacement_executor", current_will.second_replacement_executor.full_name) if current_will.second_replacement_executor && current_will.executor.replacement_second
             = will_sub_link(current_will.executor, current_will.third_replacement_executor, "third_replacement_executor", current_will.third_replacement_executor.full_name) if current_will.third_replacement_executor && current_will.executor.replacement_third
@@ -33,6 +37,10 @@
               = will_sub_link(current_will.guardian, current_will.second_guardian, "second_guardian", current_will.second_guardian.full_name) if current_will.second_guardian && current_will.guardian.second_guardian
               = will_sub_link(current_will.guardian, current_will.third_guardian, "third_guardian", current_will.third_guardian.full_name) if current_will.third_guardian && current_will.guardian.third_guardian
               = will_sub_link(current_will.guardian, current_will.forth_guardian, "forth_guardian", current_will.forth_guardian.full_name) if current_will.forth_guardian && current_will.guardian.forth_guardian
+        - if current_will.guardian
+          = will_sub_link(current_will.guardian, current_will.first_replacement_guardian, "first_replacement_guardian", "Replacement Guardians") if current_will.first_replacement_guardian && current_will.guardian.replacement_guardian 
+          - if current_will.guardian.appoint_future_guardians || current_will.guardian.appoint_current_guardians
+            %ul.sub-list
               = will_sub_link(current_will.guardian, current_will.first_replacement_guardian, "first_replacement_guardian", current_will.first_replacement_guardian.full_name) if current_will.first_replacement_guardian && current_will.guardian.replacement_guardian
               = will_sub_link(current_will.guardian, current_will.second_replacement_guardian, "second_replacement_guardian", current_will.second_replacement_guardian.full_name) if current_will.second_replacement_guardian && current_will.guardian.replacement_second_guardian
               = will_sub_link(current_will.guardian, current_will.third_replacement_guardian, "third_replacement_guardian", current_will.third_replacement_guardian.full_name) if current_will.third_replacement_guardian && current_will.guardian.replacement_third_guardian
@@ -41,8 +49,14 @@
           - if current_will.progress >= 7
             = link_to("Cash Gifts", will_cash_gifts_path(current_will))
             %ul.sub-list
-              - current_will.cash_gifts.each_with_index do |cash_gift, i|
-                %li= will_link(cash_gift, "Cash Gift #{i+1}", "nothing")
+              - current_will.cash_gifts.each do |cash_gift|
+                - if cash_gift.shared_to == "all_of_my_children"
+                  %li= will_link(cash_gift, "Children", "nothing")
+                - elsif cash_gift.shared_to == "all_of_my_grandchildren"
+                  %li= will_link(cash_gift, "Grandchilden", "nothing")
+                - else
+                  %li= will_link(cash_gift, cash_gift.full_name, "nothing")
+
           - else
             %span Cash Gifts
         %li 

@@ -22,7 +22,6 @@ Question.create(number: "00090", question: "County") unless Question.find_by(num
 
 Question.create(number: "00100", question: "Country") unless Question.find_by(number: "00100") 
 
-Question.create(number: "00110", question: "Land Registry title number (if known)") unless Question.find_by(number: "00110") 
 
 Question.create(number: "00120", question: "Postcode") unless Question.find_by(number: "00120") 
 
@@ -52,7 +51,7 @@ Question.create(number: "00240", question: "County") unless Question.find_by(num
 
 Question.create(number: "00250", question: "Country") unless Question.find_by(number: "00250") 
 
-Question.create(number: "01010", question: "Un-tick this box if you do not consent to us providing you in future with information and offers relevant to our services") unless Question.find_by(number: "01010")
+Question.create(number: "01010", question: "Un-tick this box if you do not consent to us providing you in future with information and offers relevant to the services we offer") unless Question.find_by(number: "01010")
 
 Question.create(number: "01020", question: "Contact telephone number") unless Question.find_by(number: "01020") 
 

@@ -7,7 +7,6 @@ class PersonalGift < ActiveRecord::Base
   validates :address_one, presence: true, length: { maximum: 100 }
   validates :address_two, length: { maximum: 100 }, allow_blank: true
   validates :city, presence: true, length: { maximum: 100 }
-  validates :county, presence: true, length: { maximum: 100 }
   validates :country, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 1000 }
 

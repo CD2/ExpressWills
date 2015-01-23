@@ -22,11 +22,13 @@
           %h5 Residuary
         %th 
           %h5 Share
+        %th
     %tbody
       - @residuary_details.where(secondary: false).each_with_index do |residuary_detail, i|
         %tr
           %td= link_to(residuary_detail.residuary_type, edit_will_residuary_detail_path(@will, residuary_detail))
           %td= residuary_detail.share
+          %td= link_to 'Delete', [@will, residuary_detail], :method => :delete
 
 - if @residuary_details.where(secondary: true).any?
   %table
@@ -36,11 +38,13 @@
           %h5 Residuary
         %th 
           %h5 Share
+        %th
     %tbody
       - @residuary_details.where(secondary: true).each_with_index do |residuary_detail, i|
         %tr
           %td= link_to(residuary_detail.residuary_type, edit_will_residuary_detail_path(@will, residuary_detail))
           %td= residuary_detail.share
+          %td= link_to 'Delete', [@will, residuary_detail], :method => :delete
 
 = link_to("Add Beneficiary", new_will_residuary_detail_path, class: "button radius")
 = link_to("Add Secondary Beneficiary", secondary_will_residuary_details_path(@will), class: "button radius")

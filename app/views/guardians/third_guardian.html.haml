@@ -6,8 +6,9 @@
   = f.hidden_field :exec, value: "third"
   = f.fields_for :third_guardian_general_detail do |builder|
     = render "general_details/general_details_form", :builder => builder, :nested_origin => @guardian.third_guardian_general_detail
-  .field
-    = question "05050"
-    = f.check_box :forth_guardian
+  .field.add-more-option
+    .left
+      = question "05050"
+      = f.check_box :forth_guardian
 
-  = f.submit 'Proceed', class: "button radius"
+    = f.submit 'Proceed', class: "button radius right"

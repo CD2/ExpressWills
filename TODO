@@ -1,1 +1,35 @@
-regen qs
+•	Log in options should be "Register" (for new users) and "Sign In" rather than "New Will" 
+•	Sorry to be picky but can "Account created - welcome Name" be capitalised like that? 
+/•	Personal Details - can we change "relevant to our services" to "relevant to the services we offer" (sorry, the latter wording will look better than what I originally put) 
+•	Can we check grammar on the error messages, e.g. "First name must not be blank" rather than "First Name must not be blank" and "Phone number" rather than "Phone No" 
+•	Executors - "Appoint a 2nd executor" should not be possible to bypass, otherwise it gets to an error, see Screensot A. User must put Yes or No to the question. Please check if this occurs with Replacement Executors as well.
+
+
+•	If I put in the details of an executor and do not tick the Appoint a 2nd executor box I get a warning message telling me I should appoint an executor (but I have?). I think it's meant to state that's it's strongly advisable that I appoint at least two executors. The advisory box should also have a question mark at the end of the question. Note that if Notary Express is appointed an executor it doesn't need to recommend a second (it may already do this, I did not check). 
+•	First Executor - rather than have a tick box at the bottom can we have something like "Proceed" or "Add Another Executor" buttons so they can either add one more or continue? Or make the option to add another executor a little more visible somehow? This same issue applies to Replacement Executors, Guardians, etc, all pages which have the same little tick box at the bottom.
+•	Replacement Executor - if I put just one replacement executor the advisory box text has not been fully written. It should say "Are you sure you wish to proceed with only one appointed replacement?" 
+/•	"Forth Executor" and "Forth Replacement Executor" are mispelled. Same with "Forth Guardian" and "Forth Replacement Guardian".
+•	Can we separate the Executors and Replacement Executors in the side menu on the left, otherwise their names are listed and it's not possible to tell from looking at the side menu which are in the Executors and which in the Replacement Executors section? Same with Guardians & Replacement Guardians - please show which are which (maybe have the heading "Replacement Executors" and "Replacement Guardians" on the side menu too, as a separator?
+/•	"Guardian" can this section be titled "Guardians" 
+•	Can the section for replacement guardians be titled "Replacement Guardians" 
+•	It should be possible to leave "County" blank on a cash gift 
+•	Cash gift error code on the "Amount" box should read "Amount must be a number" 
+•	I find I feel naturally inclined to click on the right button to Proceed rather than the left one - can you switch places with "Proceed" and "Proceed without saving" and then, just to avoid any confusion, rename "Proceed without saving" to "Discard" which is concise and avoids repeating the word proceed. 
+•	Can Cash Gifts on the side menu show the names of the people the gifts are being left to (if the Children or Grandchildren options are chosen you can just put Children or Grandchildren, as applicable) 
+•	Can the charity list be in alphabetical order (i.e. FNF can go after Cancer Research UK), just have it with FNF pre-selected... 
+•	If I do not put an amount into the "charitable gift amount" box I get the error message "The form contains 3 errors". I count only 1 error? 
+•	If you put "No" to the popular charity it displays the fields to enter the charity details but it seems a lot messier than the usual address details fields with bold headings repeating the same information in the question fields. Could we just have "Charity details" as the bold heading (where "Charity name" is currently), then have the question fields underneath like you do on the other address information fields. 
+/•	Also please make the question field "Registered charity" read "Registration number" 
+/•	Property section - can we reword slightly "You can donate buildings or land that you own as a tenant in common" to "You can donate buildings or land that you own wholly or as a tenant in common". 
+/•	This information then seems to be repeated immediately underneath? We don't need the repeat. 
+•	Can we change "Land Registry title number (if known)" to "Property details"? 
+/•	Please change the question field "Land Registry" to "Title number (if known)" 
+•	Property section - it should be possible to leave County blank 
+•	The question "Is the property to be held on trust for the life of one or more individuals" should have "No" pre-selected as default. 
+/•	The question field "Life beneficiary no" should read "Number of life beneficiaries" 
+•	I can't see how to edit the property beneficiaries/life beneficiary once I have proceeded? I click on the Property and go back to it, to put number of life beneficiaries, change its address if I want, etc, but when I click Proceed it now takes me straight to Personal Gifts? 
+•	Personal Gifts - "You can make specific gifts of personal items" is repeated under the title. Please replace the second one with "Recipient details" in bold 
+•	Personal Gifts - It should be possible to leave County blank 
+•	Residuary - When asked if you want to leave stuff to a beneficiary, can the pre-selected option be "Individual" rather than "Charity"? Otherwise I see people becoming confused and trying to leave an individual gift by filling in the charity details form. Same for Secondary Beneficiaries
+/•	Residuary - Can "Beneficiary type" not have "Type" capitalised? 
+•	Can capital advancement have "50%" pre-selected (but leave it at the same place in the list, do not put it randomly at the top thanks!) 

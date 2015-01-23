@@ -18,9 +18,10 @@ gem 'spring',        group: :development
 gem 'rails_12factor', '0.0.2', group: :production
 gem 'will_paginate'
 gem "faker"
+gem 'tzinfo-data'
 
 #server
-gem 'unicorn'
+
 
 #testing
 group :development, :test do

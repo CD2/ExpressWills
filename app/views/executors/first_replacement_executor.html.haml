@@ -4,10 +4,14 @@
 = form_for [@will, @executor] do |f|
 
   .field
-    = render "layouts/radio_buttons", :f => f, radio_button: :replacement_first, q_no: "03060", option: {true: "Yes", false: "No"}, selected: -1
-  %div{"data-condition" => ":checked", "data-require" => "#executor_replacement_first_true", "data-true" => "hide"}
-    = f.hidden_field :exec, value: "first_rep"
-    = f.submit 'Proceed', class: "button radius", :onclick => "return confirm('It is advisable to appoint a replacement executor. Are you sure you wish to proceed without appointing a replacement?')"
+    = render "layouts/radio_buttons", :f => f, radio_button: :replacement_first, q_no: "03060", option: {true: "Yes", false: "No"}, selected: 0
+  
+    %div{"data-condition" => ":checked", "data-require" => "#executor_replacement_first_true", "data-true" => "hide"}
+      = f.hidden_field :exec, value: "first_rep"
+      - if @executor.notary_express
+        = f.submit 'Proceed', class: "button radius"
+      - else
+        = f.submit 'Proceed', class: "button radius", :onclick => "return confirm('It is advisable to appoint a replacement executor. Are you sure you wish to proceed without appointing a replacement?')"
 
   %div{"data-condition" => ":checked", "data-require" => "#executor_replacement_first_true", "data-false" => "hide"}
     = form_for [@will, @executor] do |f|

@@ -33,6 +33,7 @@ class WillsController < ApplicationController
     @forth_guardian = @will.forth_guardian
     @guardians = [@first_guardian, @second_guardian, @third_guardian, @forth_guardian]
 
+
     @first_replacement_guardian = @will.first_replacement_guardian
     @second_replacement_guardian = @will.second_replacement_guardian
     @third_replacement_guardian = @will.third_replacement_guardian

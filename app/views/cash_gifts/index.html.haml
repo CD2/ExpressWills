@@ -14,7 +14,13 @@
     %tbody
       - @cash_gifts.each_with_index do |cash_gift, i|
         %tr
-          %td= link_to("Gift #{i}", edit_will_cash_gift_path(@will, cash_gift))
+          %td
+            - if cash_gift.shared_to == "all_of_my_children"
+              = will_link(cash_gift, "Children", "nothing")
+            - elsif cash_gift.shared_to == "all_of_my_grandchildren"
+              = will_link(cash_gift, "Grandchilden", "nothing")
+            - else
+              = will_link(cash_gift, cash_gift.full_name, "nothing")
           %td= cash_gift.amount
           %td= link_to 'Delete', [@will, cash_gift], :method => :delete
 

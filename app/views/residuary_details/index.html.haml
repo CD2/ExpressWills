@@ -14,7 +14,9 @@
   - unless @correct_total == true || @total_percent == 100
     %p Please review the gifts in your residuary. The share distributed must total 100% or have at least one beneficiary receiving equal shares or the trustees to decide. 
 
+
 - if @residuary_details.where(secondary: false).any?
+  %h4 Primary Beneficiaries
   %table
     %thead
       %tr
@@ -28,9 +30,15 @@
         %tr
           %td= link_to(residuary_detail.residuary_type, edit_will_residuary_detail_path(@will, residuary_detail))
           %td= residuary_detail.share
-          %td= link_to 'Delete', [@will, residuary_detail], :method => :delete
+          %td
+            - if @residuary_details.where(secondary: false).count == 1 && @residuary_details.where(secondary: true).any?
+              = link_to 'Delete', [@will, residuary_detail], :method => :delete, :data => { :confirm => 'Deleting your final beneficiary will erase your secondary beneficiaries also. Are you sure?' }
+            - else 
+              = link_to 'Delete', [@will, residuary_detail], :method => :delete
+
 
 - if @residuary_details.where(secondary: true).any?
+  %h4 Secondary Beneficiaries
   %table
     %thead
       %tr
@@ -47,7 +55,8 @@
           %td= link_to 'Delete', [@will, residuary_detail], :method => :delete
 
 = link_to("Add Beneficiary", new_will_residuary_detail_path, class: "button radius")
-= link_to("Add Secondary Beneficiary", secondary_will_residuary_details_path(@will), class: "button radius")
+- if @residuary_details.where(secondary: false).any?
+  = link_to("Add Secondary Beneficiary", secondary_will_residuary_details_path(@will), class: "button radius")
 - if @correct_total == true || @total_percent == 100
   - if @will.residuary
     = link_to("Proceed", new_will_request_path, class: "button radius")

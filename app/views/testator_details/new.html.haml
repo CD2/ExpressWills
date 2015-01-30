@@ -1,3 +1,29 @@
 = render 'header'
-= render 'form'
+= form_for [@will, @testator_detail]  do |f|
+  = render 'layouts/error_messages', object: f.object
+
+  = render "layouts/check_box", :f => f, check_box: :consent, q_no: "01010", checked: true
+
+  = f.fields_for :general_detail do |builder|
+    = render "general_details/general_details_form", :builder => builder, :nested_origin => @testator_detail.general_detail
+
+  = render "layouts/text_field", :f => f, text_field: :phone_no, origin: @testator_detail, label_text: "Phone number"
+  = render "layouts/select_list", :f => f, select_list: :gender, options: ["Male", "Female"], origin: @testator_detail
+  .pikaday
+    = render "layouts/text_field", :f => f, text_field: :dob, origin: @testator_detail, label_text: "Date of birth"
+  = render "layouts/text_field", :f => f, text_field: :domicile_country, advice_text: "This is your country of permanent residence or homeland",  q_no: "01050", origin: @testator_detail, label_text: "Domicile country"
+  .radio-container
+    = render "layouts/radio_buttons", :f => f, radio_button: :children, advice_text: "Please select 'yes, including my partner's children' if your partner has one or more children and you want to include these when making provisions in your will for your children.", q_no: "01060",  option: {yes_my_own: "Yes, my own", yes_including_my_partners: "Yes, including my partner's", no: "No"}, selected: -1
+  %div{"data-condition" => ":checked", "data-false" => "hide", "data-require" => "#testator_detail_children_yes_including_my_partners, #testator_detail_children_yes_my_own", "data-true" => "show"}
+    .radio-container
+      = render "layouts/radio_buttons", :f => f, radio_button: :children_age, q_no: "01070", option: {true: "Yes", false: "No"}, selected: -1
+  = render "layouts/radio_buttons", :f => f, radio_button: :planning_marrige, q_no: "01080", option: {true: "Yes", false: "No"}, selected: 1
+  %div{"data-condition" => ":checked", "data-false" => "hide", "data-require" => "#testator_detail_planning_marrige_true", "data-true" => "show"}
+    = render "layouts/radio_buttons", :f => f, radio_button: :effective_post_marrige, q_no: "01090", option: {true: "Yes", false: "No"}, selected: 0
+    = render "layouts/radio_buttons", :f => f, radio_button: :effective_post_death_sans_marrige, q_no: "01110", option: {true: "Yes", false: "No"}, selected: 0
+  = render "layouts/radio_buttons", :f => f, radio_button: :mirror_will, q_no: "01130", option: {yes: "Yes", no: "No", not_applicable: "Not Applicable"}, selected: 2
+
+  .button-region
+    = f.submit 'Proceed', class: "button radius right"
+
 

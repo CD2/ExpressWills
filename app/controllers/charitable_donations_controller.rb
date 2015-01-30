@@ -21,12 +21,10 @@ class CharitableDonationsController < ApplicationController
 
   def create
     @will = Will.find(params[:will_id])
-    if @will.charitable_donations.last && @charitable_donation = @will.charitable_donations.find_by(count: params[:charitable_donation][:count])
-      @charitable_donation.update(charitable_donation_params)
-    else
+
       @charitable_donation = CharitableDonation.new(charitable_donation_params)
       @charitable_donation.will_id = params[:will_id]
-    end
+
     if @charitable_donation.save
       if params[:commit] == "Add Another"
         redirect_to new_will_charitable_donation_path

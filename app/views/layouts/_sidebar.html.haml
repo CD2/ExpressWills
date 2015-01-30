@@ -13,6 +13,9 @@
         = will_link(current_will.executor, "Executors", "executors")
         - if current_will.executor
           %ul.sub-list
+            - if current_will.executor.notary_express
+              %li 
+                %span Notary Express
             = will_sub_link(current_will.executor, current_will.first_executor, "first_executor", current_will.first_executor.full_name) if current_will.first_executor && current_will.executor.first
             = will_sub_link(current_will.executor, current_will.second_executor, "second_executor", current_will.second_executor.full_name) if current_will.second_executor && current_will.executor.second
             = will_sub_link(current_will.executor, current_will.third_executor, "third_executor", current_will.third_executor.full_name) if current_will.third_executor && current_will.executor.third
@@ -95,10 +98,12 @@
             = link_to("Residuary", will_residuary_details_path(current_will))
             %ul.sub-list
               - current_will.residuary_details.where(complete:true).each_with_index do |residuaries, i|
+                - unless residuaries.secondary
+                  %li= will_link(residuaries, "#{residuaries.residuary_type}", "nothing")
+            %ul.sub-list
+              - current_will.residuary_details.where(complete:true).each_with_index do |residuaries, i|
                 - if residuaries.secondary
                   %li= will_link(residuaries, "#{residuaries.residuary_type} (secondary)", "nothing")
-                -else
-                  %li= will_link(residuaries, "#{residuaries.residuary_type}", "nothing")
           - else
             %span Residuary
         %li= will_link(current_will.residuary, "Capital Advancement", "residuaries")

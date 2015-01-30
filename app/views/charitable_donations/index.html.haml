@@ -11,7 +11,11 @@
   %tbody
     - @charitable_donations.each_with_index do |charitable_donation, i|
       %tr
-        %td= link_to("Donation #{i}", edit_will_charitable_donation_path(@will, charitable_donation))
+        %td
+          - if charitable_donation.popular_charity
+            = will_link(charitable_donation, charitable_donation.popular_charity_name, "nothing")
+          - else 
+            = will_link(charitable_donation, charitable_donation.name, "nothing")
         %td= charitable_donation.amount
         %td= link_to 'Delete', [@will, charitable_donation], :method => :delete
 

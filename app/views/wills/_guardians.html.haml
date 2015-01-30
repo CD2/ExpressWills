@@ -6,7 +6,7 @@
   - @guardians.each_with_index do |g, i|
     - if g
       = i==0 ? "if there is no other person with parental responsibility for them at my death," : ""
-      = @guardians.count == i+1 ? "#{g.full_name} of #{g.full_address}." : "#{g.full_name} of #{g.full_address}, and"
+      = @guardians.compact.count == i+1 ? "#{g.full_name} of #{g.full_address}." : "#{g.full_name} of #{g.full_address}, and"
 
 - if @guardian.appoint_future_guardians
   - if @first_replacement_guardian

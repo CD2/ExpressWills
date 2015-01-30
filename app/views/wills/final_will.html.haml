@@ -25,7 +25,10 @@
     = render(:partial => "executors")
     = render(:partial => "survivorship")
     - if @guardian
-      = render(:partial => "guardians") if @guardian.appoint_future_guardians || @guardian.appoint_current_guardians
+      - if @will.testator_detail.children != "no" && @will.testator_detail.children_age
+        = render(:partial => "guardians") if @guardian.appoint_current_guardians
+      - else
+        = render(:partial => "guardians") if @guardian.appoint_future_guardians
     = render(:partial => "specific_gifts") if @personal_gifts.any?
     = render(:partial => "properties") if @properties.any?
     = render(:partial => "financial_legacy") if @cash_gifts.any?

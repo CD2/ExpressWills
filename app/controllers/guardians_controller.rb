@@ -32,6 +32,7 @@ class GuardiansController < ApplicationController
 
   def update
     @will = Will.find(params[:will_id])
+    @guardian = Guardian.find(params[:id])
     if @guardian.update(guardian_params)
       process_guardian_save
     else
@@ -82,7 +83,55 @@ class GuardiansController < ApplicationController
       when "new"
         redirect_to will_guardian_first_guardian_path(@will, @guardian)
       when "edit"
-        redirect_to will_guardian_first_guardian_path(@will, @guardian)
+        if @will.testator_detail.children != "no" && @will.testator_detail.children_age
+          if @guardian.appoint_current_guardians
+            redirect_to will_guardian_first_guardian_path(@will, @guardian)
+          else
+            @first = GeneralDetail.find_by(first_guardian_id: @guardian.id)
+            @second = GeneralDetail.find_by(second_guardian_id: @guardian.id)
+            @third = GeneralDetail.find_by(third_guardian_id: @guardian.id)
+            @forth = GeneralDetail.find_by(forth_guardian_id: @guardian.id)
+            @firsta = GeneralDetail.find_by(first_replacement_guardian_id: @guardian.id)
+            @seconda = GeneralDetail.find_by(second_replacement_guardian_id: @guardian.id)
+            @thirda = GeneralDetail.find_by(third_replacement_guardian_id: @guardian.id)
+            @fortha = GeneralDetail.find_by(forth_replacement_guardian_id: @guardian.id)
+
+            @first.destroy if @first
+            @second.destroy if @second
+            @third.destroy if @third
+            @forth.destroy if @forth
+            @firsta.destroy if @firsta
+            @seconda.destroy if @seconda
+            @thirda.destroy if @thirda
+            @fortha.destroy if @fortha
+            
+            proceed
+          end
+        else
+          if @guardian.appoint_future_guardians
+            redirect_to will_guardian_first_guardian_path(@will, @guardian)
+          else
+            @first = GeneralDetail.find_by(first_guardian_id: @guardian.id)
+            @second = GeneralDetail.find_by(second_guardian_id: @guardian.id)
+            @third = GeneralDetail.find_by(third_guardian_id: @guardian.id)
+            @forth = GeneralDetail.find_by(forth_guardian_id: @guardian.id)
+            @firsta = GeneralDetail.find_by(first_replacement_guardian_id: @guardian.id)
+            @seconda = GeneralDetail.find_by(second_replacement_guardian_id: @guardian.id)
+            @thirda = GeneralDetail.find_by(third_replacement_guardian_id: @guardian.id)
+            @fortha = GeneralDetail.find_by(forth_replacement_guardian_id: @guardian.id)
+
+            @first.destroy if @first
+            @second.destroy if @second
+            @third.destroy if @third
+            @forth.destroy if @forth
+            @firsta.destroy if @firsta
+            @seconda.destroy if @seconda
+            @thirda.destroy if @thirda
+            @fortha.destroy if @fortha
+
+            proceed
+          end
+        end
       when "first"
         redirect_to will_guardian_second_guardian_path(@will, @guardian)
       when "second"

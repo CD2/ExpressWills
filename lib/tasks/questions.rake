@@ -51,7 +51,7 @@ Question.create(number: "00240", question: "County") unless Question.find_by(num
 
 Question.create(number: "00250", question: "Country") unless Question.find_by(number: "00250") 
 
-Question.create(number: "01010", question: "Un-tick this box if you do not consent to us providing you in future with information and offers relevant to the services we offer") unless Question.find_by(number: "01010")
+Question.create(number: "01010", question: "We may provide you in future with information and offers relevant to our services. If you do not wish to receive such information and offers please un-tick this box") unless Question.find_by(number: "01010")
 
 Question.create(number: "01020", question: "Contact telephone number") unless Question.find_by(number: "01020") 
 

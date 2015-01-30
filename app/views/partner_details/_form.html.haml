@@ -18,5 +18,12 @@
       = render "layouts/text_field", :f => builder, text_field: :first_name, q_no: "00020", origin: @partner_detail.general_detail
       = render "layouts/text_field", :f => builder, text_field: :middle_name, q_no: "00030", origin: @partner_detail.general_detail
       = render "layouts/text_field", :f => builder, text_field: :surname, q_no: "00040", origin: @partner_detail.general_detail
+
+      = builder.hidden_field :address_one, value: @will.testator_general_details.address_one
+      = builder.hidden_field :address_two, value: @will.testator_general_details.address_two
+      = builder.hidden_field :city, value: @will.testator_general_details.city
+      = builder.hidden_field :county, value: @will.testator_general_details.county
+      = builder.hidden_field :postcode, value: @will.testator_general_details.postcode
+      = builder.hidden_field :country, value: @will.testator_general_details.country
       .button-region
         = f.submit 'Proceed', class: "button radius right"

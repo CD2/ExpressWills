@@ -1027,9 +1027,9 @@ new Pikaday(
   field: document.getElementById('partner_detail_dob'),
   firstDay: 1,
   minDate: new Date('1900-01-01'),
-  maxDate: maxDate,
+   maxDate: maxDate,
   yearRange: [1900,2000],
-  defaultDate: y
+  defaultDate: new Date(y)
 });
 
 

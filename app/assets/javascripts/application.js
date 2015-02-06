@@ -15,7 +15,13 @@
 //= require jquery_ujs
 //= require_tree .
 
-$(window).ready({
-  $('.proceed-js').attr("value","Procceds")
+jQuery("document").ready(function(){
+  jQuery("#testator_detail_planning_marrige_true").on("change", function(){
+    jQuery("#testator_detail_mirror_will_no").prop('checked',true);
+    jQuery("#testator_detail_mirror_will_not_applicable, label[for=testator_detail_mirror_will_not_applicable]").css("display", "none");
+  });
+  jQuery("#testator_detail_planning_marrige_false").on("change", function(){
+    jQuery("#testator_detail_mirror_will_not_applicable, label[for=testator_detail_mirror_will_not_applicable]").css("display", "inline");
+  });
 });
 

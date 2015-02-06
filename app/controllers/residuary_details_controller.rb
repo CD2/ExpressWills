@@ -28,22 +28,28 @@ class ResiduaryDetailsController < ApplicationController
 
   def create
     @will = Will.find(params[:will_id])
-    if @will.residuary_details.last && @residuary_detail = @will.residuary_details.find_by(count: params[:residuary_detail][:count])
-      @residuary_detail.update(residuary_detail_params)
+    if params[:commit] == "I do not wish to specify a beneficiary" || params[:commit] == "I do not wish to specify a secondary beneficiary" || params[:commit] == "I do not wish to specify another secondary beneficiary"
+      redirect_to new_will_request_path
+    elsif params[:commit] == "I do not wish to specify another beneficiary"
+      redirect_to new_will_residuary_path
     else
-      @residuary_detail = ResiduaryDetail.new(residuary_detail_params)
-      @residuary_detail.will_id = params[:will_id]
-    end
-    if @residuary_detail.save
-      if @residuary_detail.residuary_type == "I do not wish to specify a beneficiary"
-        redirect_to new_will_request_path
-      elsif @residuary_detail.residuary_type == "Charity"
-        redirect_to will_residuary_detail_charity_benificiary_path(@will, @residuary_detail)
+      if @will.residuary_details.last && @residuary_detail = @will.residuary_details.find_by(count: params[:residuary_detail][:count])
+        @residuary_detail.update(residuary_detail_params)
       else
-        redirect_to will_residuary_detail_people_benificiary_path(@will, @residuary_detail)
+        @residuary_detail = ResiduaryDetail.new(residuary_detail_params)
+        @residuary_detail.will_id = params[:will_id]
       end
-    else
-      render :new
+      if @residuary_detail.save
+        if @residuary_detail.residuary_type == "I do not wish to specify a beneficiary"
+          redirect_to new_will_request_path
+        elsif @residuary_detail.residuary_type == "Charity"
+          redirect_to will_residuary_detail_charity_benificiary_path(@will, @residuary_detail)
+        else
+          redirect_to will_residuary_detail_people_benificiary_path(@will, @residuary_detail)
+        end
+      else
+        render :new
+      end
     end
   end
 
@@ -65,35 +71,43 @@ class ResiduaryDetailsController < ApplicationController
 
   def update
     @will = Will.find(params[:will_id])
-    if @residuary_detail.update(residuary_detail_params)
-      if params[:commit] == "Submit"
-        redirect_to will_residuary_details_path(@will)
-      elsif params[:commit] == "Add Another"
-        if @residuary_detail.secondary
-          redirect_to secondary_will_residuary_details_path
-        else
-          redirect_to new_will_residuary_detail_path
-        end
-      elsif params[:commit] == "Proceed"
-        if @residuary_detail.secondary
-          redirect_to new_will_request_path
-        else
-          redirect_to new_will_residuary_path
-        end
-      elsif @residuary_detail.residuary_type == "I do not wish to specify a beneficiary"
-        redirect_to new_will_request_path
-      elsif @residuary_detail.residuary_type == "Charity"
-        redirect_to will_residuary_detail_charity_benificiary_path(@will, @residuary_detail)
-      else
-        redirect_to will_residuary_detail_people_benificiary_path(@will, @residuary_detail)
-      end
+
+    if params[:commit] == "I do not wish to specify a beneficiary" || params[:commit] == "I do not wish to specify a secondary beneficiary" || params[:commit] == "I do not wish to specify another secondary beneficiary"
+      redirect_to new_will_request_path
+    elsif params[:commit] == "I do not wish to specify another beneficiary"
+      redirect_to new_will_residuary_path
     else
-      if @residuary_detail.residuary_type == "Individual" || @residuary_detail.residuary_type == "My children"||@residuary_detail.residuary_type == "My grandchildren"
-        render :people_benificiary
-      elsif @residuary_detail.residuary_type == "Charity"
-        render :charity_benificiary
+    
+      if @residuary_detail.update(residuary_detail_params)
+        if params[:commit] == "Submit"
+          redirect_to will_residuary_details_path(@will)
+        elsif params[:commit] == "Add Another"
+          if @residuary_detail.secondary
+            redirect_to secondary_will_residuary_details_path
+          else
+            redirect_to new_will_residuary_detail_path
+          end
+        elsif params[:commit] == "Proceed"
+          if @residuary_detail.secondary
+            redirect_to new_will_request_path
+          else
+            redirect_to new_will_residuary_path
+          end
+        elsif @residuary_detail.residuary_type == "I do not wish to specify a beneficiary"
+          redirect_to new_will_request_path
+        elsif @residuary_detail.residuary_type == "Charity"
+          redirect_to will_residuary_detail_charity_benificiary_path(@will, @residuary_detail)
+        else
+          redirect_to will_residuary_detail_people_benificiary_path(@will, @residuary_detail)
+        end
       else
-        render :edit
+        if @residuary_detail.residuary_type == "Individual" || @residuary_detail.residuary_type == "My children"||@residuary_detail.residuary_type == "My grandchildren"
+          render :people_benificiary
+        elsif @residuary_detail.residuary_type == "Charity"
+          render :charity_benificiary
+        else
+          render :edit
+        end
       end
     end
   end

@@ -1,15 +1,7 @@
 
 - Residuary - if you do not specify any beneficiary you should receive a warning, e.g. "The residuary covers the remainder of your estate and is often the largest gift. It is strongly advised to enter the details of at least one beneficiary".
+use of the previous entries. Then if the user selects "No" that should remove (or hide) any guardians previously entered.
 
-- The system currently lets me enter the details of replacement beneficiaries for the residuary without having entered a primary beneficiary. I'm fairly certain this would make coding the will difficult (it would have to assume secondary beneficiaries in that case are primary) so it might be easier to not allow the user to click "Add Secondary Beneficiary" until they have at least one Primary Beneficiary. Although bear in mind the user may try to delete their Primary Beneficiaries once the user has entered 1+ Secondary Beneficiaries so the system must be robust enough to handle that.
-
-- Can the side menu display secondary beneficiaries after the primary ones, e.g. I currently put in a secondary beneficiary then a primary one, and it does not display the primary beneficiaries at the top of the list in the side menu but just in the order I entered them.
-
-- Aha, I found a bug! I had put in that I had children and the site asked me to enter guardians so I did. I then went back and changed it to No children (imagine they were your partner's children and you split up, or they died, etc) and when I went through the system it correctly asked if I wanted future guardians. It had switched to "No" so I clicked Proceed and it went straight to my first guardian! If someone has previously selected an option (i.e. Yes to adding guardians) when they come back to that section although the question has changed to "future children" it should still have "Yes" on the guardians because of the previous entries. Then if the user selects "No" that should remove (or hide) any guardians previously entered.
-
-- Executors - if Notary Express is appointed can we show it in the list on the side menu (although it would just be plain black font not hyperlinked as it does not have a page to go to). 
-
-- Partner Details - I've managed to get the page to not proceed. It is asking for first name and surname, I put a character into each of those, click Proceed and the page just reloads. On the previous page I had put No children, Yes planning to marry, then left the default options (yes/yes/not applicable - the next page asked for my partner's first and surnames but would not let me proceed - then if I went back a page on the side menu my answer to "planning to marry" had changed back to No)
 
 - In fact, if the user answers "Yes" to "planning to marry" the question on having a partner should hide the "Not Applicable" option because they clearly have a partner, in which case unless Yes or No have already been selected by the user it should default to "Yes"
 

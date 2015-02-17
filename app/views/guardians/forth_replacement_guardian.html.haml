@@ -7,3 +7,9 @@
     = render "general_details/general_details_form", :builder => builder, :nested_origin => @guardian.forth_replacement_guardian_general_detail
 
   = f.submit 'Proceed', class: "button radius"
+
+.button-region
+  = form_for [@will, @guardian] do |f|
+    = f.hidden_field :exec, value: "forth_rep"
+    = f.hidden_field :replacement_forth_guardian, value: false
+    = f.submit 'Remove this guardian', class: "cancel-forward button radius right"

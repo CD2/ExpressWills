@@ -5,11 +5,11 @@
   %br
   Please click here to view the express powers
   %div{"data-condition" => ":checked", "data-false" => "show", "data-require" => "#administration_accept_admin_true", "data-true" => "hide"}
-    = render "layouts/check_box", :f => f, check_box: :expanded_powers,advice_text: "Click here to view the express powers", q_no: "04020"
-    = render "layouts/check_box", :f => f, check_box: :borrow_powers, q_no: "04030"
-    = render "layouts/check_box", :f => f, check_box: :appoint_admin_powers, q_no: "04040"
-    = render "layouts/check_box", :f => f, check_box: :buy_sell_powers, q_no: "04050"
-    = render "layouts/check_box", :f => f, check_box: :liability_powers, q_no: "04060"
+    = render "layouts/check_box", :f => f, check_box: :expanded_powers,advice_text: "Click here to view the express powers", q_no: "04020", q_no: "04030", checked: true
+    = render "layouts/check_box", :f => f, check_box: :borrow_powers, q_no: "04030", checked: true
+    = render "layouts/check_box", :f => f, check_box: :appoint_admin_powers, q_no: "04040", q_no: "04030", checked: true
+    = render "layouts/check_box", :f => f, check_box: :buy_sell_powers, q_no: "04050", q_no: "04030", checked: true
+    = render "layouts/check_box", :f => f, check_box: :liability_powers, q_no: "04060", q_no: "04030", checked: true
   .button-region
     = f.submit 'Proceed', class: "button radius right"
 

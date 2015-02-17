@@ -17,5 +17,6 @@ class Guardian < ActiveRecord::Base
   accepts_nested_attributes_for :second_replacement_guardian_general_detail
   accepts_nested_attributes_for :third_replacement_guardian_general_detail
   accepts_nested_attributes_for :forth_replacement_guardian_general_detail
+
   
 end

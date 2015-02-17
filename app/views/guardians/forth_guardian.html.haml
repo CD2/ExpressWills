@@ -8,3 +8,9 @@
 
 
   = f.submit 'Proceed', class: "button radius"
+
+.button-region
+  = form_for [@will, @guardian] do |f|
+    = f.hidden_field :exec, value: "forth"
+    = f.hidden_field :forth_guardian, value: false
+    = f.submit 'Remove this guardian', class: "cancel-forward button radius right"

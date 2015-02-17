@@ -11,3 +11,8 @@
 
     = f.hidden_field :exec, value: "third"
     = f.submit 'Proceed', class: "button radius proceed-js right"
+.button-region
+  = form_for [@will, @executor] do |f|
+    = f.hidden_field :exec, value: "third"
+    = f.hidden_field :third, value: false
+    = f.submit 'Remove this executor', class: "cancel-forward button radius right"

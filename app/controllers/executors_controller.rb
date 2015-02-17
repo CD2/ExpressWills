@@ -91,6 +91,12 @@ class ExecutorsController < ApplicationController
       when "new"
         redirect_to will_executor_first_executor_path(@will, @executor) 
       when "edit"
+        if @executor.notary_express == false && @executor.first == false 
+          @executor.update_attributes(first: false, second: false, third: false, forth: false, replacement_first: false, replacement_second: false, replacement_third: false, replacement_forth: false)
+        end
+        if @executor.notary_express == true && @executor.second == false
+          @executor.update_attributes(first: false, second: false, third: false, forth: false, replacement_first: false, replacement_second: false, replacement_third: false, replacement_forth: false)
+        end
         redirect_to will_executor_first_executor_path(@will, @executor) 
       when "first"
         redirect_to will_executor_second_executor_path(@will, @executor) 

@@ -7,3 +7,8 @@
     = render "general_details/general_details_form", :builder => builder, :nested_origin => @executor.forth_replacement_executor_general_detail
   = f.hidden_field :exec, value: "forth_rep"
   = f.submit 'Proceed', class: "button radius"
+.button-region
+  = form_for [@will, @executor] do |f|
+    = f.hidden_field :exec, value: "forth_rep"
+    = f.hidden_field :replacement_forth, value: false
+    = f.submit 'Remove this executor', class: "cancel-forward button radius right"

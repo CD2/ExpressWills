@@ -12,3 +12,10 @@
       = f.check_box :forth_guardian
 
     = f.submit 'Proceed', class: "button radius right"
+
+
+.button-region
+  = form_for [@will, @guardian] do |f|
+    = f.hidden_field :exec, value: "third"
+    = f.hidden_field :third_guardian, value: false
+    = f.submit 'Remove this guardian', class: "cancel-forward button radius right"

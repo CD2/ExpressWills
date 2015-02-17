@@ -99,11 +99,21 @@
             %ul.sub-list
               - current_will.residuary_details.where(complete:true).each_with_index do |residuaries, i|
                 - unless residuaries.secondary
-                  %li= will_link(residuaries, "#{residuaries.residuary_type}", "nothing")
+                  - if residuaries.residuary_type == "Individual"
+                    %li= will_link(residuaries, "#{residuaries.individual_residuary_general_detail.full_name}", "nothing")
+                  - elsif
+                    %li= will_link(residuaries, "#{residuaries.charity_residuary_general_detail.name}", "nothing")
+                  - else
+                    %li= will_link(residuaries, "#{residuaries.residuary_type}", "nothing")
             %ul.sub-list
               - current_will.residuary_details.where(complete:true).each_with_index do |residuaries, i|
                 - if residuaries.secondary
-                  %li= will_link(residuaries, "#{residuaries.residuary_type} (secondary)", "nothing")
+                  - if residuaries.residuary_type == "Individual"
+                    %li= will_link(residuaries, "#{residuaries.individual_residuary_general_detail.full_name}", "nothing")
+                  - elsif
+                    %li= will_link(residuaries, "#{residuaries.charity_residuary_general_detail.name}", "nothing")
+                  - else
+                    %li= will_link(residuaries, "#{residuaries.residuary_type}", "nothing")
           - else
             %span Residuary
         %li= will_link(current_will.residuary, "Capital Advancement", "residuaries")

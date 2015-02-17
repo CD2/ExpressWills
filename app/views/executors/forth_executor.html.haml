@@ -6,3 +6,10 @@
     = render "general_details/general_details_form", :builder => builder, :nested_origin => @executor.forth_executor_general_detail
   = f.hidden_field :exec, value: "forth"
   = f.submit 'Proceed', class: "button radius"
+
+
+.button-region
+  = form_for [@will, @executor] do |f|
+    = f.hidden_field :exec, value: "forth"
+    = f.hidden_field :forth, value: false
+    = f.submit 'Remove this executor', class: "cancel-forward button radius right"

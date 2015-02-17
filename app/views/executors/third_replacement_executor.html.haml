@@ -11,3 +11,8 @@
       = f.check_box :replacement_forth
     = f.hidden_field :exec, value: "third_rep"
     = f.submit 'Proceed', class: "button radius right"
+.button-region
+  = form_for [@will, @executor] do |f|
+    = f.hidden_field :exec, value: "third_rep"
+    = f.hidden_field :replacement_third, value: false
+    = f.submit 'Remove this executor', class: "cancel-forward button radius right"

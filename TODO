@@ -1,11 +1,9 @@
 
-- Residuary - if you do not specify any beneficiary you should receive a warning, e.g. "The residuary covers the remainder of your estate and is often the largest gift. It is strongly advised to enter the details of at least one beneficiary".
-use of the previous entries. Then if the user selects "No" that should remove (or hide) any guardians previously entered.
+Date of birth is still defaulting to February 1900 with blank dates;
+ - I cant recreate this
+ 
+Administration - "Please click here to view the express powers" does not have any link to click;
+ - Where do you want this link to go?
 
-
-- In fact, if the user answers "Yes" to "planning to marry" the question on having a partner should hide the "Not Applicable" option because they clearly have a partner, in which case unless Yes or No have already been selected by the user it should default to "Yes"
-
-
-CANT REP
-
-- DOB defaulted to 1900 for some reason with blank dates so I could not click any until I changed year (I had signed in to an existing account though it was a new will)
+Residuary - I managed to leave 99% of my assets. The form should warn if leaving less than 100% e.g. "You have not distributed 100% of your residuary. It is strongly recommended that you do. Are you sure you wish to proceed?"
+  - No you didnt - also, re that message - there is no way for somebody to proceed and the system has been built to mean there is no way.

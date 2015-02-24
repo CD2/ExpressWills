@@ -1,9 +1,9 @@
 
-Date of birth is still defaulting to February 1900 with blank dates;
- - I cant recreate this
- 
-Administration - "Please click here to view the express powers" does not have any link to click;
- - Where do you want this link to go?
 
-Residuary - I managed to leave 99% of my assets. The form should warn if leaving less than 100% e.g. "You have not distributed 100% of your residuary. It is strongly recommended that you do. Are you sure you wish to proceed?"
-  - No you didnt - also, re that message - there is no way for somebody to proceed and the system has been built to mean there is no way.
+·         Replacement executor – this section is not required if “Notary Express” is selected as an executor. Be aware that I wrote out four executor, then I went back and added Notary Express, if you try to replicate this.
+ 
+·         I added 4 executors then removed #2. If I went to executor 1 then clicked Proceed it flashed up the warning about having at least 2 executors, even though by now I had 3 executors and Notary Express already appointed.
+ 
+·         Rather than a Remove Executor button on each individual page for each executor other than the first, would it be possible to have the table of executors on the main executors page with the option to delete them there?
+ 
+·         If Notary Express is not selected as an executor, could we have in the Replacement Executors page an option to add Notary Express as a replacement executor? This thought just arises from practice as I’ve noticed clients tend to put their friends as executors but I can often persuade them to put Notary Express as a replacement in case their friends cannot take up the appointment for any reason.

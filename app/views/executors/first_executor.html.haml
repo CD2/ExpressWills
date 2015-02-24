@@ -11,7 +11,11 @@
       = question "03030"
       = f.check_box :second
     = f.hidden_field :exec, value: "first"
-    %div{"data-condition" => ":checked", "data-require" => "#executor_second", "data-true" => "hide"}
-      = f.submit 'Proceed', class: "button radius right", name: "proceed", :onclick => "return confirm('It is strongly advisable that you appoint at least two executors.')"
-    %div{"data-condition" => ":checked", "data-require" => "#executor_second", "data-false" => "hide"}
+
+    - if @executor.third || @executor.forth
       = f.submit 'Proceed', class: "button radius right"
+    - else
+      %div{"data-condition" => ":checked", "data-require" => "#executor_second", "data-true" => "hide"}
+        = f.submit 'Proceed', class: "button radius right", name: "proceed", :onclick => "return confirm('It is strongly advisable that you appoint at least two executors.')"
+      %div{"data-condition" => ":checked", "data-require" => "#executor_second", "data-false" => "hide"}
+        = f.submit 'Proceed', class: "button radius right"

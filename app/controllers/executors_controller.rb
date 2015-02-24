@@ -93,11 +93,13 @@ class ExecutorsController < ApplicationController
       when "edit"
         if @executor.notary_express == false && @executor.first == false 
           @executor.update_attributes(first: false, second: false, third: false, forth: false, replacement_first: false, replacement_second: false, replacement_third: false, replacement_forth: false)
-        end
-        if @executor.notary_express == true && @executor.second == false
+          proceed
+        elsif @executor.notary_express == true && @executor.second == false
           @executor.update_attributes(first: false, second: false, third: false, forth: false, replacement_first: false, replacement_second: false, replacement_third: false, replacement_forth: false)
+          proceed
+        else
+          redirect_to will_executor_first_executor_path(@will, @executor) 
         end
-        redirect_to will_executor_first_executor_path(@will, @executor) 
       when "first"
         redirect_to will_executor_second_executor_path(@will, @executor) 
       when "second"
@@ -105,7 +107,11 @@ class ExecutorsController < ApplicationController
       when "third"
         redirect_to will_executor_forth_executor_path(@will, @executor) 
       when "forth"
-        redirect_to will_executor_first_replacement_executor_path(@will, @executor) 
+        if @executor.notary_express
+          proceed
+        else
+          redirect_to will_executor_first_replacement_executor_path(@will, @executor) 
+        end
       when "first_rep"
         redirect_to will_executor_second_replacement_executor_path(@will, @executor) 
       when "second_rep"

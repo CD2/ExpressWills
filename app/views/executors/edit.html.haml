@@ -11,6 +11,6 @@
   .button-region
     = f.hidden_field :exec, value: "edit"
     %div{"data-condition" => ":checked", "data-false" => "hide", "data-require" => "#executor_first_false", "data-true" => "show"}
-      = f.submit 'Proceed', class: "button radius", :onclick => "return confirm('It is strongly advisable to appoint an executor. Are you sure you wish to proceed without appointing an executor?')"
+      = f.submit 'Proceed', class: "button radius"
     %div{"data-condition" => ":checked", "data-false" => "show", "data-require" => "#executor_first_false", "data-true" => "hide"}
       = f.submit 'Proceed', class: "button radius"

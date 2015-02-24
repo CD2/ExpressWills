@@ -101,7 +101,7 @@
                 - unless residuaries.secondary
                   - if residuaries.residuary_type == "Individual"
                     %li= will_link(residuaries, "#{residuaries.individual_residuary_general_detail.full_name}", "nothing")
-                  - elsif
+                  - elsif residuaries.residuary_type == "Charity"
                     %li= will_link(residuaries, "#{residuaries.charity_residuary_general_detail.name}", "nothing")
                   - else
                     %li= will_link(residuaries, "#{residuaries.residuary_type}", "nothing")
@@ -110,7 +110,7 @@
                 - if residuaries.secondary
                   - if residuaries.residuary_type == "Individual"
                     %li= will_link(residuaries, "#{residuaries.individual_residuary_general_detail.full_name}", "nothing")
-                  - elsif
+                  - elsif residuaries.residuary_type == "Charity"
                     %li= will_link(residuaries, "#{residuaries.charity_residuary_general_detail.name}", "nothing")
                   - else
                     %li= will_link(residuaries, "#{residuaries.residuary_type}", "nothing")

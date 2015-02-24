@@ -31,7 +31,7 @@
           %td
             - if residuary_detail.residuary_type == "Individual"
               = will_link(residuary_detail, "#{residuary_detail.individual_residuary_general_detail.full_name}", "nothing")
-            - elsif
+            - elsif residuary_detail.residuary_type == "Charity"
               = will_link(residuary_detail, "#{residuary_detail.charity_residuary_general_detail.name}", "nothing")
             - else
               = will_link(residuary_detail, "#{residuary_detail.residuary_type}", "nothing")
@@ -59,7 +59,7 @@
           %td
             - if residuary_detail.residuary_type == "Individual"
               = will_link(residuary_detail, "#{residuary_detail.individual_residuary_general_detail.full_name}", "nothing")
-            - elsif
+            - elsif residuary_detail.residuary_type == "Charity"
               = will_link(residuary_detail, "#{residuary_detail.charity_residuary_general_detail.name}", "nothing")
             - else
               = will_link(residuary_detail, "#{residuary_detail.residuary_type}", "nothing")

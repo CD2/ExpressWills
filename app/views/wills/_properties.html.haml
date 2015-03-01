@@ -10,8 +10,10 @@
     - property.beneficiaries.each_with_index do |b, j|
       = "#{b.full_name} of #{b.full_address}"
       = property.beneficiaries.count-1 == j ? "who are living at my death (Life Beneficiary) for the life of " : "and"
-    = property.life_beneficiary_no == 1 ? "that individual" : "those individuals" 
-    = "subject to this life interest for." if property.held_in_trust
+    - if property.held_in_trust
+      = property.life_beneficiary_no == 1 ? "that individual subject to this life interest for." : "those individuals subject to this life interest for." 
+    - else
+      = property.life_beneficiary_no == 1 ? "that individual." : "those individuals." 
   %p
     %u Beneficiaries
     

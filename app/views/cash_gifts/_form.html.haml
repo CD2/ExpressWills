@@ -18,14 +18,5 @@
     = render "layouts/select_list", :f => f, select_list: :certain_age_if_dead, q_no: "06060", options: ["no"] + (16..40).to_a.map {|i| i.to_s}, label_text: "Certain age"
   = f.hidden_field :count, value: @will.cash_gifts.count+1
   .button-region
-    = link_to("Proceed", "javascript:void(0)", class: "button radius modal-continue-button right")
+    = f.submit 'Proceed', class: "button radius right"
     = link_to 'Discard', option_will_charitable_donations_path(@will), class: "button radius cancel-forward"
-
-
-  .modal-continue
-    Do you wish to add another cash gift?
-    .button-region
-      = link_to 'Cancel', "javascript:void(0)", class: "button radius cancel-forward modal-cancel"
-      = f.submit 'Add Another', class: "button radius"
-      = f.submit 'Proceed', class: "button radius"
-      

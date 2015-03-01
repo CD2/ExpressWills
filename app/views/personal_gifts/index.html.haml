@@ -12,8 +12,8 @@
   %tbody
     - @personal_gifts.each_with_index do |personal_gift, i|
       %tr
-        %td= link_to("Personal Gift #{i+1}", edit_will_personal_gift_path(@will, personal_gift))
+        %td= link_to(personal_gift.full_name, edit_will_personal_gift_path(@will, personal_gift))
         %td= personal_gift.description
 
 = link_to("Add Personal Gift", new_will_personal_gift_path, class: "button radius")
-= link_to("Proceed", option_will_residuary_details_path, class: "button radius")
+= link_to("Proceed", option_will_residuary_details_path, class: "button radius right")

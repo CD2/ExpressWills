@@ -21,12 +21,8 @@ class PropertiesController < ApplicationController
 
   def create
     @will = Will.find(params[:will_id])
-    if @will.properties.last && @property = @will.properties.find_by(count: params[:property][:count])
-      @property.update(property_params)
-    else
-      @property = Property.new(property_params)
-      @property.will_id = params[:will_id]
-    end
+    @property = Property.new(property_params)
+    @property.will_id = params[:will_id]
     if @property.save
       redirect_to will_property_benificiaries_path(@will, @property)
     else
@@ -39,13 +35,9 @@ class PropertiesController < ApplicationController
     if @property.update(property_params)
       if params[:commit] == "Proceed to benificiaries"
         redirect_to will_property_benificiaries_path(@will, @property)
-      elsif params[:commit] == "Add Another"
-        redirect_to new_will_property_path
-      elsif params[:commit] == "Proceed"
-        @will = Will.find(params[:will_id])
-        redirect_to option_will_personal_gifts_path(@will)
       else
-        redirect_to will_property_benificiaries_path(@will, @property)
+        @will = Will.find(params[:will_id])
+        redirect_to will_properties_path(@will)
       end
     else
       if params[:action] == "edit"

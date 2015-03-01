@@ -21,19 +21,10 @@ class CashGiftsController < ApplicationController
 
   def create
     @will = Will.find(params[:will_id])
-    if @will.cash_gifts.last && params[:cash_gift][:count].to_i == @will.cash_gifts.last.count
-      @cash_gift = @will.cash_gifts.last
-      @cash_gift.update(cash_gift_params)
-    else
-      @cash_gift = CashGift.new(cash_gift_params)
-      @cash_gift.will_id = params[:will_id]
-    end
+    @cash_gift = CashGift.new(cash_gift_params)
+    @cash_gift.will_id = params[:will_id]
     if @cash_gift.save
-      if params[:commit] == "Add Another"
-        redirect_to new_will_cash_gift_path
-      elsif params[:commit] == "Proceed"
-        redirect_to option_will_charitable_donations_path(@will)
-      end
+      redirect_to will_cash_gifts_path(@will)
     else
       render :new
     end
@@ -46,11 +37,7 @@ class CashGiftsController < ApplicationController
   def update
     @will = Will.find(params[:will_id])
     if @cash_gift.update(cash_gift_params)
-      if params[:commit] == "Add Another"
-        redirect_to new_will_cash_gift_path
-      elsif params[:commit] == "Proceed"
-        redirect_to option_will_charitable_donations_path(@will)
-      end
+      redirect_to will_cash_gifts_path(@will)
     else
       render :edit
     end

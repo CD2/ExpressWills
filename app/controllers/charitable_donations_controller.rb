@@ -21,17 +21,10 @@ class CharitableDonationsController < ApplicationController
 
   def create
     @will = Will.find(params[:will_id])
-
-      @charitable_donation = CharitableDonation.new(charitable_donation_params)
-      @charitable_donation.will_id = params[:will_id]
-
+    @charitable_donation = CharitableDonation.new(charitable_donation_params)
+    @charitable_donation.will_id = params[:will_id]
     if @charitable_donation.save
-      if params[:commit] == "Add Another"
-        redirect_to new_will_charitable_donation_path
-      elsif params[:commit] == "Proceed"
-        @will = Will.find(params[:will_id])
-        redirect_to new_will_charity_permission_path
-      end
+      redirect_to will_charitable_donations_path(@will)
     else
       render :new
     end
@@ -40,12 +33,7 @@ class CharitableDonationsController < ApplicationController
   def update
     @will = Will.find(params[:will_id])
     if @charitable_donation.update(charitable_donation_params)
-      if params[:commit] == "Add Another"
-        redirect_to new_will_charitable_donation_path
-      elsif params[:commit] == "Proceed"
-        @will = Will.find(params[:will_id])
-        redirect_to new_will_charity_permission_path
-      end
+      redirect_to will_charitable_donations_path(@will)
     else
       render :edit
     end

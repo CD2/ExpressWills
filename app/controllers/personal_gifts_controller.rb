@@ -21,19 +21,10 @@ class PersonalGiftsController < ApplicationController
 
   def create
     @will = Will.find(params[:will_id])
-    if @will.personal_gifts.last && @personal_gift = @will.personal_gifts.find_by(count: params[:personal_gift][:count])
-      @personal_gift.update(personal_gift_params)
-    else
-      @personal_gift = PersonalGift.new(personal_gift_params)
-      @personal_gift.will_id = params[:will_id]
-    end
+    @personal_gift = PersonalGift.new(personal_gift_params)
+    @personal_gift.will_id = params[:will_id]
     if @personal_gift.save
-      if params[:commit] == "Add Another"
-        redirect_to new_will_personal_gift_path
-      elsif params[:commit] == "Proceed"
-        @will = Will.find(params[:will_id])
-        redirect_to option_will_residuary_details_path
-      end
+      redirect_to will_personal_gifts_path(@will)
     else
       render :new
     end
@@ -41,13 +32,8 @@ class PersonalGiftsController < ApplicationController
 
   def update
     @will = Will.find(params[:will_id])
-    if @personal_gift.update(personal_gift_params)
-      if params[:commit] == "Add Another"
-        redirect_to new_will_personal_gift_path
-      elsif params[:commit] == "Proceed"
-        @will = Will.find(params[:will_id])
-        redirect_to option_will_residuary_details_path
-      end
+    if @personal_gift.save
+      redirect_to will_personal_gifts_path(@will)
     else
       render :edit
     end

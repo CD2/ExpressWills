@@ -19,13 +19,7 @@
 
   = render "layouts/text_area", :f => f, text_area: :instruction, advice_text: "You may specify a non-binding purpose for the gift but it is generally advised to leave this box blank so that the charity can put your gift towards any use and ensure it does not take effect if the charity is unable to comply with your request.", q_no: "07050"
   
-  = link_to("Proceed", "javascript:void(0)", class: "button radius modal-continue-button right")
+  = f.submit 'Proceed', class: "button radius right"
   = link_to 'Discard', new_will_charity_permission_path, class: "button radius cancel-forward"
 
-  .modal-continue
-    Do you wish to add another charitable donation?
-    .button-region
-      = link_to 'Cancel', "javascript:void(0)", class: "button radius cancel-forward modal-cancel"
-      = f.submit 'Add Another', class: "button radius"
-      = f.submit 'Proceed', class: "button radius"
       

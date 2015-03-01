@@ -15,13 +15,5 @@
   = render "layouts/radio_buttons", :f => f, radio_button: :as_cash_if_sold, q_no: "09030", option: {true: "Yes", false: "No"}, selected: 0
   = f.hidden_field :count, value: @will.personal_gifts.count+1
   .button-region
-    = link_to("Proceed", "javascript:void(0)", class: "button radius modal-continue-button right")
+    = f.submit 'Proceed', class: "button radius right"
     = link_to 'Discard', new_will_residuary_detail_path, class: "button radius cancel-forward"
-
-
-  .modal-continue
-    Do you wish to add another?
-    .button-region
-      = f.submit 'Add Another', class: "button radius"
-      = f.submit 'Proceed', class: "button radius"
-      = link_to 'Cancel', "javascript:void(0)", class: "button radius cancel-forward modal-cancel"

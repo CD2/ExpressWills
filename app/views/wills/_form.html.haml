@@ -7,6 +7,6 @@
     = f.text_field :title
   .field
     = f.check_box :tc
-    = f.label :tc, "Please tick to confirm you have read and agree to our Terms & Conditions"
+    = f.label :tc, "Please tick to confirm you have read and agree to our #{link_to 'Terms & Conditions', terms_and_conditions_path}".html_safe
   .actions.button-region
     = f.submit 'Proceed', class: "button radius"

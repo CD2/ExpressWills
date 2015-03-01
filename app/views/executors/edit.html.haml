@@ -11,6 +11,6 @@
   .button-region
     = f.hidden_field :exec, value: "edit"
     %div{"data-condition" => ":checked", "data-false" => "hide", "data-require" => "#executor_first_false", "data-true" => "show"}
-      = f.submit 'Proceed', class: "button radius"
+      = f.submit 'Proceed', class: "button radius right"
     %div{"data-condition" => ":checked", "data-false" => "show", "data-require" => "#executor_first_false", "data-true" => "hide"}
-      = f.submit 'Proceed', class: "button radius"
+      = f.submit 'Proceed', class: "button radius right"

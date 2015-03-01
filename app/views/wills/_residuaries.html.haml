@@ -53,7 +53,7 @@
       The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed as follows:
 
       - letter = "`"
-      - @spercents.each do |benificiary|
+      - @percents.each do |benificiary|
         - letter.next!
         = benificiary_details benificiary, benificiary.share, "percentage", letter
 

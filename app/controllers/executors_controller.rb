@@ -89,7 +89,15 @@ class ExecutorsController < ApplicationController
     def process_exec_update
       case params[:executor][:exec]
       when "new"
-        redirect_to will_executor_first_executor_path(@will, @executor) 
+        if @executor.notary_express == false && @executor.first == false 
+          @executor.update_attributes(first: false, second: false, third: false, forth: false, replacement_first: false, replacement_second: false, replacement_third: false, replacement_forth: false)
+          proceed
+        elsif @executor.notary_express == true && @executor.second == false
+          @executor.update_attributes(first: false, second: false, third: false, forth: false, replacement_first: false, replacement_second: false, replacement_third: false, replacement_forth: false)
+          proceed
+        else
+          redirect_to will_executor_first_executor_path(@will, @executor) 
+        end
       when "edit"
         if @executor.notary_express == false && @executor.first == false 
           @executor.update_attributes(first: false, second: false, third: false, forth: false, replacement_first: false, replacement_second: false, replacement_third: false, replacement_forth: false)

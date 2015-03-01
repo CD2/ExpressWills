@@ -1718,3 +1718,9 @@ ul.sub-list {
 margin-bottom: 0;
 }
 .hidden {display: none;}
+
+body {min-width: 1000px;}
+
+p.warning {
+  color: red;
+}

@@ -90,7 +90,7 @@
             = link_to("Personal Gifts", will_personal_gifts_path(current_will))
             %ul.sub-list
               - current_will.personal_gifts.each_with_index do |personal_gifts, i|
-                %li= will_link(personal_gifts, "Gift #{i+1}", "nothing")
+                %li= will_link(personal_gifts, personal_gifts.full_name, "nothing")
           - else
             %span Personal Gifts
         %li 

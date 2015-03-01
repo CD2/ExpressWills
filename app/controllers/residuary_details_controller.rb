@@ -22,7 +22,9 @@ class ResiduaryDetailsController < ApplicationController
   end
 
   def index
+
     @will = Will.find(params[:will_id])
+    redirect_to option_will_residuary_details_path(@will) unless @will.residuary_details.any?
     @residuary_details = @will.residuary_details.where(complete:true)
   end
 
@@ -79,22 +81,8 @@ class ResiduaryDetailsController < ApplicationController
     else
     
       if @residuary_detail.update(residuary_detail_params)
-        if params[:commit] == "Submit"
+        if params[:commit] == "Proceed"
           redirect_to will_residuary_details_path(@will)
-        elsif params[:commit] == "Add Another"
-          if @residuary_detail.secondary
-            redirect_to secondary_will_residuary_details_path
-          else
-            redirect_to new_will_residuary_detail_path
-          end
-        elsif params[:commit] == "Proceed"
-          if @residuary_detail.secondary
-            redirect_to new_will_request_path
-          else
-            redirect_to new_will_residuary_path
-          end
-        elsif @residuary_detail.residuary_type == "I do not wish to specify a beneficiary"
-          redirect_to new_will_request_path
         elsif @residuary_detail.residuary_type == "Charity"
           redirect_to will_residuary_detail_charity_benificiary_path(@will, @residuary_detail)
         else

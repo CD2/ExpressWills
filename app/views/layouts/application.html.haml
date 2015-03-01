@@ -18,7 +18,7 @@
       %nav.top-bar{role:"navigation"}
         = render "layouts/top_bar"
       #content.row
-        .large-12.columns
+        .small-12.columns
           - flash.each do |key, value|
             %div{:class => "alert-box #{key}"}= value
           = yield
@@ -27,20 +27,20 @@
         = render "layouts/top_bar"
       #content.row
         - if signed_in?
-          .large-3.columns
+          .small-3.columns
             = render 'layouts/sidebar'
-          .large-9.columns
+          .small-9.columns
             - flash.each do |key, value|
               %div{:class => "alert-box #{key}"}= value
             = yield
         - else
-          .large-3.columns
+          .small-3.columns
             `
-          .large-6.columns
+          .small-6.columns
             - flash.each do |key, value|
               %div{:class => "alert-box #{key}"}= value
             = yield
-          .large-3.columns
+          .small-3.columns
             -
       %footer.row
         #footer

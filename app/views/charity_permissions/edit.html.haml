@@ -1,3 +1,7 @@
 = render 'header'
-= render 'form'
+= form_for [@will, @charity_permission] do |f|
+  
+  = render "layouts/check_box", :f => f, check_box: :permission, q_no: "07070"
+  .button-region
+    = f.submit 'Proceed', class: "button radius right"
 

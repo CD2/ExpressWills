@@ -3,11 +3,11 @@
     %dl
       %dt= question q_no
 .row.collapse
-  .large-2.columns
+  .small-2.columns
     %span.prefix
       -if defined? label_text
         = f.label text_area, label_text
       -else
         = f.label text_area
-  .large-10.columns
+  .small-10.columns
     = f.text_area text_area

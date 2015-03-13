@@ -1,4 +1,5 @@
 class PersonalGift < ActiveRecord::Base
+    default_scope -> { order id: :asc }
   belongs_to :will
   validates :first_name, presence: true, length: { maximum: 100 }
   validates :middle_name, length: { maximum: 200 }, allow_blank: true
@@ -11,7 +12,7 @@ class PersonalGift < ActiveRecord::Base
   validates :description, presence: true, length: { maximum: 1000 }
 
   def full_name
-    self.first_name.titleize {+ " " + self.middle_name.titleize if middle_name} + " " + self.surname.titleize
+    "#{self.first_name.titleize} #{self.middle_name.titleize if middle_name} #{self.surname.titleize}"
   end
 
     def full_address

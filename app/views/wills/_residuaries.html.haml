@@ -108,16 +108,12 @@
     %p
       - if @secondary_percents.count == @secondary_residuaries.count
 
-        The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed as follows:
-
         - letter = "`"
         - @secondary_residuaries.each do |benificiary| 
           - letter.next!
           = benificiary_details benificiary, benificiary.share, "percentage", letter
 
       - elsif @secondary_equal_shares.count == @secondary_residuaries.count
-
-        The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed in equal shares between:
 
         - letter = "`"
         - @secondary_residuaries.each do |benificiary| 
@@ -126,16 +122,12 @@
 
       - elsif @secondary_trustees.count == @secondary_residuaries.count
 
-        The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed in such percentages as the Trustees elect in their absolute discretion between:
-
         - letter = "`"
         - @secondary_residuaries.each do |benificiary|
           - letter.next!
           = benificiary_details benificiary, benificiary.share, "trustees", letter
 
       - elsif @secondary_equal_shares.count + @secondary_trustees.count == @secondary_residuaries.count
-
-        The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed in such percentages as the Trustees elect in their absolute discretion between:
 
         - letter = "`"
         - @secondary_trustees.each do |benificiary|
@@ -152,8 +144,6 @@
 
       - elsif @secondary_percents.count + @secondary_equal_shares.count == @secondary_residuaries.count
 
-        The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed as follows:
-
         - letter = "`"
         - @secondary_percents.each do |benificiary|
           - letter.next!
@@ -168,7 +158,6 @@
 
       - elsif @secondary_percents.count + @secondary_trustees.count == @secondary_residuaries.count
 
-        The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed as follows:
 
         - letter = "`"
         - @secondary_percents.each do |benificiary|
@@ -183,8 +172,6 @@
           = benificiary_details benificiary, benificiary.share, "trustees", letter
 
       - else
-
-        The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed as follows:
 
         - letter = "`"
         - @secondary_percents.each do |benificiary|

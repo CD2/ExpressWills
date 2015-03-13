@@ -1,4 +1,5 @@
 class TestatorDetail < ActiveRecord::Base
+    default_scope -> { order id: :asc }
   belongs_to :will
 
   has_one :general_detail

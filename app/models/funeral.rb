@@ -1,4 +1,5 @@
 class Funeral < ActiveRecord::Base
+    default_scope -> { order id: :asc }
   validates :preference, presence: true
   validates :wishes, length: { maximum: 2000 }
   validates :specific_organs, presence: true, length: { maximum: 200 }, if: :not_no_pref

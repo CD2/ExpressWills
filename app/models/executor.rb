@@ -1,5 +1,5 @@
 class Executor < ActiveRecord::Base
-
+  default_scope -> { order id: :asc }
   has_one :first_executor_general_detail, class_name: "GeneralDetail", foreign_key: "first_executor_id"
   has_one :second_executor_general_detail, class_name: "GeneralDetail", foreign_key: "second_executor_id"
   has_one :third_executor_general_detail, class_name: "GeneralDetail", foreign_key: "third_executor_id"

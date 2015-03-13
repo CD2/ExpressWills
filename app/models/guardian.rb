@@ -1,5 +1,5 @@
 class Guardian < ActiveRecord::Base
-
+  default_scope -> { order id: :asc }
   has_one :first_guardian_general_detail, class_name: "GeneralDetail", foreign_key: "first_guardian_id"
   has_one :second_guardian_general_detail, class_name: "GeneralDetail", foreign_key: "second_guardian_id"
   has_one :third_guardian_general_detail, class_name: "GeneralDetail", foreign_key: "third_guardian_id"

@@ -1,9 +1,26 @@
+2.       Date of birth still defaulting to 1900 unselectable, but you are aware of this;
 
+4.       Thank you for putting up the list of express powers – can you give each section of them a heading, so “I want to give the administrators of my estate expanded powers[…]” then list underneath the ones that that option affects, then the next heading, etc. Also they don’t need to show clause numbers next to them when the client is viewing the list here;
 
-·         Replacement executor – this section is not required if “Notary Express” is selected as an executor. Be aware that I wrote out four executor, then I went back and added Notary Express, if you try to replicate this.
+7.       Can the tables show the items in order added – they currently still default to the newest one added on top (e.g. the property summary table);
+8.       I added 2 properties then went to the Property table. I clicked on one of them and amended the details. The button to proceed said “Proceed to beneficiaries”. I clicked it and it took me back to the Property table – that’s fine but can we just rename that button “Proceed” rather than “Proceed to beneficiaries”?;
  
-·         I added 4 executors then removed #2. If I went to executor 1 then clicked Proceed it flashed up the warning about having at least 2 executors, even though by now I had 3 executors and Notary Express already appointed.
+View Will bit
  
-·         Rather than a Remove Executor button on each individual page for each executor other than the first, would it be possible to have the table of executors on the main executors page with the option to delete them there?
+9.       View Will – needs a full stop after “I would like my body to be cremated”;
+10.   Needs a full stop after the name of partner: I am expecting to marry or form a civil partnership with First Partner My marriage to that person does not revoke this will. This will is effective even if I die before marrying that person.
+11.   Where middle names have been written in they are not appearing in the will – the will should include middle names if they are written in;
+12.   Likewise I put a second line of address, county, etc for some but not others, but only the first line is appearing. If users fill in a second line of address, county, etc, this should be outputted;
+13.   Specific gifts – each line should be pre-faced with “my” or alternatively you could put “my” after the “I give:” or “I give free of all taxes:” (as applicable) at the top;
+14.   Specific gifts was missing the clause number (7.1);
+15.   I changed the property to not be the sole or main residence, but the will still states “or any other property that is my sole or main residence” – I’m not sure if this bit comes out anyway or if it is because I went back and amended it;
+16.   Financial Legacies & Gifts to Charity – can we list the gifts with (a), (b), (c), etc?
+17.   Specific Gifts, Financial Legacies, Gifts to Charity & Residuary – where there is more than one gift, each should end with semi-colon, while the penultimate has a semi-colon and “and”, and the last a full stop, e.g.
  
-·         If Notary Express is not selected as an executor, could we have in the Replacement Executors page an option to add Notary Express as a replacement executor? This thought just arises from practice as I’ve noticed clients tend to put their friends as executors but I can often persuade them to put Notary Express as a replacement in case their friends cannot take up the appointment for any reason.
+(a) £1 to John;
+(b) £2 to Mary; and
+(c) £3 to Bob.
+ 
+18.   After creating the will I went back and un-ticked the Charity box, but when I clicked Proceed then went back to that page it was ticked again. If I create a new will and untick it, does it stay unticked? Is it only because I had clicked Create Will? If so that’s fine once creating the will takes the user to a thank you landing page (so they cannot just click back to edit) but if they log in again to amend their saved will and create a new one it has to be editable;
+19.   We are still getting “The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, etc” for the replacement residuary beneficiaries. That clause is only need for the primary beneficiaries, it does not need to be reprinted for the replacements; and
+20.   Precatory words did not come out properly: my Estate and these words should be considered non-binding %p expressions of my recommendations and not…

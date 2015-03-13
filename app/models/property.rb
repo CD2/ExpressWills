@@ -1,6 +1,6 @@
 class Property < ActiveRecord::Base
   belongs_to :will
-
+  default_scope -> { order id: :asc }
   has_one :benificiary_general_details, class_name: "GeneralDetail", foreign_key: "benificiary_id"
   has_one :second_benificiary_general_details, class_name: "GeneralDetail", foreign_key: "second_benificiary_id"
   has_one :third_benificiary_general_details, class_name: "GeneralDetail", foreign_key: "third_benificiary_id"
@@ -27,7 +27,7 @@ class Property < ActiveRecord::Base
   validates :country, presence: true, length: { maximum: 100 }
 
   def full_address
-    self.address_one.titleize {+ ", " + self.address_two.titleize if address_two} + ", " + self.city.titleize {+ ", " + self.county.titleize if county} + ", " + self.postcode.upcase + ", " + self.country.titleize
+    "#{self.address_one.titleize} #{self.address_two.titleize if address_two} #{self.city.titleize} #{self.county.titleize if county} #{self.postcode.upcase} #{self.country.titleize}"
   end
 
 

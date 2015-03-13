@@ -3,7 +3,7 @@
 
   %h5
     %b Property details
-  = render "layouts/text_field", :f => f, text_field: :land_reg_number, origin: @property, label_text: "Title number"
+  = render "layouts/text_field", :f => f, text_field: :land_reg_number, origin: @property, label_text: "Title number (if known)"
   = render "layouts/text_field", :f => f, text_field: :address_one, origin: @property
   = render "layouts/text_field", :f => f, text_field: :address_two, origin: @property
   = render "layouts/text_field", :f => f, text_field: :city, origin: @property

@@ -1,4 +1,10 @@
 var m_names = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+/*!
+ * Pikaday
+ *
+ * Copyright © 2014 David Bushell | BSD & MIT license | https://github.com/dbushell/Pikaday
+ */
+
 (function (root, factory)
 {
     'use strict';
@@ -15,7 +21,7 @@ var m_names = ['January','February','March','April','May','June','July','August'
         {
             // Load moment.js as an optional dependency
             var id = 'moment';
-            moment = req.defined && req.defined(id) ? req(id) : undefined;
+            try { moment = req(id); } catch (e) {}
             return factory(moment);
         });
     } else {
@@ -102,6 +108,12 @@ var m_names = ['January','February','March','April','May','June','July','August'
         return (/Date/).test(Object.prototype.toString.call(obj)) && !isNaN(obj.getTime());
     },
 
+    isWeekend = function(date)
+    {
+        var day = date.getDay();
+        return day === 0 || day === 6;
+    },
+
     isLeapYear = function(year)
     {
         // solution by Matti Virkkunen: http://stackoverflow.com/a/4881951
@@ -129,7 +141,7 @@ var m_names = ['January','February','March','April','May','June','July','August'
         var prop, hasProp;
         for (prop in from) {
             hasProp = to[prop] !== undefined;
-            if (hasProp && typeof from[prop] === 'object' && from[prop] != null && from[prop].nodeName === undefined) {
+            if (hasProp && typeof from[prop] === 'object' && from[prop] !== null && from[prop].nodeName === undefined) {
                 if (isDate(from[prop])) {
                     if (overwrite) {
                         to[prop] = new Date(from[prop].getTime());
@@ -234,6 +246,9 @@ var m_names = ['January','February','March','April','May','June','July','August'
             weekdays      : ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
             weekdaysShort : ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
         },
+
+        // Theme Classname
+        theme: null,
 
         // callback function
         onSelect: null,
@@ -391,6 +406,7 @@ var m_names = ['January','February','March','April','May','June','July','August'
                 return;
             }
 
+            e.preventDefault();
             if (!hasClass(target, 'is-disabled')) {
                 if (hasClass(target, 'pika-button') && !hasClass(target, 'is-empty')) {
                     self.setDate(new Date(target.getAttribute('data-pika-year'), target.getAttribute('data-pika-month'), target.getAttribute('data-pika-day')));
@@ -470,6 +486,15 @@ var m_names = ['January','February','March','April','May','June','July','August'
 
         self._onInputBlur = function()
         {
+            // IE allows pika div to gain focus; catch blur the input field
+            var pEl = document.activeElement;
+            do {
+                if (hasClass(pEl, 'pika-single')) {
+                    return;
+                }
+            }
+            while ((pEl = pEl.parentNode));
+
             if (!self._c) {
                 self._b = sto(function() {
                     self.hide();
@@ -493,20 +518,20 @@ var m_names = ['January','February','March','April','May','June','July','August'
                 }
             }
             do {
-                if (hasClass(pEl, 'pika-single')) {
+                if (hasClass(pEl, 'pika-single') || pEl === opts.trigger) {
                     return;
                 }
             }
             while ((pEl = pEl.parentNode));
-            if (self._v && target !== opts.trigger) {
+            if (self._v && target !== opts.trigger && pEl !== opts.trigger) {
                 self.hide();
             }
         };
 
         self.el = document.createElement('div');
-        self.el.className = 'pika-single' + (opts.isRTL ? ' is-rtl' : '');
+        self.el.className = 'pika-single' + (opts.isRTL ? ' is-rtl' : '') + (opts.theme ? ' ' + opts.theme : '');
 
-        addEvent(self.el, 'mousedown', self._onMouseDown, true);
+        addEvent(self.el, 'ontouchend' in document ? 'ontouchend' : 'mousedown', self._onMouseDown, true);
         addEvent(self.el, 'change', self._onChange);
 
         if (opts.field) {
@@ -574,9 +599,15 @@ var m_names = ['January','February','March','April','May','June','July','August'
 
             opts.field = (opts.field && opts.field.nodeName) ? opts.field : null;
 
+            opts.theme = (typeof opts.theme) == 'string' && opts.theme ? opts.theme : null;
+
             opts.bound = !!(opts.bound !== undefined ? opts.field && opts.bound : opts.field);
 
             opts.trigger = (opts.trigger && opts.trigger.nodeName) ? opts.trigger : opts.field;
+
+            opts.disableWeekends = !!opts.disableWeekends;
+
+            opts.disableDayFn = (typeof opts.disableDayFn) == "function" ? opts.disableDayFn : null;
 
             var nom = parseInt(opts.numberOfMonths, 10) || 1;
             opts.numberOfMonths = nom > 4 ? 4 : nom;
@@ -591,9 +622,7 @@ var m_names = ['January','February','March','April','May','June','July','August'
                 opts.maxDate = opts.minDate = false;
             }
             if (opts.minDate) {
-                setToStartOfDay(opts.minDate);
-                opts.minYear  = opts.minDate.getFullYear();
-                opts.minMonth = opts.minDate.getMonth();
+                this.setMinDate(opts.minDate)
             }
             if (opts.maxDate) {
                 setToStartOfDay(opts.maxDate);
@@ -618,7 +647,7 @@ var m_names = ['January','February','March','April','May','June','July','August'
         /**
          * return a formatted string of the current selection (using Moment.js if available)
          */
-         toString: function(format)
+        toString: function(format)
        {
 
            var date = this._d.getDate().toString()
@@ -629,7 +658,6 @@ var m_names = ['January','February','March','April','May','June','July','August'
            }
            return date + " " + month + " " + year
        },
-
         /**
          * return a Moment.js object of the current selection (if available)
          */
@@ -789,7 +817,10 @@ var m_names = ['January','February','March','April','May','June','July','August'
          */
         setMinDate: function(value)
         {
+            setToStartOfDay(value);
             this._o.minDate = value;
+            this._o.minYear  = value.getFullYear();
+            this._o.minMonth = value.getMonth();
         },
 
         /**
@@ -925,10 +956,13 @@ var m_names = ['January','February','March','April','May','June','July','August'
             for (var i = 0, r = 0; i < cells; i++)
             {
                 var day = new Date(year, month, 1 + (i - before)),
-                    isDisabled = (opts.minDate && day < opts.minDate) || (opts.maxDate && day > opts.maxDate),
                     isSelected = isDate(this._d) ? compareDates(day, this._d) : false,
                     isToday = compareDates(day, now),
-                    isEmpty = i < before || i >= (days + before);
+                    isEmpty = i < before || i >= (days + before),
+                    isDisabled = (opts.minDate && day < opts.minDate) ||
+                                 (opts.maxDate && day > opts.maxDate) ||
+                                 (opts.disableWeekends && isWeekend(day)) ||
+                                 (opts.disableDayFn && opts.disableDayFn(day));
 
                 row.push(renderDay(1 + (i - before), month, year, isSelected, isToday, isDisabled, isEmpty));
 
@@ -1007,6 +1041,7 @@ var m_names = ['January','February','March','April','May','June','July','August'
     return Pikaday;
 
 }));
+
 maxDate = new Date()
 maxDate.setYear(maxDate.getYear()-18)
 x = new Date();

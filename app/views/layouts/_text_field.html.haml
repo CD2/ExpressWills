@@ -3,14 +3,16 @@
     .small-12.column
       %dl
         %dt= question q_no
+      -if defined? advice_text    
+        %p.advice-text= advice_text
 .row.collapse
-  .large-2.columns
+  .small-3.columns
     %span.prefix
       -if defined? label_text
         = f.label text_field, label_text
       -else
         = f.label text_field
-  .large-10.columns
+  .small-9.columns
     - if origin.errors[text_field] && origin.errors[text_field].join(",") != ""
       = f.text_field text_field, class: "error"
       -if defined? label_text

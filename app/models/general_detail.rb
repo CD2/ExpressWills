@@ -1,5 +1,5 @@
 class GeneralDetail < ActiveRecord::Base
-
+  default_scope -> { order id: :asc }
   belongs_to :will
   belongs_to :testator_detail
   belongs_to :partner_detail
@@ -39,11 +39,11 @@ class GeneralDetail < ActiveRecord::Base
   validates :country, presence: true, length: { maximum: 100 }
 
   def full_name
-    self.first_name.titleize {+ " " + self.middle_name.titleize if middle_name} + " " + self.surname.titleize
+    "#{self.first_name.titleize} #{self.middle_name.titleize if middle_name} #{self.surname.titleize}"
   end
 
   def full_address
-    self.address_one.titleize {+ ", " + self.address_two.titleize if address_two} + ", " + self.city.titleize {+ ", " + self.county.titleize if county} + ", " + self.postcode.upcase + ", " + self.country.titleize
+    "#{self.address_one.titleize} #{self.address_two.titleize if address_two} #{self.city.titleize} #{self.county.titleize if county} #{self.postcode.upcase} #{self.country.titleize}"
   end
 
 end

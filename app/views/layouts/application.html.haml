@@ -8,7 +8,7 @@
     %title= full_title(yield(:title)) 
 
     = stylesheet_link_tag "application"
-    = javascript_include_tag "vendor/modernizr"
+
     = csrf_meta_tag
 
   %body{class: "#{yield(:bodyclass)}"}
@@ -47,3 +47,4 @@
           © 2015 Notary Express Ltd. All Rights Reserved.
 
     = javascript_include_tag "application"
+    = javascript_include_tag "vendor/modernizr"

@@ -1,0 +1,1 @@
+Date::DATE_FORMATS[:wills] = '%d %B %Y'

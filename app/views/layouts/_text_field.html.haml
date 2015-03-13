@@ -14,10 +14,16 @@
         = f.label text_field
   .small-9.columns
     - if origin.errors[text_field] && origin.errors[text_field].join(",") != ""
-      = f.text_field text_field, class: "error"
+      - if defined? default_text
+        = f.text_field text_field, class: "error", value: default_text
+      - else
+        = f.text_field text_field, class: "error"
       -if defined? label_text
         %small.error= "#{label_text} #{origin.errors[text_field].join(",")}"
       - else
         %small.error= "#{(text_field.slice(0,1).capitalize + text_field.slice(1..-1)).gsub('_',' ')} #{origin.errors[text_field].join(",")}"
     - else
-      = f.text_field text_field
+      - if defined? default_text
+        = f.text_field text_field, value: default_text
+      - else 
+        = f.text_field text_field

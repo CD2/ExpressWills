@@ -1,2 +1,30 @@
 = render 'header'
-= render 'form'
+
+= form_for [@will, @partner_detail]  do |f|
+
+  
+  - if @will.testator_detail.mirror_will == "yes"
+    = f.fields_for :general_detail do |builder|
+      = render "general_details/general_details_form", :builder => builder, :nested_origin => @partner_detail.general_detail
+    = render "layouts/text_field", :f => f, text_field: :phone_no, origin: @partner_detail, label_text: "Phone number"
+    = render "layouts/select_list", :f => f, select_list: :gender, options: ["Male", "Female"], origin: @partner_detail
+    .pikaday
+      = render "layouts/text_field", :f => f, text_field: :dob, origin: @partner_detail, label_text: "Date of birth"
+    = render "layouts/text_field", :f => f, text_field: :domicile_country, q_no: "01170", label_text: "Domicile country (if known)", origin: @partner_detail
+    %p.advice This is their country of permanent residence or homeland
+    .button-region
+      = f.submit 'Proceed', class: "button radius right"
+  - else
+    = f.fields_for :general_detail do |builder|
+      = render "layouts/text_field", :f => builder, text_field: :first_name, q_no: "00020", origin: @partner_detail.general_detail
+      = render "layouts/text_field", :f => builder, text_field: :middle_name, q_no: "00030", origin: @partner_detail.general_detail
+      = render "layouts/text_field", :f => builder, text_field: :surname, q_no: "00040", origin: @partner_detail.general_detail
+
+      = builder.hidden_field :address_one, value: @will.testator_general_details.address_one
+      = builder.hidden_field :address_two, value: @will.testator_general_details.address_two
+      = builder.hidden_field :city, value: @will.testator_general_details.city
+      = builder.hidden_field :county, value: @will.testator_general_details.county
+      = builder.hidden_field :postcode, value: @will.testator_general_details.postcode
+      = builder.hidden_field :country, value: @will.testator_general_details.country
+      .button-region
+        = f.submit 'Proceed', class: "button radius right"

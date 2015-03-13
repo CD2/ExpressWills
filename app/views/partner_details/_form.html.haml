@@ -8,7 +8,7 @@
     = render "layouts/text_field", :f => f, text_field: :phone_no, origin: @partner_detail, label_text: "Phone number"
     = render "layouts/select_list", :f => f, select_list: :gender, options: ["Male", "Female"], origin: @partner_detail
     .pikaday
-      = render "layouts/text_field", :f => f, text_field: :dob, origin: @partner_detail, label_text: "Date of birth"
+      = render "layouts/text_field", :f => f, text_field: :dob, origin: @partner_detail, label_text: "Date of birth", default_text: "#{(Date.today - 50.years).to_formatted_s(:wills)}"
     = render "layouts/text_field", :f => f, text_field: :domicile_country, q_no: "01170", label_text: "Domicile country (if known)", origin: @partner_detail
     %p.advice This is their country of permanent residence or homeland
     .button-region

@@ -22,7 +22,7 @@ class CashGift < ActiveRecord::Base
   end
 
   def full_address
-    "#{self.address_one.titleize} #{self.address_two.titleize if address_two} #{self.city.titleize} #{self.county.titleize if county} #{self.postcode.upcase} #{self.country.titleize}"
+    "#{self.address_one.titleize}, #{self.address_two.titleize+',' if address_two} #{self.city.titleize}, #{self.county.titleize + ',' if county} #{self.postcode.upcase}, #{self.country.titleize}"
   end
 
   

@@ -1,4 +1,5 @@
 - if @primary_residuaries.any?
+  - letter = "`"
   %p
     %b= "#{@count+=1}. RESIDUARY"
   %p
@@ -8,187 +9,306 @@
 
       The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed as follows:
 
-      - letter = "`"
-      - @primary_residuaries.each do |benificiary| 
+      - @primary_residuaries.each_with_index do |benificiary, i| 
+        - if @primary_residuaries.count == (i+1)
+          - @end = "."
+        - elsif @primary_residuaries.count == (i+2)
+          - @end = "; and"
+        - else
+          - @end = ";" 
         - letter.next!
-        = benificiary_details benificiary, benificiary.share, "percentage", letter
+        = benificiary_details benificiary, benificiary.share, "percentage", letter + @end
 
     - elsif @equal_shares.count == @primary_residuaries.count
 
       The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed in equal shares between:
 
-      - letter = "`"
-      - @primary_residuaries.each do |benificiary| 
+      - @primary_residuaries.each_with_index do |benificiary, i| 
+        - if @primary_residuaries.count == (i+1)
+          - @end = "."
+        - elsif @primary_residuaries.count == (i+2)
+          - @end = "; and"
+        - else
+          - @end = ";" 
         - letter.next!
-        = benificiary_details benificiary, benificiary.share, "equal_shares", letter
+        = benificiary_details benificiary, benificiary.share, "equal_shares", letter + @end
 
     - elsif @trustees.count == @primary_residuaries.count
 
       The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed in such percentages as the Trustees elect in their absolute discretion between:
 
-      - letter = "`"
-      - @primary_residuaries.each do |benificiary|
+      - @primary_residuaries.each_with_index do |benificiary, i| 
+        - if @primary_residuaries.count == (i+1)
+          - @end = "."
+        - elsif @primary_residuaries.count == (i+2)
+          - @end = "; and"
+        - else
+          - @end = ";" 
         - letter.next!
-        = benificiary_details benificiary, benificiary.share, "trustees", letter
+        = benificiary_details benificiary, benificiary.share, "trustees", letter + @end
 
     - elsif @equal_shares.count + @trustees.count == @primary_residuaries.count
 
       The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed in such percentages as the Trustees elect in their absolute discretion between:
 
-      - letter = "`"
-      - @trustees.each do |benificiary|
-      - letter.next!
-        = benificiary_details benificiary, benificiary.share, "trustees", letter
+      - @trustees.each_with_index do |benificiary, i| 
+        - if @trustees.count == (i+1)
+          - @end = "."
+        - elsif @trustees.count == (i+2)
+          - @end = "; and"
+        - else
+          - @end = ";" 
+        - letter.next!
+        = benificiary_details benificiary, benificiary.share, "trustees", letter + @end
 
       %p the remainder to be shared equally between:
 
-      - letter = "`"
-      - @equal_shares.each do |benificiary| 
+      - @equal_shares.each_with_index do |benificiary, i| 
+        - if @equal_shares.count == (i+1)
+          - @end = "."
+        - elsif @equal_shares.count == (i+2)
+          - @end = "; and"
+        - else
+          - @end = ";"  
         - letter.next!
-        = benificiary_details benificiary, benificiary.share, "equal_shares", letter
+        = benificiary_details benificiary, benificiary.share, "equal_shares", letter + @end
 
 
     - elsif @percents.count + @equal_shares.count == @primary_residuaries.count
 
       The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed as follows:
 
-      - letter = "`"
-      - @percents.each do |benificiary|
+      - @percents.each_with_index do |benificiary, i| 
+        - if @percents.count == (i+1)
+          - @end = "."
+        - elsif @percents.count == (i+2)
+          - @end = "; and"
+        - else
+          - @end = ";" 
         - letter.next!
-        = benificiary_details benificiary, benificiary.share, "percentage", letter
+        = benificiary_details benificiary, benificiary.share, "percentage", letter + @end
 
       %p the remainder to be shared equally between:
 
-      - letter = "`"
-      - @equal_shares.each do |benificiary| 
+      - @equal_shares.each_with_index do |benificiary, i| 
+        - if @equal_shares.count == (i+1)
+          - @end = "."
+        - elsif @equal_shares.count == (i+2)
+          - @end = "; and"
+        - else
+          - @end = ";"  
         - letter.next!
-        = benificiary_details benificiary, benificiary.share, "equal_shares", letter
+        = benificiary_details benificiary, benificiary.share, "equal_shares", letter + @end
 
     - elsif @percents.count + @trustees.count == @primary_residuaries.count
 
       The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed as follows:
 
-      - letter = "`"
-      - @percents.each do |benificiary|
+      - @percents.each_with_index do |benificiary, i| 
+        - if @percents.count == (i+1)
+          - @end = "."
+        - elsif @percents.count == (i+2)
+          - @end = "; and"
+        - else
+          - @end = ";" 
         - letter.next!
-        = benificiary_details benificiary, benificiary.share, "percentage", letter
+        = benificiary_details benificiary, benificiary.share, "percentage", letter + @end
 
       %p the remainder to be shared in such percentages as the Trustees elect in their absolute discretion between:
 
-      - letter = "`"
-      - @trustees.each do |benificiary|
+      - @trustees.each_with_index do |benificiary, i| 
+        - if @trustees.count == (i+1)
+          - @end = "."
+        - elsif @trustees.count == (i+2)
+          - @end = "; and"
+        - else
+          - @end = ";" 
         - letter.next!
-        = benificiary_details benificiary, benificiary.share, "trustees", letter
+        = benificiary_details benificiary, benificiary.share, "trustees", letter + @end
 
     - else
 
       The Trustees will hold the remainder of my Estate upon trust to sell it or retain it to pay my debts, legacies, taxes, funeral and executorship expenses, upon which the remainder shall be distributed as follows:
 
-      - letter = "`"
-      - @percents.each do |benificiary|
+      - @percents.each_with_index do |benificiary, i| 
+        - if @percents.count == (i+1)
+          - @end = "."
+        - elsif @percents.count == (i+2)
+          - @end = "; and"
+        - else
+          - @end = ";" 
         - letter.next!
-        = benificiary_details benificiary, benificiary.share, "percentage", letter
+        = benificiary_details benificiary, benificiary.share, "percentage", letter + @end
 
       %p the remainder to be shared in such percentages as the Trustees elect in their absolute discretion between:
 
-      - letter = "`"
-      - @trustees.each do |benificiary|
+      - @trustees.each_with_index do |benificiary, i| 
+        - if @trustees.count == (i+1)
+          - @end = "."
+        - elsif @trustees.count == (i+2)
+          - @end = "; and"
+        - else
+          - @end = ";" 
         - letter.next!
-        = benificiary_details benificiary, benificiary.share, "trustees", letter
+        = benificiary_details benificiary, benificiary.share, "trustees", letter + @end
 
       %p and any remainder to be shared equally between:
 
-      - letter = "`"
-      - @equal_shares.each do |benificiary| 
+      - @equal_shares.each_with_index do |benificiary, i| 
+        - if @equal_shares.count == (i+1)
+          - @end = "."
+        - elsif @equal_shares.count == (i+2)
+          - @end = "; and"
+        - else
+          - @end = ";"  
         - letter.next!
-        = benificiary_details benificiary, benificiary.share, "equal_shares", letter
+        = benificiary_details benificiary, benificiary.share, "equal_shares", letter + @end
 
   - if @secondary_residuaries.any?
     %p= "#{@count}.2 If any above mentioned residuary gift fails, then the Trustees will hold it and pay it to:"
     %p
       - if @secondary_percents.count == @secondary_residuaries.count
 
-        - letter = "`"
-        - @secondary_residuaries.each do |benificiary| 
+        - @secondary_residuaries.each_with_index do |benificiary, i| 
+          - if @secondary_residuaries.count == (i+1)
+            - @end = "."
+          - elsif @secondary_residuaries.count == (i+2)
+            - @end = "; and"
+          - else
+            - @end = ";"  
           - letter.next!
-          = benificiary_details benificiary, benificiary.share, "percentage", letter
+          = benificiary_details benificiary, benificiary.share, "percentage", letter + @end
 
       - elsif @secondary_equal_shares.count == @secondary_residuaries.count
 
-        - letter = "`"
-        - @secondary_residuaries.each do |benificiary| 
-          - letter.next!
-          = benificiary_details benificiary, benificiary.share, "equal_shares", letter
+        - @secondary_residuaries.each_with_index do |benificiary, i| 
+          - if @secondary_residuaries.count == (i+1)
+            - @end = "."
+          - elsif @secondary_residuaries.count == (i+2)
+            - @end = "; and"
+          - else
+            - @end = ";"  
+          = benificiary_details benificiary, benificiary.share, "equal_shares", letter + @end
 
       - elsif @secondary_trustees.count == @secondary_residuaries.count
 
-        - letter = "`"
-        - @secondary_residuaries.each do |benificiary|
+        - @secondary_residuaries.each_with_index do |benificiary, i| 
+          - if @secondary_residuaries.count == (i+1)
+            - @end = "."
+          - elsif @secondary_residuaries.count == (i+2)
+            - @end = "; and"
+          - else
+            - @end = ";" 
           - letter.next!
-          = benificiary_details benificiary, benificiary.share, "trustees", letter
+          = benificiary_details benificiary, benificiary.share, "trustees", letter + @end
 
       - elsif @secondary_equal_shares.count + @secondary_trustees.count == @secondary_residuaries.count
 
-        - letter = "`"
-        - @secondary_trustees.each do |benificiary|
-        - letter.next!
-          = benificiary_details benificiary, benificiary.share, "trustees", letter
+        - @secondary_trustees.each_with_index do |benificiary, i| 
+          - if @secondary_trustees.count == (i+1)
+            - @end = "."
+          - elsif @secondary_trustees.count == (i+2)
+            - @end = "; and"
+          - else
+            - @end = ";" 
+          - letter.next!
+          = benificiary_details benificiary, benificiary.share, "trustees", letter + @end
 
         %p the remainder to be shared equally between:
 
-        - letter = "`"
-        - @secondary_equal_shares.each do |benificiary| 
+        - @secondary_equal_shares.each_with_index do |benificiary, i| 
+          - if @secondary_equal_shares.count == (i+1)
+            - @end = "."
+          - elsif @secondary_equal_shares.count == (i+2)
+            - @end = "; and"
+          - else
+            - @end = ";"  
           - letter.next!
-          = benificiary_details benificiary, benificiary.share, "equal_shares", letter
+          = benificiary_details benificiary, benificiary.share, "equal_shares", letter + @end
 
 
       - elsif @secondary_percents.count + @secondary_equal_shares.count == @secondary_residuaries.count
 
-        - letter = "`"
-        - @secondary_percents.each do |benificiary|
+        - @secondary_percents.each_with_index do |benificiary, i| 
+          - if @secondary_percents.count == (i+1)
+            - @end = "."
+          - elsif @secondary_percents.count == (i+2)
+            - @end = "; and"
+          - else
+            - @end = ";" 
           - letter.next!
-          = benificiary_details benificiary, benificiary.share, "percentage", letter
+          = benificiary_details benificiary, benificiary.share, "percentage", letter + @end
 
         %p the remainder to be shared equally between:
 
-        - letter = "`"
-        - @secondary_equal_shares.each do |benificiary| 
+        - @secondary_equal_shares.each_with_index do |benificiary, i| 
+          - if @secondary_equal_shares.count == (i+1)
+            - @end = "."
+          - elsif @secondary_equal_shares.count == (i+2)
+            - @end = "; and"
+          - else
+            - @end = ";"  
           - letter.next!
-          = benificiary_details benificiary, benificiary.share, "equal_shares", letter
+          = benificiary_details benificiary, benificiary.share, "equal_shares", letter + @end
 
       - elsif @secondary_percents.count + @secondary_trustees.count == @secondary_residuaries.count
 
 
-        - letter = "`"
-        - @secondary_percents.each do |benificiary|
+        - @secondary_percents.each_with_index do |benificiary, i| 
+          - if @secondary_percents.count == (i+1)
+            - @end = "."
+          - elsif @secondary_percents.count == (i+2)
+            - @end = "; and"
+          - else
+            - @end = ";" 
           - letter.next!
-          = benificiary_details benificiary, benificiary.share, "percentage", letter
+          = benificiary_details benificiary, benificiary.share, "percentage", letter + @end
 
         %p the remainder to be shared in such percentages as the Trustees elect in their absolute discretion between:
 
-        - letter = "`"
-        - @secondary_trustees.each do |benificiary|
+        - @secondary_trustees.each_with_index do |benificiary, i| 
+          - if @secondary_trustees.count == (i+1)
+            - @end = "."
+          - elsif @secondary_trustees.count == (i+2)
+            - @end = "; and"
+          - else
+            - @end = ";" 
           - letter.next!
-          = benificiary_details benificiary, benificiary.share, "trustees", letter
+          = benificiary_details benificiary, benificiary.share, "trustees", letter + @end
 
       - else
 
-        - letter = "`"
-        - @secondary_percents.each do |benificiary|
+        - @secondary_percents.each_with_index do |benificiary, i| 
+          - if @secondary_percents.count == (i+1)
+            - @end = "."
+          - elsif @secondary_percents.count == (i+2)
+            - @end = "; and"
+          - else
+            - @end = ";" 
           - letter.next!
-          = benificiary_details benificiary, benificiary.share, "percentage", letter
+          = benificiary_details benificiary, benificiary.share, "percentage", letter + @end
 
         %p the remainder to be shared in such percentages as the Trustees elect in their absolute discretion between:
 
-        - letter = "`"
-        - @secondary_trustees.each do |benificiary|
+        - @secondary_trustees.each_with_index do |benificiary, i| 
+          - if @secondary_trustees.count == (i+1)
+            - @end = "."
+          - elsif @secondary_trustees.count == (i+2)
+            - @end = "; and"
+          - else
+            - @end = ";" 
           - letter.next!
-          = benificiary_details benificiary, benificiary.share, "trustees", letter
+          = benificiary_details benificiary, benificiary.share, "trustees", letter + @end
 
         %p and any remainder to be shared equally between:
 
-        - letter = "`"
-        - @secondary_equal_shares.each do |benificiary| 
+        - @secondary_equal_shares.each_with_index do |benificiary, i| 
+          - if @secondary_equal_shares.count == (i+1)
+            - @end = "."
+          - elsif @secondary_equal_shares.count == (i+2)
+            - @end = "; and"
+          - else
+            - @end = ";"  
           - letter.next!
-          = benificiary_details benificiary, benificiary.share, "equal_shares", letter
+          = benificiary_details benificiary, benificiary.share, "equal_shares", letter + @end
 

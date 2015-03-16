@@ -23,5 +23,5 @@
   = f.hidden_field :count, value: @will.properties.count+1
   .button-region
     = f.submit 'Proceed', class: "button radius right"
-    = link_to("Edit beneficiaries", will_property_benificiaries_path(@will, @property), class: "button radius")
+    = f.submit 'Edit beneficiaries', class: "button radius"
     

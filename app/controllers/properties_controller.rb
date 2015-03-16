@@ -33,7 +33,7 @@ class PropertiesController < ApplicationController
   def update
     @will = Will.find(params[:will_id])
     if @property.update(property_params)
-      if params[:commit] == "Proceed to benificiaries"
+      if params[:commit] == "Edit beneficiaries"
         redirect_to will_property_benificiaries_path(@will, @property)
       else
         @will = Will.find(params[:will_id])

@@ -27,7 +27,9 @@ class Property < ActiveRecord::Base
   validates :country, presence: true, length: { maximum: 100 }
 
   def full_address
-    "#{self.address_one.titleize} #{self.address_two.titleize if address_two} #{self.city.titleize} #{self.county.titleize if county} #{self.postcode.upcase} #{self.country.titleize}"
+    self.address_two == nil || self.address_two.gsub(/\s+/, "") == "" ? @addresstwo = "" : @addresstwo = self.address_two + ","
+    self.county == nil || self.county.gsub(/\s+/, "") == ""  ? @county = "" : @county = self.county + ","
+    "#{self.address_one.titleize}, #{@addresstwo} #{self.city.titleize}, #{@county} #{self.postcode.upcase}, #{self.country.titleize}"
   end
 
 

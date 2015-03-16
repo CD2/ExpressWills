@@ -16,7 +16,8 @@
         - if c.if_dead == "allocated_to_their_children"
           = succeed ". Should the aforementioned individual predecease me this gift shall instead fall to their child(ren) in equal shares to be paid only when they reach the age of #{c.certain_age_if_dead}" do
             = c.certain_age == "no" ? "absolutely" : "to be paid only when the aforementioned individual reaches the age of #{c.certain_age}"
-        
+        - else
+          = c.certain_age == "no" ? "absolutely" : "to be paid only when the aforementioned individual reaches the age of #{c.certain_age}"
       - else
         = "(#{letter}) £#{c.amount} to each of my "
         = c.shared_to == "all_of_my_children" ? "children" : "grandchildren" 

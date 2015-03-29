@@ -19,13 +19,13 @@ module WillsHelper
     case benificiary.residuary_type
 
     when "Individual"
-      "<p>(#{letter}) #{prefix} #{benificiary.individual_residuary_general_detail.full_name} of #{benificiary.individual_residuary_general_detail.full_address} #{postfix}. #{dead_extra}</p>".html_safe
+      "(#{letter}) #{prefix} #{benificiary.individual_residuary_general_detail.full_name} of #{benificiary.individual_residuary_general_detail.full_address} #{postfix}. #{dead_extra}".html_safe
     when "Charity"
-      "<p>(#{letter}) #{prefix} #{benificiary.charity_residuary_general_detail.name}#{charity_no}#{charity_add}.</p>".html_safe
+      "(#{letter}) #{prefix} #{benificiary.charity_residuary_general_detail.name}#{charity_no}#{charity_add}".html_safe
     when "My grandchildren"
-      "<p>(#{letter}) #{prefix} #{prefix == '' ? 'M' : 'm'}y grandchildren in equal shares #{postfix}. #{dead_extra}</p>".html_safe
+      "(#{letter}) #{prefix} #{prefix == '' ? 'M' : 'm'}y grandchildren in equal shares #{postfix}. #{dead_extra}".html_safe
     when "My children"
-      "<p>(#{letter}) #{prefix} #{prefix == '' ? 'M' : 'm'}y children in equal shares #{postfix}. #{dead_extra}</p>".html_safe
+      "(#{letter}) #{prefix} #{prefix == '' ? 'M' : 'm'}y children in equal shares #{postfix}. #{dead_extra}".html_safe
     end
   end
 

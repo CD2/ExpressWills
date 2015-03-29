@@ -23,7 +23,12 @@ class ResiduariesController < ApplicationController
       @residuary.will_id = params[:will_id]
     end
     if @residuary.save
-      redirect_to secondary_will_residuary_details_path
+      @will = Will.find(params[:will_id])
+      if @will.residuary_details.where(secondary: true).any?
+        redirect_to new_will_request_path
+      else
+        redirect_to secondary_will_residuary_details_path
+      end
     else
       render :new
     end
@@ -31,7 +36,12 @@ class ResiduariesController < ApplicationController
 
   def update
     if @residuary.update(residuary_params)
-      redirect_to secondary_will_residuary_details_path
+      @will = Will.find(params[:will_id])
+      if @will.residuary_details.where(secondary: true).any?
+        redirect_to new_will_request_path
+      else
+        redirect_to secondary_will_residuary_details_path
+      end
     else
       render :edit
     end

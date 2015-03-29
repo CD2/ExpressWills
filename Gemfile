@@ -21,6 +21,8 @@ gem "faker"
 
 #server
 gem 'unicorn'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 #testing
 group :development, :test do

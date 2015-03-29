@@ -4,65 +4,41 @@
       %th{colspan:"2"}
         %h5 Personal Details
   %tr
-    %th consent
-    %td= @testator.consent
-  %tr
-    %th phone_no
+    %th= question "01020"
     %td= @testator.phone_no
   %tr  
-    %th gender
+    %th= question "01030"
     %td= @testator.gender
   %tr  
-    %th dob
+    %th= question "01040"
     %td= @testator.dob
   %tr  
-    %th domicile_country
+    %th= question "01050"
     %td= @testator.domicile_country
   %tr  
-    %th children
+    %th= question "01060"
     %td= @testator.children
   %tr  
-    %th children_age
+    %th= question "01070"
     %td= @testator.children_age
   %tr  
-    %th planning_marrige
+    %th= question "01080"
     %td= @testator.planning_marrige
   %tr  
-    %th effective_post_marrige
+    %th= question "01090"
     %td= @testator.effective_post_marrige
   %tr  
-    %th effective_post_death_sans_marrige
+    %th= question "01110"
     %td= @testator.effective_post_death_sans_marrige
   %tr  
-    %th mirror_will
+    %th= question "01130"
     %td= @testator.mirror_will
   %tr  
-    %th first_name
-    %td= @testator_details.first_name
+    %th= "Name"
+    %td= @testator_details.full_name
   %tr  
-    %th middle_name
-    %td= @testator_details.middle_name
-  %tr  
-    %th surname
-    %td= @testator_details.surname
-  %tr  
-    %th address_one
-    %td= @testator_details.address_one
-  %tr  
-    %th address_two
-    %td= @testator_details.address_two
-  %tr  
-    %th city
-    %td= @testator_details.city
-  %tr 
-    %th county
-    %td= @testator_details.county
-  %tr  
-    %th postcode
-    %td= @testator_details.postcode
-  %tr  
-    %th country
-    %td= @testator_details.country
+    %th= "Address"
+    %td= @testator_details.full_address
 
 - if @partner
   - if @testator.mirror_will == "yes" || @testator.planning_marrige
@@ -73,43 +49,22 @@
             %h5 Mirror Will Details
       - if @partner_details
         %tr  
-          %th first_name
-          %td= @partner_details.first_name
+          %th Name
+          %td= @partner_details.full_name
         %tr  
-          %th middle_name
-          %td= @partner_details.middle_name
-        %tr  
-          %th surname
-          %td= @partner_details.surname
-        %tr  
-          %th address_one
-          %td= @partner_details.address_one
-        %tr  
-          %th address_two
-          %td= @partner_details.address_two
-        %tr  
-          %th city
-          %td= @partner_details.city
-        %tr 
-          %th county
-          %td= @partner_details.county
-        %tr  
-          %th postcode
-          %td= @partner_details.postcode
-        %tr  
-          %th country
-          %td= @partner_details.country
+          %th Address
+          %td= @partner_details.full_address
       %tr
-        %th phone_no
+        %th Phone No
         %td= @partner.phone_no
       %tr
-        %th gender
+        %th Gender
         %td= @partner.gender
       %tr
-        %th dob
+        %th Date of Birith
         %td= @partner.dob
       %tr
-        %th domicile_country
+        %th Domicile Country
         %td= @partner.domicile_country
 
 %table
@@ -118,16 +73,16 @@
       %th{colspan:2}
         %h5 Funeral
   %tr
-    %th preference
+    %th= question "02010"
     %td= @funeral.preference
   %tr
-    %th wishes
+    %th= question "02020"
     %td= @funeral.wishes
   %tr
-    %th donate_organs
+    %th= question "02030"
     %td= @funeral.donate_organs
   %tr
-    %th specific_organs
+    %th= question "02040"
     %td= @funeral.specific_organs
 
 %table
@@ -144,97 +99,23 @@
         %td{colspan:2, class:"summary"}
           %h6= "Executor #{i+1}"
       %tr
-        %th relationship
-        %td= exec.relationship
+        %th Name
+        %td= exec.full_name
       %tr
-        %th first_name
-        %td= exec.first_name
-      %tr
-        %th middle_name
-        %td= exec.middle_name
-      %tr
-        %th surname
-        %td= exec.surname
-      %tr
-        %th address_one
-        %td= exec.address_one
-      %tr
-        %th address_two
-        %td= exec.address_two
-      %tr
-        %th city
-        %td= exec.city
-      %tr
-        %th county
-        %td= exec.county
-      %tr
-        %th postcode
-        %td= exec.postcode
-      %tr
-        %th country
-        %td= exec.country
+        %th Address
+        %td= exec.full_address
+
   - @exec_reps.each_with_index do |exec, i|
     - if exec
       %tr
         %td{colspan:2, class:"summary"}
           %h6= "Replacement Executor #{i+1}"
       %tr
-        %th relationship
-        %td= exec.relationship
+        %th Name
+        %td= exec.full_name
       %tr
-        %th first_name
-        %td= exec.first_name
-      %tr
-        %th middle_name
-        %td= exec.middle_name
-      %tr
-        %th surname
-        %td= exec.surname
-      %tr
-        %th address_one
-        %td= exec.address_one
-      %tr
-        %th address_two
-        %td= exec.address_two
-      %tr
-        %th city
-        %td= exec.city
-      %tr
-        %th county
-        %td= exec.county
-      %tr
-        %th postcode
-        %td= exec.postcode
-      %tr
-        %th country
-        %td= exec.country
-
-- if @admin
-  %table
-    %thead
-      %tr
-        %th{colspan:2}
-          %h5 Administration
-    - if @admin.accept_admin
-      %tr
-        %th Notary Express
-        %td= @admin.accept_admin
-    - else
-      %tr
-        %th expanded_powers
-        %td= @admin.expanded_powers
-      %tr
-        %th borrow_powers
-        %td= @admin.borrow_powers
-      %tr
-        %th appoint_admin_powers
-        %td= @admin.appoint_admin_powers
-      %tr
-        %th buy_sell_powers
-        %td= @admin.buy_sell_powers
-      %tr
-        %th liability_powers
-        %td= @admin.liability_powers
+        %th Address
+        %td= exec.full_address
 
 - if @guardians || @guardians_rep
   %table
@@ -248,70 +129,22 @@
           %td{colspan:2, class:"summary"}
             %h6= "Guardian #{i+1}"
         %tr
-          %th relationship
-          %td= exec.relationship
+          %th Name
+          %td= exec.full_name
         %tr
-          %th first_name
-          %td= exec.first_name
-        %tr
-          %th middle_name
-          %td= exec.middle_name
-        %tr
-          %th surname
-          %td= exec.surname
-        %tr
-          %th address_one
-          %td= exec.address_one
-        %tr
-          %th address_two
-          %td= exec.address_two
-        %tr
-          %th city
-          %td= exec.city
-        %tr
-          %th county
-          %td= exec.county
-        %tr
-          %th postcode
-          %td= exec.postcode
-        %tr
-          %th country
-          %td= exec.country
+          %th Address
+          %td= exec.full_address
     - @guardians_rep.each_with_index do |exec, i|
       - if exec
         %tr
           %td{colspan:2, class:"summary"}
             %h6= "Replacement Guardian #{i+1}"
         %tr
-          %th relationship
-          %td= exec.relationship
+          %th Name
+          %td= exec.full_name
         %tr
-          %th first_name
-          %td= exec.first_name
-        %tr
-          %th middle_name
-          %td= exec.middle_name
-        %tr
-          %th surname
-          %td= exec.surname
-        %tr
-          %th address_one
-          %td= exec.address_one
-        %tr
-          %th address_two
-          %td= exec.address_two
-        %tr
-          %th city
-          %td= exec.city
-        %tr
-          %th county
-          %td= exec.county
-        %tr
-          %th postcode
-          %td= exec.postcode
-        %tr
-          %th country
-          %td= exec.country
+          %th Address
+          %td= exec.full_address
 
 %table
   %thead
@@ -322,52 +155,23 @@
     %tr
       %td{colspan:2, class:"summary"}
         %h6= "Gift #{i+1}"
-    %tr
-      %th shared_to
-      %td= cash_gift.shared_to
     - if cash_gift.shared_to == "no"
       %tr
-        %th relationship
-        %td= cash_gift.relationship
+        %th Name
+        %td= cash_gift.full_name
       %tr
-        %th first_name
-        %td= cash_gift.first_name
+        %th Address
+        %td= cash_gift.full_address
+    - else
       %tr
-        %th middle_name
-        %td= cash_gift.middle_name
-      %tr
-        %th surname
-        %td= cash_gift.surname
-      %tr
-        %th address_one
-        %td= cash_gift.address_one
-      %tr
-        %th address_two
-        %td= cash_gift.address_two
-      %tr
-        %th city
-        %td= cash_gift.city
-      %tr
-        %th county
-        %td= cash_gift.county
-      %tr
-        %th postcode
-        %td= cash_gift.postcode
-      %tr
-        %th country
-      %td= cash_gift.country
+        %td Shared to
+        %td= cash_gift.shared_to
     %tr
-      %th amount
+      %th= "Amount"
       %td= cash_gift.amount
     %tr
-      %th certain_age
+      %th= question "06040"
       %td= cash_gift.certain_age
-    %tr
-      %th if_dead
-      %td= cash_gift.if_dead
-    %tr
-      %th certain_age_if_dead
-      %td= cash_gift.certain_age_if_dead
 
 %table
   %thead
@@ -378,52 +182,20 @@
     %tr
       %td{colspan:2, class:"summary"}
         %h6= cd.popular_charity ? cd.popular_charity_name : cd.name
-    %tr  
-      %th popular_charity
-      %td= cd.popular_charity
-    %tr  
-      %th popular_charity_name
-      %td= cd.popular_charity_name
     - unless cd.popular_charity
       %tr  
-        %th name
+        %th= "Name"
         %td= cd.name
       %tr  
-        %th registered_charity_number
-        %td= cd.registered_charity_number
+        %th= "Address"
+        %td= cd.full_address
+    - else
       %tr  
-        %th address_one
-        %td= cd.address_one
-      %tr  
-        %th address_two
-        %td= cd.address_two
-      %tr  
-        %th city
-        %td= cd.city
-      %tr  
-        %th county
-        %td= cd.county
-      %tr  
-        %th country
-        %td= cd.country
-      %tr  
-        %th postcode
-        %td= cd.postcode
-      %tr  
-      %th amount
-      %td= cd.amount
+        %th= "Name"
+        %td= cd.popular_charity_name
     %tr  
-      %th instruction
-      %td= cd.instruction
-
-%table
-  %thead
-    %tr
-      %th{colspan:2}
-        %h5 Charity Option
-  %tr
-    %th permission
-    %td= @charity_permission.permission if @charity_permission
+      %th= "Amount"
+      %td= cd.amount
 
 - if @properties.any?
   - @properties.each_with_index do |property|
@@ -433,115 +205,52 @@
           %th{colspan:2}
             %h5 Property
       %tr
-        %th land_reg_number
+        %th Land Registry Number
         %td= property.land_reg_number
       %tr
-        %th address_one
-        %td= property.address_one
+        %th Address
+        %td= property.full_address
       %tr
-        %th address_two
-        %td= property.address_two
-      %tr
-        %th city
-        %td= property.city
-      %tr
-        %th county
-        %td= property.county
-      %tr
-        %th country
-        %td= property.country
-      %tr
-        %th postcode
-        %td= property.postcode
-      %tr
-        %th sole_residence
+        %th Sole Residence?
         %td= property.sole_residence
       %tr
-        %th recipient_no
+        %th= question "08030"
         %td= property.recipient_no
       %tr
-        %th joint_or_common
+        %th= question "08040"
         %td= property.joint_or_common
       %tr
-        %th responsible_for_charges
+        %th= question "08050"
         %td= property.responsible_for_charges
       %tr
-        %th as_cash_if_sold
+        %th= question "08060"
         %td= property.as_cash_if_sold
       %tr
-        %th held_in_trust
+        %th= question "08070"
         %td= property.held_in_trust
       %tr
-        %th life_beneficiary_no
+        %th= question "08080"
         %td= property.life_beneficiary_no
       - property.beneficiaries.each_with_index do |ben, i|
         %tr
           %td{colspan:2, class:"summary"}
             = "Beneficiary #{i+1}"
-        %tr
-          %th relationship
-          %td= ben.relationship
         %tr  
-          %th first_name
-          %td= ben.first_name
+          %th= "Name"
+          %td= ben.full_name
         %tr  
-          %th middle_name
-          %td= ben.middle_name
-        %tr  
-          %th surname
-          %td= ben.surname
-        %tr  
-          %th address_one
-          %td= ben.address_one
-        %tr  
-          %th address_two
-          %td= ben.address_two
-        %tr  
-          %th city
-          %td= ben.city
-        %tr  
-          %th county
-          %td= ben.county
-        %tr  
-          %th postcode
-          %td= ben.postcode
-        %tr  
-          %th country
-          %td= ben.country
+          %th= "Address"
+          %td= ben.full_address
       - property.life_beneficiaries.each_with_index do |ben, i|
         %tr
           %td{colspan:2, class:"summary"}
             = "Life Beneficiary #{i+1}"
-        %tr
-          %th relationship
-          %td= ben.relationship
         %tr  
-          %th first_name
-          %td= ben.first_name
+          %th= "Name"
+          %td= ben.full_name
         %tr  
-          %th middle_name
-          %td= ben.middle_name
-        %tr  
-          %th surname
-          %td= ben.surname
-        %tr  
-          %th address_one
-          %td= ben.address_one
-        %tr  
-          %th address_two
-          %td= ben.address_two
-        %tr  
-          %th city
-          %td= ben.city
-        %tr  
-          %th county
-          %td= ben.county
-        %tr  
-          %th postcode
-          %td= ben.postcode
-        %tr  
-          %th country
-          %td= ben.country
+          %th= "Address"
+          %td= ben.full_address
 
 %table
   %thead
@@ -549,41 +258,17 @@
       %th{colspan:2}
         %h5 Personal Gifts
   - @personal_gifts.each do |gift|
-    %tr
-      %th relationship
-      %td= gift.relationship
     %tr  
-      %th first_name
-      %td= gift.first_name
+      %th= "Name"
+      %td= gift.full_name
     %tr  
-      %th middle_name
-      %td= gift.middle_name
+      %th= "Address"
+      %td= gift.full_address
     %tr  
-      %th surname
-      %td= gift.surname
-    %tr  
-      %th address_one
-      %td= gift.address_one
-    %tr  
-      %th address_two
-      %td= gift.address_two
-    %tr  
-      %th city
-      %td= gift.city
-    %tr  
-      %th county
-      %td= gift.county
-    %tr  
-      %th postcode
-      %td= gift.postcode
-    %tr  
-      %th country
-      %td= gift.country
-    %tr  
-      %th description
+      %th= "Description"
       %td= gift.description
     %tr  
-      %th as_cash_if_sold
+      %th= question "09030"
       %td= gift.as_cash_if_sold
 
 - if @residuaries.any?
@@ -594,82 +279,25 @@
           %th{colspan:2}
             %h5= "Residuary #{i+1}"
       %tr
-        %th residuary_type
+        %th= "Beneficiary"
         %td= res.residuary_type
       - if res.residuary_type == "Individual"
-        %tr
-          %th relationship
-          %td= res.individual_residuary_general_detail.relationship
         %tr  
-          %th first_name
-          %td= res.individual_residuary_general_detail.first_name
+          %th= "Name"
+          %td= res.individual_residuary_general_detail.full_name
         %tr  
-          %th middle_name
-          %td= res.individual_residuary_general_detail.middle_name
-        %tr  
-          %th surname
-          %td= res.individual_residuary_general_detail.surname
-        %tr  
-          %th address_one
-          %td= res.individual_residuary_general_detail.address_one
-        %tr  
-          %th address_two
-          %td= res.individual_residuary_general_detail.address_two
-        %tr  
-          %th city
-          %td= res.individual_residuary_general_detail.city
-        %tr  
-          %th county
-          %td= res.individual_residuary_general_detail.county
-        %tr  
-          %th postcode
-          %td= res.individual_residuary_general_detail.postcode
-        %tr  
-          %th country
-          %td= res.individual_residuary_general_detail.country
+          %th= "Address"
+          %td= res.individual_residuary_general_detail.full_address
       - if res.residuary_type == "Charity"
         %tr  
-          %th name
+          %th= "Name"
           %td= res.charity_residuary_general_detail.name
         %tr  
-          %th registered_charity_number
-          %td= res.charity_residuary_general_detail.registered_charity_number
-        %tr  
-          %th address_one
-          %td= res.charity_residuary_general_detail.address_one
-        %tr  
-          %th address_two
-          %td= res.charity_residuary_general_detail.address_two
-        %tr  
-          %th city
-          %td= res.charity_residuary_general_detail.city
-        %tr  
-          %th county
-          %td= res.charity_residuary_general_detail.county
-        %tr  
-          %th country
-          %td= res.charity_residuary_general_detail.country
-        %tr  
-          %th postcode
-          %td= res.charity_residuary_general_detail.postcode
+          %th= "Address"
+          %td= res.charity_residuary_general_detail.full_address
       %tr
-        %th share
+        %th= "Share"
         %td= res.share
-      %tr
-        %th certain_age
-        %td= res.certain_age
-      %tr
-        %th if_dead
-        %td= res.if_dead
-      %tr
-        %th if_dead_certain_age
-        %td= res.if_dead_certain_age
-      %tr
-        %th count
-        %td= res.count
-      %tr
-        %th secondary
-        %td= res.secondary
 
 - if @request.requests
   %table
@@ -678,5 +306,5 @@
         %th{colspan:2}
           %h5 Request
     %tr
-      %th specific
+      %th= question "11020"
       %td= @request.specific

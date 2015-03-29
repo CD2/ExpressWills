@@ -10,7 +10,7 @@
 
   - if @correct_total == true || @total_percent == 100 || @residuaries.count == 0
     %h4.subheader Please review your information carefully before proceeding
-    = link_to("View Will", will_final_will_path(@will), class: "button radius")
+    = link_to("View Will", will_final_will_path(@will, :format => 'pdf'), class: "button radius", download: "will")
     = render 'summary_tables'
 
   - else

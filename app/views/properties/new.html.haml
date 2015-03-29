@@ -11,7 +11,8 @@
   = render "layouts/text_field", :f => f, text_field: :county, origin: @property
   = render "layouts/text_field", :f => f, text_field: :postcode, origin: @property
   = render "layouts/text_field", :f => f, text_field: :country, origin: @property
-  = render "layouts/radio_buttons", :f => f, radio_button: :sole_residence, q_no: "08020", option: {true: "Yes", false: "No"}, selected: 0
+  - unless @will.properties.where(sole_residence: "Yes").any?
+    = render "layouts/radio_buttons", :f => f, radio_button: :sole_residence, q_no: "08020", option: {true: "Yes", false: "No"}, selected: 0
   = render "layouts/radio_buttons", :f => f, radio_button: :recipient_no, q_no: "08030", option: {1 => "1", 2 => "2", 3 => "3", 4 => "4"}, selected: 0
   %div{"data-condition" => ":checked", "data-true" => "hide", "data-require" => "#property_recipient_no_1", "data-false" => "show"}
     = render "layouts/radio_buttons", :f => f, radio_button: :joint_or_common, advice_text: "Joint tenants hold equal, undivided rights in the property and on the death of one that individual's share automatically passes in equal proportions to the other joint tenants. Tenants in common can control and dispose of their interests individually. If you need further detail or wish to make provision for the recipients in something other than equal shares please contact Notary Express.", q_no: "08040", option: { joint_tennants: "Joint tenants", tenants_in_common: "Tenants in common"}, selected: 1

@@ -53,7 +53,7 @@ class WillsController < ApplicationController
     @request = @will.request
 
     @residuaries = @will.residuary_details.where(complete:true)
-
+    
   end
 
   def final_will
@@ -113,6 +113,20 @@ class WillsController < ApplicationController
     @secondary_equal_shares = @secondary_residuaries.where(share:"Equal shares")
     @secondary_trustees = @secondary_residuaries.where(share:"Trustees to decide")
     @secondary_percents = @secondary_residuaries - @equal_shares - @trustees
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf    => "will",
+          :template    => "wills/final_will.pdf.haml",
+          :layout      => "pdf_layout.html",
+          :margin => {:top                => 15,                     # default 10 (mm)
+                     :bottom             => 10,
+                     :left               => 10,
+                     :right => 10 }, :footer => { :center => 'Page [page] of [topage]', :font_name          => "Times New Roman" },
+                     :font_name          => "Times New Roman"
+      end 
+    end
   end
 
   def new

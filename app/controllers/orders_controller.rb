@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1
   def show
+    redirect_to will_purchase_path(@order.will)
   end
 
   # GET /orders/new
@@ -25,7 +26,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     if @order.save
-      redirect_to @order.paypal_url(will_purchase_path(@order.will))
+      redirect_to @order.paypal_url(order_path(@order))
     else
       render :new
     end

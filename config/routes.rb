@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   resources :orders
 
-  post "/orders/:id" => "registrations#show"
-  post "/hook" => "registrations#hook"
+  post "/orders/:id" => "orders#show"
+  post "/hook" => "orders#hook"
 
   resources :wills do
     get 'final_will'

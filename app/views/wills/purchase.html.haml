@@ -1,5 +1,5 @@
 %h1 Your Final Will is ready
-- if @will.order.status == "Completed"
+- if @will.order && @will.order.status == "Completed"
   %hr
   = link_to("Download here", will_final_will_path(@will, :format => 'pdf'), class: "button radius", download: "will")
 - else

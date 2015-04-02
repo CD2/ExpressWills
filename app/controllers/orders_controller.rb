@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login
 
   # GET /orders
   def index
@@ -46,7 +47,6 @@ class OrdersController < ApplicationController
   end
 
   protect_from_forgery except: [:hook]
-  before_action :require_login, except: [:hook]
   def hook
     params.permit! # Permit all Paypal input params
     status = params[:payment_status]

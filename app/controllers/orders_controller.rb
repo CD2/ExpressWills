@@ -46,6 +46,7 @@ class OrdersController < ApplicationController
   end
 
   protect_from_forgery except: [:hook]
+  before_action :require_login, except: [:hook]
   def hook
     params.permit! # Permit all Paypal input params
     status = params[:payment_status]

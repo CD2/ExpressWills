@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :orders
+
+  post "/orders/:id" => "registrations#show"
+  post "/hook" => "registrations#hook"
+
   resources :wills do
     get 'final_will'
     resources :testator_details, only: [:new, :edit, :create, :update]

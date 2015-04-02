@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Full name:
+  = @order.full_name
+%p
+  %b Email address:
+  = @order.email_address
+%p
+  %b Will:
+  = @order.will_id
+
+= link_to 'Edit', edit_order_path(@order)
+\|
+= link_to 'Back', orders_path

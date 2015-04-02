@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     if @order.save
-      redirect_to @order.paypal_url(order_path(@order))
+      redirect_to @order.paypal_url(will_purchase_path(@order.will))
     else
       render :new
     end
@@ -65,6 +65,6 @@ class OrdersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def order_params
-      params.require(:order).permit(:full_name, :email_address, :will_id)
+      params.require(:order).permit(:full_name, :email_address, :will_id, :price)
     end
 end

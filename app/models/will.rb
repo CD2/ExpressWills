@@ -15,6 +15,7 @@ class Will < ActiveRecord::Base
   has_many :properties
   has_one :residuary
   belongs_to :user
+  has_one :order
 
   has_one :testator_general_details, through: :testator_detail, source: :general_detail
   has_one :partner_general_details, through: :partner_detail, source: :general_detail

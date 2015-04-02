@@ -1,5 +1,7 @@
 class Order < ActiveRecord::Base
 
+  belongs_to :will
+
   serialize :notification_params, Hash
   def paypal_url(return_path)
     values = {
@@ -8,7 +10,7 @@ class Order < ActiveRecord::Base
         upload: 1,
         return: "#{Rails.application.secrets.app_host}#{return_path}",
         invoice: id,
-        amount: '100',
+        amount: price,
         item_name: "this",
         item_number: '1',
         quantity: '1',

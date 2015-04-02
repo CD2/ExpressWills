@@ -6,6 +6,13 @@ class WillsController < ApplicationController
     @wills = current_user.wills
   end
 
+  def purchase
+    @will = Will.find(params[:will_id])
+    @user = @will.user
+    @testator_details = @will.testator_general_details
+    @order = Order.new
+  end
+
   def show
     @user = @will.user
     @testator_details = @will.testator_general_details

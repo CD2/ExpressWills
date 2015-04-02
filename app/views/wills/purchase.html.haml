@@ -1,0 +1,56 @@
+%h1 Your Final Will is ready
+- if @will.order.status == "Completed"
+  %hr
+  = link_to("Download here", will_final_will_path(@will, :format => 'pdf'), class: "button radius", download: "will")
+- else
+  %p You can purchase your will now and download at any time in the future
+  %hr
+
+  #page-one.purchase
+    .page
+      .intro
+        = image_tag("logo.png")
+        %p 
+          Last Will and Testament
+          %br
+          of
+          %br
+          = @testator_details.full_name
+  %hr
+
+  %h3 Purchase options
+
+  %hr
+
+  %h4 Regular Service
+  %p The will will be etc. please provide text
+
+  = form_for @order do |f|
+
+    .field
+      = f.hidden_field :full_name, value: @user.name
+    .field
+      = f.hidden_field :email_address, value: @user.email
+    .field
+      = f.hidden_field :will_id, value: @will.id
+    .field
+      = f.hidden_field :price, value: "35"
+    .actions
+      = f.submit 'Save'
+
+  %hr
+  %h4 Gold Service
+  %p The will will be etc. please provide text
+
+  = form_for @order do |f|
+
+    .field
+      = f.hidden_field :full_name, value: @user.name
+    .field
+      = f.hidden_field :email_address, value: @user.email
+    .field
+      = f.hidden_field :will_id, value: @will.id
+    .field
+      = f.hidden_field :price, value: "65"
+    .actions
+      = f.submit 'Save'

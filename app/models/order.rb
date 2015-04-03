@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   serialize :notification_params, Hash
   def paypal_url(return_path)
     values = {
-        business: "merchant@expresswill.co.uk",
+        business: "merchant@cd2s.co.uk",
         cmd: "_xclick",
         upload: 1,
         return: "#{Rails.application.secrets.app_host}#{return_path}",

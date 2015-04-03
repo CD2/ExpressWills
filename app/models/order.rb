@@ -11,6 +11,7 @@ class Order < ActiveRecord::Base
         return: "#{Rails.application.secrets.app_host}#{return_path}",
         invoice: id,
         amount: price,
+        currency: 'GBP'
         item_name: full_name,
         item_number: '1',
         quantity: '1',

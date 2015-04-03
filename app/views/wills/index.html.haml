@@ -2,16 +2,19 @@
 = link_to("New Will", new_will_path, class:"button")
 %table
   %tr
-    %th Title
-    %th User
-    %th
+    %th Alias
+    %th Created on
+    %th Last Updated
     %th
     %th
 
   - @wills.each do |will|
     %tr
       %td= will.title
-      %td= will.user_id
-      %td= link_to 'Show', will
-      %td= link_to 'Edit', edit_will_path(will)
-      %td= link_to 'Destroy', will, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= will.created_at.strftime("%d %b %Y")
+      %td= will.updated_at.strftime("%d %b %Y")
+      - if will.complete
+        %td= link_to 'Show', will
+      - else
+        %td= link_to 'Resume', will
+      %td= link_to("Download Will", purchase_will_path(will)) if will.order && will.order.status == "Completed"

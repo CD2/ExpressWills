@@ -28,7 +28,7 @@
   = form_for @order do |f|
 
     .field
-      = f.hidden_field :full_name, value: @user.name
+      = f.hidden_field :full_name, value: "Standard Will"
     .field
       = f.hidden_field :email_address, value: @user.email
     .field
@@ -45,7 +45,7 @@
   = form_for @order do |f|
 
     .field
-      = f.hidden_field :full_name, value: @user.name
+      = f.hidden_field :full_name, value: "Gold Service Will"
     .field
       = f.hidden_field :email_address, value: @user.email
     .field

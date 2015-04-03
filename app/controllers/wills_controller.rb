@@ -6,6 +6,10 @@ class WillsController < ApplicationController
     @wills = current_user.wills
   end
 
+  def thanks
+    @will = Will.find(params[:will_id])
+  end
+
   def purchase
     @will = Will.find(params[:will_id])
     @user = @will.user

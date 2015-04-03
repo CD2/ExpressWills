@@ -11,7 +11,7 @@ class Order < ActiveRecord::Base
         return: "#{Rails.application.secrets.app_host}#{return_path}",
         invoice: id,
         amount: price,
-        item_name: "this",
+        item_name: name,
         item_number: '1',
         quantity: '1',
         notify_url: "#{Rails.application.secrets.app_host}/hook"

@@ -1732,7 +1732,7 @@ div#page-one.purchase {
     margin: 0 auto;
     border: 1px solid #aaa;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-    padding: 5rem 1rem;
+    padding: 3rem 1rem;
 }
 
 div#page-one.purchase p {
@@ -1740,4 +1740,49 @@ div#page-one.purchase p {
     font-family: times, sans-serif;
     text-align: center;
     padding-top: 4rem;
+    line-height: 2rem;
+
 }
+.protocol {
+  position: relative;
+  top: 6rem;
+}
+.order-form {
+  margin-right: 1rem;
+}
+.order-comp {
+  td {
+    padding: 1rem;
+    font-size: 1rem;
+    border-right: 1px solid #ccc;
+    &.true {
+      background-image: url(tick.png);
+      background-position: 50%;
+    }
+    &.price {
+      font-weight: 200;
+      text-align: center;
+      font-size: 1.25rem;
+    }
+  }
+  .title {
+    width: 50%;
+    border-right: 1px solid #ccc;
+  }
+  th {
+    color: #fff;
+    font-size: 1rem;
+    padding: 1.5rem;
+    font-weight: 200;
+  }
+  tr.odd td {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+
+
+
+
+

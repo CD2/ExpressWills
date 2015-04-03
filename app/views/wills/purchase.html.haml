@@ -14,6 +14,8 @@
           of
           %br
           = @testator_details.full_name
+      .protocol
+        %p Protocol Z1000
   %hr
 
   %h3 Download
@@ -34,41 +36,78 @@
           of
           %br
           = @testator_details.full_name
+      .protocol
+        %p Protocol Z1000
   %hr
 
-  %h3 Purchase options
+  %h3 Purchasing options
 
   %hr
 
-  %h4 Regular Service
-  %p The will will be etc. please provide text
+  %table.order-comp
+    %thead
+      %tr
+        %th.blank.title
+        %th Express Service
+        %th Gold Service
+    %tbody
+      %tr
+        %td.title Will be emailed to you instantly
+        %td.true
+        %td
+      %tr.odd
+        %td.title Instructions for signing
+        %td.true
+        %td.true
+      %tr
+        %td.title We keep a copy on file
+        %td.true
+        %td.true
+      %tr.odd
+        %td.title Review within 48 hours by a qualified lawyer
+        %td
+        %td.true
+      %tr
+        %td.title Two bound wills posted to you
+        %td
+        %td.true 
+      %tr.odd
+        %td.title Electronic copy emailed to you
+        %td.true
+        %td.true
+      %tr
+        %td.title Free storage for your signed will
+        %td
+        %td.true
+      %tr.odd
+        %td
+        %td.price £30
+        %td.price £60
 
-  = form_for @order do |f|
+  .order-form.left
+    = form_for @order do |f|
 
-    .field
-      = f.hidden_field :full_name, value: "Standard Will"
-    .field
-      = f.hidden_field :email_address, value: @user.email
-    .field
-      = f.hidden_field :will_id, value: @will.id
-    .field
-      = f.hidden_field :price, value: "35"
-    .actions
-      = f.submit 'Purchase will', class: "button radius"
+      .field
+        = f.hidden_field :full_name, value: "Standard Will"
+      .field
+        = f.hidden_field :email_address, value: @user.email
+      .field
+        = f.hidden_field :will_id, value: @will.id
+      .field
+        = f.hidden_field :price, value: "35"
+      .actions
+        = f.submit 'Purchase express service will', class: "button radius"
 
-  %hr
-  %h4 Gold Service
-  %p The will will be etc. please provide text
+  .order-form.left
+    = form_for @order do |f|
 
-  = form_for @order do |f|
-
-    .field
-      = f.hidden_field :full_name, value: "Gold Service Will"
-    .field
-      = f.hidden_field :email_address, value: @user.email
-    .field
-      = f.hidden_field :will_id, value: @will.id
-    .field
-      = f.hidden_field :price, value: "65"
-    .actions
-      = f.submit 'Purchase will', class: "button radius"
+      .field
+        = f.hidden_field :full_name, value: "Gold Service Will"
+      .field
+        = f.hidden_field :email_address, value: @user.email
+      .field
+        = f.hidden_field :will_id, value: @will.id
+      .field
+        = f.hidden_field :price, value: "65"
+      .actions
+        = f.submit 'Purchase gold service will', class: "button radius"

@@ -1,6 +1,24 @@
 %h1 Your Final Will is ready
 - if @will.order && @will.order.status == "Completed"
   %hr
+  %p You can download your will below at any time
+  %hr
+
+  #page-one.purchase
+    .page
+      .intro
+        = image_tag("logo.png")
+        %p 
+          Last Will and Testament
+          %br
+          of
+          %br
+          = @testator_details.full_name
+  %hr
+
+  %h3 Download
+
+  %hr
   = link_to("Download here", will_final_will_path(@will, :format => 'pdf'), class: "button radius", download: "will")
 - else
   %p You can purchase your will now and download at any time in the future

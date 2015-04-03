@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   skip_before_action :require_login
+  protect_from_forgery except: [:hook, :show]
 
   # GET /orders
   def index
@@ -47,7 +48,7 @@ class OrdersController < ApplicationController
     redirect_to orders_url, notice: 'Order was successfully destroyed.'
   end
 
-  protect_from_forgery except: [:hook]
+
   def hook
     params.permit! # Permit all Paypal input params
     status = params[:payment_status]

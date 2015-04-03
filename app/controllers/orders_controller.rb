@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     if @order.save
-      redirect_to @order.paypal_url(order_path(@order))
+      redirect_to @order.paypal_url(will_thanks_path(@order.will))
     else
       render :new
     end

@@ -14,6 +14,9 @@
       %td= will.created_at.strftime("%d %b %Y")
       %td= will.updated_at.strftime("%d %b %Y")
       - if will.complete
-        %td= link_to 'Download', will
+        - if will.order && will.order.status == "Completed"
+          %td= link_to 'Download', will_purchase_path(will)
+        - else
+          %td= link_to 'Purchase', will
       - else
         %td= link_to 'Resume', will

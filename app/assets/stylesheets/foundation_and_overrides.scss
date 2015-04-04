@@ -1747,9 +1747,7 @@ div#page-one.purchase p {
   position: relative;
   top: 6rem;
 }
-.order-form {
-  margin-right: 1rem;
-}
+
 .order-comp {
   td {
     padding: 1rem;
@@ -1771,9 +1769,10 @@ div#page-one.purchase p {
   }
   th {
     color: #fff;
-    font-size: 1rem;
+    font-size: 1.25rem;
+    text-align: center;
     padding: 1.5rem;
-    font-weight: 200;
+    font-weight: 400;
   }
   tr.odd td {
     border-top: 1px solid #ccc;
@@ -1781,8 +1780,9 @@ div#page-one.purchase p {
   }
 }
 
-
-
-
+.purchase input.button.radius {
+    margin: 0 auto;
+  display: block;
+}
 
 

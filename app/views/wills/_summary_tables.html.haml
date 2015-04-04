@@ -5,34 +5,34 @@
         %h5 Personal Details
   %tr
     %th= question "01020"
-    %td= @testator.phone_no
+    %td= @testator.phone_no.try(:humanize)
   %tr  
     %th= question "01030"
-    %td= @testator.gender
+    %td= @testator.gender.try(:humanize)
   %tr  
     %th= question "01040"
-    %td= @testator.dob
+    %td= @testator.dob.try(:humanize)
   %tr  
     %th= question "01050"
     %td= @testator.domicile_country
   %tr  
     %th= question "01060"
-    %td= @testator.children
+    %td= @testator.children.try(:humanize)
   %tr  
     %th= question "01070"
-    %td= @testator.children_age
+    %td= @testator.children_age.try(:yesno)
   %tr  
     %th= question "01080"
-    %td= @testator.planning_marrige
+    %td= @testator.planning_marrige.try(:yesno)
   %tr  
     %th= question "01090"
-    %td= @testator.effective_post_marrige
+    %td= @testator.effective_post_marrige.try(:yesno)
   %tr  
     %th= question "01110"
-    %td= @testator.effective_post_death_sans_marrige
+    %td= @testator.effective_post_death_sans_marrige.try(:yesno)
   %tr  
     %th= question "01130"
-    %td= @testator.mirror_will
+    %td= @testator.mirror_will.try(:humanize)
   %tr  
     %th= "Name"
     %td= @testator_details.full_name
@@ -56,16 +56,16 @@
           %td= @partner_details.full_address
       %tr
         %th Phone No
-        %td= @partner.phone_no
+        %td= @partner.phone_no.try(:humanize)
       %tr
         %th Gender
-        %td= @partner.gender
+        %td= @partner.gender.try(:humanize)
       %tr
         %th Date of Birith
-        %td= @partner.dob
+        %td= @partner.dob.try(:humanize)
       %tr
         %th Domicile Country
-        %td= @partner.domicile_country
+        %td= @partner.domicile_country.try(:humanize)
 
 %table
   %thead
@@ -74,16 +74,16 @@
         %h5 Funeral
   %tr
     %th= question "02010"
-    %td= @funeral.preference
+    %td= @funeral.preference.try(:humanize)
   %tr
     %th= question "02020"
-    %td= @funeral.wishes
+    %td= @funeral.wishes.try(:humanize)
   %tr
     %th= question "02030"
-    %td= @funeral.donate_organs
+    %td= @funeral.donate_organs.try(:humanize)
   %tr
     %th= question "02040"
-    %td= @funeral.specific_organs
+    %td= @funeral.specific_organs.try(:humanize)
 
 %table
   %thead
@@ -92,7 +92,7 @@
         %h5 Executors
   %tr
     %th Notary Express
-    %td= @executor.notary_express
+    %td= @executor.notary_express.try(:yesno)
   - @execs.each_with_index do |exec, i|
     - if exec
       %tr
@@ -165,13 +165,13 @@
     - else
       %tr
         %td Shared to
-        %td= cash_gift.shared_to
+        %td= cash_gift.shared_to.try(:humanize)
     %tr
       %th= "Amount"
-      %td= cash_gift.amount
+      %td= cash_gift.amount.try(:humanize)
     %tr
       %th= question "06040"
-      %td= cash_gift.certain_age
+      %td= cash_gift.certain_age.try(:humanize)
 
 %table
   %thead
@@ -185,17 +185,17 @@
     - unless cd.popular_charity
       %tr  
         %th= "Name"
-        %td= cd.name
+        %td= cd.name.try(:humanize)
       %tr  
         %th= "Address"
         %td= cd.full_address
     - else
       %tr  
         %th= "Name"
-        %td= cd.popular_charity_name
+        %td= cd.popular_charity_name.try(:humanize)
     %tr  
       %th= "Amount"
-      %td= cd.amount
+      %td= cd.amount.try(:humanize)
 
 - if @properties.any?
   - @properties.each_with_index do |property|
@@ -206,31 +206,31 @@
             %h5 Property
       %tr
         %th Land Registry Number
-        %td= property.land_reg_number
+        %td= property.land_reg_number.try(:humanize)
       %tr
         %th Address
         %td= property.full_address
       %tr
         %th Sole Residence?
-        %td= property.sole_residence
+        %td= property.sole_residence.try(:yesno)
       %tr
         %th= question "08030"
-        %td= property.recipient_no
+        %td= property.recipient_no.try(:humanize)
       %tr
         %th= question "08040"
-        %td= property.joint_or_common
+        %td= property.joint_or_common.try(:humanize)
       %tr
         %th= question "08050"
-        %td= property.responsible_for_charges
+        %td= property.responsible_for_charges.try(:yesno)
       %tr
         %th= question "08060"
-        %td= property.as_cash_if_sold
+        %td= property.as_cash_if_sold.try(:yesno)
       %tr
         %th= question "08070"
-        %td= property.held_in_trust
+        %td= property.held_in_trust.try(:yesno)
       %tr
         %th= question "08080"
-        %td= property.life_beneficiary_no
+        %td= property.life_beneficiary_no.try(:humanize)
       - property.beneficiaries.each_with_index do |ben, i|
         %tr
           %td{colspan:2, class:"summary"}
@@ -266,10 +266,10 @@
       %td= gift.full_address
     %tr  
       %th= "Description"
-      %td= gift.description
+      %td= gift.description.try(:humanize)
     %tr  
       %th= question "09030"
-      %td= gift.as_cash_if_sold
+      %td= gift.as_cash_if_sold.try(:yesno)
 
 - if @residuaries.any?
   - @residuaries.each_with_index do |res, i|
@@ -280,7 +280,7 @@
             %h5= "Residuary #{i+1}"
       %tr
         %th= "Beneficiary"
-        %td= res.residuary_type
+        %td= res.residuary_type.try(:humanize)
       - if res.residuary_type == "Individual"
         %tr  
           %th= "Name"
@@ -291,13 +291,13 @@
       - if res.residuary_type == "Charity"
         %tr  
           %th= "Name"
-          %td= res.charity_residuary_general_detail.name
+          %td= res.charity_residuary_general_detail.name.try(:humanize)
         %tr  
           %th= "Address"
           %td= res.charity_residuary_general_detail.full_address
       %tr
         %th= "Share"
-        %td= res.share
+        %td= res.share.try(:humanize)
 
 - if @request.requests
   %table
@@ -307,4 +307,4 @@
           %h5 Request
     %tr
       %th= question "11020"
-      %td= @request.specific
+      %td= @request.specific.try(:humanize)

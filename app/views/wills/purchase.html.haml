@@ -16,12 +16,9 @@
           = @testator_details.full_name
       .protocol
         %p Protocol Z1000
-  %hr
-
-  %h3 Download
 
   %hr
-  = link_to("Download here", will_final_will_path(@will, :format => 'pdf'), class: "button radius", download: "will")
+  = link_to("Download", will_final_will_path(@will, :format => 'pdf'), class: "button radius", download: "will")
 - else
   %p You can purchase your will now and download at any time in the future
   %hr
@@ -52,7 +49,7 @@
         %th Gold Service
     %tbody
       %tr
-        %td.title Will be emailed to you instantly
+        %td.title Instantly emailed to you
         %td.true
         %td
       %tr.odd
@@ -83,31 +80,36 @@
         %td
         %td.price £30
         %td.price £60
+      %tr
+        %td
+        %td.purchase
+          .order-form
+            = form_for @order do |f|
 
-  .order-form.left
-    = form_for @order do |f|
+              .field
+                = f.hidden_field :full_name, value: "Standard Will"
+              .field
+                = f.hidden_field :email_address, value: @user.email
+              .field
+                = f.hidden_field :will_id, value: @will.id
+              .field
+                = f.hidden_field :price, value: "30"
+              .actions
+                = f.submit 'Purchase', class: "button radius"
+        %td.purchase
+          .order-form
+            = form_for @order do |f|
 
-      .field
-        = f.hidden_field :full_name, value: "Standard Will"
-      .field
-        = f.hidden_field :email_address, value: @user.email
-      .field
-        = f.hidden_field :will_id, value: @will.id
-      .field
-        = f.hidden_field :price, value: "30"
-      .actions
-        = f.submit 'Purchase express service will', class: "button radius"
+              .field
+                = f.hidden_field :full_name, value: "Gold Service Will"
+              .field
+                = f.hidden_field :email_address, value: @user.email
+              .field
+                = f.hidden_field :will_id, value: @will.id
+              .field
+                = f.hidden_field :price, value: "60"
+              .actions
+                = f.submit 'Purchase', class: "button radius"
 
-  .order-form.left
-    = form_for @order do |f|
 
-      .field
-        = f.hidden_field :full_name, value: "Gold Service Will"
-      .field
-        = f.hidden_field :email_address, value: @user.email
-      .field
-        = f.hidden_field :will_id, value: @will.id
-      .field
-        = f.hidden_field :price, value: "60"
-      .actions
-        = f.submit 'Purchase gold service will', class: "button radius"
+

@@ -2,13 +2,14 @@
 
 #page-one{style: "page-break-after: always;"}
   .page
-    .intro{style:"text-align: center; line-height: 2rem; font-size: 1.5rem; margin-top: 4rem;"}
+    .intro{style:"text-align: center; line-height: 2rem; font-size: 1.5rem; margin-top: 200px;"}
       %p 
         Last Will and Testament
         %br
         of
         %br
         = @testator_details.full_name
+    %p{style:"text-align: center; line-height: 2rem; font-size: 1.5rem; margin-top: 400px;"} Protocol Z1000
 
 #page-two{style: "page-break-after: always;"}
   .page
@@ -98,3 +99,41 @@
 
 #page-three{style: "width: 100%"}
   %b= "#{@count+=1}. SIGNATURES"
+  %table
+    %tbody
+      %tr
+        %td{style: "padding-top: 10px"} Dated
+        %td{style: "width: 50%"} ..........................................................................
+      %tr
+        %td= "Signed by #{@testator_details.full_name} in the presence of both of us and then by us in presence of said individual"
+        %td ..........................................................................
+      %tr
+        %td{style: "padding-top: 10px"} Signature of first witness
+        %td Signature of second witness
+      %tr
+        %td ..........................................................................
+        %td ..........................................................................
+      %tr
+        %td{style: "padding-top: 10px"} Full name (in block capitals)
+        %td Full name (in block capitals)
+      %tr
+        %td ..........................................................................
+        %td ..........................................................................
+      %tr
+        %td{style: "padding-top: 10px"} Address
+        %td Address
+      %tr
+        %td ..........................................................................
+        %td ..........................................................................
+      %tr
+        %td ..........................................................................
+        %td ..........................................................................
+      %tr
+        %td ..........................................................................
+        %td ..........................................................................
+      %tr
+        %td{style: "padding-top: 10px"} Occupation
+        %td Occupation
+      %tr
+        %td ..........................................................................
+        %td ..........................................................................

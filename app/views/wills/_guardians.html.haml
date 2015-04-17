@@ -8,7 +8,7 @@
       = i==0 ? "if there is no other person with parental responsibility for them at my death," : ""
       = @guardians.compact.count == i+1 ? "#{g.full_name} of #{g.full_address}." : "#{g.full_name} of #{g.full_address}, and"
 
-- if @guardian.appoint_future_guardians
+- if @guardian.appoint_future_guardians || @guardian.appoint_current_guardians
   - if @first_replacement_guardian
     %p
       = "#{@count}.#{@sub+=1}" 
@@ -20,4 +20,4 @@
           = g.full_name + " of " + g.full_address
       instead.
   
-  %p= "#{@count}.#{@sub+=1} Where more than one guardian or replacement guardian accepts the appointment, my children shall for the avoidance of doubt be resident with the earliest appointed guardian mentioned under this will." if @second_guardian || @first_replacement_guardian
+  %p= "#{@count}.#{@sub+=1} Where more than one guardian or replacement guardian accepts the appointment, my children shall for the avoidance of doubt be resident with the earliest appointed guardian mentioned under this will." if @guardians_rep.count > 1

@@ -37,6 +37,7 @@ class WillsController < ApplicationController
     @exec_reps = [@first_executor_rep , @second_executor_rep , @third_executor_rep , @forth_executor_rep]
 
     @guardian = @will.guardian
+    @personal_gift_permission = @will.personal_gift_permission
 
     @first_guardian = @will.first_guardian
     @second_guardian = @will.second_guardian

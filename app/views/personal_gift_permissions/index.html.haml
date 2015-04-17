@@ -1,0 +1,21 @@
+%h1 Listing personal_gift_permissions
+
+%table
+  %thead
+    %tr
+      %th Permission
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @personal_gift_permissions.each do |personal_gift_permission|
+      %tr
+        %td= personal_gift_permission.permission
+        %td= link_to 'Show', personal_gift_permission
+        %td= link_to 'Edit', edit_personal_gift_permission_path(personal_gift_permission)
+        %td= link_to 'Destroy', personal_gift_permission, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Personal gift permission', new_personal_gift_permission_path

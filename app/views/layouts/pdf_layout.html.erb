@@ -16,14 +16,11 @@
     </script>
   </head>
   <body onload='number_pages'>
-    <div id="header" style="padding-top: 4rem;">
+    <div id="header" style="padding-top: 2rem;">
       <%= wicked_pdf_image_tag 'logo.png', style: "width:100%"  %>
     </div>
     <div id="content" style="font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; line-height: 1.5rem">
       <%= yield %>
-      <div>
-      <%= wicked_pdf_image_tag 'sig.png', style: "width:100%" %>
-      </div>
     </div>
   </body>
 </html>

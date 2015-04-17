@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Permission:
+  = @personal_gift_permission.permission
+
+= link_to 'Edit', edit_personal_gift_permission_path(@personal_gift_permission)
+\|
+= link_to 'Back', personal_gift_permissions_path

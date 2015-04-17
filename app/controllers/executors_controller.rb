@@ -61,6 +61,7 @@ class ExecutorsController < ApplicationController
   end
 
   def first_replacement_executor
+    redirect_to will_executor_second_replacement_executor_path if @executor.notary_express
     @first_rep = @will.first_replacement_executor || @executor.build_first_replacement_executor_general_detail
   end
 

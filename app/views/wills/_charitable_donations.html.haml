@@ -22,7 +22,7 @@
         = "(#{letter}) £#{c.amount} to #{c.name}, of #{c.full_address}#{@end}"
       - else
         = "(#{letter}) £#{c.amount} to #{c.name}#{@end}"
-    = "I make a non-binding request that the charity use this gift towards #{c.instruction}" if c.instruction && !c.instruction.gsub(/\s+/, "") == ""
+    = "I make a non-binding request that the charity use this gift towards #{c.instruction}." unless c.instruction == nil || c.instruction.gsub(/\s+/, "") == ""
 - if @will.charity_permission && @will.charity_permission.permission
   %p= "#{@count}.#{@sub+=1} If, at my death, any of the aforementioned charities no longer exists or is being wound up, the Trustees must pay the amount specified as being payable to the original charity to another charity that they consider most nearly fulfils the object that I intend to benefit."
 %p= "#{@count}.#{@sub+=1} The receipt of the treasurer or other proper officer of such charity at the time of payment will be a complete discharge to the Trustees."

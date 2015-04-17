@@ -1,16 +1,17 @@
 - @count = 0
 
-#page-one
+#page-one{style: "page-break-after: always;"}
   .page
-    .intro
+    .intro{style:"text-align: center; line-height: 2rem; font-size: 1.5rem; margin-top: 4rem;"}
       %p 
         Last Will and Testament
         %br
         of
         %br
         = @testator_details.full_name
+    %p Protocol Z1000
 
-#page-two
+#page-two{style: "page-break-after: always;"}
   .page
     %b LAST WILL AND TESTAMENT
     %p= "THIS WILL is made by me, #{@testator_details.full_name} of #{@testator_details.full_address}, on this day of #{Time.now.year}."
@@ -96,4 +97,43 @@
       %p I make the following requests which are merely an expression of my desire to provide guidance on the use of the assets from my Estate and these words should be considered non-binding expressions of my recommendations and not intended to form any kind of trust or conditions precedent required for the fulfilment of any bequest under my will:
       %p= @request.specific
 
-    %b= "#{@count+=1}. SIGNATURES"
+#page-three{style: "width: 100%"}
+  %b= "#{@count+=1}. SIGNATURES"
+  %table
+    %tbody
+      %tr
+        %td Dated
+        %td{style: "width: 50%"} ........................................................................................................
+      %tr
+        %td= "Signed by #{@testator_details.full_name} in the presence of both of us and then by us in presence of said individual"
+        %td ........................................................................................................
+      %tr
+        %td Signiture of first witness
+        %td Signiture of second witness
+      %tr
+        %td ........................................................................................................
+        %td ........................................................................................................
+      %tr
+        %td Full name (in block capitals)
+        %td Full name (in block capitals)
+      %tr
+        %td ........................................................................................................
+        %td ........................................................................................................
+      %tr
+        %td Address
+        %td Address
+      %tr
+        %td ........................................................................................................
+        %td ........................................................................................................
+      %tr
+        %td ........................................................................................................
+        %td ........................................................................................................
+      %tr
+        %td ........................................................................................................
+        %td ........................................................................................................
+      %tr
+        %td Occupation
+        %td Occupation
+      %tr
+        %td ........................................................................................................
+        %td ........................................................................................................

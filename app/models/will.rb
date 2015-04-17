@@ -11,6 +11,7 @@ class Will < ActiveRecord::Base
   has_many :charitable_donations
   has_one :charity_permission
   has_many :residuary_details
+  has_one :personal_gift_permission
   has_many :personal_gifts
   has_many :properties
   has_one :residuary

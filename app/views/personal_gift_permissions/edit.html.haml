@@ -1,0 +1,9 @@
+%h1 Personal Gifts
+%h4.subheader You can make specific gifts of personal items.
+%hr
+
+= form_for [@will, @personal_gift_permission] do |f|
+  
+  = render "layouts/radio_buttons", :f => f, radio_button: :permission, q_no: "09030", option: {true: "Yes", false: "No"}, selected: -1
+  .button-region
+    = f.submit 'Proceed', class: "button radius right"

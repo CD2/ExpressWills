@@ -11,7 +11,7 @@
     %td= @testator.gender.try(:humanize)
   %tr  
     %th= question "01040"
-    %td= @testator.dob.try(:humanize)
+    %td= @testator.dob
   %tr  
     %th= question "01050"
     %td= @testator.domicile_country
@@ -24,9 +24,10 @@
   %tr  
     %th= question "01080"
     %td= @testator.planning_marrige.try(:yesno)
-  %tr  
-    %th= question "01090"
-    %td= @testator.effective_post_marrige.try(:yesno)
+  - if @testator.planning_marrige
+    %tr  
+      %th= question "01090"
+      %td= @testator.effective_post_marrige.try(:yesno)
   %tr  
     %th= question "01110"
     %td= @testator.effective_post_death_sans_marrige.try(:yesno)
@@ -62,7 +63,7 @@
         %td= @partner.gender.try(:humanize)
       %tr
         %th Date of Birith
-        %td= @partner.dob.try(:humanize)
+        %td= @partner.dob
       %tr
         %th Domicile Country
         %td= @partner.domicile_country.try(:humanize)
@@ -215,7 +216,7 @@
         %td= property.sole_residence.try(:yesno)
       %tr
         %th= question "08030"
-        %td= property.recipient_no.try(:humanize)
+        %td= property.recipient_no
       %tr
         %th= question "08040"
         %td= property.joint_or_common.try(:humanize)
@@ -230,7 +231,7 @@
         %td= property.held_in_trust.try(:yesno)
       %tr
         %th= question "08080"
-        %td= property.life_beneficiary_no.try(:humanize)
+        %td= property.life_beneficiary_no
       - property.beneficiaries.each_with_index do |ben, i|
         %tr
           %td{colspan:2, class:"summary"}

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+
   resources :orders
 
   post "/orders/:id" => "orders#show"
@@ -45,6 +47,7 @@ Rails.application.routes.draw do
       collection { get :option }
     end
     resources :charity_permissions, only: [:new, :edit, :create, :update]
+    resources :personal_gift_permissions, only: [:new, :edit, :create, :update]
     resources :properties, only: [:new, :edit, :create, :update, :index, :destroy] do
       collection { get :option }
       get :benificiaries

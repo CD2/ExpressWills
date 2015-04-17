@@ -12,7 +12,6 @@
   = render "layouts/text_field", :f => f, text_field: :postcode, origin: @personal_gift
   = render "layouts/text_field", :f => f, text_field: :country, origin: @personal_gift
   = render "layouts/text_area", :f => f, text_area: :description, q_no: "09020"
-  = render "layouts/radio_buttons", :f => f, radio_button: :as_cash_if_sold, q_no: "09030", option: {true: "Yes", false: "No"}, selected: 0
   = f.hidden_field :count, value: @will.personal_gifts.count+1
   .button-region
     = f.submit 'Proceed', class: "button radius right"

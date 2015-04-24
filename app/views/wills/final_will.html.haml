@@ -16,7 +16,7 @@
 #page-two{style: "page-break-after: always;"}
   .page
     %b LAST WILL AND TESTAMENT
-    %p= "THIS WILL is made by me, #{@testator_details.full_name} of #{@testator_details.full_address}, on this day of #{Time.now.year}."
+    %p= "THIS WILL is made by me, #{@testator_details.full_name} of #{@testator_details.full_address}, on this #{Date.today.day.ordinalize} day of #{Date.today.strftime("%B")} #{Time.now.year}."
     %p= "I, #{@testator_details.full_name} of #{@testator_details.full_address}, hereby revoke any previous wills and codicils and make this my last will, disposing of all my worldwide assets."
     - if @testator.mirror_will == "yes"
       %b MIRROR WILL

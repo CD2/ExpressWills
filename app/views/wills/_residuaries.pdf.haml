@@ -166,6 +166,7 @@
 
   - if @secondary_residuaries.any?
     %p= "#{@count}.2 If any above mentioned residuary gift fails, then the Trustees will hold it and pay it to:"
+    - letter = "`"
     %p
       - if @secondary_percents.count == @secondary_residuaries.count
 

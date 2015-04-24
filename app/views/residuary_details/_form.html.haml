@@ -16,4 +16,4 @@
       - if @will.residuary_details.where(complete: true).any?
         = f.submit 'I do not wish to specify another beneficiary', class: "button radius cancel-forward modal-cancel"
       - else
-        = f.submit 'I do not wish to specify a beneficiary', class: "button radius cancel-forward modal-cancel", :onclick => "return confirm('It is strongly advisable to appoint an executor. Are you sure you wish to proceed without appointing an executor?')"
+        = f.submit 'I do not wish to specify a beneficiary', class: "button radius cancel-forward modal-cancel", :onclick => "return confirm('It is strongly advisable to appoint a beneficiary. Are you sure you wish to proceed without appointing a beneficiary?')"

@@ -6,9 +6,9 @@
   - property.sole_residence ? @stop = "" : @stop = "."
   %p
     - if property.land_reg_number== nil || property.land_reg_number.gsub(/\s+/, "") == ""
-      = "#{@count}.#{@sub+=1} I give all my interest in the property known as #{property.full_address}, #{property.land_reg_number}#{@stop}"
+      = "#{@count}.#{@sub+=1} I give all my interest in the property known as #{property.full_address}, #{property.land_reg_number}"
     - else 
-      = "#{@count}.#{@sub+=1} I give all my interest in the property known as #{property.full_address}#{@stop}"
+      = "#{@count}.#{@sub+=1} I give all my interest in the property known as #{property.full_address}"
     
     - if property.held_in_trust
       = "or any other property that is my sole or main residence at my death" if property.sole_residence && i == 0

@@ -16,9 +16,13 @@ class PersonalGift < ActiveRecord::Base
   end
 
   def full_address
-    self.address_two == nil || self.address_two.gsub(/\s+/, "") == "" ? @addresstwo = "" : @addresstwo = self.address_two + ","
-    self.county == nil || self.county.gsub(/\s+/, "") == ""  ? @county = "" : @county = self.county + ","
-    "#{self.address_one.titleize}, #{@addresstwo} #{self.city.titleize}, #{@county} #{self.postcode.upcase}, #{self.country.titleize}"
+    self.address_one == nil || self.address_one.gsub(/\s+/, "") == "" ? @addressone = "" : @addressone = self.address_one.titleize + ","
+    self.address_two == nil || self.address_two.gsub(/\s+/, "") == "" ? @addresstwo = "" : @addresstwo = self.address_two.titleize + ","
+    self.city == nil || self.city.gsub(/\s+/, "") == ""  ? @city = "" : @city = self.city.titleize + ","
+    self.county == nil || self.county.gsub(/\s+/, "") == ""  ? @county = "" : @county = self.county.titleize + ","
+    self.postcode == nil || self.postcode.gsub(/\s+/, "") == ""  ? @postcode = "" : @postcode = self.postcode.upcase + ","
+    self.country == nil || self.country.gsub(/\s+/, "") == ""  ? @country = "" : @country = self.country.titleize + ","
+    "#{@addressone}#{@addresstwo}#{@city}#{@county}#{@postcode}#{@country}"
   end
 
 end

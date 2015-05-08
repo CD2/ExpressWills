@@ -17,7 +17,10 @@
     %td= @testator.domicile_country
   %tr  
     %th= question "01060"
-    %td= @testator.children.try(:humanize)
+    - if @testator.children == "yes_including_my_partners"
+      %td Yes, including my partner's children
+    - else 
+      %td= @testator.children.try(:humanize)
   %tr  
     %th= question "01070"
     %td= @testator.children_age.try(:yesno)
@@ -217,9 +220,10 @@
       %tr
         %th= question "08030"
         %td= property.recipient_no
-      %tr
-        %th= question "08040"
-        %td= property.joint_or_common.try(:humanize)
+      - if property.recipient_no > 1
+        %tr
+          %th= question "08040"
+          %td= property.joint_or_common.try(:humanize)
       %tr
         %th= question "08050"
         %td= property.responsible_for_charges.try(:yesno)
@@ -268,9 +272,12 @@
     %tr  
       %th= "Description"
       %td= gift.description.try(:humanize)
-    %tr  
-      %th= question "09030"
-      %td= gift.as_cash_if_sold.try(:yesno)
+  %tr
+    %th{colspan: 2}
+      - if @personal_gift_permissions.permission
+        If any personal gift has been sold at the date of your death, the gift will take the form of a gift of the sale proceeds
+      - else 
+        If any personal gift has been sold at the date of your death, the gift will not take the form of a gift of the sale proceeds
 
 - if @residuaries.any?
   - @residuaries.each_with_index do |res, i|

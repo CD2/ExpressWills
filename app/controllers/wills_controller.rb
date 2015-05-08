@@ -65,6 +65,8 @@ class WillsController < ApplicationController
     @request = @will.request
 
     @residuaries = @will.residuary_details.where(complete:true)
+
+    @personal_gift_permissions = @will.personal_gift_permission
     
   end
 

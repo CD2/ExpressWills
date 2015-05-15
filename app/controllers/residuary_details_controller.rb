@@ -81,6 +81,9 @@ class ResiduaryDetailsController < ApplicationController
     else
     
       if @residuary_detail.update(residuary_detail_params)
+        if params[:residuary_detail][:charity_residuary_general_detail_attributes][:popular_charity] && @residuary_detail.charity_residuary_general_detail.try(:popular_charity)
+          @residuary_detail.charity_residuary_general_detail.update_attributes(name: @residuary_detail.popular_charity_name)
+        end
         if params[:commit] == "Proceed"
           redirect_to will_residuary_details_path(@will)
         elsif @residuary_detail.residuary_type == "Charity"
@@ -132,8 +135,8 @@ class ResiduaryDetailsController < ApplicationController
     end
 
     def residuary_detail_params
-      params.require(:residuary_detail).permit(:secondary, :complete, :count, :share, :certain_age, :if_dead, :if_dead_certain_age, :residuary_type,
+      params.require(:residuary_detail).permit(:secondary, :popular_charity, :popular_charity_name, :complete, :count, :share, :certain_age, :if_dead, :if_dead_certain_age, :residuary_type,
         individual_residuary_general_detail_attributes: [:id, :will_id, :relationship, :first_name, :middle_name, :surname, :address_one, :address_two, :city, :county, :postcode, :country], 
-        charity_residuary_general_detail_attributes: [:id, :will_id, :relationship, :first_name, :middle_name, :surname, :address_one, :address_two, :city, :county, :postcode, :country, :name, :registered_charity_number])
+        charity_residuary_general_detail_attributes: [:popular_charity, :id, :will_id, :relationship, :first_name, :middle_name, :surname, :address_one, :address_two, :city, :county, :postcode, :country, :name, :registered_charity_number])
     end
 end

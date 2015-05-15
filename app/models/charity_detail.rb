@@ -2,7 +2,9 @@ class CharityDetail < ActiveRecord::Base
     default_scope -> { order id: :asc }
   belongs_to :will
   
-  validates :name, presence: true, length: { maximum: 200 }
+  validates :name, presence: true, length: { maximum: 200 }, unless: "popular_charity"
+
+
 
   belongs_to :charity_residuary, class_name: 'ResiduaryDetail'
   def full_address

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417111659) do
+ActiveRecord::Schema.define(version: 20150515145916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20150417111659) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "charity_residuary_id"
+    t.boolean  "popular_charity"
   end
 
   add_index "charity_details", ["will_id"], name: "index_charity_details_on_will_id", using: :btree
@@ -311,8 +312,10 @@ ActiveRecord::Schema.define(version: 20150417111659) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "count"
-    t.boolean  "secondary",           default: false
-    t.boolean  "complete",            default: false
+    t.boolean  "secondary",            default: false
+    t.boolean  "complete",             default: false
+    t.string   "popular_charity"
+    t.string   "popular_charity_name"
   end
 
   add_index "residuary_details", ["will_id"], name: "index_residuary_details_on_will_id", using: :btree

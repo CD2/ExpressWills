@@ -2,7 +2,15 @@
 = form_for [@will, @residuary_detail] do |f|
 
   = f.fields_for :charity_residuary_general_detail do |builder|
-    = render "charity_details/charity_details_form", :builder => builder, :nested_origin => @residuary_detail.charity_residuary_general_detail
+    //= render "layouts/radio_buttons", :f => builder, radio_button: :popular_charity, q_no: "07020", option: {true: "Yes", false: "No"}, selected: 0
+    = render "layouts/radio_buttons", :f => builder, radio_button: :popular_charity, q_no: "07020", option: {true: "Yes", false: "No"}, selected: 0
+  
+  %div{"data-condition" => ":checked", "data-false" => "hide", "data-require" => "#residuary_detail_charity_residuary_general_detail_attributes_popular_charity_true", "data-true" => "show"}
+    = render "layouts/select_list", :f => f, select_list: :popular_charity_name, q_no: "07030", options: ["Arts Council England" , "British Heart Foundation" , "Cancer Research UK" , "Families Need Fathers" , "Macmillan" , "Royal Society for the Blind" , "Royal Society for the Prevention of Cruelty to Animals" , "The Salvation Army" , "Variety Club" , "Zoological Society of London"], label_text: "Charity Name", selected: "Families Need Fathers"
+
+  %div{"data-condition" => ":checked", "data-false" => "hide", "data-require" => "#residuary_detail_charity_residuary_general_detail_attributes_popular_charity_true", "data-true" => "show"}
+    = f.fields_for :charity_residuary_general_detail do |builder|
+      = render "charity_details/charity_details_form", :builder => builder, :nested_origin => @residuary_detail.charity_residuary_general_detail
 
   - @option ||= ["Equal shares", "Trustees to decide"]
   - @start = 100

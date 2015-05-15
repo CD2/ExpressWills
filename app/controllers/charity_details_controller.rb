@@ -53,6 +53,6 @@ class CharityDetailsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def charity_detail_params
-      params.require(:charity_detail).permit(:will_id, :name, :registered_charity_number, :address_one, :address_two, :city, :county, :country)
+      params.require(:charity_detail).permit(:will_id, :name, :registered_charity_number, :address_one, :address_two, :city, :county, :country, :popular_charity)
     end
 end

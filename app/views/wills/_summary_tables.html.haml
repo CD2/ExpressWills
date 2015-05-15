@@ -274,7 +274,7 @@
       %td= gift.description.try(:humanize)
   %tr
     %th{colspan: 2}
-      - if @personal_gift_permissions.permission
+      - if @personal_gift_permissions.try(:permission)
         If any personal gift has been sold at the date of your death, the gift will take the form of a gift of the sale proceeds
       - else 
         If any personal gift has been sold at the date of your death, the gift will not take the form of a gift of the sale proceeds

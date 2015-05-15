@@ -6,7 +6,10 @@
       %p.advice-text= advice_text
 - option.each_with_index do |(k,v),i|
   - if selected == i
-    = f.radio_button radio_button, k, checked: 'checked'
+    -if defined? id
+      = f.radio_button radio_button, k, checked: 'checked', name: id
+    - else
+      = f.radio_button radio_button, k, checked: 'checked'
     = f.label "#{radio_button}_#{k.to_s.underscore}", v
   - else 
     = f.radio_button radio_button, k

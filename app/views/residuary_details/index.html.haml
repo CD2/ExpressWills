@@ -67,7 +67,7 @@
           %td= link_to 'Delete', [@will, residuary_detail], :method => :delete
 
 = link_to("Add Beneficiary", new_will_residuary_detail_path, class: "button radius")
-- if @residuary_details.where(secondary: false).any?
+- if @residuary_details.where(secondary: false).any? && @will.residuary
   = link_to("Add Secondary Beneficiary", secondary_will_residuary_details_path(@will), class: "button radius")
 - if @correct_total == true || @total_percent == 100
   - if @will.residuary

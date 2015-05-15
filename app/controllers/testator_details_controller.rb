@@ -38,7 +38,11 @@ class TestatorDetailsController < ApplicationController
     @will = Will.find(params[:will_id])
     if @testator_detail.update(testator_detail_params)
       if @testator_detail.mirror_will == "yes" || @testator_detail.planning_marrige
-        redirect_to new_will_partner_detail_path
+        if @will.partner_detail
+          redirect_to edit_will_partner_detail_path(@will, @will.partner_detail)
+        else 
+          redirect_to new_will_partner_detail_path
+        end
       else
         redirect_to new_will_funeral_path
       end

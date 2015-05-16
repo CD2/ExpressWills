@@ -20,7 +20,6 @@ $('[data-require]').each(function(){
 	var ifFalse = $(_this).attr('data-false') || '';
 
 	var type = $(require).attr("type");
-
 	var checkCondition = function() {
 		if ($(require).is(condition)) {
 			$(_this).addClass(ifTrue);
@@ -34,6 +33,7 @@ $('[data-require]').each(function(){
 	if (type) {
 		switch(type.toLowerCase()) {
 			case "radio":
+				console.log($(require).attr('name'))
 				$('input[type=' + type + '][name=' + $(require).attr('name') + ']').on("click", checkCondition);
 				break;
 			case "checkbox":

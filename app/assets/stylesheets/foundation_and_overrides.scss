@@ -1784,5 +1784,11 @@ div#page-one.purchase p {
     margin: 0 auto;
   display: block;
 }
+div.hide_a, .hide_a .hide_b {
+  display: none;
+}
+.hide_a .hide_a, .hide_b {
+  display: block;
+}
 
 

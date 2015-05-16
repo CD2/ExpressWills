@@ -16,6 +16,7 @@
 //= require_tree .
 
 jQuery("document").ready(function(){
+  jQuery('html').addClass("hide_a");
   jQuery("#testator_detail_planning_marrige_true").on("change", function(){
     jQuery("#testator_detail_mirror_will_no").prop('checked',true);
     jQuery("#testator_detail_mirror_will_not_applicable, label[for=testator_detail_mirror_will_not_applicable]").css("display", "none");
@@ -23,5 +24,9 @@ jQuery("document").ready(function(){
   jQuery("#testator_detail_planning_marrige_false").on("change", function(){
     jQuery("#testator_detail_mirror_will_not_applicable, label[for=testator_detail_mirror_will_not_applicable]").css("display", "inline");
   });
+  jQuery("#clicking_this").on("click", function(){
+    if(jQuery('#residuary_detail_charity_residuary_general_detail_attributes_popular_charity_true').is(':checked')) { jQuery('html').addClass("hide_a"); }
+    else { jQuery('html').removeClass("hide_a") }
+  })
 });
 

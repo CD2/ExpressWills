@@ -27,7 +27,7 @@ class CashGift < ActiveRecord::Base
     self.city == nil || self.city.gsub(/\s+/, "") == ""  ? @city = "" : @city = self.city.titleize + ","
     self.county == nil || self.county.gsub(/\s+/, "") == ""  ? @county = "" : @county = self.county.titleize + ","
     self.postcode == nil || self.postcode.gsub(/\s+/, "") == ""  ? @postcode = "" : @postcode = self.postcode.upcase + ","
-    self.country == nil || self.country.gsub(/\s+/, "") == ""  ? @country = "" : @country = self.country.titleize
+    self.country == nil || self.country.gsub(/\s+/, "") == ""  ? @country = "" : @country = self.country.upcase
     "#{@addressone} #{@addresstwo} #{@city} #{@county} #{@postcode} #{@country}"
   end
 

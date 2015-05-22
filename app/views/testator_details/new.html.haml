@@ -20,7 +20,8 @@
   = render "layouts/radio_buttons", :f => f, radio_button: :planning_marrige, q_no: "01080", option: {true: "Yes", false: "No"}, selected: 1
   %div{"data-condition" => ":checked", "data-false" => "hide", "data-require" => "#testator_detail_planning_marrige_true", "data-true" => "show"}
     = render "layouts/radio_buttons", :f => f, radio_button: :effective_post_marrige, q_no: "01090", option: {true: "Yes", false: "No"}, selected: 0
-    = render "layouts/radio_buttons", :f => f, radio_button: :effective_post_death_sans_marrige, q_no: "01110", option: {true: "Yes", false: "No"}, selected: 0
+    %div{"data-condition" => ":checked", "data-false" => "hide", "data-require" => "#testator_detail_effective_post_marrige_true", "data-true" => "show"}
+      = render "layouts/radio_buttons", :f => f, radio_button: :effective_post_death_sans_marrige, q_no: "01110", option: {true: "Yes", false: "No"}, selected: 0
   = render "layouts/radio_buttons", :f => f, radio_button: :mirror_will, q_no: "01130", option: {yes: "Yes", no: "No", not_applicable: "Not Applicable"}, selected: 2
 
   .button-region

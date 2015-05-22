@@ -11,7 +11,7 @@
   = render "layouts/text_field", :f => f, text_field: :county, origin: @property
   = render "layouts/text_field", :f => f, text_field: :postcode, origin: @property
   = render "layouts/text_field", :f => f, text_field: :country, origin: @property
-  - unless @will.properties.where(sole_residence: "Yes").any?
+  - unless @will.properties.where(sole_residence: "Yes").any? || @will.properties.count > 0
     = render "layouts/radio_buttons", :f => f, radio_button: :sole_residence, q_no: "08020", option: {true: "Yes", false: "No"}, selected: 0
   = render "layouts/radio_buttons", :f => f, radio_button: :recipient_no, q_no: "08030", option: {1 => "1", 2 => "2", 3 => "3", 4 => "4"}, selected: 0
   %div{"data-condition" => ":checked", "data-true" => "hide", "data-require" => "#property_recipient_no_1", "data-false" => "show"}

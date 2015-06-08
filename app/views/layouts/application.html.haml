@@ -12,6 +12,7 @@
     = csrf_meta_tag
 
   %body{class: "#{yield(:bodyclass)}"}
+  
     .cover-back
     
     - if request.path == "/"

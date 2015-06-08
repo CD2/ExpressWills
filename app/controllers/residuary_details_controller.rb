@@ -81,7 +81,7 @@ class ResiduaryDetailsController < ApplicationController
     else
     
       if @residuary_detail.update(residuary_detail_params)
-        if params[:residuary_detail][:charity_residuary_general_detail_attributes][:popular_charity] && @residuary_detail.charity_residuary_general_detail.try(:popular_charity)
+        if params[:residuary_detail][:charity_residuary_general_detail_attributes] && params[:residuary_detail][:charity_residuary_general_detail_attributes][:popular_charity] && @residuary_detail.charity_residuary_general_detail.try(:popular_charity)
           @residuary_detail.charity_residuary_general_detail.update_attributes(name: @residuary_detail.popular_charity_name)
         end
         if params[:commit] == "Proceed"

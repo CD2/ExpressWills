@@ -124,9 +124,9 @@ class WillsController < ApplicationController
     @trustees = @primary_residuaries.where(share:"Trustees to decide")
     @percents = @primary_residuaries - @equal_shares - @trustees
 
-    @secondary_equal_shares = @secondary_residuaries.where(share:"Equal shares")
-    @secondary_trustees = @secondary_residuaries.where(share:"Trustees to decide")
-    @secondary_percents = @secondary_residuaries - @equal_shares - @trustees
+    @secondary_equal_shares = @will.residuary_details.where(secondary: true).where(share:"Equal shares")
+    @secondary_trustees = @will.residuary_details.where(secondary: true).where(share:"Trustees to decide")
+    @secondary_percents = @will.residuary_details.where(secondary: true).where.not(share:"Trustees to decide").where.not(share:"Equal shares")
 
     respond_to do |format|
       format.html

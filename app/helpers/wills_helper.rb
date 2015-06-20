@@ -16,6 +16,10 @@ module WillsHelper
       charity_no = (benificiary.charity_residuary_general_detail.registered_charity_number.gsub(/\s+/, "") == "" ? "" : ", registered charity number #{benificiary.charity_residuary_general_detail.registered_charity_number}")
       charity_add = (benificiary.charity_residuary_general_detail.address_one.gsub(/\s+/, "") == "" ? "" : ", of #{benificiary.charity_residuary_general_detail.full_address}")
     end
+    shares = ""
+    if type == "equal_shares"
+      share = " in equal shares "
+    end
     case benificiary.residuary_type
 
     when "Individual"
@@ -23,9 +27,9 @@ module WillsHelper
     when "Charity"
       "(#{letter}) #{prefix} #{benificiary.charity_residuary_general_detail.name}#{charity_no}#{charity_add}".html_safe
     when "My grandchildren"
-      "(#{letter}) #{prefix} #{prefix == '' ? 'M' : 'm'}y grandchildren in equal shares #{postfix}#{dead_extra}".html_safe
+      "(#{letter}) #{prefix} #{prefix == '' ? 'M' : 'm'}y grandchildren#{shares}#{postfix}#{dead_extra}".html_safe
     when "My children"
-      "(#{letter}) #{prefix} #{prefix == '' ? 'M' : 'm'}y children in equal shares #{postfix}#{dead_extra}".html_safe
+      "(#{letter}) #{prefix} #{prefix == '' ? 'M' : 'm'}y children#{shares}#{postfix}#{dead_extra}".html_safe
     end
   end
 

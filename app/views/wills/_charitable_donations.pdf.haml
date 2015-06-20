@@ -12,17 +12,35 @@
     - @end = ";"
   %p
     - if c.popular_charity
-      = "(#{letter}) £#{c.amount} to #{c.popular_charity_name}#{@end}"
+      - if c.instruction == nil || c.instruction.gsub(/\s+/, "") == ""
+        = "(#{letter}) £#{c.amount} to #{c.popular_charity_name}#{@end}"
+      - else
+        = "(#{letter}) £#{c.amount} to #{c.popular_charity_name}. I make a non-binding request that the charity use this gift towards #{c.instruction}#{@end}"
     - else
       - if c.registered_charity_number.gsub(/\s+/, "") != "" && c.full_address.gsub(/\s+/, "") != ""
-        = "(#{letter}) £#{c.amount} to #{c.name}, registered charity number #{c.registered_charity_number} of #{c.full_address}#{@end}"
+        - if c.instruction == nil || c.instruction.gsub(/\s+/, "") == ""
+          = "(#{letter}) £#{c.amount} to #{c.name}, registered charity number #{c.registered_charity_number} of #{c.full_address}#{@end}"
+        - else
+          = "(#{letter}) £#{c.amount} to #{c.name}, registered charity number #{c.registered_charity_number} of #{c.full_address}. I make a non-binding request that the charity use this gift towards #{c.instruction}#{@end}"
       - elsif c.registered_charity_number.gsub(/\s+/, "") != ""
-        = "(#{letter}) £#{c.amount} to #{c.name}, registered charity number #{c.registered_charity_number}#{@end}"
+        - if c.instruction == nil || c.instruction.gsub(/\s+/, "") == ""
+          = "(#{letter}) £#{c.amount} to #{c.name}, registered charity number #{c.registered_charity_number}#{@end}"
+        - else
+          = "(#{letter}) £#{c.amount} to #{c.name}, registered charity number #{c.registered_charity_number}. I make a non-binding request that the charity use this gift towards #{c.instruction}#{@end}"
+
       - elsif c.full_address.gsub(/\s+/, "") != ""
-        = "(#{letter}) £#{c.amount} to #{c.name}, of #{c.full_address}#{@end}"
+        - if c.instruction == nil || c.instruction.gsub(/\s+/, "") == ""
+          = "(#{letter}) £#{c.amount} to #{c.name}, of #{c.full_address}#{@end}"
+        - else
+          = "(#{letter}) £#{c.amount} to #{c.name}, of #{c.full_address}. I make a non-binding request that the charity use this gift towards #{c.instruction}#{@end}"
+
       - else
-        = "(#{letter}) £#{c.amount} to #{c.name}#{@end}"
-    = "I make a non-binding request that the charity use this gift towards #{c.instruction}." unless c.instruction == nil || c.instruction.gsub(/\s+/, "") == ""
+        - if c.instruction == nil || c.instruction.gsub(/\s+/, "") == ""
+          = "(#{letter}) £#{c.amount} to #{c.name}#{@end}"
+        - else
+          = "(#{letter}) £#{c.amount} to #{c.name}. I make a non-binding request that the charity use this gift towards #{c.instruction}#{@end}"
+
+    
 - if @will.charity_permission && @will.charity_permission.permission
   %p= "#{@count}.#{@sub+=1} If, at my death, any of the aforementioned charities no longer exists or is being wound up, the Trustees must pay the amount specified as being payable to the original charity to another charity that they consider most nearly fulfils the object that I intend to benefit."
 %p= "#{@count}.#{@sub+=1} The receipt of the treasurer or other proper officer of such charity at the time of payment will be a complete discharge to the Trustees."

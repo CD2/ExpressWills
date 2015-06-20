@@ -180,7 +180,7 @@
           %p= "#{benificiary_details benificiary, benificiary.share, "percentage", letter}#{@end}"
 
       - elsif @secondary_equal_shares.count == @secondary_residuaries.count
-
+      
         - @secondary_residuaries.each_with_index do |benificiary, i| 
           - if @secondary_residuaries.count == (i+1)
             - @end = "."
@@ -191,7 +191,7 @@
           %p= "#{benificiary_details benificiary, benificiary.share, "equal_shares", letter}#{@end}"
 
       - elsif @secondary_trustees.count == @secondary_residuaries.count
-
+        %p the remainder to be shared in such percentages as the Trustees elect in their absolute discretion between:
         - @secondary_residuaries.each_with_index do |benificiary, i| 
           - if @secondary_residuaries.count == (i+1)
             - @end = "."

@@ -28,6 +28,7 @@
           to be held on trust for each
           = c.shared_to == "all_of_my_children" ? "child until that child" : "grandchild until that grandchild" 
           = "reaches the age of #{c.certain_age}."
-        Should any 
-        = c.shared_to == "all_of_my_children" ? "child" : "grandchild"  
-        = c.certain_age_if_dead == "no" ? "predecease me this gift shall instead fall to their child(ren) in equal shares" : "predecease me this gift shall instead fall to their child(ren) in equal shares to be paid only when they reach the age of #{c.certain_age_if_dead}"
+        - if c.if_dead == "allocated_to_their_children"
+          Should any 
+          = c.shared_to == "all_of_my_children" ? "child" : "grandchild"  
+          = c.certain_age_if_dead == "no" ? "predecease me this gift shall instead fall to their child(ren) in equal shares" : "predecease me this gift shall instead fall to their child(ren) in equal shares to be paid only when they reach the age of #{c.certain_age_if_dead}"

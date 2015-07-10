@@ -21,7 +21,8 @@
       - else
         = property.life_beneficiary_no == 1 ? "that individual." : "those individuals." 
     - else
-      = "or any other property that is my sole or main residence at my death to:" if property.sole_residence && i == 0
+      = "or any other property that is my sole or main residence at my death" if property.sole_residence && i == 0
+      to:
   %p
     %u Beneficiaries
     

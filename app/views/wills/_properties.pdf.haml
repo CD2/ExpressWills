@@ -43,7 +43,7 @@
       %p="#{@count}.#{@sub+=1} If at my death I have made a contract to sell the property identified in the preceeding subclause, but that contract has not been completed, then the gift of it takes effect as a gift of the sale proceeds, less any costs of sale."
     - if property.responsible_for_charges
       - @lifes = true
-- if @lifes
+- if property.held_in_trust && @lifes
   %p="#{@count}.#{@sub+=1} While any Life Beneficiary has a life interest in any property described in this clause:"
   %p (a) The Trustees must allow the Life Beneficiary to occupy the property rent free if so long as that individual:
   %p (i) pays all outgoings on the property; and

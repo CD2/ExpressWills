@@ -7,7 +7,7 @@ class GuardiansController < ApplicationController
 
   def new
     @will = Will.find(params[:will_id])
-    @guardian = Guardian.new
+    @guardian = @will.guardian || Guardian.new
   end
 
   def edit

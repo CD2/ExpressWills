@@ -6,7 +6,7 @@ class AdministrationsController < ApplicationController
 
   def new
     @will = Will.find(params[:will_id])
-    @administration = Administration.new
+    @administration = @will.administration || Administration.new
   end
 
   def edit

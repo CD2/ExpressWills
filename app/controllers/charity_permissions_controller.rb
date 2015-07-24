@@ -6,7 +6,7 @@ class CharityPermissionsController < ApplicationController
 
   def new
     @will = Will.find(params[:will_id])
-    @charity_permission = CharityPermission.new
+    @charity_permission = @will.charity_permission || CharityPermission.new
   end
 
   def edit

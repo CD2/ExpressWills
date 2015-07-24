@@ -6,7 +6,7 @@ class PersonalGiftPermissionsController < ApplicationController
 
   def new
     @will = Will.find(params[:will_id])
-    @personal_gift_permission = PersonalGiftPermission.new
+    @personal_gift_permission = @will.personal_gift_permission || PersonalGiftPermission.new
   end
 
   def edit

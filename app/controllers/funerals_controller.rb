@@ -6,7 +6,7 @@ class FuneralsController < ApplicationController
 
   def new
     @will = Will.find(params[:will_id])
-    @funeral = Funeral.new
+    @funeral = @will.funeral || Funeral.new
   end
 
   def edit

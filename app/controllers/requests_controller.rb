@@ -6,7 +6,7 @@ class RequestsController < ApplicationController
 
   def new
     @will = Will.find(params[:will_id])
-    @request = Request.new
+    @request = @will.request || Request.new
   end
 
   def edit

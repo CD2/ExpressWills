@@ -8,7 +8,7 @@ class ExecutorsController < ApplicationController
 
   def new
     @will = Will.find(params[:will_id])
-    @executor = Executor.new
+    @executor = @will.executor || Executor.new
   end
 
   def edit

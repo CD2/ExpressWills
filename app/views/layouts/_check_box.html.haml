@@ -1,11 +1,10 @@
 .row.collapse
   .small-1.column
     %span.prefix
-      -if defined? checked 
+      -if !@ignore_defaults && defined? checked
         = f.check_box check_box, checked: true
       -else
         = f.check_box check_box
   .small-11.columns
     .check-box-question
       = f.label check_box, "#{question q_no}"
-    

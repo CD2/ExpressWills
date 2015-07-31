@@ -6,11 +6,16 @@ class AdministrationsController < ApplicationController
 
   def new
     @will = Will.find(params[:will_id])
-    @administration = @will.administration || Administration.new
+    if @administration = @will.administration 
+      @ignore_defaults = true
+    else
+      @administration = Administration.new
+    end
   end
 
   def edit
     @will = Will.find(params[:will_id])
+    @ignore_defaults = true
   end
 
   def create

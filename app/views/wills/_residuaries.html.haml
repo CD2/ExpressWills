@@ -314,10 +314,10 @@
           - letter.next!
           %p= "#{benificiary_details benificiary, benificiary.share, "equal_shares", letter}#{@end}"
 
-%p= "#{@count}.3"
-  %p 
-    - if @residuary.amount_allowed_to_distribute == "None"
-      Section 32 of the Trustee Act 1925 does not apply to the trusts in this clause.
-    - else 
-      = "While a beneficiary of the trust is under the age specified for inheritance, the Trustees may pay up to #{@residuary.amount_allowed_to_distribute} of the capital of the beneficiary's share of the Trust Fund to the beneficiary or use it for his or her benefit."
+%p
+  = "#{@count}.3"
+  - if @residuary.amount_allowed_to_distribute == "None"
+    Section 32 of the Trustee Act 1925 does not apply to the trusts in this clause.
+  - else 
+    = "While a beneficiary of the trust is under the age specified for inheritance, the Trustees may pay up to #{@residuary.amount_allowed_to_distribute} of the capital of the beneficiary's share of the Trust Fund to the beneficiary or use it for his or her benefit."
 

@@ -165,10 +165,8 @@
         %p= "#{benificiary_details benificiary, benificiary.share, "equal_shares", letter}#{@end}"
 
   - if @secondary_residuaries.any?
-    - if @secondary_equal_shares.count == @secondary_residuaries.count
-      %p= "#{@count}.2 If any above mentioned residuary gift fails, then the Trustees will hold it and pay it in equal shares, to:"
-    - else
-      %p= "#{@count}.2 If any above mentioned residuary gift fails, then the Trustees will hold it and pay it to:"
+    %p= "#{@count}.2 If any above mentioned residuary gift fails, then the Trustees will hold it and pay it to:"
+    - letter = "`"
     %p
       - if @secondary_percents.count == @secondary_residuaries.count
 
@@ -183,6 +181,7 @@
           %p= "#{benificiary_details benificiary, benificiary.share, "percentage", letter}#{@end}"
 
       - elsif @secondary_equal_shares.count == @secondary_residuaries.count
+
         - @secondary_residuaries.each_with_index do |benificiary, i| 
           - if @secondary_residuaries.count == (i+1)
             - @end = "."
@@ -190,10 +189,11 @@
             - @end = "; and"
           - else
             - @end = ";"  
+          - letter.next!
           %p= "#{benificiary_details benificiary, benificiary.share, "equal_shares", letter}#{@end}"
 
       - elsif @secondary_trustees.count == @secondary_residuaries.count
-        %p the remainder to be shared in such percentages as the Trustees elect in their absolute discretion between:
+
         - @secondary_residuaries.each_with_index do |benificiary, i| 
           - if @secondary_residuaries.count == (i+1)
             - @end = "."
@@ -313,4 +313,12 @@
             - @end = ";"  
           - letter.next!
           %p= "#{benificiary_details benificiary, benificiary.share, "equal_shares", letter}#{@end}"
+
+%p
+  %b= "#{@count+=1}.3"
+  %p 
+    - if @residuary.amount_allowed_to_distribute == "None"
+      Section 32 of the Trustee Act 1925 does not apply to the trusts in this clause.
+    - else 
+      = "While a beneficiary of the trust is under the age specified for inheritance, the Trustees may pay up to #{@residuary.amount_allowed_to_distribute}% of the capital of the beneficiary's share of the Trust Fund to the beneficiary or use it for his or her benefit."
 

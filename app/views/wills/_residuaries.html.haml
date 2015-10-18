@@ -1,9 +1,10 @@
+- @subcount = 0
 - if @primary_residuaries.any?
   - letter = "`"
   %p
     %b= "#{@count+=1}. RESIDUARY"
   %p
-    = @count.to_s + ".1"
+    = @count.to_s + ".#{@subcount+=1}"
 
     - if @percents.count == @primary_residuaries.count
 
@@ -165,7 +166,7 @@
         %p= "#{benificiary_details benificiary, benificiary.share, "equal_shares", letter}#{@end}"
 
   - if @secondary_residuaries.any?
-    %p= "#{@count}.2 If any above mentioned residuary gift fails, then the Trustees will hold it and pay it to:"
+    %p= "#{@count}.#{@subcount+=1} If any above mentioned residuary gift fails, then the Trustees will hold it and pay it to:"
     - letter = "`"
     %p
       - if @secondary_percents.count == @secondary_residuaries.count
@@ -315,7 +316,7 @@
           %p= "#{benificiary_details benificiary, benificiary.share, "equal_shares", letter}#{@end}"
 
 %p
-  = "#{@count}.3"
+  = "#{@count}.#{@subcount+=1}"
   - if @residuary.amount_allowed_to_distribute == "None"
     Section 32 of the Trustee Act 1925 does not apply to the trusts in this clause.
   - else 

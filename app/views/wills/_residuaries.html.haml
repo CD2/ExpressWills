@@ -166,7 +166,7 @@
         %p= "#{benificiary_details benificiary, benificiary.share, "equal_shares", letter}#{@end}"
 
   - if @secondary_residuaries.any?
-    %p= "#{@count}.#{@subcount+=1} If any above mentioned residuary gift fails, then the Trustees will hold it and pay it to:"
+    %p= "#{@count}.#{@subcount+=1} If any above mentioned residuary gift fails, then the Trustees will hold it and pay it to:" unless @secondary_trustees.count == @secondary_residuaries.count
     - letter = "`"
     %p
       - if @secondary_percents.count == @secondary_residuaries.count
@@ -194,6 +194,8 @@
           %p= "#{benificiary_details benificiary, benificiary.share, "equal_shares", letter}#{@end}"
 
       - elsif @secondary_trustees.count == @secondary_residuaries.count
+
+        %p If any above mentioned residuary gift fails, then the Trustees will hold it and pay it in such percentages as the Trustees elect in their absolute discretion to:
 
         - @secondary_residuaries.each_with_index do |benificiary, i| 
           - if @secondary_residuaries.count == (i+1)

@@ -195,7 +195,7 @@
 
       - elsif @secondary_trustees.count == @secondary_residuaries.count
 
-        %p If any above mentioned residuary gift fails, then the Trustees will hold it and pay it in such percentages as the Trustees elect in their absolute discretion to:
+        %p= "#{@count}.#{@subcount+=1} If any above mentioned residuary gift fails, then the Trustees will hold it and pay it in such percentages as the Trustees elect in their absolute discretion to:"
 
         - @secondary_residuaries.each_with_index do |benificiary, i| 
           - if @secondary_residuaries.count == (i+1)

@@ -12,7 +12,7 @@
     
     - if property.held_in_trust
       = "or any other property that is my sole or main residence at my death" if property.sole_residence && i == 0
-      - if property.life_beneficiary_no.any?
+      - if property.life_beneficiary_no > 0
         to
         - property.life_beneficiaries.each_with_index do |b, j|
           = "#{b.full_name} of #{b.full_address}"

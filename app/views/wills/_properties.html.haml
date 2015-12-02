@@ -12,16 +12,17 @@
     
     - if property.held_in_trust
       = "or any other property that is my sole or main residence at my death" if property.sole_residence && i == 0
-      to
-      - property.life_beneficiaries.each_with_index do |b, j|
-        = "#{b.full_name} of #{b.full_address}"
-        = property.life_beneficiaries.count-1 == j ? "who are living at my death (Life Beneficiary) for the life of " : "and"
-      - if property.held_in_trust
-        = property.life_beneficiary_no == 1 ? "that individual subject to this life interest for:" : "those individuals subject to this life interest for:" 
+      - if property.life_beneficiary_no.any?
+        to
+        - property.life_beneficiaries.each_with_index do |b, j|
+          = "#{b.full_name} of #{b.full_address}"
+          = property.life_beneficiaries.count-1 == j ? "who are living at my death (Life Beneficiary) for the life of " : "and"
+        - if property.held_in_trust
+          = property.life_beneficiary_no == 1 ? "that individual subject to this life interest for:" : "those individuals subject to this life interest for:" 
+        - else
+          = property.life_beneficiary_no == 1 ? "that individual." : "those individuals." 
       - else
-        = property.life_beneficiary_no == 1 ? "that individual." : "those individuals." 
-    - else
-      = "or any other property that is my sole or main residence at my death" if property.sole_residence && i == 0
+        = "or any other property that is my sole or main residence at my death" if property.sole_residence && i == 0
       to:
   %p
     %u Beneficiaries

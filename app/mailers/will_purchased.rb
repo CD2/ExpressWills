@@ -9,7 +9,7 @@ class WillPurchased < ActionMailer::Base
 
   def merlin_notify(will)
     @will = will
-    mail(to: 'shane@cd2solutions.co.uk', subject: "Will Purchased")
+    mail(to: 'contact@expresswills.com', subject: "Will Purchased")
   end
 
 

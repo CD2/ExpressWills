@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   serialize :notification_params, Hash
   def paypal_url(return_path)
     values = {
-        business: "merchant@cd2s.co.uk",
+        business: "contact@notaryexpress.co.uk",
         cmd: "_xclick",
         upload: 1,
         return: "#{Rails.application.secrets.app_host}#{return_path}",
@@ -13,6 +13,7 @@ class Order < ActiveRecord::Base
         amount: price,
         item_name: full_name,
         item_number: '1',
+        :currency_code => 'GBP',
         quantity: '1',
         notify_url: "https://expresswills.herokuapp.com/hook"
     }

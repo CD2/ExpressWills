@@ -1,4 +1,5 @@
 %h1 Your Final Will is ready
+
 - if @will.order && @will.order.status == "Completed"
   %hr
   %p You can download your will below at any time
@@ -19,6 +20,8 @@
 
   %hr
   = link_to("Download", will_final_will_path(@will, :format => 'pdf'), class: "button radius", download: "will")
+  - if @will.mirror_will
+    = link_to("Download Mirror will", will_mirror_will_path(@will, :format => 'pdf'), class: "button radius", download: "will")
 - else
   %p You can purchase your will now and download at any time in the future
   %hr

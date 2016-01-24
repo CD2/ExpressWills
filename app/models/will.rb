@@ -40,4 +40,9 @@ class Will < ActiveRecord::Base
   validates :title, presence: true
   validates_inclusion_of :tc, :in => ["1"]
   
+  def mirror_will
+    testator_detail.mirror_will
+  end
+
+
 end

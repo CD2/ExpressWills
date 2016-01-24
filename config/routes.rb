@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :wills do
     get 'final_will'
+    get 'mirror_will'
     get 'purchase'
     get 'thanks'
     resources :testator_details, only: [:new, :edit, :create, :update]

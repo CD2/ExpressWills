@@ -20,7 +20,7 @@
 
   %hr
   = link_to("Download", will_final_will_path(@will, :format => 'pdf'), class: "button radius", download: "will")
-  - if @will.mirror_will
+  - if @will.mirror_will == 'yes'
     = link_to("Download Mirror will", will_mirror_will_path(@will, :format => 'pdf'), class: "button radius", download: "will")
 - else
   %p You can purchase your will now and download at any time in the future
@@ -81,7 +81,7 @@
         %td.true
       %tr.odd
         %td
-        - if @will.mirror_will
+        - if @will.mirror_will == 'yes'
           %td.price £60
           %td.price £120
         - else
@@ -100,7 +100,7 @@
               .field
                 = f.hidden_field :will_id, value: @will.id
               .field
-                - if @will.mirror_will
+                - if @will.mirror_will == 'yes'
                   = f.hidden_field :price, value: "60"
                 - else
                   = f.hidden_field :price, value: "30"

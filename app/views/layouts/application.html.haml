@@ -28,6 +28,7 @@
         = render "layouts/top_bar"
       #content.row
         - if signed_in?
+          
           .small-3.columns
             = render 'layouts/sidebar'
           .small-9.columns

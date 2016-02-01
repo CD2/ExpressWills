@@ -1,0 +1,17 @@
+%h1 All Wills
+%table
+  %tr
+    %th Alias
+    %th Created on
+    %th Mirror?
+    %th Paid
+    %th Download
+
+  - @wills.each do |will|
+    - if will.order && will.order.status == "Completed"
+      %tr
+        %td= will.title
+        %td= will.created_at.strftime("%d %b %Y")
+        %td= will.mirror_will
+        %td= will.order.price
+        %td= link_to 'Download', will_purchase_path(will)

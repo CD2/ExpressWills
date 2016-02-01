@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-
+  namespace :admin do 
+    resources :wills, only: :index
+  end
 
   resources :orders
 

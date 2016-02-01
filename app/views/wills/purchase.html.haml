@@ -81,8 +81,12 @@
         %td.true
       %tr.odd
         %td
-        %td.price £30
-        %td.price £60
+        - if @will.mirror_will
+          %td.price £60
+          %td.price £120
+        - else
+          %td.price £30
+          %td.price £60
       %tr
         %td
         %td.purchase
@@ -96,7 +100,10 @@
               .field
                 = f.hidden_field :will_id, value: @will.id
               .field
-                = f.hidden_field :price, value: "30"
+                - if @will.mirror_will
+                  = f.hidden_field :price, value: "60"
+                - else
+                  = f.hidden_field :price, value: "30"
               .actions
                 = f.submit 'Purchase', class: "button radius"
         %td.purchase
@@ -110,7 +117,10 @@
               .field
                 = f.hidden_field :will_id, value: @will.id
               .field
-                = f.hidden_field :price, value: "60"
+                - if @will.mirror_will
+                  = f.hidden_field :price, value: "60"
+                - else 
+                  = f.hidden_field :price, value: "120" 
               .actions
                 = f.submit 'Purchase', class: "button radius"
 

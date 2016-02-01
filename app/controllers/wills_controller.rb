@@ -1,6 +1,8 @@
 class WillsController < ApplicationController
   before_action :set_will, only: [:show, :edit, :update, :destroy]
-  #before_action :signed_in_user
+  before_action :set_other_will, only: [:purchase, :final_will, :mirror_will]
+  before_action :signed_in_user
+  before_action :correct_user
 
   def index
     @wills = current_user.wills
@@ -252,8 +254,19 @@ class WillsController < ApplicationController
       @will = Will.find(params[:id])
     end
 
+    def set_other_will
+      @will = Will.find(params[:will_id])
+    end
+
+    
+
     def will_params
       params.require(:will).permit(:title, :tc)
+    end
+
+    def correct_user
+      @user = @will.user
+      redirect_to(root_url) unless current_user?(@user) || current_user.admin?
     end
 
     def signed_in_user

@@ -2,7 +2,7 @@ class WillsController < ApplicationController
   before_action :set_will, only: [:show, :edit, :update, :destroy]
   before_action :set_other_will, only: [:purchase, :final_will, :mirror_will]
   before_action :signed_in_user
-  before_action :correct_user
+  before_action :correct_user, except: [:index]
 
   def index
     @wills = current_user.wills

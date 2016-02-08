@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
 
   resources :orders
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
   post "/orders/:id" => "orders#show"
   post "/hook" => "orders#hook"

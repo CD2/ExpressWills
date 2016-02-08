@@ -8,9 +8,18 @@
 %hr
 
 
-= form_for(:session, url: sessions_path) do |f|
-  = f.label :email
-  = f.text_field :email
-  = f.label :password
-  = f.password_field :password
-  = f.submit "Sign in", class: "button radius"
+  = form_for :session, url: sessions_path do |f|
+    .field
+      = f.label :email
+      = f.email_field :email, placeholder: "Email"
+    .field
+      = f.label :password
+      = f.password_field :password, placeholder: "Password"
+    .field.check_box_field
+      = f.label :remember_me do
+        = f.check_box :remember_me
+        %span Remember me on this device
+    .actions
+      = f.submit "Log in"
+
+= link_to "Forgot password?", new_password_reset_path, class: "minor_form_link"

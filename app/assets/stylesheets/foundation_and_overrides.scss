@@ -1458,6 +1458,7 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 
 .pika-select {
     display: inline-block;
+    font-size: 12px;
     *display: inline;
 }
 
@@ -1739,7 +1740,7 @@ div#page-one.purchase p {
     font-size: 0.75rem;
     font-family: times, sans-serif;
     text-align: center;
-    padding-top: 4rem;
+  padding-top: 2.5rem;
     line-height: 2rem;
 
 }
@@ -1791,4 +1792,6 @@ div.hide_a, .hide_a .hide_b {
   display: block;
 }
 
-
+select {
+  margin-bottom: 1rem!important;
+}

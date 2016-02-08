@@ -1,0 +1,12 @@
+#floating_form_card_container
+  #floating_form_card.reset_password
+
+    #floating_form_sidebar
+      //TODO copy text for the register page
+      %h1 Forgot password
+      %p Retrieve your login details by entering your email below.
+      = form_for(:password_reset, url: password_resets_path) do |f|
+        .field
+          = f.email_field :email, placeholder: "Email"
+        .actions
+          = f.submit "Submit"

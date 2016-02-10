@@ -265,6 +265,7 @@ class WillsController < ApplicationController
     end
 
     def correct_user
+      @will = Will.find(params[:will_id])
       @user = @will.user
       redirect_to(root_url) unless current_user?(@user) || current_user.admin?
     end

@@ -4,6 +4,7 @@ class WillPurchased < ActionMailer::Base
 
   def purchaser_notify(will)
     @will = will
+    attachments["WILLSigningInstructions.pdf"] = File.read("#{Rails.root}/public/WILLSigningInstructions.pdf")
     mail(to: @will.user.email, subject: "Thank you for your purchase")
   end
 

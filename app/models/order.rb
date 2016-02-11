@@ -10,7 +10,7 @@ class Order < ActiveRecord::Base
         upload: 1,
         return: "#{Rails.application.secrets.app_host}#{return_path}",
         invoice: id,
-        amount: 0.01,
+        amount: price,
         item_name: full_name,
         item_number: id,
         :currency_code => 'GBP',

@@ -12,7 +12,7 @@ class Order < ActiveRecord::Base
         invoice: id,
         amount: price,
         item_name: full_name,
-        item_number: '1',
+        item_number: id,
         :currency_code => 'GBP',
         quantity: '1',
         notify_url: "https://expresswills.herokuapp.com/hook"

@@ -11,7 +11,7 @@ class WillPurchased < ActionMailer::Base
 
   def merlin_notify(will)
     @will = will
-    mail(to: 'contact@expresswills.com', subject: "Will Purchased")
+    mail(to: 'contact@notaryexpress.co.uk', subject: "Will Purchased")
   end
 
 

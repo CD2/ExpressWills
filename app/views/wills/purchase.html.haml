@@ -145,15 +145,15 @@
               .actions
                 = f.submit 'Purchase', class: "button radius"
 
-- if Rails.env.development?
-  = form_for @order, url: shortcut_path do |f|
-    = f.hidden_field :full_name, value: "Gold Service Will"
-    = f.hidden_field :email_address, value: @user.email
-    = f.hidden_field :price, value: "60"
-    = f.hidden_field :will_id, value: @will.id
-    = f.check_box :gold
-    = f.label :gold
-    .actions
-      = f.submit 'Purchase', class: "button radius"
+
+= form_for @order, url: shortcut_path do |f|
+  = f.hidden_field :full_name, value: "Gold Service Will"
+  = f.hidden_field :email_address, value: @user.email
+  = f.hidden_field :price, value: "60"
+  = f.hidden_field :will_id, value: @will.id
+  = f.check_box :gold
+  = f.label :gold
+  .actions
+    = f.submit 'Purchase', class: "button radius"
 
 

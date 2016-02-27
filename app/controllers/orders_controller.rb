@@ -70,7 +70,7 @@ class OrdersController < ApplicationController
     if @order.save
       save_final_will
       WillPurchased.purchaser_notify(@order.will).deliver
-      WillPurchased.merlin_notify(@order.will).deliver
+     # WillPurchased.merlin_notify(@order.will).deliver
       @order.update_attributes notification_params: params, status: status, transaction_id: params[:txn_id], purchased_at: Time.now
       redirect_to will_thanks_path(@order.will)
     end

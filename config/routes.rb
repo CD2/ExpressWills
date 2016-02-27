@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   post "/orders/:id" => "orders#show"
   post "/hook" => "orders#hook"
+  post "/shortcut" => "orders#shortcut"
 
   resources :wills do
     get 'final_will'

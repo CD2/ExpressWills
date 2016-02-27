@@ -27,22 +27,22 @@
     - if @testator.mirror_will == "yes"
       %b MIRROR WILL
       %p Although this will is in similar terms to the will of my partner, there is no agreement between us not to revoke or change our wills. I am free to revoke or change my will at any time.
-    = render(:partial => "definitions")
-    = render(:partial => "funeral_wishes")
-    = render(:partial => "domicile")
-    = render(:partial => "expected_marriage") if @testator.planning_marrige
-    = render(:partial => "executors")
-    = render(:partial => "survivorship")
+    = render(:partial => "wills/definitions")
+    = render(:partial => "wills/funeral_wishes")
+    = render(:partial => "wills/domicile")
+    = render(:partial => "wills/expected_marriage") if @testator.planning_marrige
+    = render(:partial => "wills/executors")
+    = render(:partial => "wills/survivorship")
     - if @guardian
       - if @will.testator_detail.children != "no" && @will.testator_detail.children_age
-        = render(:partial => "guardians") if @guardian.appoint_current_guardians
+        = render(:partial => "wills/guardians") if @guardian.appoint_current_guardians
       - else
-        = render(:partial => "guardians") if @guardian.appoint_future_guardians
-    = render(:partial => "specific_gifts") if @personal_gifts.any?
-    = render(:partial => "properties") if @properties.any?
-    = render(:partial => "financial_legacy") if @cash_gifts.any?
-    = render(:partial => "charitable_donations") if @charitable_donations.any?
-    = render(:partial => "residuaries") if @residuaries.any?
+        = render(:partial => "wills/guardians") if @guardian.appoint_future_guardians
+    = render(:partial => "wills/specific_gifts") if @personal_gifts.any?
+    = render(:partial => "wills/properties") if @properties.any?
+    = render(:partial => "wills/financial_legacy") if @cash_gifts.any?
+    = render(:partial => "wills/charitable_donations") if @charitable_donations.any?
+    = render(:partial => "wills/residuaries") if @residuaries.any?
     
     %b= "#{@count+=1}. SECTION 33 OF THE WILLS ACT 1837"
     %p Section 33 of the Wills Act 1837 does not apply to any gift in this will.

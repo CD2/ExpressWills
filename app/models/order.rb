@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-
+attr_accessor :gold
   belongs_to :will
 
   serialize :notification_params, Hash
@@ -10,7 +10,7 @@ class Order < ActiveRecord::Base
         upload: 1,
         return: "#{Rails.application.secrets.app_host}#{return_path}",
         invoice: id,
-        amount: price,
+        amount: 0.01,
         item_name: full_name,
         item_number: id,
         :currency_code => 'GBP',

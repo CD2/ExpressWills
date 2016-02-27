@@ -82,11 +82,31 @@
       %tr.odd
         %td
         - if @will.mirror_will == 'yes'
-          %td.price £60
-          %td.price £120
+          %td.price
+            Price: £50.00
+            %br
+            VAT at 20%: £10.00
+            %br
+            Total: £60
+          %td.price
+            Price: £100.00
+            %br
+            VAT at 20%: £20.00
+            %br
+            Total: £120
         - else
-          %td.price £30
-          %td.price £60
+          %td.price
+            Price: £25.00
+            %br
+            VAT at 20%: £5.00
+            %br
+            Total: £30
+          %td.price
+            Price: £50.00
+            %br
+            VAT at 20%: £10.00
+            %br
+            Total: £60
       %tr
         %td
         %td.purchase
@@ -120,9 +140,20 @@
                 - if @will.mirror_will
                   = f.hidden_field :price, value: "60"
                 - else 
-                  = f.hidden_field :price, value: "120" 
+                  = f.hidden_field :price, value: "120"
+                = f.hidden_field :gold
               .actions
                 = f.submit 'Purchase', class: "button radius"
 
+- if Rails.env.development?
+  = form_for @order, url: shortcut_path do |f|
+    = f.hidden_field :full_name, value: "Gold Service Will"
+    = f.hidden_field :email_address, value: @user.email
+    = f.hidden_field :price, value: "60"
+    = f.hidden_field :will_id, value: @will.id
+    = f.check_box :gold
+    = f.label :gold
+    .actions
+      = f.submit 'Purchase', class: "button radius"
 
 

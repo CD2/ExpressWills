@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208030038) do
+ActiveRecord::Schema.define(version: 20160219170624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -210,6 +210,7 @@ ActiveRecord::Schema.define(version: 20160208030038) do
     t.string   "transaction_id"
     t.datetime "purchased_at"
     t.string   "price"
+    t.boolean  "gold",                default: false
   end
 
   create_table "partner_details", force: true do |t|
@@ -362,6 +363,7 @@ ActiveRecord::Schema.define(version: 20160208030038) do
     t.boolean  "term"
     t.integer  "progress",   default: 0
     t.string   "tc"
+    t.string   "pdf_locale"
   end
 
 end

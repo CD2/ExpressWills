@@ -146,3 +146,4 @@
                 = f.submit 'Purchase', class: "button radius"
 
 
+= link_to "short", shortcut_path(order: {:full_name => "Standard Will", :email_address => @user.email, :will_id => @will.id, :price => 60, :gold => true})

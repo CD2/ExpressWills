@@ -1,0 +1,17 @@
+%p
+  %b= "#{@count+=1}. SPECIFIC GIFTS"
+%p
+  = "#{@count}.1 I give my:"
+- @personal_gifts.each_with_index do |gift, i|
+  %p
+    - letter = ('a'..'z').to_a[i]
+    - if @personal_gifts.count == (i+1)
+      - @end = "."
+    - elsif @personal_gifts.count == (i+2)
+      - @end = "; and"
+    - else
+      - @end = ";"
+    = "(#{letter}) #{gift.description} to #{gift.full_name} of #{gift.full_address}#{@end}"
+
+- if @will.personal_gift_permission.try(:permission)
+  %p= "#{@count}.2 If at my death I have sold or made a contract to sell any items identified in the immediately preceding sub-clause, then the gift of it takes effect as a gift of the sale proceeds, less any costs of sale, if reasonably discernible otherwise the value of the gift shall be its estimated market value, less any costs of sale, as determined by the Trustees in their absolute discretion."

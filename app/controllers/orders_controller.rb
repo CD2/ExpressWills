@@ -135,6 +135,7 @@ class OrdersController < ApplicationController
     @secondary_equal_shares = @will.residuary_details.where(secondary: true).where(share:"Equal shares")
     @secondary_trustees = @will.residuary_details.where(secondary: true).where(share:"Trustees to decide")
     @secondary_percents = @will.residuary_details.where(secondary: true).where.not(share:"Trustees to decide").where.not(share:"Equal shares")
+    @will.update_attributes(final_will: render_to_string('wills/final_will.pdf'))
         render :pdf    => "will",
                :template    => "wills/final_will.pdf.haml",
                :layout      => "pdf_layout.html",

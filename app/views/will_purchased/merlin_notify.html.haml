@@ -1,2 +1,8 @@
 %h1 A Will has been purchased at Express Wills 
 %p Please login to the admin account to see the details
+
+- if @will.order.gold
+  %p
+    To review the will for the client
+    = link_to "Click Here"
+    \.

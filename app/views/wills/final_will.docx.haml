@@ -1,12 +1,13 @@
+
 - @count = 0
-#header{:style => "padding-top: 2rem;"}
-  = image_tag 'http://notaryexpress.co.uk/logo.png', style: "width:100%"
+<img src="http://static.bbci.co.uk/frameworks/barlesque/3.8.0/orb/4/img/bbc-blocks-dark.png">
+hello
 #page-one{style: "page-break-after: always;"}
   .page
     .intro{style:"text-align: center; line-height: 2rem; font-size: 1.5rem; margin-top: 4rem;"}
       %br
       %br
-      %p 
+      %p
         Last Will and Testament
         %br
         %br
@@ -44,7 +45,7 @@
     = render(:partial => "wills/financial_legacy") if @cash_gifts.any?
     = render(:partial => "wills/charitable_donations") if @charitable_donations.any?
     = render(:partial => "wills/residuaries") if @residuaries.any?
-    
+
     %b= "#{@count+=1}. SECTION 33 OF THE WILLS ACT 1837"
     %p Section 33 of the Wills Act 1837 does not apply to any gift in this will.
 
@@ -85,12 +86,12 @@
           %p (a) any of the Trustees other than a Professional Trustee:
           %p (i) in a personal capacity; or
           %p (ii) as trustee of another trust; or
-          %p (iii) as a partner in a partnership; 
+          %p (iii) as a partner in a partnership;
           %p (b) the spouse, civil partner or child of any of the Trustees; and
           %p (c) any company of which any of the Trustees is a director.
         - if @executor.notary_express || @admin.liability_powers || @admin.accept_admin
           %p= "#{@count}.#{@sub+=1} None of the Trustees, other than a Professional Trustee, is liable for any breach of trust unless it results from the Trustee in question:"
-          %p (a) acting in a way that he or she knows to be contrary to the interests of the beneficiaries of this will; or 
+          %p (a) acting in a way that he or she knows to be contrary to the interests of the beneficiaries of this will; or
           %p (b) being recklessly indifferent about whether an action is contrary to the beneficiaries' interests.
           %p= "#{@count}.#{@sub+=1} The Trustees do not have to interfere in the management or conduct of the business or distribution policy of any company whose shares or securities form part of the trust fund, unless they have actual notice of conduct of the company's directors that is contrary to the shareholders' interests."
           %p= "#{@count}.#{@sub+=1} The Trustees may invest in assets:"

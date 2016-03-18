@@ -42,13 +42,7 @@ class GeneralDetail < ActiveRecord::Base
     "#{self.first_name.titleize} #{self.middle_name.titleize if middle_name} #{self.surname.titleize}"
   end
   def full_address
-    self.address_one == nil || self.address_one.gsub(/\s+/, "") == "" ? @addressone = "" : @addressone = self.address_one + ","
-    self.address_two == nil || self.address_two.gsub(/\s+/, "") == "" ? @addresstwo = "" : @addresstwo = self.address_two + ","
-    self.city == nil || self.city.gsub(/\s+/, "") == ""  ? @city = "" : @city = self.city.titleize + ","
-    self.county == nil || self.county.gsub(/\s+/, "") == ""  ? @county = "" : @county = self.county.titleize + ","
-    self.postcode == nil || self.postcode.gsub(/\s+/, "") == ""  ? @postcode = "" : @postcode = self.postcode.upcase + ","
-    self.country == nil || self.country.gsub(/\s+/, "") == ""  ? @country = "" : @country = self.country.titleize
-    "#{@addressone} #{@addresstwo} #{@city} #{@county} #{@postcode} #{@country}"
+    [address_one, address_two, city, county, postcode, country].reject { |c| c.empty? }.*(', ')
   end
 
 end

@@ -23,6 +23,8 @@ gem "faker"
 gem 'unicorn'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'htmltoword'
+gem 'ckeditor'
 
 #testing
 group :development, :test do

@@ -5,13 +5,15 @@
     %th Created on
     %th Mirror?
     %th Paid
+    %th Review
     %th Download
 
   - @wills.each do |will|
-    - if will.order && will.order.status == "Completed"
+    - if will.order
       %tr
         %td= will.title
         %td= will.created_at.strftime("%d %b %Y")
         %td= will.mirror_will
         %td= will.order.price
+        %td= link_to "Review", admin_will_review_path(will)
         %td= link_to 'Download', will_purchase_path(will)

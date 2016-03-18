@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :admin do 
-    resources :wills, only: :index
+    resources :wills, only: :index do
+      get 'review'
+    end
   end
 
   resources :orders
@@ -9,13 +11,14 @@ Rails.application.routes.draw do
 
   post "/orders/:id" => "orders#show"
   post "/hook" => "orders#hook"
-  post "/shortcut" => "orders#shortcut"
+  get "/shortcut" => "orders#shortcut"
 
   resources :wills do
     get 'final_will'
     get 'mirror_will'
     get 'purchase'
     get 'thanks'
+
     resources :testator_details, only: [:new, :edit, :create, :update]
     resources :partner_details, only: [:new, :edit, :create, :update]
     resources :funerals, only: [:new, :edit, :create, :update]

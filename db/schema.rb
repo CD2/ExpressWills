@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219170624) do
+ActiveRecord::Schema.define(version: 20160318171155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -364,6 +364,7 @@ ActiveRecord::Schema.define(version: 20160219170624) do
     t.integer  "progress",   default: 0
     t.string   "tc"
     t.string   "pdf_locale"
+    t.text     "final_will"
   end
 
 end

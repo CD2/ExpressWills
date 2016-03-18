@@ -1,0 +1,38 @@
+%b= "#{@count+= 1}. DEFINITIONS"
+%p The definitions in this clause apply in this will:
+%p 
+  %b Estate: 
+  all the assets that I can dispose of by will.
+%p 
+  %b Trustees: 
+  my executors, my administrators and the trustees of any trusts under this will whether original, additional or substituted. 
+%p 
+  %b Professional Trustee: 
+  a person who is acting as one of the Trustees in the course of a business or profession.
+
+- if @testator.children == "yes_my_own" 
+  %p
+    Express and implied references in this will to an individual's 
+    %b children 
+    do not include the individual's stepchildren.
+
+- elsif @testator.children ==  "yes_including_my_partners"
+  %p
+    Express and implied references in this will to an individual's 
+    %b children 
+    include the individual's stepchildren, even if the individual has not adopted them.
+
+- elsif @will.guardian && @will.guardian.appoint_future_guardians
+  %p
+    Express and implied references in this will to an individual's 
+    %b children 
+    do not include the individual's stepchildren.
+    
+%p 
+  References in this will to 
+  %b inheritance tax 
+  include estate duty and capital transfer tax. They also include any other tax payable on inheritances or on death introduced after the date of this will and tax and duties payable to authorities outside the United Kingdom.
+%p 
+  References in this will to 
+  %b this will 
+  include any codicil to this will. However, any reference to the date of this will is a reference to the date of this particular document.

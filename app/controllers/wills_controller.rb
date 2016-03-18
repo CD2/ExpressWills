@@ -2,7 +2,7 @@ class WillsController < ApplicationController
   before_action :set_will, only: [:show, :edit, :update, :destroy]
   before_action :set_other_will, only: [:purchase, :final_will, :mirror_will]
   before_action :signed_in_user
-  before_action :correct_user, except: [:index, :new, :create]
+  before_action :correct_user, except: [:index, :new, :create, :review]
 
   def index
     @wills = current_user.wills
@@ -17,6 +17,10 @@ class WillsController < ApplicationController
     @user = @will.user
     @testator_details = @will.testator_general_details
     @order = Order.new
+  end
+
+  def review
+
   end
 
   def show
@@ -141,7 +145,11 @@ class WillsController < ApplicationController
                      :left               => 10,
                      :right => 10 }, :footer => { :center => 'Page [page] of [topage]', :font_name          => "Times New Roman" },
                      :font_name          => "Times New Roman"
-      end 
+      end
+      format.docx do
+        render :docx => 'final_will',
+               :filename => 'will.docx'
+      end
     end
   end
 

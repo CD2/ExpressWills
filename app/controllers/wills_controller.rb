@@ -236,6 +236,7 @@ class WillsController < ApplicationController
   def email
     save_final_will
     WillPurchased.resend_will(@will).deliver
+    flas[:notice] = "Will emailed"
     redirect_to admin_wills_path
   end
 

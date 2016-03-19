@@ -1,4 +1,6 @@
 class Will < ActiveRecord::Base
+  default_scope -> {order id: :asc}
+
   has_one :testator_detail
   has_one :partner_detail
   has_one :funeral

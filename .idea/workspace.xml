@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e5c7a64-0832-49bf-92df-0eba0f847564" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/will_purchased/resend_will.html.haml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/wills/final_will_reviewed.pdf.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/admin/wills_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/admin/wills_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/orders_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/orders_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/wills_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/wills_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/mailers/will_purchased.rb" afterPath="$PROJECT_DIR$/app/mailers/will_purchased.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin/wills/index.html.haml" afterPath="$PROJECT_DIR$/app/views/admin/wills/index.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin/wills/review.html.haml" afterPath="$PROJECT_DIR$/app/views/admin/wills/review.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/will_purchased/merlin_notify.html.haml" afterPath="$PROJECT_DIR$/app/views/will_purchased/merlin_notify.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/will.rb" afterPath="$PROJECT_DIR$/app/models/will.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/wills/final_will_reviewed.pdf.haml" afterPath="$PROJECT_DIR$/app/views/wills/final_will_reviewed.pdf.haml" />
     </list>
     <ignored path="express_wills.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,18 +34,38 @@
       <file leaf-file-name="wills_controller.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/wills_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.037037">
-              <caret line="296" column="46" selection-start-line="296" selection-start-column="46" selection-end-line="296" selection-end-column="46" />
+            <state vertical-scroll-proportion="-6.4444447">
+              <caret line="286" column="0" selection-start-line="286" selection-start-column="0" selection-end-line="291" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="final_will_reviewed.pdf.haml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="final_will_reviewed.pdf.haml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/wills/final_will_reviewed.pdf.haml">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="22" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wills_controller.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/admin/wills_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="18" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
+              <caret line="38" column="63" selection-start-line="38" selection-start-column="63" selection-end-line="38" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="will.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/will.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.71090907">
+              <caret line="23" column="85" selection-start-line="23" selection-start-column="85" selection-end-line="23" selection-end-column="85" />
               <folding />
             </state>
           </provider>
@@ -160,12 +173,13 @@
         <option value="$PROJECT_DIR$/app/views/will_purchased/merlin_notify.html.haml" />
         <option value="$PROJECT_DIR$/app/views/admin/wills/index.html.haml" />
         <option value="$PROJECT_DIR$/app/views/admin/wills/review.html.haml" />
-        <option value="$PROJECT_DIR$/app/controllers/admin/wills_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/will_purchased/resend_will.html.haml" />
         <option value="$PROJECT_DIR$/app/mailers/will_purchased.rb" />
         <option value="$PROJECT_DIR$/app/controllers/wills_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/wills/final_will_reviewed.pdf.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/admin/wills_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/will.rb" />
       </list>
     </option>
   </component>
@@ -836,13 +850,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/will.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="21" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/mailers/user_mailer.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1093,14 +1100,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/admin/wills_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/admin/wills/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.44">
@@ -1149,14 +1148,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/wills_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.037037">
-          <caret line="296" column="46" selection-start-line="296" selection-start-column="46" selection-end-line="296" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/wills/final_will.pdf.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.68">
@@ -1165,10 +1156,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/wills_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.4444447">
+          <caret line="286" column="0" selection-start-line="286" selection-start-column="0" selection-end-line="291" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/wills/final_will_reviewed.pdf.haml">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="22" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/admin/wills_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="18" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
+          <caret line="38" column="63" selection-start-line="38" selection-start-column="63" selection-end-line="38" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/will.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.71090907">
+          <caret line="23" column="85" selection-start-line="23" selection-start-column="85" selection-end-line="23" selection-end-column="85" />
           <folding />
         </state>
       </provider>

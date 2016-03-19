@@ -15,5 +15,11 @@ class WillPurchased < ActionMailer::Base
     mail(to: 'cd2webmail@gmail.com', subject: "Will Purchased")
   end
 
+  def resend_will(will)
+    @will = will
+    attachments["WILL.pdf"] = File.read("#{Rails.root}/tmp/will_#{@will.id}.pdf")
+    attachments["WILLSigningInstructions.pdf"] = File.read("#{Rails.root}/public/WILLSigningInstructions.pdf")
+    mail(to: @will.user.email, subject: "Your reviewed will")
+  end
 
 end

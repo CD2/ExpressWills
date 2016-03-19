@@ -1,0 +1,37 @@
+%p
+  %em Your will
+%p
+  %em
+    DATE
+    = Time.now.to_datetime.strftime("%D")
+
+%p= "Dear #{@will.testator_general_details.full_name},"
+%p
+  Thank you for using our Express Will service to create your will. Attached to this email is your will and some guidance notes.
+  %strong The  guidance notes explain how to sign your will in accordance with the  requirements of the law so please ensure you read these.
+- if @will.order.gold
+  %p Your will is now with a qualified lawyer for review and will be with you very soon.
+%p
+  We hope that you are happy with your will and if you wish to review it in future just log in to Express Will using your existing login details or email
+  %a{:href => "mailto:contact@notaryexpress.co.uk"} contact@notaryexpress.co.uk
+%p We recommend reviewing your will at least every 5 years or when there is a change to your personal circumstances such as a divorce, marriage, significant change in assets or the birth of a child.
+
+%p Best wishes,
+%p
+  %strong> NOTARY  EXPRESS
+  %br
+  LAW FIRM regulated by the Master of Faculties
+  %br
+  12 Upper King Street
+  %br
+  Norwich, NR3 1HA
+
+%p
+  Company number 8347115
+  = succeed "\u{a0}Website:" do
+    %br/
+  = succeed "\u{a0}" do
+    %a{:href => "www.notaryexpress.co.uk"}www.notaryexpress.co.uk
+  = succeed "\u{a0}Wills:" do
+    %br/
+  %a{:href => "www.expresswill.co.uk"}www.expresswill.co.uk

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :admin do 
-    resources :wills, only: :index do
+    resources :wills, only: [:index, :update] do
       get 'review'
     end
   end
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get 'mirror_will'
     get 'purchase'
     get 'thanks'
+    get 'email'
 
     resources :testator_details, only: [:new, :edit, :create, :update]
     resources :partner_details, only: [:new, :edit, :create, :update]

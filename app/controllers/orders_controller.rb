@@ -55,12 +55,8 @@ class OrdersController < ApplicationController
     params.permit! # Permit all Paypal input params
     status = params[:payment_status]
     if status == "Completed"
-
       @order = Order.find params[:invoice]
-
-      WillPurchased.purchaser_notify(@order.will).deliver
-      WillPurchased.merlin_notify(@order.will).deliver
-      @order.update_attributes notification_params: params, status: status, transaction_id: params[:txn_id], purchased_at: Time.now
+      process_fin
     end
     render nothing: true
   end
@@ -68,15 +64,21 @@ class OrdersController < ApplicationController
   def shortcut
     @order = Order.new(order_params)
     if @order.save
-      save_final_will
-      WillPurchased.purchaser_notify(@order.will).deliver
-     # WillPurchased.merlin_notify(@order.will).deliver
-      @order.update_attributes notification_params: params, status: status, transaction_id: params[:txn_id], purchased_at: Time.now
+      process_fin
       redirect_to will_thanks_path(@order.will)
     end
   end
 
+
+
   private
+
+  def process_fin
+    save_final_will
+    WillPurchased.purchaser_notify(@order.will).deliver
+    WillPurchased.merlin_notify(@order.will).deliver
+    @order.update_attributes notification_params: params, status: status, transaction_id: params[:txn_id], purchased_at: Time.now
+  end
 
   def save_final_will
     @will = @order.will

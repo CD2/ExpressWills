@@ -233,6 +233,12 @@ class WillsController < ApplicationController
   def edit
   end
 
+  def email
+    save_final_will
+    WillPurchased.resend_will(@will).deliver
+    redirect_to admin_wills_path
+  end
+
   def create
     @user = current_user
     @will = Will.create(will_params)
@@ -284,4 +290,19 @@ class WillsController < ApplicationController
         redirect_to signin_url, notice: "Please sign in."
       end
     end
+
+  def save_final_will
+    @will = Will.find(params[:will_id])
+    render :pdf    => "will",
+           :template    => "wills/final_will_reviewed.pdf.haml",
+           :layout      => "pdf_layout.html",
+           :margin => {:top                => 15,                     # default 10 (mm)
+                       :bottom             => 10,
+                       :left               => 10,
+                       :right => 10 }, :footer => { :center => 'Page [page] of [topage]', :font_name          => "Times New Roman" },
+           :font_name          => "Times New Roman",
+           :save_to_file => Rails.root.join('tmp', "will_#{@will.id}.pdf"),
+           :save_only => true
+
+  end
 end

@@ -7,6 +7,7 @@
     %th Paid
     %th Review
     %th Download
+    %th Email
 
   - @wills.each do |will|
     - if will.order
@@ -17,3 +18,4 @@
         %td= will.order.price
         %td= link_to "Review", admin_will_review_path(will)
         %td= link_to 'Download', will_purchase_path(will)
+        %td= link_to "Email Will", will_email_path(will)

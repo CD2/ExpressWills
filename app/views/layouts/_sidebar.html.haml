@@ -1,4 +1,4 @@
-- if current_will?
+- if current_will? && !current_user.admin?
   - if current_will.order && current_will.order.status == "Completed"
     .spare-side
       .logo-side

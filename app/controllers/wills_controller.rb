@@ -227,6 +227,9 @@ class WillsController < ApplicationController
   end
 
   def new
+    if current_user.admin?
+      redirect_to admin_wills_path
+    end
     @will = Will.new
   end
 

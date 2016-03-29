@@ -14,7 +14,11 @@ class Admin::WillsController < ApplicationController
   def update
     @will = Will.find(params[:id])
     if @will.update(will_params)
-      redirect_to admin_wills_path
+      if params[:commit] == "Save and Email Will"
+        redirect_to will_email_path(@will)
+      else
+        redirect_to admin_wills_path
+      end
     else
       render :review
     end

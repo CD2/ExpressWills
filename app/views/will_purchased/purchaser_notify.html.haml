@@ -3,15 +3,18 @@
 %p
   %em
     DATE
-    = Time.now.to_datetime.strftime("%D")
+    = Time.now.to_datetime.strftime("%e %B %G")
 %p
   %em
-    PAID £
-    = @will.order.price
+    %b Paid:
+    = "#{number_to_currency(@will.order.price.to_f/1.2)} + #{number_to_currency(@will.order.price.to_f - @will.order.price.to_f/1.2)} at 20%"
+    %br
+    %b Total:
+    %b = "#{number_to_currency(@will.order.price)}"
 %p= "Dear #{@will.testator_general_details.full_name},"
 %p
   Thank you for using our Express Will service to create your will. Attached to this email is your will and some guidance notes.
-  %strong The  guidance notes explain how to sign your will in accordance with the  requirements of the law so please ensure you read these.
+  %strong The guidance notes explain how to sign your will in accordance with the requirements of the law so please ensure you read these.
 - if @will.order.gold
   %p Your will is now with a qualified lawyer for review and will be with you very soon.
 %p
@@ -21,7 +24,7 @@
 
 %p Best wishes,
 %p
-  %strong> NOTARY  EXPRESS
+  %strong> NOTARY EXPRESS
   %br
   LAW FIRM regulated by the Master of Faculties
   %br
@@ -31,10 +34,11 @@
 
 %p
   Company number 8347115
-  = succeed "\u{a0}Website:" do
-    %br/
-  = succeed "\u{a0}" do
-    %a{:href => "www.notaryexpress.co.uk"}www.notaryexpress.co.uk
-  = succeed "\u{a0}Wills:" do
-    %br/
-  %a{:href => "www.expresswill.co.uk"}www.expresswill.co.uk
+  %br
+  Website:
+  %a{:href => "www.notaryexpress.co.uk"} www.notaryexpress.co.uk
+  %br
+  Wills:
+  %a{:href => "www.expresswill.co.uk"} www.expresswill.co.uk
+  %br
+  VAT registration number 217292218

@@ -1,5 +1,7 @@
-= form_for [:admin, @will] do |f|
+#review_form
+  = form_for [:admin, @will] do |f|
 
-  = f.cktext_area :final_will
+    = f.cktext_area :final_will
 
-  = f.submit
+    = f.submit "Save", class: "button radius right"
+    = f.submit "Save and Email Will", class: "button radius right"

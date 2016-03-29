@@ -29,3 +29,8 @@ en:
     errors:
       messages: 
         blank: "must not be blank"
+
+  number:
+    currency:
+      format:
+        unit: '£'

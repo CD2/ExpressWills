@@ -230,7 +230,6 @@ class WillsController < ApplicationController
     if current_user.admin?
       redirect_to admin_wills_path
     end
-    flash correct_user.inspect
     @will = Will.new
   end
 

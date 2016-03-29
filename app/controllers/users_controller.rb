@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Account created - welcome #{@user.name}".html_safe
+
       redirect_to new_will_path
     else
       render 'new'

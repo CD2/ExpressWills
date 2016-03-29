@@ -11,7 +11,11 @@ class SessionsController < ApplicationController
       log_in user
       puts params[:session][:email].downcase
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_back_or new_will_path
+      if user.admin?
+        redirect_to admin_wills_path
+      else
+        redirect_back_or new_will_path
+      end
       #else
       #  message  = "Account not activated. "
       #  message += "Check your email for the activation link."

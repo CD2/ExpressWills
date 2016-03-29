@@ -10,7 +10,7 @@
     = "#{number_to_currency(@will.order.price.to_f/1.2)} + #{number_to_currency(@will.order.price.to_f - @will.order.price.to_f/1.2)} at 20%"
     %br
     %b Total:
-    %b = "#{number_to_currency(@will.order.price)}"
+    %b= number_to_currency(@will.order.price)
 %p= "Dear #{@will.testator_general_details.full_name},"
 %p
   Thank you for using our Express Will service to create your will. Attached to this email is your will and some guidance notes.

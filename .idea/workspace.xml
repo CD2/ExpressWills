@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2e5c7a64-0832-49bf-92df-0eba0f847564" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/will_purchased/merlin_notify.html.haml" afterPath="$PROJECT_DIR$/app/views/will_purchased/merlin_notify.html.haml" />
     </list>
     <ignored path="express_wills.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="wills_controller.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="wills_controller.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/wills_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57246375">
-              <caret line="139" column="33" selection-start-line="139" selection-start-column="33" selection-end-line="139" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="144" column="47" selection-start-line="144" selection-start-column="47" selection-end-line="144" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -99,6 +99,26 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="will.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/will.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="merlin_notify.html.haml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/will_purchased/merlin_notify.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.10225564">
+              <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -143,7 +163,6 @@
         <option value="$PROJECT_DIR$/app/views/administrations/new.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/_sidebar.html.haml" />
         <option value="$PROJECT_DIR$/app/views/wills/final_will.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/will_purchased/merlin_notify.html.haml" />
         <option value="$PROJECT_DIR$/app/views/will_purchased/purchaser_notify.html.haml" />
         <option value="$PROJECT_DIR$/app/mailers/will_purchased.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
@@ -151,6 +170,7 @@
         <option value="$PROJECT_DIR$/app/views/admin/wills/index.html.haml" />
         <option value="$PROJECT_DIR$/app/views/wills/final_will.pdf.haml" />
         <option value="$PROJECT_DIR$/app/controllers/wills_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/will_purchased/merlin_notify.html.haml" />
       </list>
     </option>
   </component>
@@ -992,22 +1012,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/will.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/will_purchased/merlin_notify.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.52">
-          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/will_purchased/resend_will.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.2">
@@ -1090,8 +1094,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/wills_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57246375">
-          <caret line="139" column="33" selection-start-line="139" selection-start-column="33" selection-end-line="139" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="144" column="47" selection-start-line="144" selection-start-column="47" selection-end-line="144" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/will.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/will_purchased/merlin_notify.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10225564">
+          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
           <folding />
         </state>
       </provider>

@@ -2,7 +2,7 @@
 
 %p
   %b Name:
-  = @will.testator_details.try(:full_name)
+  = @will.testator_general_details.try(:full_name)
   %br
   %b Email:
   = @will.user.try(:email)

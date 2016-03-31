@@ -137,7 +137,7 @@ class WillsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render :pdf    => "will", header: { right: '[page] of [topage]' },
+        render :pdf    => "will",
 
           :template    => "wills/final_will.pdf.haml",
           :layout      => "pdf_layout.html",

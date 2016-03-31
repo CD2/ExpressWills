@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :wills do
     get 'final_will'
+    get 'final_will_reviewed'
     get 'mirror_will'
     get 'purchase'
     get 'thanks'

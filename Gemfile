@@ -21,7 +21,7 @@ gem "faker"
 
 #server
 gem 'unicorn'
-gem 'wicked_pdf'
+gem 'wicked_pdf', '~> 0.11.0'
 gem 'wkhtmltopdf-binary'
 gem 'htmltoword'
 gem 'ckeditor'

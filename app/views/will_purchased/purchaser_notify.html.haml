@@ -7,7 +7,7 @@
 %p
   %em
     %b Paid:
-    = "#{number_to_currency(@will.order.price.to_f/1.2)} + #{number_to_currency(@will.order.price.to_f - @will.order.price.to_f/1.2)} at 20%"
+    = "#{number_to_currency(@will.order.price.to_f/1.2)} + #{number_to_currency(@will.order.price.to_f - @will.order.price.to_f/1.2)} VAT at 20%"
     %br
     %b Total:
     %b= number_to_currency(@will.order.price)

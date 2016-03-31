@@ -1,4 +1,11 @@
 %h1 A Will has been purchased at Express Wills 
+
+%p
+  %b Name:
+  = @will.testator_details.try(:full_name)
+  %br
+  %b Email:
+  = @will.user.try(:email)
 %p Please login to the admin account to see the details
 
 - if @will.order.gold

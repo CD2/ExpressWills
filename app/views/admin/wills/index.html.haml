@@ -16,6 +16,6 @@
         %td= will.created_at.strftime("%d %b %Y")
         %td= will.mirror_will
         %td= will.order.price
-        %td= link_to("Download", will_final_will_path(will, :format => 'pdf'), class: "button radius", download: "will")
+        %td= link_to("Download", will_final_will_path(will, :format => 'pdf'), download: "will")
         %td= link_to "Review", admin_will_review_path(will)
         %td= link_to "Email Will", will_email_path(will)

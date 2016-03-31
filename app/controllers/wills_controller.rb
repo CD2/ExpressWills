@@ -137,7 +137,8 @@ class WillsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render :pdf    => "will",
+        render :pdf    => "will", header: { right: '[page] of [topage]' },
+
           :template    => "wills/final_will.pdf.haml",
           :layout      => "pdf_layout.html",
           :margin => {:top                => 15,                     # default 10 (mm)

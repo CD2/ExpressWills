@@ -298,6 +298,7 @@ class WillsController < ApplicationController
   def save_final_will
     @will = Will.find(params[:will_id])
     render :pdf    => "will",
+           header: { right: '[page] of [topage]' },
            :template    => "wills/final_will_reviewed.pdf.haml",
            :layout      => "pdf_layout.html",
            :margin => {:top                => 15,                     # default 10 (mm)

@@ -69,6 +69,11 @@ class OrdersController < ApplicationController
     end
   end
 
+  def secret
+    @order = Order.last
+    process_fin
+  end
+
 
 
   private

@@ -89,6 +89,8 @@ Rails.application.routes.draw do
   match '/terms_and_conditions', to: 'static_pages#terms_and_conditions', via: 'get'
   match '/express_powers', to: 'static_pages#express_powers', via: 'get'
 
+  get '/secret', to: 'orders#secret'
+
   root 'static_pages#home'
 
 

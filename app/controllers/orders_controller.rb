@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
 
   # POST /orders
   def create
-    @will = Will.find(params[:will_id])
+    @will = Will.find(params[:order][:will_iden])
     @order = @will.order.new(order_params)
     if @order.save
       if params[:order][:gold]

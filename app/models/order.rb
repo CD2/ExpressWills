@@ -6,7 +6,7 @@ attr_accessor :gold
   def paypal_url(return_path)
     values = {
         #business: "contact@notaryexpress.co.uk",
-        business: "accounts@cd2solutions,.co.uk",
+        business: "accounts@cd2solutions.co.uk",
         cmd: "_xclick",
         upload: 1,
         return: "#{Rails.application.secrets.app_host}#{return_path}",

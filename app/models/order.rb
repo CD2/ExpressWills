@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-attr_accessor :gold
+attr_accessor :gold, :will_iden
   belongs_to :will
 
   serialize :notification_params, Hash

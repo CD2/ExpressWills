@@ -53,8 +53,8 @@ class OrdersController < ApplicationController
 
   def hook
     params.permit! # Permit all Paypal input params
-    status = params[:payment_status]
-    if status == "Completed"
+    @status = params[:payment_status]
+    if @status == "Completed"
       @order = Order.find params[:invoice]
       process_fin
     end
@@ -82,7 +82,7 @@ class OrdersController < ApplicationController
     save_final_will
     WillPurchased.purchaser_notify(@order.will).deliver
     WillPurchased.merlin_notify(@order.will).deliver
-    @order.update_attributes notification_params: params, status: status, transaction_id: params[:txn_id], purchased_at: Time.now
+    @order.update_attributes notification_params: params, status: @status, transaction_id: params[:txn_id], purchased_at: Time.now
   end
 
   def save_final_will

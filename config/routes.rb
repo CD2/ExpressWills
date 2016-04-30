@@ -86,7 +86,11 @@ Rails.application.routes.draw do
   match '/signup', to: 'users#new', via: 'get'
   match '/signin', to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
+
   match '/terms_and_conditions', to: 'static_pages#terms_and_conditions', via: 'get'
+  match '/privacy_policy', to: 'static_pages#privacy_policy', via: 'get'
+  match '/cookie_policy', to: 'static_pages#cookie_policy', via: 'get'
+
   match '/express_powers', to: 'static_pages#express_powers', via: 'get'
 
   get '/secret', to: 'orders#secret'

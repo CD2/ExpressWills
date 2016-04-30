@@ -11,7 +11,9 @@
         %br
         %br
         = @testator_details.full_name
-    %p Protocol Z1000
+    %p
+      Protocol
+      = "Z#{@will.order.id + 1000}"
 
 #page-two{style: "page-break-after: always;"}
   .page

@@ -27,7 +27,6 @@ class OrdersController < ApplicationController
     @will = Will.find(params[:order][:will_iden])
     @order = @will.build_order(order_params)
     if @order.save
-      byebug
       if params[:order][:gold]
         @order.update_attributes(gold: true)
       end

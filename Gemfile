@@ -29,6 +29,7 @@ gem 'ckeditor'
 #testing
 group :development, :test do
   gem "rspec-rails", '~> 2.14.0.rc1'
+  gem 'byebug'
 end
 
 group :test do

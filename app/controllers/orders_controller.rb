@@ -27,6 +27,7 @@ class OrdersController < ApplicationController
     @will = Will.find(params[:order][:will_iden])
     @order = @will.build_order(order_params)
     if @order.save
+      byebug
       if params[:order][:gold]
         @order.update_attributes(gold: true)
       end
@@ -163,6 +164,6 @@ class OrdersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def order_params
-      params.require(:order).permit(:full_name, :email_address, :will_id, :price, :gold)
+      params.require(:order).permit(:full_name, :email_address, :will_id, :price, :gold, :will_iden)
     end
 end

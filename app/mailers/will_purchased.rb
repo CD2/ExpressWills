@@ -18,7 +18,7 @@ class WillPurchased < ActionMailer::Base
 
   def resend_will(will)
     @will = will
-    unless @will.order.gold?
+    unless @will.order.full_name == "Gold Service Will"
       attachments["WILL.pdf"] = File.read("#{Rails.root}/tmp/will_#{@will.id}.pdf")
     end
     attachments["WILLSigningInstructions.pdf"] = File.read("#{Rails.root}/public/WILLSigningInstructions.pdf")

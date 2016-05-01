@@ -8,7 +8,7 @@
   = @will.user.try(:email)
 %p Please login to the admin account to see the details
 
-- if @will.order.gold
+- if @will.order.gold?
   %p
     To review the will for the client
     = link_to "Click Here", admin_will_review_url(@will)

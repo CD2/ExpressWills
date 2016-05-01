@@ -141,6 +141,6 @@
                   = f.hidden_field :price, value: "60"
                 - else 
                   = f.hidden_field :price, value: "120"
-                = f.hidden_field :gold
+                = f.hidden_field :gold, value: true
               .actions
                 = f.submit 'Purchase', class: "button radius"

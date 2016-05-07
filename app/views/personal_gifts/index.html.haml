@@ -9,11 +9,13 @@
         %h5 Personal Gift
       %th 
         %h5 Description
+      %th
   %tbody
     - @personal_gifts.each_with_index do |personal_gift, i|
       %tr
         %td= link_to(personal_gift.full_name, edit_will_personal_gift_path(@will, personal_gift))
         %td= personal_gift.description
+        %td= link_to("Delete", will_personal_gift_path(@will, personal_gift), method: :delete)
 
 = link_to("Add Personal Gift", new_will_personal_gift_path, class: "button radius")
 = link_to("Proceed", new_will_personal_gift_permission_path, class: "button radius right")

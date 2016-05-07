@@ -42,6 +42,12 @@ class PersonalGiftsController < ApplicationController
   def option
   end
 
+  def destroy
+    @will = Will.find(params[:will_id])
+    @personal_gift.destroy
+    redirect_to will_personal_gifts_path(@will)
+  end
+
   private
   
     def skip_option

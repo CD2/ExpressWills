@@ -1,4 +1,7 @@
-%h1 A Will has been purchased at Express Wills 
+- if @will.order.full_name == "Gold Service Will"
+  %h1 A Gold Will has been purchased at Express Wills
+- else
+  %h1 An Express Will has been purchased at Express Wills
 
 %p
   %b Name:
@@ -13,5 +16,3 @@
     To review the will for the client
     = link_to "Click Here", admin_will_review_url(@will)
     \.
-- else
-  %p The client has purchased an Express Will

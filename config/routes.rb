@@ -62,7 +62,7 @@ Rails.application.routes.draw do
       collection { get :option }
       get :benificiaries
     end
-    resources :personal_gifts, only: [:new, :edit, :create, :update, :index] do
+    resources :personal_gifts, only: [:new, :edit, :create, :update, :index, :destroy] do
       collection { get :option }
     end
     resources :residuaries, only: [:new, :edit, :create, :update]

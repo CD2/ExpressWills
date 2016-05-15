@@ -90,6 +90,7 @@ Rails.application.routes.draw do
   match '/terms_and_conditions', to: 'static_pages#terms_and_conditions', via: 'get'
   match '/privacy_policy', to: 'static_pages#privacy_policy', via: 'get'
   match '/cookie_policy', to: 'static_pages#cookie_policy', via: 'get'
+  match '/contact', to: 'static_pages#contact', via: 'get'
 
   match '/express_powers', to: 'static_pages#express_powers', via: 'get'
 

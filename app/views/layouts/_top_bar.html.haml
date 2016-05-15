@@ -7,6 +7,7 @@
         %li= link_to 'All Wills', admin_wills_path
         %li= link_to "Log Out", signout_path, method: "delete"
       - else
+        %li= link_to "Contact Us", contact_path
         %li= link_to "New Will", new_will_path
 
         %li= link_to "Wills", wills_path

@@ -87,9 +87,8 @@
               %ul.sub-list
                 - current_will.properties.where(complete: true).each_with_index do |property, i|
                   %li= will_link(property, property.postcode, "nothing")
-            - elsif
-              - if current_will.progress >= 10
-                = link_to("Property", will_properties_path(current_will))
+            - elsif current_will.progress >= 10
+              = link_to("Property", will_properties_path(current_will))
             - else
               %span Property
           %li 

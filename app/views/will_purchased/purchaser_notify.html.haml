@@ -15,7 +15,11 @@
     %b= number_to_currency(@will.order.price)
 %p= "Dear #{@will.testator_general_details.full_name},"
 %p
-  Thank you for using our Express Will service to create your will. Attached to this email is your will and some guidance notes.
+  - if @will.order.full_name == "Gold Service Will"
+    Thank you for using our Gold Will service to create your will.
+  - else
+    Thank you for using our Express Will service to create your will.
+  Attached to this email is your will and some guidance notes.
   %strong The guidance notes explain how to sign your will in accordance with the requirements of the law so please ensure you read these.
 - if @will.order.full_name == "Gold Service Will"
   %p Your will is now with a qualified lawyer for review and will be with you very soon.

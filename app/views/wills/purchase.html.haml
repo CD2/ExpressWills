@@ -137,10 +137,10 @@
               .field
                 = f.hidden_field :will_iden, value: @will.id
               .field
-                - if @will.mirror_will
-                  = f.hidden_field :price, value: "60"
-                - else 
+                - if @will.mirror_will == 'yes'
                   = f.hidden_field :price, value: "120"
+                - else 
+                  = f.hidden_field :price, value: "60"
                 = f.hidden_field :gold, value: true
               .actions
                 = f.submit 'Purchase', class: "button radius"

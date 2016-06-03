@@ -11,7 +11,7 @@ attr_accessor :gold, :will_iden
         upload: 1,
         return: "#{Rails.application.secrets.app_host}#{return_path}",
         invoice: id,
-        amount: 0.01,
+        amount: self.price,
         item_name: "full_name_#{id}",
         item_number: 82736489237,
         :currency_code => 'GBP',

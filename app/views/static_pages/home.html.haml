@@ -9,3 +9,53 @@
     %p= link_to("Create Will", new_will_path)
   -else
     %p= link_to("Sign in and Create Will", new_will_path)
+
+%table.order-comp
+  %thead
+    %tr
+      %th.blank.title
+      %th Express Service
+      %th Gold Service
+  %tbody
+    %tr
+      %td.title Instantly emailed to you
+      %td.true
+      %td
+    %tr.odd
+      %td.title Instructions for signing
+      %td.true
+      %td.true
+    %tr
+      %td.title We keep a copy on file
+      %td.true
+      %td.true
+    %tr.odd
+      %td.title Review within 48 hours by a qualified lawyer
+      %td
+      %td.true
+    %tr
+      %td.title Two bound wills posted to you
+      %td
+      %td.true
+    %tr.odd
+      %td.title Electronic copy emailed to you
+      %td.true
+      %td.true
+    %tr
+      %td.title Free storage for your signed will
+      %td
+      %td.true
+    %tr.odd
+      %td
+        %td.price
+          Price: £25.00
+          %br
+          VAT at 20%: £5.00
+          %br
+          %b Total: £30
+        %td.price
+          Price: £50.00
+          %br
+          VAT at 20%: £10.00
+          %br
+          %b Total: £60

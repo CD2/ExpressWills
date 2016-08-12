@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2e5c7a64-0832-49bf-92df-0eba0f847564" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.haml" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
     </list>
     <ignored path="express_wills.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,12 +84,11 @@
       <file leaf-file-name="application.html.haml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="20" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+            <state relative-caret-position="288">
+              <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
               <folding>
-                <marker date="1469451272000" expanded="true" signature="263:693" ph=":javascript" />
-                <marker date="1469451272000" expanded="true" signature="625:663" ph="ga('create', 'UA-81312402-1', 'auto');" />
-                <marker date="1469451272000" expanded="true" signature="670:693" ph="ga('send', 'pageview');" />
+                <marker date="1469451272000" expanded="true" signature="305:536" ph="{...}" />
+                <marker date="1469451272000" expanded="true" signature="356:400" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -751,16 +749,16 @@
       <workItem from="1467650537935" duration="541000" />
       <workItem from="1467652092177" duration="21000" />
       <workItem from="1467652116159" duration="2000" />
-      <workItem from="1469451245951" duration="26000" />
+      <workItem from="1469451245951" duration="551000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14849000" />
+    <option name="totallyTimeSpent" value="15374000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="23" width="1920" height="1014" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.178125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -768,7 +766,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3800206" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3800206" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1159,12 +1157,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+        <state relative-caret-position="288">
+          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
           <folding>
-            <marker date="1469451272000" expanded="true" signature="263:693" ph=":javascript" />
-            <marker date="1469451272000" expanded="true" signature="625:663" ph="ga('create', 'UA-81312402-1', 'auto');" />
-            <marker date="1469451272000" expanded="true" signature="670:693" ph="ga('send', 'pageview');" />
+            <marker date="1469451272000" expanded="true" signature="305:536" ph="{...}" />
+            <marker date="1469451272000" expanded="true" signature="356:400" ph="{...}" />
           </folding>
         </state>
       </provider>

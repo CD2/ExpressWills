@@ -78,6 +78,13 @@ class WillsController < ApplicationController
 
   def final_will
     @will = Will.find(params[:will_id])
+
+    unless @will.order && @will.order.status == "Completed"
+      flash[:error] = 'You must purchase the will first.'
+      redirect_to will_purchase_path(@will)
+      return
+    end
+    
     @user = @will.user
     @testator_details = @will.testator_general_details
     @testator = @will.testator_detail

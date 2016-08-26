@@ -8,8 +8,63 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  //= require foundation_and_overrides
 
  *= require_tree .
+ *= require_self
  */
+
+
+
+body {
+  min-width: initial
+}
+.top-bar {
+  height: auto
+}
+
+@media screen and (max-width: 650px) {
+  .narrow-logo {
+    max-width: 100%
+  }
+  .small-12.columns {
+    padding: 0
+  }
+  .home #content {
+    margin-top: 0
+  }
+  .new-will-form {
+    padding: 4px;
+  }
+  #intro a {
+    padding: 20px 10px;
+    border-width: 3px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .columns {
+    float: initial !important;
+  }
+  .small-9, .small-3, .small-6 {
+    width: 100%
+  }
+
+  .spare-side {
+    border: none;
+    padding: 0;
+  }
+  .logo-side {
+    margin: 0 auto;
+    max-width: 400px;
+  }
+
+}
+
+div#footer {
+  line-height: initial;
+  padding: 50px 10px; 
+  height: auto;
+  color: rgba(255,255,255, 0.8);
+  font-size: 0.8rem
+}

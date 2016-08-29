@@ -7,4 +7,7 @@ class StaticPagesController < ApplicationController
   def secret
   end
 
+  def benefits
+  end
+
 end

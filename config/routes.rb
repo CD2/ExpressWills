@@ -92,6 +92,10 @@ Rails.application.routes.draw do
   match '/cookie_policy', to: 'static_pages#cookie_policy', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
 
+  match '/faqs', to: 'static_pages#faqs', via: 'get'
+  match '/why-choose-express-wills', to: 'static_pages#why', via: 'get'
+  match '/benefits-of-a-will', to: 'static_pages#benefits', via: 'get'
+
   match '/express_powers', to: 'static_pages#express_powers', via: 'get'
 
   get '/secret', to: 'orders#secret'

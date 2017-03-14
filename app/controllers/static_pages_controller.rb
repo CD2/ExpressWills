@@ -7,4 +7,13 @@ class StaticPagesController < ApplicationController
   def secret
   end
 
+  def faqs
+  end
+
+  def why
+  end
+
+  def benefits
+  end
+
 end

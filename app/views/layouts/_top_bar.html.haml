@@ -1,6 +1,9 @@
 %section.top-bar-section
   %ul.left
-    %li= link_to("Express Will", root_url)
+    %li= link_to("Home", '/')
+    %li= link_to 'Benefits of a Will', '/benefits-of-a-will'
+    %li= link_to 'Why Choose Express Wills?', '/why-choose-express-wills'
+    %li= link_to 'FAQs', '/faqs'
   %ul.right
     %li= link_to "Contact Us", contact_path
     - if signed_in?

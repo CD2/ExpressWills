@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.3.1'
+gem 'json', github: 'flori/json', branch: 'v1.8'
 #core
 gem 'rails', '4.1.1'
 gem 'pg', '0.17.1'
@@ -17,10 +19,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'spring',        group: :development
 gem 'rails_12factor', '0.0.2', group: :production
 gem 'will_paginate'
-gem "faker"
 
 #server
-gem 'unicorn'
 gem 'wicked_pdf', '~> 0.11.0'
 gem 'wkhtmltopdf-binary'
 gem 'htmltoword'
@@ -28,7 +28,6 @@ gem 'ckeditor'
 
 #testing
 group :development, :test do
-  gem "rspec-rails", '~> 2.14.0.rc1'
   gem 'byebug'
 end
 

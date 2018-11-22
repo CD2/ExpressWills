@@ -91,6 +91,7 @@ Rails.application.routes.draw do
   match '/privacy_policy', to: 'static_pages#privacy_policy', via: 'get'
   match '/cookie_policy', to: 'static_pages#cookie_policy', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/benefits-of-a-will', to: 'static_pages#benefits', via: 'get'
 
   match '/faqs', to: 'static_pages#faqs', via: 'get'
   match '/why-choose-express-wills', to: 'static_pages#why', via: 'get'

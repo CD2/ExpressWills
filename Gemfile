@@ -5,6 +5,7 @@ gem 'json'
 #core
 gem 'rails', '4.1.1'
 gem 'pg', '0.17.1'
+gem 'sprockets'
 
 #assets
 gem 'sass-rails'

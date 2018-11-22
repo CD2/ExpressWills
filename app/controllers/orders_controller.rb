@@ -58,7 +58,6 @@ class OrdersController < ApplicationController
     
     if @status == "Completed"
       @order = Order.find params[:invoice]
-      @order = Order.find 105
       process_fin
     end
     render nothing: true

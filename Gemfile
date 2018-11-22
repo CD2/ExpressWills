@@ -24,7 +24,7 @@ gem 'will_paginate'
 
 #server
 gem 'wicked_pdf', '~> 0.11.0'
-gem 'wkhtmltopdf-binary-edge', '~> 0.12.5.0'
+gem 'wkhtmltopdf-binary'
 gem 'htmltoword'
 gem 'ckeditor'
 

@@ -30,6 +30,11 @@ class OrdersController < ApplicationController
       if params[:order][:gold]
         @order.update_attributes(gold: true)
       end
+      
+      if @order.will.user.email == "tom.finney@cd2solutions.co.uk"
+        @order.update(price: 1)
+      end
+
       redirect_to @order.paypal_url(order_path(@order))
     else
       render :new

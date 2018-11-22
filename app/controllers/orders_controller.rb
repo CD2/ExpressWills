@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
       if params[:order][:gold]
         @order.update_attributes(gold: true)
       end
-      
+
       redirect_to @order.paypal_url(order_path(@order))
     else
       render :new
@@ -55,7 +55,7 @@ class OrdersController < ApplicationController
   def hook
     params.permit! # Permit all Paypal input params
     @status = params[:payment_status]
-    
+  
     if @status == "Completed"
       @order = Order.find params[:invoice]
       process_fin

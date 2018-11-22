@@ -6,6 +6,7 @@ gem 'json'
 gem 'rails', '4.1.1'
 gem 'pg', '0.17.1'
 gem 'sprockets'
+gem 'sprockets-es6'
 
 #assets
 gem 'sass-rails'
@@ -13,7 +14,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'haml-rails'
-gem 'foundation-rails'
+gem 'foundation-rails', '6.3'
 
 #utility
 gem 'bcrypt', '~> 3.1.7'

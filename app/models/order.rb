@@ -3,7 +3,10 @@ attr_accessor :gold, :will_iden
   belongs_to :will
 
   serialize :notification_params, Hash
+
   def paypal_url(return_path)
+    
+
     values = {
         business: "contact@notaryexpress.co.uk",
         #business: "accounts@cd2solutions.co.uk",
@@ -16,7 +19,7 @@ attr_accessor :gold, :will_iden
         item_number: 82736489237,
         :currency_code => 'GBP',
         quantity: '1',
-        notify_url: "https://expresswills.herokuapp.com/hook"
+        notify_url: Rails.env == "development" ? "http://7b5d101d.ngrok.io/hook" : "https://expresswills.herokuapp.com/hook"
     }
     "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   end

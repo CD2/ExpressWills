@@ -23,14 +23,14 @@ Rails.application.configure do
   config.active_record.migration_error = :page_load
 
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'expresswills.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'www.expresswill.co.uk' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
     address: 'smtp.sendgrid.net',
     port: "587",
-    domain: "heroku.com",
+    domain: "www.expresswill.co.uk",
     authentication: :plain,
     enable_starttls_auto: true,
     user_name: ENV['SENDGRID_USERNAME'],

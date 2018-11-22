@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.3.1'
-gem 'json', github: 'flori/json', branch: 'v1.8'
+gem 'json'
 #core
 gem 'rails', '4.1.1'
 gem 'pg', '0.17.1'
@@ -22,13 +22,14 @@ gem 'will_paginate'
 
 #server
 gem 'wicked_pdf', '~> 0.11.0'
-gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-binary-edge', '~> 0.12.5.0'
 gem 'htmltoword'
 gem 'ckeditor'
 
 #testing
 group :development, :test do
   gem 'byebug'
+  gem 'rb-readline'
 end
 
 group :test do

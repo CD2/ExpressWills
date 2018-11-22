@@ -55,8 +55,10 @@ class OrdersController < ApplicationController
   def hook
     params.permit! # Permit all Paypal input params
     @status = params[:payment_status]
+    
     if @status == "Completed"
       @order = Order.find params[:invoice]
+      @order = Order.find 105
       process_fin
     end
     render nothing: true

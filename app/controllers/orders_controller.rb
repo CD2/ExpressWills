@@ -56,7 +56,6 @@ class OrdersController < ApplicationController
     redirect_to orders_url, notice: 'Order was successfully destroyed.'
   end
 
-
   def hook
     params.permit! # Permit all Paypal input params
     @status = params[:payment_status]

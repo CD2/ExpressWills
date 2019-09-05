@@ -2,7 +2,7 @@
 
 - if @executor.notary_express || @executor.first
   %p
-    = "I appoint the employee(s) (to include directors) of Notary Express Limited (registered company number 8347115) of 12 Upper King Street, Norwich, NR3 1HA, a Professional Trustee, including any company or firm that has succeeded to, or is carrying on the practice of, this company at my death, " if @executor.notary_express
+    = "I appoint the employee(s) (to include directors) of Notary Express Limited (registered company number 8347115) of 114b Prince of Wales Road, Norwich, NR1 1NS, a Professional Trustee, including any company or firm that has succeeded to, or is carrying on the practice of, this company at my death, " if @executor.notary_express
     = "I appoint #{@first_executor.full_name} of #{@first_executor.full_address}#{@second_executor || @third_executor ? @third_executor ? ';' : ' and' : ''} " if @first_executor
     = "#{@second_executor.full_name} of #{@second_executor.full_address}#{@third_executor || @forth_executor ? @forth_executor ? ';' : ' and' : ''} " if @second_executor
     = "#{@third_executor.full_name} of #{@third_executor.full_address}" if @third_executor

@@ -27,7 +27,7 @@ gem 'will_paginate'
 gem 'wicked_pdf', '~> 0.11.0'
 gem 'wkhtmltopdf-binary'
 gem 'htmltoword'
-gem 'ckeditor'
+gem 'ckeditor', '4.2.2'
 
 #testing
 group :development, :test do

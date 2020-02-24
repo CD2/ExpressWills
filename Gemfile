@@ -7,7 +7,7 @@ gem 'rails', '4.1.1'
 gem 'pg', '0.17.1'
 gem 'sprockets'
 gem 'sprockets-es6'
-gem 'nokogiri', '1.6.8'
+gem 'nokogiri', '1.10.8'
 
 #assets
 gem 'sass-rails'

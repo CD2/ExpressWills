@@ -226,9 +226,9 @@ class OrdersController < ApplicationController
     @secondary_trustees = @will.residuary_details.where(secondary: true).where(share:"Trustees to decide")
     @secondary_percents = @will.residuary_details.where(secondary: true).where.not(share:"Trustees to decide").where.not(share:"Equal shares")
 
-    @will.update_attributes(final_will_mirror: render_to_string('wills/final_will.pdf'))
+    @will.update_attributes(final_will_mirror: render_to_string('wills/final_will_mirror.pdf'))
         render :pdf    => "will",
-               :template    => "wills/final_will.pdf.haml",
+               :template    => "wills/final_will_mirror.pdf.haml",
                :layout      => "pdf_layout.html",
                :margin => {:top                => 15,                     # default 10 (mm)
                            :bottom             => 10,

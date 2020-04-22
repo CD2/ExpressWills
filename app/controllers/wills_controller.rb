@@ -223,7 +223,7 @@ class WillsController < ApplicationController
       format.html
       format.pdf do
         render :pdf    => "will",
-          :template    => "wills/final_will.pdf.haml",
+          :template    => "wills/final_will_mirror.pdf.haml",
           :layout      => "pdf_layout.html",
           :margin => {:top                => 15,                     # default 10 (mm)
                      :bottom             => 10,

@@ -28,6 +28,7 @@ gem 'wicked_pdf', '~> 0.11.0'
 gem 'wkhtmltopdf-binary'
 gem 'htmltoword'
 gem 'ckeditor', '4.2.2'
+gem 'rubyzip', '1.2.3'
 
 #testing
 group :development, :test do

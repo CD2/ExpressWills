@@ -1,4 +1,6 @@
-- unless @will.final_will.blank?
+- if @will.mirror_will == "yes" && @will.final_will_mirror.present?
+  = raw @will.final_will_mirror
+- elsif @will.final_will.present?
   = raw @will.final_will
 - else
   - @count = 0

@@ -27,7 +27,7 @@ class Admin::WillsController < ApplicationController
   private
 
     def will_params
-      params.require(:will).permit(:final_will)
+      params.require(:will).permit(:final_will, :final_will_mirror)
     end
 
     def signed_in_user

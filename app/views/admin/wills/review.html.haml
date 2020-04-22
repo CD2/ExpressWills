@@ -3,5 +3,8 @@
 
     = f.cktext_area :final_will
 
+    - if @will.mirror_will == "yes"
+      = f.cktext_area :final_will_mirror
+
     = f.submit "Save", class: "button radius right"
     = f.submit "Save and Email Will", class: "button radius right"

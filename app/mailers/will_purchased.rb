@@ -7,6 +7,9 @@ class WillPurchased < ActionMailer::Base
     attachments["WILLSigningInstructions.pdf"] = File.read("#{Rails.root}/public/WILLSigningInstructions.pdf")
     unless @will.order.full_name == "Gold Service Will"
       attachments["WILL.pdf"] = File.read("#{Rails.root}/tmp/will_#{@will.id}.pdf")
+      if @will.mirror_will == "yes"
+        attachments["MIRROR_WILL.pdf"] = File.read("#{Rails.root}/tmp/mirror_will_#{@will.id}.pdf")
+      end
     end
     mail(to: @will.user.email, subject: "Thank you for your purchase")
     #mail(to: "shane@cd2solutions.co.uk", subject: "Thank you for your purchase")
@@ -21,6 +24,9 @@ class WillPurchased < ActionMailer::Base
   def resend_will(will)
     @will = will
     attachments["WILL.pdf"] = File.read("#{Rails.root}/tmp/will_#{@will.id}.pdf")
+    if @will.mirror_will == "yes"
+      attachments["MIRROR_WILL.pdf"] = File.read("#{Rails.root}/tmp/mirror_will_#{@will.id}.pdf")
+    end
     attachments["WILLSigningInstructions.pdf"] = File.read("#{Rails.root}/public/WILLSigningInstructions.pdf")
     mail(to: @will.user.email, subject: "Your reviewed will")
     #mail(to: "shane@cd2solutions.co.uk", subject: "Your reviewed will")

@@ -246,6 +246,9 @@ class WillsController < ApplicationController
 
   def email
     save_final_will
+    if @will.mirror_will == "yes"
+      save_mirror_will
+    end
     WillPurchased.resend_will(@will).deliver
     flash[:notice] = "Will emailed"
     redirect_to admin_wills_path
@@ -284,8 +287,6 @@ class WillsController < ApplicationController
       @will = Will.find(params[:will_id])
     end
 
-    
-
     def will_params
       params.require(:will).permit(:title, :tc)
     end
@@ -314,6 +315,21 @@ class WillsController < ApplicationController
                        :right => 10 }, :footer => { :center => 'Page [page] of [topage]', :font_name          => "Times New Roman" },
            :font_name          => "Times New Roman",
            :save_to_file => Rails.root.join('tmp', "will_#{@will.id}.pdf"),
+           :save_only => true
+
+  end
+
+  def save_mirror_will
+    @will = Will.find(params[:will_id])
+    render :pdf    => "will",
+           :template    => "wills/mirror_will_reviewed.pdf.haml",
+           :layout      => "pdf_layout.html",
+           :margin => {:top                => 15,                     # default 10 (mm)
+                       :bottom             => 10,
+                       :left               => 10,
+                       :right => 10 }, :footer => { :center => 'Page [page] of [topage]', :font_name          => "Times New Roman" },
+           :font_name          => "Times New Roman",
+           :save_to_file => Rails.root.join('tmp', "mirror_will_#{@will.id}.pdf"),
            :save_only => true
 
   end

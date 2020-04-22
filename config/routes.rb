@@ -100,6 +100,7 @@ Rails.application.routes.draw do
   match '/express_powers', to: 'static_pages#express_powers', via: 'get'
 
   get '/secret', to: 'orders#secret'
+  get '/secret_secret', to: 'orders#secret_secret'
 
   root 'static_pages#home'
 

@@ -76,7 +76,13 @@ class OrdersController < ApplicationController
     process_fin
   end
 
-
+  def secret_secret
+    @order = Order.find(params[:id])
+    save_final_will
+    if @order.will.mirror_will.present? && @order.will.mirror_will == "yes"
+      save_mirror_will
+    end
+  end
 
   private
 

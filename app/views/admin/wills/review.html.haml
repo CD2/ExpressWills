@@ -1,10 +1,10 @@
 #review_form
   = form_for [:admin, @will] do |f|
 
-    = f.cktext_area :final_will
+    = f.cktext_area :final_will, :class => 'ckeditor'
 
     - if @will.mirror_will == "yes"
-      = f.cktext_area :final_will_mirror
+      = f.cktext_area :final_will_mirror, :class => 'ckeditor'
 
     = f.submit "Save", class: "button radius right"
     = f.submit "Save and Email Will", class: "button radius right"
